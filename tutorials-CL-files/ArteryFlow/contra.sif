@@ -1,0 +1,300 @@
+Check Keywords Warn
+
+Header
+  Mesh DB "." "contra"
+End
+
+Constants
+  Gravity(4) = Real 0 -1 0 9.81
+  Stefan Boltzmann = Real 5.67e-8
+End
+
+Simulation
+  Coordinate System = Axi Symmetric
+  Simulation Type =Transient
+  Steady State Max Iterations = 250
+  TimeStepping Method = BDF  
+  BDF Order = 2              
+  Timestep Sizes = 0.001 
+  TimeStep Intervals = 600 
+  Output Intervals = 1
+  Output File = "contra.result"
+  Post File = "contra.vtu"
+End
+
+Body 1
+  Equation = 1
+  Material = 1
+End
+
+Body 2
+  Equation = 1
+  Material = 1
+End
+
+Body 3
+  Equation = 1
+  Material = 2
+End
+
+Body 4
+  Equation = 2
+  Material = 3
+End
+
+Body 5
+  Equation = 3
+  Material = 4
+  Body Force = 1
+  Initial Condition = 1
+End
+
+Initial Condition 1
+  Wnodal = Variable Coordinate
+    Real Procedure "./ArteryOutlet" "OutletInit"
+End
+
+Body Force 1
+  Source = Real 0.0
+End
+
+! Bodies 1 and 2 (blood)
+Material 1
+  Density = 1000
+  Viscosity = 3.5e-3
+  Youngs Modulus = 1
+  Poisson Ratio = 0.3
+End
+
+! Body 3 (blood)
+Material 2
+  Density = 1000
+  Viscosity = 3.5e-3
+  Youngs Modulus = 1
+  Poisson Ratio = 0.3
+  Compressibility Model = Artificial Compressible
+  Artificial Compressibility  = 2.4E-5 
+End
+
+! Body 4 (elastic wall)
+Material 3
+  Density = 1010
+  Youngs Modulus = 3.0e5
+  Poisson Ratio = 0.45
+End
+
+! One dimensional model
+Material 4
+   Density = 1010.0
+   Artery Wall Youngs Modulus = Real 3.0e5 
+   Artery Radius = Real 0.0135 
+   Artery Wall Thickness = Real 0.002
+   Artery Poisson Ratio  = Real 0.45
+End
+
+Solver 1
+  Equation = Artery Outlet Solver
+  Time Derivative Order = 1
+  Stabilize = Logical False
+  Variable = Wnodal
+  Variable DOFs = 1
+  Procedure = "./ArteryOutlet" "OutletCompute"
+  Linear System Solver = Direct
+  Linear System Direct Method = Banded
+  Linear System Iterative Method = CG
+  Linear System Convergence Tolerance = 1.0e-6
+  Linear System Max Iterations = 1000
+  Linear System Preconditioning = ILU0
+  Nonlinear System Max Iterations = Integer 1000
+  Nonlinear System Convergence Tolerance = Real 1.0e-8
+  Optimize Bandwidth = False
+End
+
+Solver 2
+  Equation = Navier-Stokes
+  Stabilize = Logical True
+  Linear System Solver = Direct
+  Linear System Direct Method = Banded
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Convergence Tolerance = 1.0e-4
+  Nonlinear System Newton After Tolerance = 5.0e-2   
+  Nonlinear System Newton After IterationS = 0     
+  Steady State Convergence Tolerance = 1.0e-4
+  Nonlinear System Relaxation Factor = 1.0
+  Calculate Viscous Force = Logical True
+End
+
+Solver 3
+  Equation = Elasticity Solver
+  Variable = Displacement
+  Variable DOFs = 2
+  Procedure = "ElasticSolve" "ElasticSolver"
+  Time Derivative Order = 2
+  Linear System Solver = Direct
+  Linear System Direct Method = Banded
+  Nonlinear System Newton After Tolerance = 5.0e-2
+  Nonlinear System Newton After Iterations = 0
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Convergence Tolerance = 1.0e-4
+  Steady State Convergence Tolerance = 1.0e-4
+  Nonlinear System Relaxation Factor = 1.0
+End
+
+Solver 4
+  Equation = Mesh Update
+  Linear System Solver = Direct
+  Linear System Direct Method = Banded
+  Linear System Symmetric = True
+  Steady State Convergence Tolerance = 1.0e-4
+End
+
+Equation 1
+  Navier-Stokes = True
+  Mesh Update = True
+End
+
+Equation 2
+  Elasticity Solver = Logical True
+End
+
+Equation 3
+  Artery Outlet Solver = Logical True
+End
+
+! Moving boundary
+Boundary Condition 1
+  Target Boundaries = 1
+  Velocity 1 = 0
+  Velocity 2 = Equals Mesh Velocity 2
+  Mesh Update 1 = Real 0
+  Mesh Update 2 = Variable Time
+       Real Procedure "./Motion" "Motion"
+End
+
+! Outlet pressure of the 2D model
+Boundary Condition 2
+  Target Boundaries = 2
+  Flux Integrate = Logical True
+  Flow Force BC = True
+  Pressure 2 = Variable Time
+      Real Procedure "./ArteryOutlet" "OutletPres"
+  Mesh Update 2 = Real 0
+End
+
+! Symmetry axis 
+Boundary Condition 3
+  Target Boundaries = 3
+  Velocity 1 = 0
+  Mesh Update 1 = Real 0
+End
+
+! Symmetry axis 
+Boundary Condition 4
+  Target Boundaries = 4
+  Velocity 1 = 0
+  Mesh Update 1 = Real 0
+  Mesh Update 2 = Real 0
+End
+
+! Symmetry axis
+Boundary Condition 5
+  Target Boundaries = 5
+  Velocity 1 = 0
+  Mesh Update 1 = Real 0
+End
+
+! Fluid domain
+Boundary Condition 6
+  Target Boundaries = 6
+  Mesh Update 1 = Real 0
+  Mesh Update 2 = Real 0
+End
+
+! Fluid domain
+Boundary Condition 7
+  Target Boundaries = 7
+  Mesh Update 1 = Real 0
+  Mesh Update 2 = Real 0
+End
+
+! Wall 
+Boundary Condition 8
+  Target Boundaries = 8
+  Displacement 1 = 0
+  Displacement 2 = 0
+End
+
+! Radial displacement of hte end wall at the outlet of 2D model 
+Boundary Condition 9
+  Target Boundaries = 9
+  Displacement 1 = Variable Time
+      Real Procedure "ArteryOutlet" "OutletdX"
+  Displacement 2 = 0 
+End
+
+! Outer surface
+Boundary Condition 10
+  Target Boundaries = 10
+End
+
+! FSI interface boundary
+Boundary Condition 11
+  Target Boundaries = 11
+  Velocity 1 = Equals Mesh Velocity 1
+  Velocity 2 = Equals Mesh Velocity 2
+  Mesh Update 1 = Equals Displacement 1
+  Mesh Update 2 = Equals Displacement 2
+  Force BC = Logical True
+End
+
+! Wall
+Boundary Condition 12
+  Target Boundaries = 12
+  Mesh Update 1 = Real 0
+  Mesh Update 2 = Real 0
+  Velocity 1 = 0
+  Velocity 2 = 0
+End
+
+! Wall
+Boundary Condition 13
+  Target Boundaries = 13
+  Mesh Update 1 = Real 0
+  Mesh Update 2 = Real 0
+  Velocity 1 = 0
+  Velocity 2 = 0
+End
+
+! Wall
+Boundary Condition 14
+  Target Boundaries = 14
+  Mesh Update 1 = Real 0
+  Mesh Update 2 = Real 0
+  Velocity 1 = 0
+  Velocity 2 = 0
+End
+
+! Wall
+Boundary Condition 15
+  Target Boundaries = 15
+  Mesh Update 1 = Real 0
+  Velocity 1 = 0
+  Velocity 2 = 0
+End
+
+! 1D model inlet boundary
+Boundary Condition 16
+  Target Boundaries = 16
+  Fluid Coupling With Boundary = Integer 2
+  Structure Coupling With Boundary = Integer 9
+End
+
+! 1D model outlet boundary
+Boundary Condition 17
+  Target Boundaries = 17
+End
+
+
+
+
+

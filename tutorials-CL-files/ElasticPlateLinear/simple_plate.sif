@@ -1,0 +1,64 @@
+! Historical case
+! Updated 3.8.2020 P.R.
+
+check keywords warn
+
+Header
+  Mesh DB "." "simple_plate"
+End
+
+Simulation
+  Coordinate System = Cartesian 2D
+  Simulation Type = Steady State
+  Steady State Max Iterations = 1
+  Max Output Level = 5
+  Output Intervals = 1
+  Output File = "simple_plate.result"
+  Post File = "simple_plate.vtu"
+End
+
+Body 1
+  Equation = 1
+  Body Force = 1
+  Material = 1
+End
+
+Equation 1
+  Active Solvers(1) = 1
+End
+
+Body Force 1
+  Pressure = 5.0e4
+End
+
+Material 1   
+  Poisson ratio = 0.3
+  Youngs modulus = 209e9
+  Density = 7800.0
+  Thickness = 1.0e-2
+  Tension = 0.0
+End
+
+Solver 1
+  Equation = "SmitcSolver"
+  Procedure = "Smitc" "SmitcSolver"
+  Variable = Deflection
+  Variable DOFs = 3
+
+  Eigen Analysis = False
+  Hole Correction = False
+  Linear System Solver = Iterative
+  Linear System Iterative Method = BiCGStab
+  Linear System Preconditioning = ILU2
+  Linear System Convergence Tolerance = 1.0e-8
+  Linear System Max Iterations = 300
+End
+
+Boundary Condition 1
+  Target Boundaries(6) = 1 2 3 4 5 6
+  Deflection 1 = 0.0
+  Deflection 2 = 0.0
+  Deflection 3 = 0.0
+End
+
+Solver 1 :: Reference Norm = 0.83541694E-02

@@ -1,0 +1,27 @@
+Blood ejection from a ventricle to aorta Elmer tutorial
+-------------------------------------------------------
+Instructions for postprocessing
+-------------------------------
+
+* In main Elmer Post window:
+
+math nodes0 = nodes
+
+* In Time Step Control panel:
+
+math u = Displacement(0:2,time($t));
+math u(0:1,416:1221) = u(0:1,416:1221)*20;
+math nodes = nodes0 + u
+
+
+- the node indexes 416-1221 correspond the 
+  the volumes which face the FSI coupling.
+
+- integer 20 is the magification parameter
+  for the displacements 
+
+
+
+
+
+

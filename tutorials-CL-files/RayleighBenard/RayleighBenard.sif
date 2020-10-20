@@ -1,0 +1,123 @@
+Header
+  Mesh DB "." "Mesh"
+  Include Path ""
+  Results Directory ""
+End
+
+Constants
+  Gravity(4) = 0 -1 0 9.82
+  Stefan Boltzmann = 5.67e-8
+End
+
+Simulation
+  Coordinate System = "Cartesian 2D" 
+  Coordinate Mapping(3) = 1 2 3
+  Timestepping Method = "Newmark"
+  Newmark Beta = 1
+  Timestep Intervals(1) = 200
+  Timestep Sizes(1) = 2
+  Output Intervals(1) = 1
+  Simulation Type = "Transient" 
+  Steady State Max Iterations = 10
+  Solver Input File = "RayleighBenard.sif"
+  Output File = "RayleighBenard.result" 
+  Post File = "RayleighBenard.ep" 
+End
+
+
+Body 1
+  Equation = 1
+  Material = 1
+  Body force = 1
+  Initial Condition = 1
+End
+
+Body Force 1
+  Boussinesq = True
+End
+
+Initial Condition 1
+  Temperature = 283
+  Velocity 1 = 1.0e-9
+  Velocity 2 = 0
+End
+
+Equation 1
+  Navier-Stokes = True
+  Heat Equation = True
+  Convection = "Computed"
+End
+
+
+
+Material 1
+  Density = 1000
+  Viscosity = 1040e-6
+  Heat Capacity = 4190
+  Heat Conductivity = 0.6
+  Heat Expansion Coefficient = 1.8e-4
+  Reference Temperature = 283
+End
+
+
+Solver 1
+  Equation = "Heat Equation"
+  Stabilize = Logical True
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Convergence Tolerance = 1.0e-6
+  Nonlinear System Newton After Iterations = 3 
+  Nonlinear System Newton After Tolerance = 1.0e-3
+  Nonlinear System Relaxation Factor = 1
+  Linear System Solver = "Direct"
+  Linear System Iterative Method = "BiCGStab"
+  Linear System Convergence Tolerance = 1.0e-12
+  Linear System Max Iterations = 100
+  Steady State Convergence Tolerance = 1.0e-6
+End
+
+
+Solver 2
+ Equation = "Navier-Stokes"
+ Stabilize = Logical True
+ Nonlinear System Max Iterations = 1
+ Nonlinear System Convergence Tolerance = 1.0e-6
+ Nonlinear System Newton After Iterations = 3
+ Nonlinear System Newton After Tolerance = 1.0e-3
+ Nonlinear System Relaxation Factor = 1
+ Linear System Solver = "Iterative"
+ Linear System Iterative Method = "BiCGStab"
+ Linear System Convergence Tolerance = 1.0e-9
+ Linear System Max Iterations = 100
+ Linear System Preconditioning = ILU1
+ Steady State Convergence Tolerance = 1.0e-05
+End
+
+
+
+Boundary Condition 1
+  Target Boundaries = 1
+  Velocity 1 = 0
+  Velocity 2 = 0
+  Temperature = 283
+End
+
+Boundary Condition 2
+  Target Boundaries = 2
+  Velocity 1 = 0
+  Velocity 2 = 0
+End
+
+Boundary Condition 3
+  Target Boundaries = 3
+  Velocity 1 = 0
+  Velocity 2 = 0
+  Temperature = 283.5
+End
+
+Boundary Condition 4
+  Target Boundaries = 4
+  Velocity 1 = 0
+  Velocity 2 = 0
+End
+
+

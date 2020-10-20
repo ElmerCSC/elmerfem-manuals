@@ -1,0 +1,162 @@
+! Historical tutorial case
+! Updated 3.8.2020 P.R.
+
+Check Keywords Warn
+
+Header
+  Mesh DB "." "crucible"
+  Include Path ""
+  Results Directory ""
+End
+
+Simulation
+  Coordinate System = "Axi Symmetric"
+  Simulation Type = Steady State
+  Steady State Max Iterations = 1
+  Max Output Level = 7
+  Output File = "crucible.result"
+  Post File = "crucible.vtu"
+End
+
+Constants
+  Permittivity Of Vacuum = 8.8542e-12
+End
+
+Body Force 1
+  Current Density = 2.5e5
+End
+
+Body Force 2
+  Joule Heat = Logical True
+End
+
+
+
+Body 1
+  Name = "Air"
+  Equation = 1
+  Material = 1
+End
+
+Body 2
+  Name = "Coil"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+End
+
+Body 3
+  Name = "Insulation"
+  Equation = 1
+  Material = 2
+  Body Force = 2
+End
+
+Body 4
+  Name = "Graphite"
+  Equation = 1
+  Material = 3
+  Body Force = 2
+End
+
+Body 5
+  Name = "Powder"
+  Equation = 1
+  Material = 4
+  Body Force = 2
+End
+
+Equation 1
+  Name = "Vector Potential Equation"
+  Active Solvers(2) = 1 2
+End
+
+Solver 1
+  Equation = Potential Solver
+  Variable = Potential
+  Variable DOFs = 2
+
+  Angular Frequency = Real 50.0e3
+  Calculate Joule Heating = Logical True
+!  Calculate Magnetic Flux = Logical True
+  Desired Heating = Real 3.0e3
+
+  Procedure = "StatMagSolve" "StatMagSolver"
+  Linear System Solver = Iterative
+  Linear System Iterative Method = BiCGStab
+  Linear System Max Iterations = 300
+  Linear System Convergence Tolerance = 1.0e-10
+  Linear System Preconditioning = ILU1
+  Linear System ILUT Tolerance = 1.0e-03
+  Linear System Residual Output = 10
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Convergence Tolerance = 1.0e-6
+  Nonlinear System Relaxation Factor = 1
+  Steady State Convergence Tolerance = 1.0e-6
+End
+
+
+Solver 2
+  Equation = Heat Equation
+  Procedure = "HeatSolve" "HeatSolver"
+  Variable = Temperature
+  Stabilize = True
+  Steady State Convergence Tolerance = 1.0e-5
+  Nonlinear System Convergence Tolerance = 1.0e-5
+  Nonlinear System Max Iterations = 20
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-3
+  Nonlinear System Relaxation Factor = 1
+  Linear System Solver = Iterative
+  Linear System Iterative Method = BiCGStab
+  Linear System Max Iterations = 500
+  Linear System Convergence Tolerance = 1.0e-8
+  Linear System Preconditioning = ILU0
+  Linear System ILUT Tolerance = 1.0e-3
+  Linear System Abort Not Converged = False
+  Linear System Residual Output = 10
+  Linear System Precondition Recompute = 1
+End
+
+
+Material 1
+  Name = "Air"
+  Electric Conductivity = 0.0
+  Heat Conductivity = 1.0
+  Density = 1.0
+End
+
+Material 2
+  Name = "Insulation"
+  Electric Conductivity = 2.0E3
+  Heat Conductivity = 1.0
+  Density = 1.0
+End
+
+Material 3
+  Name = "Graphite"
+  Electric Conductivity = 2.0E4
+  Heat Conductivity = 1.0
+  Density = 1.0
+End
+
+Material 4
+  Name = "Powder"
+  Electric Conductivity = 1.0E4
+  Heat Conductivity = 1.0
+  Density = 1.0
+End
+
+Boundary Condition 1
+  Target Boundaries = 1
+  Potential 1 = Real 0.0
+  Potential 2 = Real 0.0
+  Temperature = 293
+End
+
+Solver 1 :: Reference Norm = 9.22429576E-06
+Solver 2 :: Reference Norm = 2.93337866E+02
+
+
+!End Of File
+

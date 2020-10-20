@@ -1,0 +1,81 @@
+Header
+  Mesh DB "." "mesh"
+End
+ 
+Constants
+  Stefan Boltzmann = 5.6704E-08
+!  Permittivity of Vacuum = Real 8.8542E-12
+  Permittivity of Vacuum = Real 1
+End
+
+Simulation
+  Coordinate System = "Cartesian 2D"
+  Simulation Type = "Steady"
+  Output Intervals(1) = 1 
+  Steady State Max Iterations = 1
+  Output File = File "4_holes.result"
+  Post File =   File "4_holes.ep"
+End
+
+Solver 1
+  Equation = "Stat Elec Solver"
+  Procedure = "StatElecSolve" "StatElecSolver"
+  Variable = "Potential"
+  Variable DOFs = 1
+  Calculate Capacitance Matrix = Logical True
+  Capacitance Bodies = 4
+  Capacitance Matrix Filename = "cmatrix.dat"
+
+  Linear System Convergence Tolerance = 1.0E-8
+  Linear System Solver = "Iterative"
+  Linear System Iterative Method = "BiCGStab"
+  Linear System Max Iterations = 1000
+  Linear System Abort Not Converged = True
+  Linear System Preconditioning = ILU2
+  Linear System Residual Output = 1
+  Nonlinear System Convergence Tolerance =  1.0E-06
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Relaxation Factor = 1.0
+  Steady State Convergence Tolerance =  1.0E-04
+End
+
+Body 1
+  Equation = 1
+  Material = 1
+End
+                                                                                                                                  
+Material 1
+  Relative Permittivity = 7
+End
+                                                                                
+Equation 1
+  Active Solvers =  1
+  Calculate Electric Energy = Logical True
+End
+                                                                                  
+Boundary Condition 1
+  Target Boundaries = 1
+  Capacitance Body = 1
+End
+
+Boundary Condition 2
+  Target Boundaries = 2
+  Capacitance Body = 2
+End
+
+Boundary Condition 3
+  Target Boundaries = 3
+  Capacitance Body = 3
+End
+
+Boundary Condition 4
+  Target Boundaries = 4
+  Capacitance Body = 4
+End
+
+Boundary Condition 5
+  Target Boundaries = 5
+  Capacitance Body = 0
+End
+
+

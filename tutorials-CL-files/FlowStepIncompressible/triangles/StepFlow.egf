@@ -1,0 +1,22 @@
+Header
+  Dimension
+    Integer 2
+End
+
+Vertices
+  Points
+    Size 6 3
+      Real
+        0.0 1.0 0.0
+        4.0 1.0 0.0
+        4.0 0.0 0.0
+        14.0 0.0 0.0
+        14.0 2.0 0.0
+        0.0 2.0 0.0
+End
+
+Body 1
+  Polygon
+    Size 6
+      Integer 1 2 3 4 5 6
+End

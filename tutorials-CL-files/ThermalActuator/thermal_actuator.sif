@@ -1,0 +1,125 @@
+Header
+  Mesh DB "." "thermal"
+End
+
+Simulation
+  Coordinate System = Cartesian 3D
+  Simulation Type = Steady State
+  Steady State Max Iterations = 30
+  Output Intervals = 1
+  Output File = "actuator.result"
+  Post File = "actuator.ep"
+End
+
+Body 1
+  Equation = 1
+  Material = 1
+  Initial Condition = 1
+  Body Force = 1
+End
+
+Equation 1
+  Active Solvers(3) = Integer 1 2 3
+  Calculate Joule Heating = True
+End
+
+Solver 1
+  Equation = Stat Current Solver
+  Procedure = "StatCurrentSolve" "StatCurrentSolver"
+  Variable = Potential
+  Variable DOFs = 1
+  Calculate Volume Current = True
+  Calculate Electric Conductivity = True
+  Linear System Solver = Iterative
+  Linear System Iterative Method = CG
+  Linear System Preconditioning = ILU3
+  Linear System Max Iterations = 300
+  Linear System Convergence Tolerance = 1.0e-8
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Convergence Tolerance = 1.0-6
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-12
+  Nonlinear System Relaxation Factor = 1.0
+  Steady State Convergence Tolerance = 1.0e-6
+End
+
+Solver 2
+   Equation = Heat Equation
+   Variable = Temperature
+   Variable DOFs = 1
+   Linear System Solver = Iterative
+   Linear System Iterative Method = BiCGStab
+   Linear System Preconditioning = ILU1
+   Linear System Max Iterations = 350
+   Linear System Convergence Tolerance = 1.0e-9
+   Nonlinear System Max Iterations = 1
+   Nonlinear System Convergence Tolerance = 1.0e-07
+   Nonlinear System Newton After Iterations = 3
+   Nonlinear System Newton After Tolerance = 1.0e-12
+   Nonlinear System Relaxation Factor = 0.5
+   Steady State Convergence Tolerance = 1.0e-07
+End
+
+Solver 3
+  Exec Solver = After All
+  Equation = Stress Analysis
+  Variable = Displacement
+  Variable DOFs = 3
+  Linear System Solver = Direct
+  Linear System Direct Method = Banded
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Convergence Tolerance = 1.0e-6
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-12
+  Nonlinear System Relaxation Factor = 1.0
+  Steady State Convergence Tolerance = 1.0e-6
+End
+
+Material 1
+  Electric Conductivity = Variable Temperature
+      Real
+        298.0   4.3478e10
+        498.0   1.2043e10
+        698.0   5.1781e9
+        898.0   2.7582e9
+        1098.0  1.6684e9
+        1298.0  1.0981e9
+        1683.0  1.0
+        2000.0  1.0
+      End
+
+  Density = 2.3e-15
+  Heat Conductivity = 32.0e6
+  Youngs Modulus = 169.0e3
+  Poisson Ratio = 0.22
+  Heat Expansion Coefficient = 2.9e-6
+  Reference Temperature = 298.0
+End
+
+Initial Condition 1
+   Temperature = 298.0
+End
+
+Body Force 1
+  Heat Source = Equals Joule Heating
+End
+
+Boundary Condition 1
+  Target Boundaries = 1
+  Potential = 0
+  Temperature = 298
+  Displacement 1 = 0.0
+  Displacement 2 = 0.0
+  Displacement 3 = 0.0
+End
+
+Boundary Condition 2
+  Target Boundaries = 2
+  Potential = 7
+  Temperature = 298
+  Displacement 1 = 0.0
+  Displacement 2 = 0.0
+  Displacement 3 = 0.0
+End
+
+!End Of File

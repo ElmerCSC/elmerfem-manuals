@@ -1,0 +1,78 @@
+Header
+  Mesh DB "." "mflow"
+End
+
+Simulation
+  Coordinate System = Cartesian 2D
+  Simulation Type = Transient
+  Steady State Max Iterations = 1
+  Timestepping Method = BDF
+  BDF Order = 1
+  Timestep Sizes = 0.02
+  Timestep Intervals = 100
+  Output Intervals = 1
+  Output File = "mflow.result"
+  Post File = "mflow.ep"
+End
+
+Body 1
+  Material = 1
+  Equation = 1
+End
+
+Material 1
+  Density = 3.0
+  Viscosity = 0.1
+End
+
+Equation 1
+  Navier-Stokes = TRUE
+  Active Solvers(1) = 1
+End
+
+Solver 1
+  Equation = Navier-Stokes
+  Stabilize = True
+
+  Before Linsolve = "./AddMassFlow" "AddMassFlow"
+  Export Lagrange Multiplier = Logical FALSE
+  Lagrange Multiplier Name = String "Multiplier"
+
+  Linear System Solver = Iterative
+  Linear System Iterative Method = BiCGStab
+  Linear System Preconditioning = ILU1
+  Linear System Max Iterations = 500
+  Linear System Scaling = False
+  Linear System Convergence Tolerance = 1.0e-8
+
+  Nonlinear System Max Iterations = 15
+  Nonlinear System Convergence Tolerance = 1.0e-8
+  Nonlinear System Newton After Tolerance = 1.0e-4
+  Nonlinear System Newton After Iterations = 8
+  Nonlinear System Relaxation Factor = 1.0
+
+  Steady State Convergence Tolerance = 1.0e-7
+End
+
+Boundary Condition 1
+  Target Boundaries(2) = 1 3
+  Velocity 1 = 0.0
+  Velocity 2 = 0.0
+End
+
+Boundary Condition 2
+  Target Boundaries = 4
+  Velocity 2 = 0.0
+End
+
+Boundary Condition 3
+  Target Boundaries = 2
+  Velocity 2 = 0.0
+End
+
+
+
+
+
+
+

@@ -1,0 +1,109 @@
+Header
+  CHECK KEYWORDS Warn
+  Mesh DB "MESHDIR" "Mesh1"
+  Include Path ""
+  Results Directory ""
+End
+
+Simulation
+  Min Output Level = 0
+  Max Output Level = 31
+  Output Caller = True
+  Angular Frequency = 628.3
+
+  Coordinate System = "Cartesian 2D"
+  Coordinate Mapping(3) = 1 2 3
+
+  Simulation Type = "Steady State"
+  Steady State Max Iterations = 20
+  Output Intervals = 1
+
+  Solver Input File = "helmholtz.sif"
+  Output File = "helmholtz.dat"
+  Post File = "helmholtz.ep"
+  Mesh Input File
+    File "helmholtz.mif"
+
+End
+
+Constants
+  Gravity(4) = 0 -1 0 9.82
+  Stefan Boltzmann = 5.67e-08
+End
+
+Body 1
+  Name = "Body1"
+
+  Equation = 1
+  Material = 1
+End
+
+Equation 1
+  Name = "Equation1"
+
+  Helmholtz Equation = Logical True
+End
+
+Solver 1
+  Exec Solver = "Always"
+  Equation = "Helmholtz Equation"
+  Variable = "Pressure"
+  Variable Dofs = 2
+  Procedure = "HelmholtzSolve" "HelmholtzSolver"
+  Linear System Solver = "Iterative"
+  Linear System Iterative Method = "BiCGStab"
+  Linear System Max Iterations = 300
+  Linear System Convergence Tolerance = 1.0e-08
+  Linear System Abort Not Converged = True
+  Linear System Preconditioning = "ILU0"
+  Linear System Residual Output = 1
+  Steady State Convergence Tolerance = 1.0e-05
+  Nonlinear System Convergence Tolerance = 1.0e-05
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-02
+  Nonlinear System Relaxation Factor = 1
+End
+
+Material 1
+  Name = "Material1"
+
+  Density = 1.224
+  Convection Velocity 1 = 0
+  Convection Velocity 2 = 0
+  Convection Velocity 3 = 0
+  Sound Speed = 343
+  Sound Damping = 0
+End
+
+Boundary Condition 1
+  Name = "Constraint1"
+  Target Boundaries(1) = 1 
+
+  Wave Flux 1 = 1
+  Wave Flux 2 = 0
+End
+
+Boundary Condition 2
+  Name = "Constraint2"
+  Target Boundaries(4) = 2 3 4 5 
+
+  Wave Flux 1 = 0
+  Wave Flux 2 = 0
+End
+
+Boundary Condition 3
+  Name = "Constraint3"
+  Target Boundaries(4) = 7 8 9 10 
+
+  Wave Flux 1 = 0
+  Wave Flux 2 = 0
+End
+
+Boundary Condition 4
+  Name = "Constraint4"
+  Target Boundaries(1) = 6 
+
+  Wave Impedance 1 = -343
+  Wave Impedance 2 = 0
+End

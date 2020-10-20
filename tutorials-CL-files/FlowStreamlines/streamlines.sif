@@ -1,0 +1,88 @@
+Header
+  Mesh DB "." "step"
+End
+
+Simulation
+  Coordinate System =  Cartesian 2D
+  Coordinate Mapping(3) = 1 2 3
+
+  Simulation Type = Steady
+  Steady State Max Iterations = 1
+
+  Output Intervals = 1
+  Post File = "streamlines.ep"
+  Output File = "streamlines.result"
+End
+
+Body 1
+  Equation = 1
+  Material = 1
+End
+
+Equation 1
+  Active Solvers(2) = 1 2
+  Navier-Stokes = True
+End
+
+Material 1
+  Density = 1
+  Viscosity = 0.01
+End
+
+Solver 1
+  Equation = "Navier-Stokes"
+  Stabilize = True
+
+  Linear System Solver = Iterative
+  Linear System Iterative Method = BiCGStab
+  Linear System Max Iterations = 500
+  Linear System Convergence Tolerance = 1.0e-8
+  Linear System Preconditioning = ILU1
+
+  Nonlinear System Convergence Tolerance = 1.0e-6
+  Nonlinear System Max Iterations = 15
+  Nonlinear System Newton After Iterations = 8
+  Nonlinear System Newton After Tolerance = 1.0e-4
+  Nonlinear System Relaxation Factor = 1.0
+
+  Steady State Convergence Tolerance = 1.0e-6
+End
+
+Solver 2
+  Equation = "StreamSolver"
+  Procedure = "StreamSolver" "StreamSolver"
+  Variable = "StreamFunction"
+  Variable DOFs = 1
+
+  Stream Function Velocity Variable = String "Flow Solution"
+  Stream Function First Node = Integer 1
+  Stream Function Shifting = Logical TRUE
+  Stream Function Scaling = Logical TRUE
+  Stokes Stream Function = Logical FALSE
+
+  Linear System Solver = Iterative
+  Linear System Iterative Method = BiCGStab
+  Linear System Max Iterations = 500
+  Linear System Convergence Tolerance = 1.0e-8
+  Linear System Preconditioning = ILU1
+
+  Steady State Convergence Tolerance = 1.0e-6
+End  
+
+Boundary Condition 1
+  Target Boundaries = 1
+  Velocity 1 = 0
+  Velocity 2 = 0
+End
+
+Boundary Condition 2
+  Target Boundaries = 2
+  Velocity 2 = 0
+End
+
+Boundary Condition 3
+  Target Boundaries = 3
+  Velocity 1 = 1
+  Velocity 2 = 0
+End
+

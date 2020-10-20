@@ -1,0 +1,102 @@
+! Historical tutorial case
+! Updated 3.8.2020 P.R.
+
+Check Keywords Warn
+
+Header
+  Mesh DB "." "hole"
+End
+
+Simulation
+  Coordinate System = Cartesian 3D
+  Simulation Type = Steady State
+  Steady State Max Iterations = 1
+  Max Output Level = 5
+!  Output File = "flow.result"
+  Post File = "flow.vtu"
+End
+
+Body 1
+  Equation = 1
+  Material = 1
+End
+
+Equation 1
+  Active Solvers(3) = 1 2 3
+  NS Convect = False
+End
+
+
+Solver 1
+   Equation = Navier-Stokes
+   Linear System Solver = Iterative
+   Linear System Iterative Method = BiCGStab
+   Linear System Preconditioning = ILU1
+   Linear System Max Iterations = 500
+   Linear System Convergence Tolerance = 1.0e-08
+   Linear System Residual Output = 10
+   Stabilize = True
+   Nonlinear System Convergence Tolerance = 1.0e-05
+   Nonlinear System Max Iterations = 1
+   Nonlinear System Newton After Iterations = 3
+   Nonlinear System Newton After Tolerance = 1.0e-08
+   Nonlinear System Relaxation Factor = 1.0
+   Steady State Convergence Tolerance = 1.0e-05
+End
+
+Solver 2
+  Exec Solver = After Timestep
+  Equation = Fluidic Force
+  Procedure  ="FluidicForce" "ForceCompute"
+  Calculate Viscous Force = True
+End
+
+Solver 3
+  Exec Solver = After All
+  Equation = SaveScalars
+  Procedure = "SaveData" "SaveScalars"
+  Filename = "flowdata.dat"
+  Save Variable 1 = Velocity 3
+  Save Coordinates(1,2) = 0.0 0.0
+End 
+
+Material 1
+  Name = Air
+  Density = 1.293e-12
+  Viscosity = 1.67e-5
+End
+
+Boundary Condition 1
+  Target Boundaries = 4
+   Velocity 1 = 0.0
+   Velocity 2 = 0.0
+   Velocity 3 = 1.0e3
+   Calculate Fluidic Force = True
+End
+
+Boundary Condition 2
+  Target Boundaries(2) = 8 10
+   Velocity 2 = 0.0
+End
+
+Boundary Condition 3
+  Target Boundaries(4) = 1 2 3 7
+   Velocity 1 = 0.0
+   Velocity 2 = 0.0
+   Velocity 3 = 0.0
+End
+
+Boundary Condition 4
+  Target Boundaries(2) = 6 9
+   Velocity 1 = 0.0
+End
+
+Boundary Condition 5
+  Target Boundaries = 5
+  Pressure = 0.0
+End
+
+Solver 1 :: Reference Norm = 1.90943178E+03
+
+
+!End Of File

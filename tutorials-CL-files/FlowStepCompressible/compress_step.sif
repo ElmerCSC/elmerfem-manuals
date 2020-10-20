@@ -1,0 +1,125 @@
+! Historical tutorial case
+! Updated 3.8.2020 P.R.
+
+Header
+  Mesh DB "." "mesh"
+  Include Path ""
+  Results Directory ""
+End
+
+
+Simulation
+  Coordinate System =  Cartesian 2D
+  Coordinate Mapping(3) = 1 2 3
+  Simulation Type = Steady
+  Max Output Level = 5
+  Steady State Max Iterations = 20
+  Solver Input File = "compress_step.sif"
+  Post File = "compress_step.vtu"
+!  Output File = "compress_step.dat"
+End
+
+
+Constants
+  Gravity(4) = 0 -1 0 9.82
+  Stefan Boltzmann = 5.67e-8
+  Permittivity Of Vacuum = 8.8542e-12
+End
+
+Equation 1
+  Navier-Stokes = True
+  Heat Equation = True
+  Convection = "Computed"
+End
+
+Body 1
+  Equation = 1
+  Material = 1
+  Initial Condition = 1
+End
+
+
+Material 1
+  Compressibility Model = String "Perfect Gas"
+  Reference Pressure = 1e5
+  Specific Heat Ratio = 1.4
+  Viscosity = 16.7e-6
+  Heat Conductivity = 0.026
+  Heat Capacity = 1.01e3
+End
+
+
+Initial Condition 1
+  Temperature = 300
+End
+
+Solver 1
+  Equation = "Navier-Stokes"
+  Linear System Solver = "Iterative"
+  Linear System Iterative Method = "BiCGStab"
+  Linear System Max Iterations = 500
+  Linear System Convergence Tolerance = 1.0e-08
+  Linear System Abort Not Converged = True
+  Linear System Preconditioning = "ILU2"
+  Linear System Residual Output = 1
+  Steady State Convergence Tolerance = 1.0e-05
+  Bubbles = Logical True
+  Nonlinear System Convergence Tolerance = 1.0e-05
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-02
+  Nonlinear System Relaxation Factor = 1
+End
+
+
+Solver 2
+  Equation = "Heat Equation"
+  Variable = "Temperature"
+  Linear System Solver = "Iterative"
+  Linear System Iterative Method = "BiCGStab"
+  Linear System Max Iterations = 350
+  Linear System Convergence Tolerance = 1.0e-08
+  Linear System Preconditioning = "ILU0"
+  Linear System Residual Output = 1
+  Steady State Convergence Tolerance = 1.0e-05
+  Bubbles = Logical True
+  Nonlinear System Convergence Tolerance = 1.0e-05
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-02
+  Nonlinear System Relaxation Factor = 1
+End
+
+
+Boundary Condition 1
+  Target Boundaries = 1
+  Velocity 1 = Variable Coordinate 2
+  Real 
+    0.1    0
+    0.15   0.02
+    0.2    0
+  End
+
+  Velocity 2 = 0
+  Temperature = Variable Coordinate 2
+  Real 
+    0.1    300
+    0.15   350
+    0.2    300
+  End
+End
+
+Boundary Condition 2
+  Target Boundaries = 2
+  Velocity 2 = 0
+End
+
+Boundary Condition 3
+  Target Boundaries = 3
+  Velocity 1 = 0
+  Velocity 2 = 0
+  Temperature = 300
+End
+
+Solver 1 :: Reference Norm = 4.71374701E-03
+Solver 2 :: Reference Norm = 3.08882530E+02

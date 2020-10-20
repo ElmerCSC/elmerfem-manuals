@@ -1,0 +1,13 @@
+math tmp = size(Deflection.1)
+math n = tmp(1)
+
+math nodes(2,0:n-1) = 50*Deflection.1
+
+math Rotation=0;
+math Rotation(0,0:n-1) = Deflection.2;
+math Rotation(1,0:n-1) = Deflection.3;
+math Rotation(2,0:n-1) = Deflection.2*0;
+
+math AbsRotation = sqrt( vdot(Rotation,Rotation) );
+
+display;

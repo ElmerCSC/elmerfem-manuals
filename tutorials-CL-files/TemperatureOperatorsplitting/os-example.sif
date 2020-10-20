@@ -1,0 +1,114 @@
+Header
+  Mesh DB "." "femlab-mesh"
+End
+
+Simulation
+  Coordinate System = String "Cartesian 2D"
+  Simulation Type = String "Transient"
+  Timestepping Method = String "Crank-Nicolson"
+  Timestep Intervals(1) = Integer 200
+  Timestep Sizes(1) = Real 0.01 
+  Output Intervals(1) = Integer 1
+  Steady State Max Iterations(1) = Integer 1
+  Post File = File "os-example.ep"
+End
+
+Constants
+  Stefan Boltzmann = Real 5.67e-08
+End
+
+Body 1
+  Body Force = Integer 1
+  Equation = Integer 1
+  Initial Condition = Integer 1
+  Material = Integer 1
+End
+
+Equation 1
+  Active Solvers(3) = Integer 1 2 3
+End
+
+Solver 1
+  Equation = String "Heat Equation"
+  Variable = String "Temperature"
+  Variable Dofs = Integer 1
+  Linear System Solver = String "Iterative"
+  Linear System Iterative Method = String "BiCGStab"
+  Linear System Max Iterations = Integer 350
+  Linear System Convergence Tolerance = Real 1.0e-08
+  Linear System Abort Not Converged = Logical True
+  Linear System Preconditioning = String "ILU0"
+  Steady State Convergence Tolerance = Real 1.0e-05
+  Stabilize = Logical False
+  Bubbles = Logical False
+End
+
+Solver 2
+  Equation = String "Rate Of Change Equation"
+  Procedure = File "RateOfChange" "RateOfChangeSolver"
+  Variable = String "Udot"
+  Variable Dofs = Integer 1   
+  Advection = String "Constant"
+  Advection Variable = String "Temperature" 
+  Linear System Solver = String "Iterative"
+  Linear System Iterative Method = String "BiCGStab"
+  Linear System Max Iterations = Integer 350
+  Linear System Convergence Tolerance = Real 1.0e-08
+  Linear System Abort Not Converged = Logical True
+  Linear System Preconditioning = String "ILU0"
+  Steady State Convergence Tolerance = Real 1.0e-05
+End
+
+Solver 3  
+  Equation = String "Transport Equation"
+  Procedure = File "TransportEquation" "TransportEquationSolver"
+  Time Derivative Order = Integer 2
+  Variable = String "U"
+  Variable Dofs = Integer 1  
+  Advection = String "Constant"
+  Advection Variable = String "Temperature" 
+  Rate Of Change Equation Variable = String "Udot"
+  Linear System Solver = String "Iterative"
+  Linear System Iterative Method = String "BiCGStab"
+  Linear System Max Iterations = Integer 350
+  Linear System Convergence Tolerance = Real 1.0e-8
+  Linear System Abort Not Converged = Logical True
+  Linear System Preconditioning = String "ILU0"
+  Steady State Convergence Tolerance = Real 1.0e-05
+End
+
+Material 1
+  Density = Real 1
+  Heat Capacity = Real 1
+  Heat Conductivity = Real 0.01
+  Advection Velocity 1 = Real 1
+  Advection Velocity 2 = Real 1
+End
+
+Body Force 1
+  Heat Source = Real 1
+End
+
+Initial Condition 1
+  Temperature = Real 0
+End
+
+Boundary Condition 1
+  Name = String "Inflow-Boundary"
+  Target Boundaries(3) = Integer 1 2 4
+  Temperature = Real 0
+  Udot 1 = Real 0
+  U 1 = Real 0
+End
+
+Boundary Condition 2
+  Name = String "Outflow-Boundary"
+  Target Boundaries(1) = Integer 3
+  Temperature = Real 0
+End
+
+
+
+
+
+

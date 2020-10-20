@@ -1,0 +1,76 @@
+! Historical case
+! Updated 3.8.2020 P.R.
+
+Header
+  CHECK KEYWORDS Warn
+  Mesh DB "." "mesh"
+  Include Path ""
+  Results Directory ""
+End
+
+Simulation
+  Coordinate System = "Cartesian 3D"
+  Coordinate Mapping(3) = 1 2 3
+  Simulation Type = "Steady State"
+  Max Output Level = 5
+  Steady State Max Iterations = 1
+  Solver Input File = "eigen_values.sif"
+!  Output File = "eigen_values.dat"
+  Post File = "eigen_values.vtu"
+  vtu: Eigen Analysis = Logical True
+End
+
+
+Body 1
+  Equation = 1
+  Material = 1
+End
+
+Material 1
+  Youngs Modulus = 100e9
+  Poisson Ratio = 0.3
+  Density = 2330
+End
+
+Equation 1
+  Stress Analysis = True
+End
+
+Solver 1
+  Equation = "Stress Analysis"
+  Eigen Analysis = Logical True
+  Eigen System Values = Integer 5
+  Linear System Solver = "direct"
+  Variable = "Displacement"
+  Variable Dofs = 3
+  Linear System Iterative Method = "BiCGStab"
+  Linear System Max Iterations = 1000
+  Linear System Convergence Tolerance = 1.0e-08
+  Linear System Abort Not Converged = True
+  Linear System Preconditioning = "ILU0"
+  Linear System Residual Output = 1
+  Steady State Convergence Tolerance = 1.0e-05
+  Nonlinear System Convergence Tolerance = 1.0e-05
+  Nonlinear System Max Iterations = 1
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-02
+  Nonlinear System Relaxation Factor = 1
+  Linear System Precondition Recompute = 1
+End
+
+
+Boundary Condition 1
+  Target Boundaries(1) = 1
+  Displacement 1 = 0
+  Displacement 2 = 0
+  Displacement 3 = 0  
+End
+
+Boundary Condition 2
+  Target Boundaries(1) = 2
+  Displacement 1 = 0
+  Displacement 2 = 0
+  Displacement 3 = 0  
+End
+
+!End Of File
