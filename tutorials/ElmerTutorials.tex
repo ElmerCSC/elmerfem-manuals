@@ -1,0 +1,217 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,english]{report}    % list options between brackets
+
+\RequirePackage{color}
+\RequirePackage{float}
+\RequirePackage{amsfonts}
+\RequirePackage{amsmath}
+\RequirePackage{alltt}
+\RequirePackage{ae}
+\RequirePackage{times}
+\RequirePackage{fancyhdr}
+\RequirePackage{graphicx} 
+\RequirePackage{makeidx}  
+
+\RequirePackage{hyperref}
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat�s bookmarks
+    pdftoolbar=true,        % show Acrobat�s toolbar?
+    pdfmenubar=true,        % show Acrobat�s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={Fit},    % fits the width of the page to the window
+    pdftitle={Elmer GUI Tutorials},    % title
+    pdfauthor={CSC - IT Center for Science},     % author
+%    pdfsubject={Subject},   % subject of the document
+%    pdfcreator={Creator},   % creator of the document
+%    pdfproducer={Producer}, % producer of the document
+%    pdfkeywords={keywords}, % list of keywords
+    pageanchor=true,
+    hyperindex=true,
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=black           % color of external links
+}
+ 
+\makeindex             
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{elmerdef}
+\input{../elmerversion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\Huge{\bf Elmer GUI Tutorials}}
+\author{CSC -- IT Center for Science }
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\include{about}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\pagenumbering{roman}
+\pagestyle{empty}
+
+% Table of contents:
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{1}  % set this to 1 in the final version
+
+\phantomsection
+\addcontentsline{toc}{part}{Table of Contents}
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\renewcommand{\chaptername}{Tutorial}
+
+% change the plain style used for chapter pages
+\fancypagestyle{plain}{
+\lhead{}
+\rhead{}
+\rfoot{\includegraphics[width=18mm]{by-nc}}
+\lfoot{\footnotesize{CSC -- IT Center for Science}}
+\chead{}
+%\cfoot{\bfseries \thepage}
+\cfoot{}
+\renewcommand{\headrulewidth}{0.0pt}
+}
+
+% and the fancy style used elsewhere
+\pagestyle{fancy}
+\rhead{\bfseries \thepage}
+\lhead{\bfseries \rightmark}
+\rfoot{\includegraphics[width=18mm]{by-nc}}
+\lfoot{\footnotesize{CSC -- IT Center for Science}}
+\chead{}
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+%\pagenumbering{arabic}
+
+\include{GuiInstructions}
+
+% Note:
+% There are more tutorials that are usually printed.
+% The person compiling the tutorials may freely pick the
+% important ones for his/her own use. 
+
+
+%\part{ElmerGUI Problems}
+
+%\graphicspath{{./}{HeatIntrusion1D/}}
+%\include{HeatIntrusion1D/HeatIntrusion1D}
+
+
+%3D alternative
+\graphicspath{{./}{TemperatureGeneric/}}
+\include{TemperatureGeneric/TempDist}
+
+%2D alternative
+%\graphicspath{{./}{TemperatureAngleGUI/}}
+%\include{TemperatureAngleGUI/TempDist}
+
+%2D
+%\graphicspath{{./}{ElasticBeamGUI/}}
+%\include{ElasticBeamGUI/ElasticBeamGUI}
+
+\graphicspath{{./}{ModelPDE3D/}}
+\include{ModelPDE3D/ModelPDE3D}
+
+\graphicspath{{./}{ElasticBeam3D/}}
+\include{ElasticBeam3D/ElasticBeam3D}
+
+\graphicspath{{./}{ElasticHookNonlinear/}}
+\include{ElasticHookNonlinear/ElasticHookNonlinear}
+
+\graphicspath{{./}{ElasticPlateEigenmodesGUI/}}
+\include{ElasticPlateEigenmodesGUI/elasticplate}
+
+\graphicspath{{./}{CapacitanceOfTwoBalls/}}
+\include{CapacitanceOfTwoBalls/CapacitanceOfTwoBalls}
+
+\graphicspath{{./}{MagneticFieldWire/}}
+\include{MagneticFieldWire/MagneticFieldWire}
+
+\graphicspath{{./}{HorseShoeGUI/}}
+\include{HorseShoeGUI/HorseShoeGUI}
+
+\graphicspath{{./}{FlowStepGUI/}}
+\include{FlowStepGUI/FlowStepGUI}
+
+\graphicspath{{./}{VonKarmanGUI/}}
+\include{VonKarmanGUI/VonKarman}
+
+\graphicspath{{./}{CurvedPipeGUI/}}
+\include{CurvedPipeGUI/CurvedPipe}
+
+\graphicspath{{./}{FsiObstacleGUI/}}
+\include{FsiObstacleGUI/FsiObstacle}
+
+\graphicspath{{./}{RayleighBenardGUI/}}
+\include{RayleighBenardGUI/RayleighBenard}
+
+
+\graphicspath{{./}{CapacitanceOfPerforatedPlate/}}
+\include{CapacitanceOfPerforatedPlate/CapacitanceOfPerforatedPlate}
+
+
+\graphicspath{{./}{InductionHeatingGUI/}}
+\include{InductionHeatingGUI/InductionHeatingGUI}
+
+\graphicspath{{./}{WaveguideGUI/}}
+\include{WaveguideGUI/waveguide}
+
+
+%\graphicspath{{./}{FlowStepKe/}}
+%\include{FlowStepKe/FlowStepKe}
+
+%The upper is much fancier
+%\graphicspath{{./}{FringeCapacitance/}}
+%\include{FringeCapacitance/FringeCapacitance}
+
+%\part{Simple Glaceology Problems}
+
+\graphicspath{{./}{ToyGlacierTemperature/}}
+\include{ToyGlacierTemperature/TempDist}
+\include{ToyGlacierTemperature/TempAndFlow}
+
+
+\end{document}
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendices 
+
+\appendix
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\cleardoublepage 
+\phantomsection % sets an anchor
+\addcontentsline{toc}{part}{Index}
+
+% Include the index
+\printindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

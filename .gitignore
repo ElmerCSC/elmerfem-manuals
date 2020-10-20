@@ -1,0 +1,9 @@
+*~
+# Latex files
+*.aux
+*.blg
+*.toc
+*.bbl
+*.idx
+*.ilg
+*.ind
