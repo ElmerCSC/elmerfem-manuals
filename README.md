@@ -8,3 +8,11 @@ ElmerGUI manual and tutorials
   Attribution-NonCommercial.
 * The documentation requires LaTex being installed. 
 * To create the documentaion under Linux you can say "source makedoc"
+
+Content of the directories
+--------------------------
+* gui - ElmerGUI manual
+* tutorials-GUI - tutorials where ElmerGUI is used
+* tutorials-DL - tutorials without graphical user interfcace (command-line usage, files explained)
+* tutorials-GUI-files - files related to GUI tutorials
+* tutorials-CL-files - files related to the tutorials wihout the graphical user interface 
