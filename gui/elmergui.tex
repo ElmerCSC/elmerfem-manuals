@@ -244,7 +244,7 @@ This will save your project to the project directory you already specified. (If 
 
 \menu{File}{Save project as...}
 
-Projects you already saved may be loaded by choosing
+\noindent Projects you already saved may be loaded by choosing
 
 \menu{File}{Load project...}
 
@@ -253,7 +253,7 @@ Projects you already saved may be loaded by choosing
 \menu{File}{Recent projects}
 \vspace{3mm}
 \noindent {\bf Note}: Current version of ElmerGUI has a menu to start a new project \menu{File}{New project...}
- \noindent , and by clicking the menu, a window will appear to specify project directory for the new project. You can also specify Elmer mesh directory or geometry input file you want to load for the project. Extra equation definition files can be also spcified in the same window. This menu is just for convenience and previous style of workflow (i.e. open geometry input file, set conditions, then save project) still works.
+ \noindent and by clicking the menu, a window will appear to specify project directory for the new project. You can also specify Elmer mesh directory or geometry input file you want to load for the project. Extra equation definition files can be also specified in the same window. This menu is just for convenience and previous style of workflow (i.e. open geometry input file, set conditions, then save project) still works.
 
 \vspace{3mm}
 The contents of a typical project directory are the following:
@@ -341,12 +341,12 @@ clicking a surface.}
 
 The next menu is related to material and model parameters:
 \menu{Model}{Material}
-\noindent This menu will be used to generate the ``Material'' blocks in a solver
+This menu will be used to generate the ``Material'' blocks in a solver
 input file.
 
-In order to define a material parameter set and apply it to bodies, choose
+\noindent In order to define a material parameter set and apply it to bodies, choose
 \dynmenu{Model}{Material}{Add...}
-\noindent or double clicking [Add...] label next to ``Material'' item in Object Browser. This will show up a Material Window (Figure \ref{fig:material}).
+\noindent or double clicking [Add...] label next to ``Material'' item in Object Browser. This will open a Material Window (Figure \ref{fig:material}).
 
 \begin{figure}[htb]
 \begin{center}
@@ -400,12 +400,12 @@ If the user presses SHIFT and F1, a tooltip for the active widget will be displa
 
 The next menu in the list is
 \menu{Model}{Body force}
-\noindent This menu is used to construct the ``Body force'' blocks in a
+ This menu is used to construct the ``Body force'' blocks in a
 solver input file.
 
-Again, choose
+\noindent Again, choose
 \dynmenu{Model}{Body force}{Add...}
-\noindent to define a set of body forces and apply it to the bodies. It is also possible to double click [Add...] label next to ``Body force'' item in Object Browser. This will show up a Body Force Window (Figure \ref{fig:bodyforce}).
+\noindent to define a set of body forces and apply it to the bodies. It is also possible to double click [Add...] label next to ``Body force'' item in Object Browser. This will open a Body Force Window (Figure \ref{fig:bodyforce}).
 
 \begin{figure}[htb]
 \begin{center}
@@ -422,7 +422,7 @@ The last menu related to body properties is
 \noindent 
 Once again, choose
 \dynmenu{Model}{Initial condition}{Add...}
-\noindent to define a set of initial conditions and apply it to the bodies. It is also possible to double click [Add...] label next to ``Initial condition'' item in Object Browser. This will show up a Initial Condition Window (Figure \ref{fig:initialcondition}).
+\noindent to define a set of initial conditions and apply it to the bodies. It is also possible to double click [Add...] label next to ``Initial condition'' item in Object Browser. This will open an Initial Condition Window (Figure \ref{fig:initialcondition}).
 
 This menu is used to construct the ``Initial condition'' blocks in a
 solver input file.
@@ -441,7 +441,7 @@ Finally, there is a menu entry for setting up the boundary conditions:
 \menu{Model}{Boundary condition}
 \noindent Choose
 \dynmenu{Model}{Boundary condition}{Add...}
-\noindent to define a set of boundary conditions and apply them to boundaries. It is also possible to double click [Add...] label next to ``Boundary condition'' item in Object Browser. This will show up a Boundary Condition Window (Figure \ref{fig:boundarycondition}). 
+\noindent to define a set of boundary conditions and apply them to boundaries. It is also possible to double click [Add...] label next to ``Boundary condition'' item in Object Browser. This will open a Boundary Condition Window (Figure \ref{fig:boundarycondition}). 
 
 \begin{figure}[htb]
 \begin{center}
@@ -492,9 +492,9 @@ down the CTRL-key while double clicking the surfaces and choosing
 \menu{Mesh}{Unify surface...}
 \noindent The same operation in 2D is
 \menu{Mesh}{Unify edge...}
-\noindent The result will inherit the smallest index from the selected group.
+The result will inherit the smallest index from the selected group.
 
-The sharp edges that do not belong to a closed loop may be removed by
+\noindent The sharp edges that do not belong to a closed loop may be removed by
 \menu{Mesh}{Clean up}
 \noindent This operation has no effect on the boundary division, but sometimes it makes
 the result look better.
@@ -520,7 +520,7 @@ input file. A solver input file is generated by choosing
 \menu{Sif}{Edit...}
 As shown in Figure  \ref{fig:sifwindow}, two types of syntax highlighting are available in Solver Input File Window from the menu on it:
 \menu{Preference}{Syntax highlighting}
-Font can be also changed by 
+\noindent Font can be also changed by 
 \menu{Preference}{Font}
 
 \begin{figure}[htb]
@@ -531,7 +531,7 @@ Font can be also changed by
 	\end{center}
 \end{figure}
 
-The new sif file needs to be saved before it becomes active. The recommended
+\noindent The new sif file needs to be saved before it becomes active. The recommended
 method is
 \menu{File}{Save project}
 \noindent In this way, also the current mesh and project files get saved in the
