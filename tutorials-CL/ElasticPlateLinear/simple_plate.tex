@@ -41,7 +41,7 @@ The mesh is created with command
 ElmerGrid 1 2 simple_plate
 \ttend
 One thousand element should easily do the trick in this case
-but if more elements is needed you can edit the file 
+but if more elements are needed you can edit the file 
 \texttt{simple\_plate.grd}.
 More specifically the line
 \ttbegin
@@ -58,9 +58,9 @@ Header
   Mesh DB "." "simple_plate"
 End
 \ttend
-The simulation uses 2D cartesian geometry. The simulation is not
+The simulation uses 2D Cartesian geometry. The simulation is not
 time dependent i.e. Steady State. 
-There is no coupled solvers so only one iteration is needed. 
+There are no coupled solvers so only one iteration is needed. 
 The output interval is one meaning all intervals (now there is only one
 interval). Numerical results are written to file \texttt{simple\_plate.result}
 and ElmerPost file is \texttt{simple\_plate.vtu}.
@@ -83,7 +83,7 @@ Body 1
   Material = 1
 End
 \ttend
-The equation block is now more than easy. 
+The equation block is now simple. 
 It only states that we use Solver 1 to solve the equation.
 \ttbegin
 Equation 1
@@ -99,7 +99,7 @@ End
 \ttend
 In Material block we define the plates properties i.e. Poisson ratio,
 Young's modulus and density. We also give the plates thickness and
-possible pretension. Now there is no pretension.
+possible pretension. In this example there is no pretension.
 \ttbegin
 Material 1   
   Poisson ratio = 0.3
@@ -118,7 +118,7 @@ subroutine name \texttt{SmitcSolver}.
 \item We name the variable Deflection and state that it has 3 degrees of freedom. 
 First degree is the deflection and the remaining two are actually 
 the components of rotation vector. 
-\item We don't need eigen analysis nor is there any holes in the plate. 
+\item We don't need eigen analysis nor are there any holes in the plate. 
 \item We solve the matrix equation iteratively with stabilized biconjugate 
 gradient method. We precondition the iteration with incomplete 
 LU-factorization. 
