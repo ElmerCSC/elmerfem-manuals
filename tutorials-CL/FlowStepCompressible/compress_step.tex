@@ -7,7 +7,7 @@
 
 \subsection*{Case definition}
 
-This tutorial demonstrates how to simulate the compressible air flow passing a step. The whole step has length of 1.4 m and the height of 0.2 m and the first part of it has length of 0.4 m and the height of 0.1 m (Figure \ref{fg:step_geometry}). The needed material parameters of air are shown in Table \ref{tb:matpam}. 
+This tutorial demonstrates how to simulate compressible air flowing past a step. The whole step has length of 1.4 m and the height of 0.2 m and the first part of it has length of 0.4 m and the height of 0.1 m (Figure \ref{fg:step_geometry}). The needed material parameters of air are shown in Table \ref{tb:matpam}. 
 The model has three sets of boundary conditions.
 The air flows into the step from the inlet region and withdraws from the outlet region. The other edges of the step compose the third boundary. The flowing air is considered as an ideal gas in this case, and its density $\rho$  depends on the pressure $p$ and temperature $T$ through the equation of state
 \begin{displaymath}
@@ -47,7 +47,7 @@ The mesh consists of 500 rectangular elements and it is constructed using ElmerG
 ElmerGrid 1 2 mesh.grd
 \ttend
 
-This command creates the subdirectory {\tt mesh} which contains the Elmer mesh files.
+This command creates the sub-directory {\tt mesh} which contains the Elmer mesh files.
 
 \ttbegin
 Header
@@ -57,7 +57,7 @@ Header
 End
 \ttend
 
-The simulation uses 2D cartesian geometry and the problem is solved in steady state using no more than twenty steady state iterations.
+The simulation uses 2D Cartesian geometry and the problem is solved in steady state using no more than twenty steady state iterations.
 
 \ttbegin
 Simulation
@@ -163,7 +163,7 @@ This is done by setting different values for the x-velocity and temperature
 in the different y-points
 (the numerical values of the first column between words {\tt Real} and {\tt End})
 of the inlet region.
-This kind of procedure prevents occuring singularities in the corner points of the inlet region. In addition, this kind of definition is more realistic than a condition, inwhich the values of the x-velocity and temperature remain the same in the whole inlet region. 
+This kind of procedure prevents singularities from occurring in the corner points of the inlet region. In addition, this kind of definition is more realistic than a constant condition, in which the values of the x-velocity and temperature remain the same in the whole inlet region. 
 
 \ttbegin
 Boundary Condition 1
@@ -185,7 +185,7 @@ Boundary Condition 1
 End
 \ttend
 
-After the rest boundary conditions have been defined the problem is ready to solve.
+After the rest of the boundary conditions have been defined the problem is ready to solve.
 
 \ttbegin
 Boundary Condition 2

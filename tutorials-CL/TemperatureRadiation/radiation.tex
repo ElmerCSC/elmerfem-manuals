@@ -9,8 +9,8 @@
 
 At high temperature the radiation heat transfer between walls 
 is often the dominating heat transfer mechanism. In this
-tutorial we look how radiation heat transfer between 
-cocentric cylinders is modeled. 
+tutorial we examine how radiation heat transfer between 
+concentric cylinders is modeled. 
 
 
 \subsection*{Solution Procedure}
@@ -21,7 +21,7 @@ associated with the radiation are solved as a first step
 in solving the equations. Thereafter the nonlinear heat equation is solved
 until convergence is reached.
 
-The computatonal mesh is done with \texttt{ElmerGrid} in directory \texttt{radiation} 
+The computational mesh is done with \texttt{ElmerGrid} in directory \texttt{radiation} 
 with the command 
 \ttbegin
 ElmerGrid 1 2 radiation
@@ -84,7 +84,7 @@ Body Force 1
 End
 \ttend
 The material properties differ only in heat conductivity. Heat capacity is not
-actually needed since the case is not transient. 
+actually needed since the case is not transient.
 \ttbegin
 Material 1
    Density = 1.0
@@ -98,7 +98,7 @@ Material 2
    Heat Capacity = 1.0
 End
 \ttend
-The heat equation is solved with an itrative procedure that requires some relaxation 
+The heat equation is solved with an iterative procedure that requires some relaxation 
 for better convergence. There are two different ways to discretize the radiation. 
 There are two keywords defining when to switch to the true Newtonian iteration
 which should give better convergence.
@@ -128,10 +128,10 @@ End
 %
 The radiation boundary conditions are set for two different boundaries. The first one
 is for the internal object and the second one for the insulation. The normal direction
-of the surfaces is important since a wrong direction may result to badly set problem for
+of the surfaces is important since a wrong direction may result to a badly set problem for
 the view factor computation. Internal and external surfaces are very different.
 The normal direction may be switched with the keyword \texttt{Radiation Target Body}.
-A good sign of properly set case is that the view factors add up to about one.
+A good sign of a properly set case is that the view factors add up to about one.
 \ttbegin
 Boundary Condition 1
    Target Boundaries = 1
@@ -150,7 +150,7 @@ Boundary Condition 2
 End
 \ttend
 %
-The third boundary condition is the Dirichtlet condition for the extranal boundary.
+The third boundary condition is the Dirichtlet condition for the external boundary.
 Dirichtlet conditions boost up the convergence even though the heat equation is basically
 well defined also with external radiation conditions.
 \ttbegin
@@ -176,8 +176,8 @@ problem}
 \end{figure}
  
 With the given computational mesh the problem is solved in 
-a few seconds. With 1\,231 second order 9-noded
-rectangular elemenets the maximum temperature is 565.7~K.
+a few seconds. With 1,231 second order 9-noded
+rectangular elements the maximum temperature is 565.7~K.
 The corresponding results are shown
 in Fig.~\ref{fig:temp_rad1}.
 

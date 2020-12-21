@@ -16,10 +16,10 @@ and also the computation of forces is now more accurate.
 The problem at hand consists of finding the resistance that a fluid
 faces as it is forced to flow through a hole. The flow resistance is
 stated by the ratio of pressure drop over the hole and the input
-velocity. In microsystem modeling, the hole resistance is often needed
+velocity. In micro-system modeling, the hole resistance is often needed
 to analyse the gas damping effect in perforated structures. Here, the
-contribution of the holes is homogenised over the perforated structure
-based on a single hole resistance. For homogenisation in Elmer, the
+contribution of the holes is homogenized over the perforated structure
+based on a single hole resistance. For homogenization in Elmer, the
 specific \Idx{acoustic impedance} is used to represent the flow
 resistance. Specific acoustic impedance $z_h$ is defined as
 \begin{equation}
@@ -30,7 +30,7 @@ the velocity of the gas on the same surface, and $A_h$ is the area of
 the moving surface. The calculation is best performed in a unit cell
 of the geometry.
 
-In order to the homogenisation to be possible, the dependence of input
+In order to the homogenization to be possible, the dependence of input
 velocity and the net force should be linear. Further, there should not
 be a phase change between these two quantities. These conditions are
 satisfied when the flow is incompressible.  In a linear case, the
@@ -45,7 +45,7 @@ where $\vec{u}$ is the unknown velocity field, $p$ is the pressure,
 $\eta$ is the viscosity of the fluid, $\rho\vec{f}$ is a body force
 and $\overline{\overline{\varepsilon}}$ is the linearised strain
 tensor. Note, that the stationary version of the above equation can be
-used in homogenisation calculations.
+used in homogenization calculations.
 
 The condition for Stokes equation to apply is that the Reynolds number
 $Re$ of the problem should be small
@@ -69,7 +69,7 @@ validity of the linearity and incompressibility assumptions, since
 they affect the velocity scale of the problem.
 
 However, also other factors have an effect on the compressibility of
-the gas. In microsystems, the viscous effects on pressure, or even
+the gas. In micro-systems, the viscous effects on pressure, or even
 temperature changes, can affect the density of the gas. A
 condition for viscous pressure changes is that $Ma^2/Re$ has to be
 small, and for temperature, in addition, that the Prandtl number $Pr$
@@ -83,14 +83,14 @@ pressure and $k$ is the thermal conductivity.
 The conditions listed here for the flow to be approximately
 incompressible are only an overview and the validity of
 incompressibility assumption should be considered in each case
-separately. In microsystems, refer for example to the article
+separately. In micro-systems, refer for example to the article
 M.~Gad-el-Hak, J.~Fluids Eng., 121, 5--33, 1999. Additionally, it is
 advisable to perform numerical checks on the issue.
 
 One final point on the applicability of the Stokes (or Navier-Stokes)
-equations is the effect of gas rarefication. If the dimensions of the
+equations is the effect of gas rarefaction. If the dimensions of the
 problem are very small the continuity assumption may not be valid
-anymore. The importance of the gas rarefication effects are given by
+anymore. The importance of the gas rarefaction effects are given by
 the Knudsen number $Kn$
 \begin{equation}
 Kn = \frac{{\cal L}}{L},
@@ -100,7 +100,7 @@ free path depends inversely on ambient pressure, which has to take
 into account in stating the Knudsen number. For Knudsen numbers close
 to and less than~1, slip boundary conditions should be used.
 
-To summarise, the motivation of this tutorial is to perform a linear
+To summarize, the motivation of this tutorial is to perform a linear
 incompressible simulation of fluid flowing through a hole. The wake
 for the flow is a constant velocity boundary condition for a boundary
 before the hole. On the same boundary, the force caused by the fluid
@@ -229,7 +229,7 @@ End
 \ttend
 
 Finally, the boundary conditions. BC~1 defines the input boundary,
-where also the fluidic force is calculated. BCs~2 and~4 are define the
+where also the fluidic force is calculated. BCs~2 and~4 define the
 symmetry boundaries, BC~3 defines the no-slip conditions for the
 walls, and BC~5 defines an open boundary.
 \ttbegin
@@ -413,7 +413,7 @@ is linear, since this was the assumption and the simulation performed
 can and should not reveal any nonlinear behavior. The results
 indicate, though, that allowing slip on the boundaries reduces the
 resistance that the fluid faces. This example shows that in
-microsystems, as the dimension of the smallest flow channel is in the
+micro-systems, as the dimension of the smallest flow channel is in the
 range of a micrometer, it is reasonable to use slip boundary
 conditions for the velocity.
 
