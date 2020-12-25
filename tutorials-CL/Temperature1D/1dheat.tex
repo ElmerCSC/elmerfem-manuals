@@ -26,7 +26,7 @@ problems.
 
 \subsection*{Solution procedure}
 
-Custom Fortran 90 code solving some specific equation may be added dynamically to Elmer 
+Own codes solving some specific equation may be added dynamically to Elmer 
 software. Here we create a very simple equation solver code. The final code
 may be found in the tutorial directory as well as the files for running
 the example. The solution may be attempted as follows:
@@ -47,7 +47,7 @@ ElmerPost
 
 The example Fortran code may be found in the tutorial files under the
 name Poisson.f90.  The example run is defined in 1dheat.sif.
-Only a rough guideline is given here of both of the files, refer to the
+Only a rough guidline is given here of both of the files, refer to the
 files themselves for more details.
 
 All the  equation solvers in Elmer have the following common interface
@@ -66,10 +66,10 @@ END SUBROUTINE PoissonSolver
 
 The argument Model contains pointers to the whole definition of the Elmer run.
 The argument Solver contains parameters specific to our equation solver.
-The argument dt and TransientSimulation are the current time step size, and a
+The argument dt and TransientSimulation are the current timestep size, and a
 flag if this run is steady or transient. These don't concern us this time.
 
-When starting the ElmerSolver looks in solver input (.sif) file for a
+When starting the ElmerSolver looks the solver input (.sif) file for a
 Solver section with keyword "Procedure". This should contain reference to
 the compiled code
 
@@ -109,7 +109,7 @@ REAL(KIND=dp), POINTER :: ForceVector(:)
 ForceVector => StiffMatrix % RHS
 \ttend
 
-The solution vector is obtainable similarly
+The solution vector is obtainable similarily
 \ttbegin
 TYPE(Variable_t), POINTER :: Solution
 Solution => Solver % Variable
@@ -118,11 +118,11 @@ Solution => Solver % Variable
 The Variable\_t structure contains the following fields
 \begin{itemize}
 \item DOFs: the number of degrees of freedom for one node. This value is for
-information only and shouldn't be modified.
-\item Perm: an integer array that is non-zero for nodes that belong
+information only and should'nt be modified.
+\item Perm: an integer array that is nonzero for nodes that belong
 to computational volume for this equation. The entry $Perm(i)$ holds
 the index of the global matrix row  (for 1 DOF) for nodal point i.
-This array  shouldn't be modified by the equation solver.
+This array  should'nt be modified by the equation solver.
 \item Values: Space for the solution vector values.
 Note that the values
 are ordered the same way as the matrix rows, .i.e. the value of Potential at node
@@ -133,14 +133,14 @@ n is stored at
 \end{itemize}
 
 
-\item Initialize the global system to zero. Calling the utility routine
+\item Initialize the global system to zero. Calling the utility routing
 \ttbegin
 CALL InitializeToZero( StiffMatrix, ForceVector )
 \ttend
 is usually enough.
 
 
-\item Go through the elements for which this equation is to 
+\item Go trough the elements for which this equation is to 
 be solved, get the elemental matrices and vectors and add them to
 the global system:
 

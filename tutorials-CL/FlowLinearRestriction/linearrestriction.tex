@@ -8,16 +8,16 @@
 \subsection*{Case definition}
 
 This tutorial gives an example how to use SolveWithLinearRestriction. It also describes
-how to execute your own custom Fortran 90 functions before the original system is solved. In order to
+how to execute own functions before the original system is solved. In order to
 understand the case reader should be familiar with \Idx{compressed row storage} matrices and
 Elmer basics. This tutorial gives only the guidelines and reader is advised to
-read the files in order to get a more through understanding.
+read the files in order to get more through understanding.
 
 We simulate the flow of incompressible fluid in a pipe.
 The pipe has a length of 5 and a width of 1. On the left end we want to describe
 a certain time dependent volume flow. In other words, we don't want to describe the velocity field
 here but we want the velocity field be such that it transports certain amount of volume
-in a certain time interval. We could integrate the correct volume flow, but let's now approximate it
+in time interval. We could integrate the correct volume flow, but let's now approximate it
 to make the more important aspects more visible. Our approximation here is that the volume
 flow is proportional to average velocity on the edge i.e.
 \begin{equation}
@@ -42,7 +42,7 @@ Header
 End
 \ttend
 The simulation block is also very simple. 
-Here we need to define the time stepping method and time scale.
+Here we need to define the time stepping method and timescale.
 \ttbegin
 Simulation
   Coordinate System = Cartesian 2D
@@ -112,7 +112,7 @@ Solver 1
   Steady State Convergence Tolerance = 1.0e-7
 End
 \ttend
-In boundary conditions we state that both parallel and perpendiculer velocities
+In boundary conditions we state that both parallel and perpendicular velocities
 are zero on the pipe sides and on both edges the perpendicular velocity is zero.
 Here we also define the number tags for the boundaries. The tag 2 is assigned to
 boundary that has number 4 in grd-file, which is the left edge of the pipe.
@@ -145,7 +145,7 @@ The constraint matrix is actually only a row-vector and the RHS is only one valu
 If the pointed matrix is not yet allocated, calculate the number of nodes
 on the edge we want to define the volume flow. This gives us the number of non-zeros
 in our constraint matrix and we can allocate the matrix.
-\item Set the rows, columns and diagonal fields of the matrix. This sets the non-zeros
+\item Set the rows, cols and diag -fields of the matrix. This sets the non-zeros
 on their right places in the constraint matrix.
 \item Set all values of the constraint matrix to unity.
 \item Calculate the RHS-value. The current time was checked in the beginning 

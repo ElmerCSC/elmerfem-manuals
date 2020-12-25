@@ -22,7 +22,7 @@ First we create a mesh with ElmerGrid. The mesh is defined in
 ElmerGrid 1 2 step
 \ttend
 You may need to compile the StreamSolver yourself. If the Elmer environment is 
-successfully setup the compilation command should look like
+succesfully setup the compilation command should look like
 the following lines, 
 \ttbegin
 elmerf90 -o StreamSolver StreamSolver.f90
@@ -35,7 +35,7 @@ Header
 End
 \ttend
 The simulation uses 2D Cartesian geometry and searches a Steady State.
-There are no coupled solvers so only one iteration is needed. 
+There is no coupled solvers so only one iteration is needed. 
 Numerical results are written to file {\tt streamlines.result}
 and ElmerPost file is {\tt streamlines.ep}.
 \ttbegin
@@ -77,7 +77,7 @@ End
 Solver 1 is for the Navier-Stokes equations.
 Here we give the linear system solver
 \footnote{Biconjugate gradient method with incomplete LU preconditioning}
-and convergence criterions for linear, non-linear and steady state 
+and convergence criterions for linear, nonlinear and steady state 
 solution of the Navier-Stokes equations.
 \ttbegin
 Solver 1
@@ -101,7 +101,7 @@ End
 \ttend
 Then the solver for streamlines.
 \begin{itemize}
-\item Name of the equation. This may be whatever you like.
+\item Name of the equation. This may be what ever you like.
 \item Name of the binary file and the subroutine. If you compiled the StreamSolver yourself,
 then you may need to change this to \texttt{Procedure = "./StreamSolver" "StreamSolver"}.
 \item Name of the variable. This may be what ever you like.
@@ -144,7 +144,7 @@ The condition 1 is for the lower and upper side of the step
 ($\Gamma_1$,$\Gamma_2$,$\Gamma_3$,$\Gamma_5$ in case definition).
 Here both velocities are zero.
 The condition 2 is for the output edge ($\Gamma_4$). Here vertical velocity is zero. 
-The condition 3 is for the input edge ($\Gamma_6$). Here horizontal velocity is 1 and 
+The condition 3 is for the input edge ($\Gamma_6$). Here horzontal velocity is 1 and 
 vertical velocity is zero.
 \ttbegin
 Boundary Condition 1
@@ -166,8 +166,8 @@ End
 \ttend
 \subsection*{Results}
 Problem is solved with command {\tt Solver}. The results are then viewed with
-ElmerPost.  In figure~\ref{f:streamlines} are some contour lines of the stream
-function. These are also flow streamlines. The contour values are manually
+ElmerPost. In figure~\ref{f:streamlines} are some contour lines of the stream
+function. These are also flows streamlines. The contour values are manually
 selected to get a nice picture. Note the swirl after the step.
 \begin{figure}[!hb]
 \begin{center}

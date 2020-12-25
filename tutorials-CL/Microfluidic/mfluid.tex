@@ -23,7 +23,7 @@ the Models Manual, chapter ``Electrokinetics''.
 
 \subsection*{Solution Procedure}
 
-The computatonal mesh is done with \texttt{ElmerGrid} in directory
+The computational mesh is done with \texttt{ElmerGrid} in directory
 \texttt{Tcross} with the command 
 %
 \ttbegin
@@ -31,7 +31,7 @@ ElmerGrid 1 2 Tcross -scale 1e-5 1e-5 1e-5
 \ttend
 %
 The scale option above is used to obtain appropriate dimensions from a
-geometry template defined in nondimensional units.
+geometry template defined in non-dimensional units.
 
 The command file may be written with a text editor. The file includes
 the following information. 
@@ -305,7 +305,7 @@ instant of 0.00025 seconds are shown in Fig.~\ref{fig:analyte_ek}.
 The maximum value of the magnitude of the velocity in the results is
 0.105 m/s.
 
-The electric field is written into the output only component wise. The
+The electric field is written into the output only component-wise. The
 magnitude of the field may be visualised after giving the following
 commands on the ElmerPost command line (assuming one has read in all
 61 time steps):
@@ -333,7 +333,7 @@ usually laminar.
 Thus the most efficient way to simulate the current case would be to
 compute first the steady-state solution for the electrokinetic flow
 and use the steady flow to advect the analyte. This would be done by
-running two separate simulations; resolve first the steady flow,
+running two separate simulations; solve first the steady flow,
 and to use this flow solution as restart for the advection-diffusion
 equation.
 

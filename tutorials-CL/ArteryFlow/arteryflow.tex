@@ -8,12 +8,12 @@
 
 \subsection*{Case description}
 
-This tutorial is about simulating blood ejection into the elastic human aorta.
-The idea is to mimic left ventricle contraction and resulting pulse propagation 
+This tutorial is about simulating blood ejection in to the elastic human aorta.
+The idea is to mimic left ventricle contration and resulting pulse propagation 
 in an elastic conduit. In the simulation about 0.8 
-deciliters of blood is ejected into a 50 cm long elastic aorta during a time 
+desiliters of blood is ejected to a 50 cm long elastic aorta during a time 
 period of 400 ms.  In order to get the outlet of the model behave 
-physiologically in a more realistic way, a one dimensional model is coupled
+physiologically more realistic way, a one dimensional model is coupled
 with the higher order model.
  
 \subsection*{Solution procedure}
@@ -23,18 +23,18 @@ the command
 \ttbegin
 ElmerGrid 1 2 contra
 \ttend
-Next we generate a one dimensional mesh to the outlet of the 2D model.
+Next we generate one dimensional mesh to the outlet of the 2D model.
 The program {\tt AddOneDim} is posed to be run in the mesh directory
 {\tt contra}.  The length, the number of the elements, 
 and the coordinate direction of the 1D section will be asked.
 
-In the simulation block the time step is set equal to 1 ms and 
+In the simulation block the timestep is set equal to 1 ms and 
 total simulation time equal to 600 ms.  The geometry consists of five bodies
-of which the first three are for the fluid volume.  Body number 1 is the 
+of which the first three are for the fluid volume.  Body number 1 os the 
 contracting volume.  Body 2 is a short rigid channel between the body 1 and 
 the elastic artery. Artificial compressibility
 method is used for the fluid volume (body 3) which is in contact with the 
-elastic wall (body 4).  One dimensional model is the body 5. 
+elastic wall (body 4).  One dimesional model is the body 5. 
 Material settings for those are 
 following:
 \ttbegin
@@ -73,21 +73,21 @@ Material 4
 End
 \ttend
 
-Notice that the radius of the one dimensional model ({\tt Artery Radius})
-is to the mid plane of the wall (inner radius + half of the wall thickness).
-The overall FSI iteration scheme is started by one dimensional solver
+Notice that the radius of the one dimesional model ({\tt Artery Radius})
+is to the midplane of the wall (inner radius + half of the wall thickness).
+The overall FSI iteration scheme is started by one dimesional solver
 ({\tt OutletCompute}, see the solver manual), after that Navier-Stokes, 
 elasticity and mesh update solvers are run.  Steady state convergence tolerance
-is set equal to 1.0E-4 for each of the solvers.  The non-linearities
+is set equalt to 1.0E-4 for each of the solvers.  The nonlinearities
 of each of the solvers are computed within the FSI scheme loop, that is,
 the flag {\tt Nonlinear System Max Iterations} is set equal to 1.
 Artificial compressibility coefficient is computed by the equation
 $c = (1-\nu^2) [D/(E~h)]$, where $\nu$ is the Poisson ratio of the
 artery wall, $D$, $E$ and $h$ are the inner diameter, Young's modulus
-and the thickness of the artery, respectively.
+and the thichness of the artery, respectively.
 
 The only driving force of the system, the wall motion of the contracting 
-fluid domain is given by the Fortran function {\tt Motion}, see the
+fluid domain is given by the fortran function {\tt Motion}, see the
 figure \ref{fig:contra}.  The boundary condition setting is
 \ttbegin
 ! Moving boundary
@@ -148,9 +148,9 @@ End
 
 \subsection*{Results}
 
-The contraction curve  is seen in the figure \ref{fig:contra} and
+The contraction is curve seen in the figure \ref{fig:contra} and
 the velocity fields at different time levels are presented
-in the figure~\ref{fig:velofields}.  Post processing instructions
+in the figure~\ref{fig:velofields}.  Postprocessing instructions
 are given in the file {\tt PostProcessingInstr.txt}.
 
 \begin{figure}[!hb]
