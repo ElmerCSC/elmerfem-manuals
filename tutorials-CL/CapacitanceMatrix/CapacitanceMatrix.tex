@@ -10,10 +10,10 @@
 
 \begin{flushleft}
 
-In Elmer, a \Idx{capacitance matrix} is possible to solve with an algorithm where a unity potential is permutated through 
+In Elmer, a \Idx{capacitance matrix} is possible to solve with an algorithm where a unity potential is permuted through 
 all bodies and the resulting charges are registered. 
 
-In this case the capacitancies is solved between four different bodies (Figure \ref{fg:4holegeometry}). We have assumed that the model is manufactured from glass of dimensions 5 m height and length. Due to symmetry of the model each body has the height and length of 1 m. To solve the problem we only need to know the relative permittivity of glass (Table \ref{tb:glasspar}).
+In this case the capacitances is solved between four different bodies (Figure \ref{fg:4holegeometry}). We have assumed that the model is manufactured from glass of dimensions 5 m height and length. Due to symmetry of the model each body has the height and length of 1 m. To solve the problem we only need to know the relative permittivity of glass (Table \ref{tb:glasspar}).
 
 \begin{figure}[h]
 \centering
@@ -55,7 +55,7 @@ End
 \ttend
 
 The simulation of the problem is carried out in a 2D Cartesian geometry.
-The different permutation are computed within the nonlinear iterations of the solver and therefore only one
+The different permutation are computed within the non-linear iterations of the solver and therefore only one
 steady state iteration is needed.
 
 \ttbegin
@@ -106,7 +106,7 @@ Body 1
 End
 \ttend                                      
 
-If we want to write the electric energy density in the result file, the keyword {\tt Calculate Electric Energy} have to set to {\tt True}.      
+If we want to write the electric energy density in the result file, the keyword {\tt Calculate Electric Energy} has to be set to {\tt True}.      
 
 \ttbegin                                                           
 Equation 1
@@ -165,7 +165,7 @@ End
 
 Elmer writes the capacitance matrix to file cmatrix.dat.
 Note that if the capacitance has been calculated between two different bodies, the calculated value appears two times in the matrix.
-Elmer also outputs the calculated capacitancies on the screen, where they can be examined:
+Elmer also outputs the calculated capacitances on the screen, where they can be examined:
 
 \begin{center}
 \ttbegin
