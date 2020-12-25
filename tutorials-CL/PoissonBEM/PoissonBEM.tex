@@ -7,12 +7,12 @@
 
 \subsection*{Case definition}
 This tutorial uses boundary element method (\Idx{BEM}) to solve Poisson equation.
-Even though Elmer is primarily a finite element software the are limited
-support also for BEM computation. One should however note that Elmer does not
-include any multilevel strategies essential for a good performance.
+Even though Elmer is primarily a finite element software there is also limited
+support for BEM computation. One should however note that Elmer does not
+include any multilevel strategies essential for good performance.
 For more details about BEM check the Elmer Models Manual.
 The simulation setting is described in Figure~\ref{f:simulationSetting}. 
-A heater with constant heat flux is placed inside a box and the walls of the box are in 
+A heater with constant heat flux is placed inside a box and the walls of the box are set to a 
 fixed temperature.
 We are interested in the temperature distribution in the medium around the heater ($\Omega$)
 and on the surface of the heater ($\Gamma_1$). We also want to know the heat flux through the
@@ -55,7 +55,7 @@ Header
   Mesh DB "." "heater"
 End
 \ttend
-The simulation uses 2D cartesian geometry, searches a steady state and since
+The simulation uses 2D Cartesian geometry, searches a steady state and since
 there is no coupled solvers only one iteration is needed.
 Numerical results for restart are written to file {\tt BEM\_Temperature.result}
 and file for Paraview visualization is {\tt BEM\_Temperature.vtu}.
@@ -88,7 +88,7 @@ End
 In solver block the {\tt Equation} keyword must match the one in equation block.
 We also need to define the procedure, name the variable ({\tt Temperature}) and tell 
 the degrees of freedom of the variable. Keyword {\tt Optimize Bandwidth} must be set to false
-with BEM solver. Since we were interested in the flux, we must now export it to the
+with BEM solver. Since we are interested in the flux, we must now export it to the
 results. The lines beginning {\tt Exported} must be exactly as below. Keywords beginning
 {\tt Linear System} can be used except that the preconditioning cannot be ILU.
 \ttbegin

@@ -10,7 +10,7 @@
 This tutorial shows an example of using \Idx{passive elements} in
 Elmer. This feature allows the activation and deactivation of
 parts of the geometry during the simulation. This tutorial uses the
-heat eqution solver to demonstrate this capability. Use with other
+heat equation solver to demonstrate this capability. Use with other
 solvers is analogous.
 
 The geometry of the problem consists of two parts. The lower edge of
@@ -27,7 +27,7 @@ with \texttt{HeatSolve}.
 
 \subsection*{Solution Procedure}
 
-The computatonal mesh is done with \texttt{ElmerGrid} in directory \texttt{tmesh} 
+The computational mesh is done with \texttt{ElmerGrid} in directory \texttt{tmesh} 
 with the command 
 %
 \ttbegin
@@ -46,7 +46,7 @@ End
 \ttend
 %
 The simulation block of the command file defines, eg., the case to be time
-dependent (transient) with 1 second timesteps and altogether 15 time
+dependent (transient) with 1 second time steps and altogether 15 time
 intervals.  
 %
 \ttbegin
@@ -115,7 +115,7 @@ End
 \ttend
 %
 The initial condition for the initially passive elements is taken to
-be 1 degrees; the same temperature than the colder part of the system
+be 1 degree; the same temperature than the colder part of the system
 has as a boundary condition.
 %
 \ttbegin
@@ -170,7 +170,7 @@ End
 \ttend
 %
 The heat equation is solved with an iterative method. The system is
-linear, thus multiple nonlinear iterations are not needed.
+linear, thus multiple non-linear iterations are not needed.
 %
 \ttbegin
 Solver 1
@@ -188,7 +188,7 @@ End
 \ttend
 %
 The boundary conditions are simple. The lower boundary of the lower
-body is held at 1 degrees and the upper boundary of the upper body at
+body is held at 1 degree and the upper boundary of the upper body at
 10 degrees.
 %
 \ttbegin

@@ -62,10 +62,10 @@ coil      &  5.0   & 5.5  &     & 8.0  \\ \hline
 
 At low frequencies the free charges may be neglected and the 
 induction heating problem may be solved in terms 
-of an magnatic vector potential. The proper solver to do
+of an magnetic vector potential. The proper solver to do
 this is \texttt{StatMagSolver}.
-However, the induction heating problem can only be modeled if the helicity 
-of the coil is neglected and an avarage current density is assumed.
+However, the induction heating problem can only be modelled if the helicity 
+of the coil is neglected and an average current density is assumed.
 This current density may be computed easily when the 
 area of the coil is known $j_0=n I / A$, where $A$ is the 
 coil area.
@@ -81,7 +81,7 @@ ElmerGrid 1 2 crucible
 \ttend
 
 The mesh consists of 5 different bodies which need 4
-different materials sets. Only on set of boundary conditions 
+different materials sets. Only one set of boundary conditions 
 are required for the external boundary. Thus the header 
 information of the command file is as follows
 \ttbegin
@@ -93,10 +93,10 @@ End
 \ttend
 %
 In the \texttt{Simulation} section the coordinate system and
-time dependendy is set, among other things. Also we know that
+time dependency are set, among other things. Also we know that
 the equation is linear and therefore only one steady state
 iteration is requited. If the electric properties depend on 
-the magnitude of the field several iterations are required.
+the magnitude of the field then several iterations are required.
 \ttbegin
 Simulation
   Coordinate System = "Axi Symmetric"
@@ -116,7 +116,7 @@ End
 \ttend
 %
 In the differential equation for the magnetic vector potential the 
-source the is the current density. Thus, it is given in the
+source is the current density. Thus, it is given in the
 \texttt{Body Force} section. 
 \ttbegin
 Body Force 1
@@ -146,7 +146,7 @@ End
 The only solver in this simple tutorial is the solver for the magnetic
 vector potential. Look for the relevant model manual for information
 about the options. Here the equation is solved iteratively and the
-local Joule heating and magnetic flux are computed as a postprocessing
+local Joule heating and magnetic flux are computed as a post processing
 step. The Joule heating is scaled so that the total heating power is
 3.0~kW. This option may be used when the total heating efficiency is
 known.  The nonlinear solver parameters are not really needed as the

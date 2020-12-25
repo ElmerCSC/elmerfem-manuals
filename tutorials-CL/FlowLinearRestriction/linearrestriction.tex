@@ -8,16 +8,16 @@
 \subsection*{Case definition}
 
 This tutorial gives an example how to use SolveWithLinearRestriction. It also describes
-how to execute own functions before the original system is solved. In order to
-understant the case reader should be familiar with \Idx{compressed row storage} matrixes and
-elmer basics. This tutorial gives only the guidelines and reader is adviced to
-read the files in order to get more through understanding.
+how to execute your own custom Fortran 90 functions before the original system is solved. In order to
+understand the case reader should be familiar with \Idx{compressed row storage} matrices and
+Elmer basics. This tutorial gives only the guidelines and reader is advised to
+read the files in order to get a more through understanding.
 
 We simulate the flow of incompressible fluid in a pipe.
 The pipe has a length of 5 and a width of 1. On the left end we want to describe
-a certain timedependent volume flow. In other words, we don't want to describe the velocity field
+a certain time dependent volume flow. In other words, we don't want to describe the velocity field
 here but we want the velocity field be such that it transports certain amount of volume
-in timeinterval. We could integrate the correct volume flow, but let's now approximate it
+in a certain time interval. We could integrate the correct volume flow, but let's now approximate it
 to make the more important aspects more visible. Our approximation here is that the volume
 flow is proportional to average velocity on the edge i.e.
 \begin{equation}
@@ -28,7 +28,7 @@ the left edge. We want to set a nicely scaled sinusoidal volume flow on the edge
 \begin{equation}
 \sum_{i=1}^{N}u_i = 10N\sin(2\Pi t)
 \end{equation}
-This equation we can (easily) force with lagrange multiplier.
+This equation we can (easily) force with Lagrange multiplier.
 
 \subsection*{Solution procedure}
 First we make a uniform mesh of 800 four-node quadrilaterals with command
@@ -42,7 +42,7 @@ Header
 End
 \ttend
 The simulation block is also very simple. 
-Here we need to define the timestepping method and timescale.
+Here we need to define the time stepping method and time scale.
 \ttbegin
 Simulation
   Coordinate System = Cartesian 2D
@@ -83,11 +83,11 @@ End
 \ttend
 The solver block has the usual Navier-Stokes keywords and two keywords
 for volume flow boundary. 
-The {\tt Before Linsolve} keyword defines binaryfile and function that is
+The {\tt Before Linsolve} keyword defines binary file and function that is
 called before the system is solved. This function we must write and
 compile and we will come to it shortly. The following keyword,
 {\tt Export Lagrange Multiplier}, states that we are not interested in 
-the value of the Lagrenge multiplier and it is therefore not saved.
+the value of the Lagrange multiplier and it is therefore not saved.
 \ttbegin
 Solver 1
   Equation = Navier-Stokes
@@ -138,14 +138,14 @@ End
 Here we shall only give some rough guidelines of the function, for more information
 check the code. This function creates the constraint matrix and RHS that forces the
 equation mentioned above. Then it calls SolveWithLinearRestriction to solve the system.
-The coinstraint matrix is actually only a row-vector and the RHS is only one value. 
+The constraint matrix is actually only a row-vector and the RHS is only one value. 
 \begin{itemize}
 \item The function parameters are defined in Elmer so you shouldn't change them.
 \item First we set a pointer to EMatrix-field of the given system matrix.
 If the pointed matrix is not yet allocated, calculate the number of nodes
 on the edge we want to define the volume flow. This gives us the number of non-zeros
 in our constraint matrix and we can allocate the matrix.
-\item Set the rows, cols and diag -fields of the matrix. This sets the non-zeros
+\item Set the rows, columns and diagonal fields of the matrix. This sets the non-zeros
 on their right places in the constraint matrix.
 \item Set all values of the constraint matrix to unity.
 \item Calculate the RHS-value. The current time was checked in the beginning 
@@ -164,7 +164,7 @@ Just say {\tt ElmerSolver} and you should get the solution in few minutes.
 The velocity perpendicular to the pipe is practically zero and the velocity
 parallel to the pipe is an example of \Idx{Womersley velocity profile}
 \footnote{J.Physiol (1955) 127, 553-563}.
-An interesting feature of this velocity profile is that on some timesteps 
+An interesting feature of this velocity profile is that on some time steps 
 the fluid flows to both directions, see figure~\ref{f:womersley}.
 \begin{figure}[!hb]
 \begin{center}

@@ -45,8 +45,8 @@ End
 \ttend
 %
 The simulation block of the command file defines, eg., the case to be time
-dependent (transient) with $10^{-5}$ second timesteps and altogether
-120 time intervals. Results from every second timestep are saved into
+dependent (transient) with $10^{-5}$ second time steps and altogether
+120 time intervals. Results from every second time step are saved into
 the files \texttt{diffusion1.*}.
 %
 \ttbegin
@@ -100,7 +100,7 @@ All three solvers are active in this equation set. Further definitions
 include, first, that the convection of the species is switched on
 (besides diffusion). Then that for Navier-Stokes equations the
 convective term may be left out resulting in laminar Stokes flow, and
-finally that the elctric field is computed by the electrostatics
+finally that the electric field is computed by the electrostatics
 rather than given by the user.
 %
 \ttbegin
@@ -113,7 +113,7 @@ End
 \ttend
 %
 Following are the solver definitions. Solver 1 is the electrostatics
-solver. The equation is linear and thus no nonlinear iterations are
+solver. The equation is linear and thus no non-linear iterations are
 needed. The equation is solved using a fast direct method UMFPack.
 %
 \ttbegin
@@ -138,7 +138,7 @@ Solver 1
 End
 \ttend
 %
-The next solver is for the Navier-Stokes equations. Here nonlinear
+The next solver is for the Navier-Stokes equations. Here non-linear
 iterations are required.
 \ttbegin
 Solver 2
@@ -163,8 +163,8 @@ Solver 2
 End
 \ttend
 %
-The advection-diffusion equation does not affect neither the
-electrostatic field nor the flow, thus it may be solved only after a
+The advection-diffusion equation does not affect either the
+electrostatic field or the flow, thus it may be solved only after a
 converged solution for the previous two equations is available. This
 is achieved with the \texttt{Exec Solver} definition below. The
 advected quantity is given the name Analyte.
@@ -290,7 +290,7 @@ Solving the problems takes less than a minute cpu time on a PC. The
 maximum and minimum concentration over the whole simulation are 1.0235
 and -0.075748. The solution of this problem should be between 0 and
 1. This shows that some numerical discretization errors are present in
-the simulation. The errors would diminish when using smaller timesteps
+the simulation. The errors would diminish when using smaller time steps
 and also with denser mesh. Simulation results at the time
 instant of 0.00025 seconds are shown in Fig.~\ref{fig:analyte_ek}.
 
@@ -305,10 +305,10 @@ instant of 0.00025 seconds are shown in Fig.~\ref{fig:analyte_ek}.
 The maximum value of the magnitude of the velocity in the results is
 0.105 m/s.
 
-The electric field is written into the output only componentwise. The
+The electric field is written into the output only component wise. The
 magnitude of the field may be visualised after giving the following
 commands on the ElmerPost command line (assuming one has read in all
-61 timesteps):
+61 time steps):
 %
 \ttbegin
 math E(0,time(0):time(61)-1) = Electric.field.1
@@ -325,8 +325,8 @@ field magnitude is between 2453 and $2.18\cdot10^6$.
 
 When checking the simulation results the user will notice that the
 electric potential does not change in time and that the flow reaches
-steady-state within a few timesteps. This is quite clear also from the
-problem setup: the electric field is due to invarying potential with
+steady-state within a few time steps. This is quite clear also from the
+problem setup: the electric field is due to unvarying potential with
 constant material parameters. Also the flow in microchannels is
 usually laminar.
 
