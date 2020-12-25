@@ -10,7 +10,7 @@
 
 ElmerGUI is a graphical user interface for the Elmer software suite
 \cite{ElmerHome}. The program is capable of importing finite element mesh files in
-various formats, generating finite element partitionings for various geometry
+various formats, generating finite element partitioning for various geometry
 input files, setting up PDE-systems to solve, and exporting model data and results
 for ElmerSolver.
 
@@ -66,7 +66,7 @@ or
 
 \section{Linux}
 
-Bofore starting to compile, please make sure that you have the development package of Qt
+Before starting to compile, please make sure that you have the development package of Qt
 installed on your system (i.e., libraries, headers, and program development tools). Qt version 4.3
 or newer is recommended. You may also wish to install Qwt 6,
 VTK version 8.2,
@@ -157,7 +157,7 @@ $ ElmerGUI
 \section{Geometry input files and mesh generation}
 
 ElmerGUI is capable of importing finite element mesh files and generating two or three
-dimensional finite element partitionings for bounded domains with piecewise linear
+dimensional finite element partitioning for bounded domains with piecewise linear
 boundaries. It is possible to use one of the following mesh generators:
 \begin{itemize}
  \item ElmerGrid (built-in)
@@ -311,7 +311,7 @@ A PDE-system (a.k.a ``Equation'') is defined in a Equation Window which shows up
 Once the PDE-system has been defined by activating the individual equations, the numerical
 methods and parameters can be selected and tuned in Solver Settings Window (Figure \ref{fig:solversettings}) which appears by pressing the ``Edit Solver Settings'' button.
 The name of the PDE-system is defined in the line edit box with label ``Name''. After pressing
-the Ok-button, the equation remains visible and editable under the Model menu. 
+the OK-button, the equation remains visible and editable under the Model menu. 
 It is also possible to show and edit the Equation Window by double clicking the name of the equation under ``Equation'' item in Object Browser.
 
 \begin{figure}[htb]
@@ -577,8 +577,8 @@ The solver will finally write a result file for postprocessor in the project dir
 The name of the result file is defined in
 \menu{Model}{Setup...}
 
-It may be tiresome to generate solver input file, save the project then run solver everytime you make a slight modification in conditions. ``Generate, save and run'' button (a button with green doubled triangle) in the toolbar enables these three actions by one clicking of the button. This will be helpful to quickly run the case modified via GUI.
-A similar button - ``Save and run'' button (a button with single green triangle) is also in Solver Input File Window. This button saves the solver input file and the project then run solver. This will be helpful to quickly run the case manually modified via Solver Input File Window. 
+It may be tiresome to generate solver input file, save the project then run solver every time you make a slight modification in conditions. ``Generate, save and run'' button (a button with green doubled triangle) in the toolbar enables these three actions by one clicking of the button. This will be helpful to quickly run the case modified via GUI.
+A similar button - ``Save and run'' button (a button with single green triangle) is also in Solver Input File Window. This button saves the solver input file and the project then runs the solver. This will be helpful to quickly run the case manually modified via Solver Input File Window. 
 These buttons are shown in Figure \ref{fig:quickbuttons}.
 
 \begin{figure}[htb]
@@ -623,7 +623,7 @@ In the toolbar of ElmerGUI main window, there is a button for launching postproc
 \begin{comment}
 \subsection{Python interface}
 
-If ElmerGUI has been compiled with PyhthonQt-support, there is a Python console
+If ElmerGUI has been compiled with PythonQt-support, there is a Python console
 available for scripting. The console is located under the Edit-menu:
 \menu{Edit}{PythonQt console...}
 \noindent The console provides access to the following classes:
