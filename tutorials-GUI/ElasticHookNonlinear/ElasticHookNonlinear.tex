@@ -36,9 +36,9 @@ You should obtain your mesh and may check that it consists of 12288 trilinear el
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the Setup we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The simulation is carried as a transient problem in 3-dimensional cartesian
+The simulation is carried as a transient problem in 3-dimensional Cartesian
 coordinates. The inertial forces of no importance so we could as well scan through a set of steady state
-loading conditions. We choose the timestep such that the total time being simulated is 1~s.
+loading conditions. We choose the time step such that the total time being simulated is 1~s.
 We assume that the original mesh (with diameter 0.6 is given units of cm. Hence we need to scale the
 system down to work in SI units. 
 \ttbegin
@@ -71,7 +71,7 @@ Model
 \ttend        
 Here we choose the stainless steel from the material library.
 You may click trough the material parameters of the various solvers to ensure that
-the properties are indeed as they should be. Any consistant set of units may be used in Elmer.
+the properties are indeed as they should be. Any consistent set of units may be used in Elmer.
 The natural choice is of course to perform the computations in SI units. 
 \ttbegin
 Model
@@ -89,7 +89,7 @@ initial condition i.e. zero for all fields. Hence we don't need to toggle these 
 We need to type now boundary conditions that we will later assign with the mouse to some surfaces.
 We set boundary conditions for both ends of the hook such that
 they close with respect to each other with time. The distance travelled in 1~s will be set to
-0.006~m i.e. to same as the radius. The other displacent components are set to zero.  
+0.006~m i.e. to same as the radius. The other displacement components are set to zero.  
 To type in the multiline expressions for the boundary condition just press \texttt{Enter}
 \texttt{Displacement 1} checkbox.
 Note that the semicolon is an alternative separator
@@ -126,7 +126,7 @@ Model
 \ttend
 
 For the execution 
-ElmerSolver needs the mesh files and the command file. We have know basically defined
+ElmerSolver needs the mesh files and the command file. We have now basically defined
 all the information for ElmerGUI to write the command file. After writing it we may also visually 
 inspect the command file.
 \ttbegin
@@ -148,8 +148,8 @@ Run
   Start solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
-As there are 20 timesteps the convergence will be shown for each timestep.
-You can start looking at the results already after a few timesteps. The whole simulation
+As there are 20 time steps the convergence will be shown for each time step.
+You can start looking at the results already after a few time steps. The whole simulation
 takes a few minutes. 
 \ttbegin
 Run
@@ -166,7 +166,7 @@ Run
 \end{figure}
 
 In reality the material could break at some point. Here we have assumed a linear material law
-even though the geometric displacement make the equation nonlinear. 
+even though the geometric displacement makes the equation non-linear. 
 
 
 \subsection*{Alternative task: Rotating square profile}

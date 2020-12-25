@@ -9,7 +9,7 @@
 
 \subsection*{Introduction}
 
-The purpose of this simple tutorial is to be an introduction into Elmer for people dealing with computational glaceology.
+The purpose of this simple tutorial is to be an introduction into Elmer for people dealing with computational glaciology.
 The tutorial is a continuation of the previous one with slightly more complex geometry. 
 This tutorial shows how to apply two different solvers to two different bodies. 
 
@@ -28,8 +28,7 @@ the bedrock density is assumed to be 2500~kg/m$^3$ and heat conductivity 3~W/mK.
 
 We also solve for the velocity distribution $\vec{v}$ of the glacier. 
 The velocity field is solved from the Stokes equation and is assumed to be affected only by the Gravity.
-As boundary conditions we apply a no-slip condition at the ice-rock interface and symmetry condition at the 
-right-hand-side of the glacier. 
+As boundary conditions we apply a no-slip condition at the ice-rock interface and symmetry condition at the right-hand-side of the glacier. 
 
 
 
@@ -47,8 +46,7 @@ File
 \ttend
 When netgen is ready with the meshing. You should obtain a mesh consisting of 4329 nodes and 8406
 triangular elements. Now the mesh density was predefined in the \texttt{in2d} file and therefore no command-line
-arguments are needed to refine the mesh. If you got more elements check the value of \texttt{Max H} in the
-netgen parameter window.
+arguments are needed to refine the mesh. If you got more elements check the value of \texttt{Max H} in the netgen parameter window.
 
 If the mesh was successfully imported your window should look something in figure~\ref{glacrock:mesh}.
 
@@ -69,7 +67,7 @@ In this case we'll have two different sets of solvers (called as Equation in Elm
 The first consists of heat and flow solvers, while the 
 other includes just the heat solver. We'll name them appropriately. 
 
-When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
+When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case we know that the fluid body has the index 1 and the 
 solid body has the index 2. Therefore it is easy to assign the Equation and Material to the bodies directly. 
 
@@ -152,7 +150,7 @@ Model
 
 We do not need any Initial Condition since the zero temperature (in Celcius) is a good initial
 guess for the heat equation. For the Stokes equation a better solution could be used since 
-if convergence problems would arise since the non-newtonian material laws do actually depend on the 
+if convergence problems would arise since the non-Newtonian material laws do actually depend on the 
 initial velocity.
 
 We set four different kinds of boundary conditions. A fixed temperature, a fixed 
@@ -202,7 +200,7 @@ Boundary condition
 \subsection*{Saving and solution}
 
 For the execution 
-ElmerSolver needs the mesh files and the command file. We have know basically defined
+ElmerSolver needs the mesh files and the command file. We have now basically defined
 all the information for ElmerGUI to write the command file. After writing it we may also visually 
 inspect the command file.
 \ttbegin
@@ -226,7 +224,7 @@ Run
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The heat conductivity of ice is set to be dependent on temperature and this results to a 
-nonlinear iteration.
+non-linear iteration.
 The resulting output is shown in figure~\ref{glacrock:conv}.
 
 \begin{figure}
@@ -246,7 +244,7 @@ To view the results we use Paraview,
 Run
   Start Paraview
 \ttend
-The resulting temperature and velocity distributions are shown in figure~\ref{glacrock:figtemp} (these are generated with the obsolite VTKPost tool within ElmerGUI).
+The resulting temperature and velocity distributions are shown in figure~\ref{glacrock:figtemp} (these are generated with the obsolete VTKPost tool within ElmerGUI).
 
 \begin{figure}
 \begin{center}

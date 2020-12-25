@@ -13,11 +13,11 @@ This tutorial demonstrates the use of the generic advection-diffusion-reaction
 equation through ElmerGUI. The solver may be found in module ModelPDE. 
 The purposes of the model pde and also this tutorial is to help 
 those who want to understand Elmer from a mathematical perspective to be
-able to carry some own code development. 
+able to carry some of their own code development. 
 
 The problem is a simple 3d structure \texttt{winkel.grd} that can be charectized by a 
 $2\times 2\times 2$ topological grid where entries $(1,1,1)$, $(1,2,1)$, $(2,1,1)$ and
-$(2,1,2)$ are meshed. This is the simplest cartesian structure with full 3D 
+$(2,1,2)$ are meshed. This is the simplest Cartesian structure with full 3D 
 solution. 
 
 We can rather freely play with the parameters of the Model PDE. The equation is 
@@ -104,7 +104,7 @@ for.
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the \texttt{Setup} we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The simulation is carried out in 2-dimensional cartesian
+The simulation is carried out in 2-dimensional Cartesian
 coordinates and in steady-state. 
 Only one steady-state iteration is needed as the case is linear. 
 \ttbegin
@@ -119,7 +119,7 @@ In the equation section we choose the relevant equations and parameters related 
 In this case we'll have one set only one equation -- the Model PDE.
 
 
-When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
+When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case we have just one body and one boundary and therefore its easier to assign 
 the Equation and Material to it directly.
 
@@ -181,7 +181,7 @@ Model
 
 
 For the execution 
-ElmerSolver needs the mesh files and the command file. We have know basically defined
+ElmerSolver needs the mesh files and the command file. We have now basically defined
 all the information for ElmerGUI to write the command file. After writing it we may also visually 
 inspect the command file.
 \ttbegin
@@ -233,18 +233,18 @@ command file. No coding is needed to implement these features though.
 \item Play with the reaction, diffusion, convection coefficient, and also the advection velocity.
 As far as they remain constant the equation should be solvable with one sweep.
 \item You could try to use Neumann or Robin BCs as well. Remember though that
-a steady state equatios needs definitions that uniquely define the solution.
+a steady state equation needs definitions that uniquely define the solution.
 \item Make the problem time-dependent. Note that then you most likely need to define the 
 coefficient for the time derivative. 
 \item When the advection increases in size the solution may becore eventually oscillatory.
 To eliminate that some bubbles or p-elements may be needed. You may play around with 
-element settings, for exammple use \texttt{Element = p:2} or \texttt{Element = n:1 b:1} etc. 
+element settings, for example use \texttt{Element = p:2} or \texttt{Element = n:1 b:1} etc. 
 \item You could try to increase the number of elements either by using \texttt{-relh} 
 parameter in ElmerGUI, or setting \texttt{Mesh Levels = 2} in Simulation section.
 \item You could try to use \texttt{MATC} to make the coefficients parameter dependent.
-Dependence on the solution itself introduces nonlinearities that might not be well handled 
-by the fixed point iteration scheme. For more demanding nonlinearities Newton linearization or
-other technniques may be needed. 
+Dependence on the solution itself introduces non-linearities that might not be well handled 
+by the fixed point iteration scheme. For more demanding non-linearities Newton linearisation or
+other techniques may be needed. 
 \item Also some periodicity could be introduced to this problem by letting the 
 two extreme surface patches have a dependence between them.
 \item You could introduce sort of contact conditions for the surface or bulk values 

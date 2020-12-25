@@ -45,8 +45,7 @@ As boundary conditions we use the initial temperature at the upper and lower end
 \subsection*{Solution procedure}
 
 Start \texttt{ElmerGUI} from command line or by clicking the icon in your desktop. Here we describe 
-the essential steps in the ElmerGUI by writing out the clicking procedure. Tabulation generally means that the 
-selections are done within the window chosen at the higher level. 
+the essential steps in the ElmerGUI by writing out the clicking procedure. Tabulation generally means that the selections are done within the window chosen at the higher level. 
 
 The mesh is given in ElmerGrid format in file \texttt{geoslab.grd} in the samples directory of ElmerGUI, 
 load this file.  
@@ -70,10 +69,10 @@ window should look something in figure~\ref{fg:geomesh}.
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the \texttt{Setup} we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The simulation is carried out in 2-dimensional cartesian
+The simulation is carried out in 2-dimensional Cartesian
 coordinates and in transient. 
-We will use 1000 timesteps each of size 10 years. 
-For time-stepping we will use 2nd order scheme. 
+We will use 1000 time steps each of size 10 years. 
+For time stepping we will use 2nd order scheme. 
 \ttbegin
 Model
   Setup 
@@ -90,7 +89,7 @@ In the equation section we choose the relevant equations and parameters related 
 In this case we'll have one set only one equation -- the heat equation.
 
 
-When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
+When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case we have just one body and one boundary and therefore its easier to assign 
 the Equation and Material to it directly.
 
@@ -183,7 +182,7 @@ and similarly for the upper boundary.
 
 
 For the execution 
-ElmerSolver needs the mesh files and the command file. We have know basically defined
+ElmerSolver needs the mesh files and the command file. We have now basically defined
 all the information for ElmerGUI to write the command file. After writing it we may also visually 
 inspect the command file.
 \ttbegin
@@ -193,8 +192,7 @@ Sif
 \ttend
 
 Before we can execute the solver we should save the files in a directory. In saving the project all the
-necessary files for restarting the case will be saved to the 
-destination directory.
+necessary files for restarting the case will be saved to the destination directory.
 \ttbegin
 File 
   Save Project
@@ -225,9 +223,9 @@ To view the results we use Paraview.
 Run
   Start ParaView
 \ttend
-If your configuration is ok a Paraview window should pop up.
+If your configuration is OK a Paraview window should pop up.
 Choose temperature for the surface to be plotted. 
-As we have a timeseries we may run the sequence by pressing the play icon. 
+As we have a time series we may run the sequence by pressing the play icon. 
 
 You may also choose the \texttt{Plot Over Line} filter to see the data plotted 
 over a line for better numerical inspection. 
@@ -235,7 +233,7 @@ over a line for better numerical inspection.
 \begin{figure}
 \begin{center}
 \includegraphics[width=140mm]{GeoSlabParaview}
-\caption{The data visualized in Paraview as a surface and lineplot}
+\caption{The data visualized in Paraview as a surface and line plot}
 \label{fg:GeoSlabParaview}
 \end{center}
 \end{figure}
@@ -248,7 +246,7 @@ be studied by increasing further the time and space resolution.
 
 For intrusion processes the latent heat often plays on important role. 
 For that the internal phase change model can be used. It requires that 
-all the internal energy is expressed using specific enthalphy rather than
+all the internal energy is expressed using specific enthalpy rather than
 heat capacity and latent heat. 
 
 We now eliminate the heat capacity of the original case (1250~J/kgK) and

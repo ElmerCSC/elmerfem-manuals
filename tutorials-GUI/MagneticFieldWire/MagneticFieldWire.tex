@@ -39,8 +39,8 @@ We can solve the current from Ohms law to obtain the maximum field value at $r=R
 \end{equation}
 Using elecric conductivity of copper ($\sigma$=59.59e6 A/m$^2$V) we obtain 0.0374~T.
 
-We are interested what happens when the voltage is applied sinusoidally with a frequency of 100~kHz.
-The harmonic case is unfortuntately much more difficult to solve and no simple anytical expression exists.
+We are interested in what happens when the voltage is applied sinusoidally with a frequency of 100~kHz.
+The harmonic case is unfortunately much more difficult to solve and no simple analytical expression exists.
 Therefore we need to solve the problem numerically. 
 
 
@@ -53,12 +53,12 @@ File
   Definitions
     Append -> magnetodynamics.xml
 \ttend
-The additional definitions should recide in the directory \texttt{edf-extra} within the distribution.
+The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.
 Moving the desired \texttt{xml} files to the \texttt{edf}-directory enables automatic loading of the 
 definitions at start-up. By inspecting the definitions in the \texttt{Elmer Definitions File editor} one
 may inspect that the new definitions were really appended. 
 
-The mesh is already defined in ElmerGrid format as file \texttt{wire.grd}. Load it from the \texttt{samples} directory were it recides.
+The mesh is already defined in ElmerGrid format as file \texttt{wire.grd}. Load it from the \texttt{samples} directory were it resides.
 \ttbegin
 File 
   Open -> wire.grd
@@ -86,7 +86,7 @@ depend on the axial direction.
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the Setup we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The steady-state simulation is carried out in 3-dimensional cartesian
+The steady-state simulation is carried out in 3-dimensional Cartesian
 coordinates. The initial size of the mesh is 1000 times too large. Hence we apply scaling in this menu.
 Also we want to use an harmonic equation that requires the frequency to be set somewhere. 
 \ttbegin
@@ -104,17 +104,17 @@ In the equation section we choose the relevant equations and parameters related 
 In this case we'll have the \texttt{MgDynHarm} solver (there exists also a steady-state/transient version of the solver
 as \texttt{MgDyn}), as well as the postprocessing solver \texttt{MgDynPost}.
 
-When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
+When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case we know that body 1 is the wire and body 2 is the surrounding air and we
 can apply the definitions directly.
-They will have same set of solvers but different material properties. 
+They will have the same set of solvers but different material properties. 
 
 The solver specific options may need some alternations. We choose a more suitable
 linear solver strategy for the AV equation. 
 
 For the postprocessing we add some fields to be computed and skip the computation of nodal fields since the
 elemental fields are often preferable for discontinuous fields. 
-We also want ensure that the postprocessing solver is run just before saving the results, after the primary solver has been computed.
+We also want to ensure that the postprocessing solver is run just before saving the results, after the primary solver has been computed.
 
 In the following the correct equation are chosen and the suitable solver specific options are chosen:
 \ttbegin
@@ -245,7 +245,7 @@ Run
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 
-one just ensures that convergence of the nonlinear level was really obtained. 
+one just ensures that convergence of the non-linear level was really obtained. 
 The convergence monitor also plots the postprocessing steps but they do not really converge as each field is computed just once. 
 
 When the solution has finished we may start the postprocessor to view some results.
@@ -257,7 +257,7 @@ Run
 
 \subsection*{Results}
 
-Here were present some results of the computations. The visulalization is done using Paraview and the \texttt{vtu} format.
+Here we present some results of the computations. The visualization is done using Paraview and the \texttt{vtu} format.
 For optimal visualization use the \texttt{Discontinuous Bodies} flag turned on both on the calculation of the fields
 and while saving the results in \texttt{vtu} format. 
 These flags ensure that the solution is enforces continuous over the
@@ -282,13 +282,13 @@ The resulting absolute values of the imaginary and real part of the magnetic flu
 Figure~\ref{fg:BfieldWire}. The imaginary part dominates in the amplitude the (0.524~T vs. 0.107~T). 
 The corresponding vector field of the magnetic flux density is depicted in Figure~\ref{fg:BfieldWireVectors}.
 
-Why are the results so far of from the steady state solution? If you run the case again with 
+Why are the results so far from the steady state solution? If you run the case again with 
 100~Hz you can see that the solution is very close to the static one. The maximum magnetic flux density from the
 computations is 0.0367~T which is very close to the analytical solution of 0.0374~T. So the frequency
 really has an significant effect on the results!
 
 You may study what happens when you increase the frequency further. At some point the mesh cannot capture the solution
-properly anymore and the results become questionable.
+properly any more and the results become questionable.
 
 
 \hfill

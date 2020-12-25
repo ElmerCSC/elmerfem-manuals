@@ -17,7 +17,7 @@ the following link: \\
 Consider a horseshoe-shaped permanent magnet. It consists of a ferromagnetic material but the two end 
 sections are premagnetized in opposite directions. This results to a familiar magnetic field pattern.
 The horseshoe consists of three different regions and additionally there is the surrounding air.
-There is a circular outer boundary in order to conveniently allow for farfield conditions.  
+There is a circular outer boundary in order to conveniently allow for far field conditions.  
 The material is assumed to have a constant relative permeability of 5000 and the magnetization is 
 set to 750~kA/m. 
 
@@ -41,12 +41,12 @@ File
   Definitions
     Append -> magnetodynamics2d.xml
 \ttend
-The additional definitions should recide in the directory \texttt{edf-extra} within the distribution.
+The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.
 Moving the desired \texttt{xml} files to the \texttt{edf}-directory enables automatic loading of the 
 definitions at start-up. By inspecting the definitions in the \texttt{Elmer Definitions File editor} one
 may inspect that the new definitions were really appended. 
 
-The mesh is already defined, load it from the \texttt{samples} directory were it recides.
+The mesh is already defined, load it from the \texttt{samples} directory where it resides.
 \ttbegin
 File 
   Open -> horseshoe.msh
@@ -63,18 +63,18 @@ The ElmerGrid plug-in of ElmerGUI will read the mesh and convert it to a format 
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the Setup we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The steady-state simulation is carried out in 2-dimensional cartesian
+The steady-state simulation is carried out in 2-dimensional Cartesian
 coordinates. Nothing needs to be changed here. Currently the permeability of vacuum is not given
 in the ElmerGUI. To set other than the default value for it, the free text box can be used. 
 
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have the MgDyn2D solver, as well as the postprocessing solver MgDyn2DPost.
 
-When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
+When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case the equations need to be solved in all the bodies and 
-hence clicking the all from 1 to 4 here is most convenient. We give a higher priority to the actual solver
+hence clicking all from 1 to 4 here is most convenient. We give a higher priority to the actual solver
 so that the vector potential will be computed before the derived fields. 
-In this case solver specific options should be ok but they could also be changed in this context.
+In this case solver specific options should be OK but they could also be changed in this context.
 \ttbegin
 Model
   Equation
@@ -88,7 +88,7 @@ Model
     OK
 \ttend        
 The Material section includes all the material parameters. In this case we basically have two 
-different materials but the differenyt magnetization must also be given as a material property.
+different materials but the different magnetization must also be given as a material property.
 Hence we actually need to define four materials.  
 \ttbegin
 Model
@@ -132,7 +132,7 @@ Model
     Choose lower straight part of horseshoe -> set Material to IronMinus
 \ttend
 
-We have just one boundary condition i.e. the outer boundary for which we use the farfield condition.
+We have just one boundary condition i.e. the outer boundary for which we use the far field condition.
 \ttbegin
 Model
   BoundaryCondition
@@ -176,7 +176,7 @@ Run
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 
-one just ensures that convergence of the nonlinear level was really obtained. 
+one just ensures that convergence of the non-linear level was really obtained. 
 The norm of the solution should be 0.3679.
 
 When the solution has finished we may start the postprocessor to view some results.

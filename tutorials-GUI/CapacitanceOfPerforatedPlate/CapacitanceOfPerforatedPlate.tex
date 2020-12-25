@@ -15,7 +15,7 @@ and calculating appropriate derived quantities, such as
 The geometry under study is a perforated plate.
 
 The shape of the holes is assumed to be square with size $3\times 3$~mm$^2$.
-The holes cover the the other plate uniformly so that the size of each unit cell is 
+The holes cover the other plate uniformly so that the size of each unit cell is 
 $10\times 10$~mm$^2$.
 The thickness of the plate is assumed to be 
 1.5 mm and the distance from the reference plate 1.0 mm. 
@@ -46,7 +46,7 @@ File
   Definitions
     Append -> electrostatics.xml
 \ttend
-The additional definitions should recide in the directory \texttt{edf-extra} within the distribution.
+The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.
 Moving the desired \texttt{xml} files to the \texttt{edf}-directory enables automatic loading of the 
 definitions at start-up. By inspecting the definitions in the \texttt{Elmer Definitions File editor} one
 may inspect that the new definitions were really appended. 
@@ -55,7 +55,7 @@ may inspect that the new definitions were really appended.
 \subsection*{Meshing}
 
 In this case meshing is performed using ElmerGrid format in file \texttt{hexhole.grd} and the ElmerGrid plugin within ElmerGUI. 
-The default mesh is ok and therefore no modifications is needed by the user. 
+The default mesh is OK and therefore no modifications are needed by the user. 
 
 Elmer does not operate an any particular units but usually SI-units 
 are preferred. We therefore choose to scale the problem with 0.001 so that these measurements will be in mm.  
@@ -81,7 +81,7 @@ You should obtain your mesh and may check that it consists of roughly of 33\,159
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the Setup we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The steady-state simulation is carried out in 3-dimensional cartesian
+The steady-state simulation is carried out in 3-dimensional Cartesian
 coordinates. We want to work in mm so we need to scale the mesh with a factor 0.001. 
 \ttbegin
 Model
@@ -92,7 +92,7 @@ Model
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have only the electrostatics solver. 
 
-When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
+When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case we have just one body and therefore its easier to assign 
 the Equation and Material to it directly.
 
@@ -130,8 +130,7 @@ Model
 \ttend
 
 
-We have two boundary conditions for the potential at the ground and at the capacitor. For other boundaries
-the do-nothing boundary results to zero flux over the boundary.
+We have two boundary conditions for the potential at the ground and at the capacitor. For other boundaries the do-nothing boundary results to zero flux over the boundary.
 \ttbegin
 Model
   BoundaryCondition
@@ -158,7 +157,7 @@ Model
 \ttend
 
 For the execution 
-ElmerSolver needs the mesh files and the command file. We have know basically defined
+ElmerSolver needs the mesh files and the command file. We have now basically defined
 all the information for ElmerGUI to write the command file. After writing it we may also visually 
 inspect the command file.
 \ttbegin
@@ -181,7 +180,7 @@ Run
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 
-one just ensures that convergence of the nonlinear level was really obtained. 
+one just ensures that convergence of the non-linear level was really obtained. 
 The norm of the solution should be roughly~0.8846.
 
 
@@ -211,16 +210,15 @@ relh & C(fF) & ratio \\ \hline
 \subsection*{Visualization}
 
 When the solution has finished we may start the postprocessor to view some results.
-Here we assume that we chose the .vtu format for paraview as output. The opening of Paraview can be done
-automatically from the \texttt{ElmerGUI} menu, or alternatively manually from Paraview.
+Here we assume that we chose the .vtu format for Paraview as output. The opening of Paraview can be done automatically from the \texttt{ElmerGUI} menu, or alternatively manually from Paraview.
 \ttbegin
 File 
   Open: case0001.vtu
   Apply 
 \ttend
 
-You may now choose the fields to be depicted etc. For more information on the use of of paraview look at 
-the documentation of the software. In figure~\ref{fig:hexhole_pot} some examples of visualizations with paraview are given. 
+You may now choose the fields to be depicted etc. For more information on the use of of Paraview look at 
+the documentation of the software. In figure~\ref{fig:hexhole_pot} some examples of visualizations with Paraview are given. 
 
 
 \begin{figure}[h]

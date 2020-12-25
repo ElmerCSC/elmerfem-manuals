@@ -13,7 +13,7 @@ This case presents solving the Laplace equation for electric potential.
 \begin{equation}
   - \nabla \cdot \varepsilon \nabla \phi = 0  \, \, \, \, \in \, \, \Omega
 \end{equation}
-where the eletric potential $\phi$ is given at conducting surfaces.
+where the electric potential $\phi$ is given at conducting surfaces.
 This is a standard type of equation with many variants in physics, electrostatics being just one of them.
 From the solution one may calculate 
 derived fields, and 
@@ -36,7 +36,7 @@ for Capacitance $C_{app}=\varepsilon_r\varepsilon_0 A/d$.
 With the help of the
 simulation one may evaluate the fringe capacitance resulting
 from the end effects of the capacitor geometry.
-The measuments of the capacitor are $10 \times 1$, and the distance to
+The measurements of the capacitor are $10 \times 1$, and the distance to
 ground is also 1. Defining the permittivity of vacuum to be 
 $\epsilon_0 = 1$ the comparison to the analytical approximation
 becomes trivial since then then $C_{app} = 10$. 
@@ -66,7 +66,7 @@ File
   Definitions
     Append -> electrostatics.xml
 \ttend
-The additional definitions should recide in the directory \texttt{edf-extra} within the distribution.
+The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.
 Moving the desired \texttt{xml} files to the \texttt{edf}-directory enables automatic loading of the 
 definitions at start-up. By inspecting the definitions in the \texttt{Elmer Definitions File editor} one
 may inspect that the new definitions were really appended. 
@@ -83,7 +83,7 @@ You should obtain your mesh and may check that it consists of 30484 nodes and of
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the Setup we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The steady-state simulation is carried out in 2-dimensional cartesian
+The steady-state simulation is carried out in 2-dimensional Cartesian
 coordinates. For convenience we also set $\varepsilon$ equal to one. 
 \ttbegin
 Model
@@ -94,7 +94,7 @@ Model
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have only the electrostatics solver. 
 
-When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
+When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case we have just one body and therefore its easier to assign 
 the Equation and Material to it directly.
 
@@ -158,7 +158,7 @@ Model
 
 
 For the execution 
-ElmerSolver needs the mesh files and the command file. We have know basically defined
+ElmerSolver needs the mesh files and the command file. We have now basically defined
 all the information for ElmerGUI to write the command file. After writing it we may also visually 
 inspect the command file.
 \ttbegin
@@ -181,7 +181,7 @@ Run
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 
-one just ensures that convergence of the nonlinear level was really obtained. 
+one just ensures that convergence of the non-linear level was really obtained. 
 The norm of the solution should be 0.3055.
 
 When the solution has finished we may start the postprocessor to view some results.
