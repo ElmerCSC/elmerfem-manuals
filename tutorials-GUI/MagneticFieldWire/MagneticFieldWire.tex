@@ -101,7 +101,7 @@ in the ElmerGUI. To set other than the default value for it (in case using a dif
 the free text box can be used.
 
 In the equation section we choose the relevant equations and parameters related to their solution. 
-In this case we'll have the \texttt{MgDynHarm} solver (there exists also a steady-state/transient version of the solver
+In this case we'll have the \texttt{MgHarm} solver (there exists also a steady-state/transient version of the solver
 as \texttt{MgDyn}), as well as the postprocessing solver \texttt{MgDynPost}.
 
 When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
@@ -120,7 +120,7 @@ In the following the correct equation are chosen and the suitable solver specifi
 \ttbegin
 Model
   Equation
-    Name = MgDynHarm
+    Name = MgHarm
       Active = on
       Apply to Bodies = 1 2  
       Edit Solver Settings
@@ -169,7 +169,7 @@ We set the scalar potential only for the conductors and the vector potential for
 Model
   BoundaryCondition
     Name = Ground 
-    MgDynHarm
+    MgHarm
       AV re = 0
       AV re {e} 1 = 0
       AV re {e} 2 = 0
@@ -185,7 +185,7 @@ electric field as the length of the wire is 0.01~m.
 Model
   BoundaryCondition
     Name = Voltage
-    MgDynHarm
+    MgHarm
       AV re = 0.01
       AV re {e} 1 = 0
       AV re {e} 2 = 0
@@ -200,7 +200,7 @@ and finally for all other extenal BCs we set the boundary non-axial components o
 Model
   BoundaryCondition
     Name = AxialField
-    MgDynHarm
+    MgHarm
       AV re {e} 1 = 0
       AV re {e} 2 = 0
       AV im {e} 1 = 0
