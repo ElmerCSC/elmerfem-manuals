@@ -9,7 +9,7 @@
 
 \subsection*{Problem description}
 
-For thin elastic structures it is often advicable to use dimensionally reduced models i.e. 
+For thin elastic structures it is often advisable to use dimensionally reduced models i.e. 
 study plates or shells. In this tutorial we compute the few lowest eigenmodes of an elastic plate. 
 Our geometry is a simple pentagon which (compared to a square) eliminates some of the trivial symmetries.
 The pentagon is rigidly fixed at all boundaries.
@@ -23,7 +23,7 @@ Start \texttt{ElmerGUI} from command line or by clicking the icon in your deskto
 the essential steps in the ElmerGUI by writing out the clicking procedure. Tabulation generally means that the 
 selections are done within the window chosen at the higher level. 
 
-Before we can start the set-up we shoud make sure that the menus for Smitc solver are present.
+Before we can start the set-up we should make sure that the menus for Smitc solver are present.
 If not, they may be found in file
 \ttbegin
 $ELMERHOME/bin/edf-extra/elasticplate.xml
@@ -34,7 +34,7 @@ File
   Definitions
     Append -> choose the file
 \ttend
-To see what kind of new menu structures you got you may play around with viewer collapsing and opening. 
+To see what kind of new menu structures were loaded you may play around with viewer collapsing and opening. 
 Note that if you want to load an existing project you should load the xml-definitions that were used 
 in creating the project. Therefore it may be best to place all actively used menu definitions in
 directory
@@ -42,7 +42,7 @@ directory
 $ELMERHOME/bin/edf
 \ttend
 
-When the menu structures for plate solver are there we are ready to continue.
+When the menu structures for plate solver are there then we are ready to continue.
 The mesh is given in 2d netgen format in file \texttt{pentagon.grd} in the samples directory of ElmerGUI, 
 load this file.
 \ttbegin
@@ -70,7 +70,7 @@ If the mesh was successfully imported your window should look something in figur
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the \texttt{Setup} we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The simulation is carried out in 2-dimensional cartesian
+The simulation is carried out in 2-dimensional Cartesian
 coordinates and in steady-state (also used for eigenmodes). 
 Only one steady-state iteration is needed as the case is linear. 
 \ttbegin
@@ -82,12 +82,12 @@ Model
 \ttend
 
 In the equation section we choose the relevant equations and parameters related to their solution. 
-When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
+When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case we have just one body and therefore its easier to assign 
 the Equation and Material to it directly.
 
 For the solver setting we need to activate the eigen mode computation. We also choose the 
-direct umfpack solver which for small 2D problems often performes great.
+direct umfpack solver which for small 2D problems often performs great.
 \ttbegin
 Model
   Equation
@@ -108,9 +108,9 @@ Model
 \ttend        
 
 The Material section includes all the material parameters.
-They are divided to generic parameters which are direct properties of the material
+They are divided into generic parameters which are direct properties of the material
 without making any assumptions on the physical model, such as the mass. Other properties assume
-a physical law, such heat Youngs modulus. As our problem is academic in nature we choose some 
+a physical law, such heat Young's modulus. As our problem is academic in nature we choose some 
 simple ideal parameters but data from material database could also be used instead.
 \ttbegin
 Model
@@ -178,7 +178,7 @@ In this case there is just one iteration and thus no curve appears.
 \subsection*{Results}
 The resulting eigenvalues are shown in table~\ref{tb:pentagonres}.
 Note that some eigenmodes are degenerated but as the finite element mesh is not
-perfectly symmetric there will be minor differencies in the eigenvalues.
+perfectly symmetric there will be minor differences in the eigenvalues.
 
 \begin{table}[h]
 \caption{Ten lowest eigenvalues for the pentagon plate}
@@ -206,8 +206,8 @@ Run
 \ttend
 and select the 1st component of the \texttt{deflection} field
 (confusingly named the x-component). 
-If one choosed for vtu ouput the mode \texttt{Eigen Analysis = True} then each file includes
-one eigenmode. Then the eigenmodes may be treated as timesteps. 
+If one chose for vtu output the mode \texttt{Eigen Analysis = True} then each file includes
+one eigenmode. Then the eigenmodes may be treated as time steps. 
 In figure~\ref{fg:pentagonpost} some of the lowest eigenmodes are depicted.
 \begin{figure}
   \begin{center}

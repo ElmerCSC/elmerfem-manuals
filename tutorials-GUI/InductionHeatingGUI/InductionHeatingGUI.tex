@@ -71,12 +71,12 @@ File
   Definitions
     Append -> magnetodynamics2d.xml
 \ttend
-The additional definitions should recide in the directory \texttt{edf-extra} within the distribution.
+The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.
 Moving the desired \texttt{xml} files to the \texttt{edf}-directory enables automatic loading of the 
 definitions at start-up. By inspecting the definitions in the \texttt{Elmer Definitions File editor} one
 may inspect that the new definitions were really appended. 
 
-The mesh is already defined, load it from the \texttt{samples} directory were it recides.
+The mesh is already defined, load it from the \texttt{samples} directory were it resides.
 \ttbegin
 File 
   Open -> crucible.msh
@@ -107,11 +107,11 @@ Model
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have the MgDyn2DHarmonic solver, as well as the postprocessing solver MgDyn2DPost.
 
-When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
+When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case the equations need to be solved in all the bodies and 
-hence clicking the all from 1 to 6 here is most convenient. We give a higher priority to the actual solver
+hence clicking all from 1 to 6 here is most convenient. We give a higher priority to the actual solver
 so that the vector potential will be computed before the derived fields. 
-In this case solver specific options should be ok but they could also be changed in this context.
+In this case solver specific options should be OK but they could also be changed in this context.
 \ttbegin
 Model
   Equation
@@ -131,7 +131,7 @@ Model
     OK
 \ttend        
 The Material section includes all the material parameters. In this case we basically have two 
-different materials but the differenyt magnetization must also be given as a material property.
+different materials but the different magnetization must also be given as a material property.
 Hence we actually need to define four materials. The thermal properties are not needed at this stage as 
 we are only solving for the induction. The internal losses of the coil are omitted and it is treated as an
 pure current source with material properties of air.  
@@ -243,7 +243,7 @@ Run
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 
-one just ensures that convergence of the nonlinear level was really obtained. 
+one just ensures that convergence of the non-linear level was really obtained. 
 The norm of the solution should be 0.3679.
 
 
@@ -260,7 +260,7 @@ a few seconds. With the 6\,542 linear triangles the heating
 efficieny is estimated to be 18.9~W. The corresponding results are shown
 in Fig.~\ref{fig:ind_heat1}.
 
-It can be noted that would the estimated heating efficieny be different from the known one
+It can be noted that would the estimated heating efficiency be different from the known one
 the user may give the postpressing solver the \texttt{Desired Heating Power} in order to scale 
 the potential of the solution. The solution, on the other hand, may be used as a source term 
 in heat equation, for example. 

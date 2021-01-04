@@ -14,7 +14,7 @@
 This tutorial demonstrates how to set up a coupled case
 of fluid-structure interaction. Flow is 
 initiated at one end of a channel which has an elastic obstacle
-that bends under the influence of fluidic forces. The resulting displacements 
+that bends under the influence of fluid forces. The resulting displacements 
 modify the domain thereby affecting the flow of the fluid.
 
 
@@ -26,13 +26,13 @@ of 1~m/s is assumed.
 
 Material properties are assumed to be rather simple:
 For the structure the density is 
-1000~kg/m$^3$, Youngs modulus is $1000$~Pa, and Poisson ratio~0.3. For the 
+1000~kg/m$^3$, Young's modulus is $1000$~Pa, and Poisson ratio~0.3. For the 
 fluid the density is 1~kg/m$^3$ and viscosity is 0.1~Pas. Additionally the 
 fluid has elastic properties that are used to extend the displacement 
 of the elastic beam to the fluid. 
 
 The idea of the case definition is to 
-demonstrate simple yet strongly coupled FSI case without getting into turbulence modeling. Realistic 
+demonstrate simple yet strongly coupled FSI case without getting into turbulence modelling. Realistic 
 material parameters for the given size of the domain would easily result to turbulence and just small 
 displacements.
 
@@ -48,7 +48,7 @@ only the final results are will be studied.
 \subsection*{Solution procedure}
 
 
-The nonlinear elasticity equation is not by default active in the menu structures ElmerGUI. 
+The non-linear elasticity equation is not by default active in the menu structures ElmerGUI. 
 Hence, the user must load these before starting the simulations.
 \ttbegin
 File 
@@ -89,7 +89,7 @@ of around 4140 nodes and 7890 linear triangles.
 After we have the mesh we start to go through the \texttt{Model} menu from the top to bottom. 
 In the \texttt{Setup} we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The simulation is carried out in 2-dimensional cartesian
+The simulation is carried out in 2-dimensional Cartesian
 coordinates in steady-state. There is not much to do here, just increase the number of iterations needed 
 for the convergence of the coupled system. We also set the output interval to zero which means that results are 
 written only at the end of the case.
@@ -106,16 +106,16 @@ Model
 In the Equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have two different sets of solvers (called as Equation in Elmer slang). 
 The fluid domain consists of flow and mesh deformation solvers, while the 
-elastic domain just includes the nonlinear elasticity solver. We'll name them appropriately. 
+elastic domain just includes the non-linear elasticity solver. We'll name them appropriately. 
 
 To enhance the convergence and efficient use of resources 
 we set relaxation factors of the primary solvers to~0.5 and the 
-number of nonlinear iterations to 1. The mesh deformation solver just extents the 
+number of non-linear iterations to 1. The mesh deformation solver just extends the 
 displacements of the elasticity solver to the fluid domain, so no relaxation is needed here. 
 For the linear systems we are quite happy with the defaults.
 
 To honor the causality the flow solver should be solved first, then the elasticity solver and
-as last the mesh deformation solver. We set the priorities accordingly. 
+at last the mesh deformation solver. We set the priorities accordingly. 
 \\
 \noindent
 The equation for the fluid flow + mesh deformation
@@ -237,9 +237,9 @@ edit box which will open a larger window for editing.
     Add
     New
 \ttend
-The essense of fluid-structure interaction is in the following boundary condition. 
-When the \texttt{Fsi BC} is active the fluidic forces are automatically within ElasticSolver.
-The backcoupling to Navier-Stokes is achieved through the change in fluid geometry which is enforced
+The essence of fluid-structure interaction is in the following boundary condition. 
+When the \texttt{Fsi BC} is active the fluid forces are automatically within ElasticSolver.
+The back coupling to Navier-Stokes is achieved through the change in fluid geometry which is enforced
 by the conditions for the \texttt{MeshSolver}.
 \ttbegin
     Name = FSI 
@@ -263,7 +263,7 @@ Model
 \ttend
 
 For the execution 
-ElmerSolver needs the mesh files and the command file. We have know basically defined
+ElmerSolver needs the mesh files and the command file. We have now basically defined
 all the information for ElmerGUI to write the command file. After writing it we may also visually 
 inspect the command file.
 \ttbegin
@@ -306,7 +306,7 @@ Run
   Start ParaView
 \ttend
 
-For flow problems we can visulize pressure (or velocity amplitudes) separately with the vector presentation
+For flow problems we can visualize pressure (or velocity amplitudes) separately with the vector presentation
 of the velocity field. In Paraview the filter to apply the displacement field to the nodal coordinates is
 called \texttt{WarpByVector}.
 

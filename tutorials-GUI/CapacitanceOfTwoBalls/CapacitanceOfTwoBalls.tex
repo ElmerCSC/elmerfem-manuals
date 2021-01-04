@@ -42,7 +42,7 @@ At the time of writing this tutorial the quadratic elements had some problems wi
 but these should not affect the linear elements.
 
 The file is given as netgen geometry format in file \texttt{TwoBallsInBall.geo}. The geometry definition includes the 
-two smaller balls inside a bigger ball. Ultimaterly the bigger ball would be infinitely large. As this is impossible 
+two smaller balls inside a bigger ball. Ultimately the bigger ball would be infinitely large. As this is impossible 
 here we choose a modest radius of 5. The larger this value, the better the far-field approximation of the 
 electrostatic solution is.
 
@@ -74,7 +74,7 @@ by ElmerGUI.
 \end{figure}  
 
 The order of the mesh using nodal elements 
-may be increased by \texttt{ElmerGrid}. Assuming the mesh would recide in directory \texttt{meshlin}
+may be increased by \texttt{ElmerGrid}. Assuming the mesh would reside in directory \texttt{meshlin}
 a mesh consisting of quadratic elements may be performed with the following command:
 \ttbegin
 ElmerGrid 2 2 meshlin -increase -out meshquad
@@ -91,7 +91,7 @@ File
   Definitions
     Append -> electrostatics.xml
 \ttend
-The additional definitions should recide in the directory \texttt{edf-extra} within the distribution.
+The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.
 Moving the desired \texttt{xml} files to the \texttt{edf}-directory enables automatic loading of the 
 definitions at start-up. By inspecting the definitions in the \texttt{Elmer Definitions File editor} one
 may inspect that the new definitions were really appended. 
@@ -113,7 +113,7 @@ File
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the Setup we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The steady-state simulation is carried out in 3-dimensional cartesian
+The steady-state simulation is carried out in 3-dimensional Cartesian
 coordinates. For convenience we also set the permittivity of vacuum $\varepsilon_0$ equal to one.
 This makes it easier to compare the results to the analytical expressions. 
 \ttbegin
@@ -125,7 +125,7 @@ Model
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have only the electrostatics solver. 
 
-When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
+When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case we have just one body and therefore its easier to assign 
 the Equation and Material to it directly.
 
@@ -196,7 +196,7 @@ Model
 \ttend
 
 For the execution 
-ElmerSolver needs the mesh files and the command file. We have know basically defined
+ElmerSolver needs the mesh files and the command file. We have now basically defined
 all the information for ElmerGUI to write the command file. After writing it we may also visually 
 inspect the command file.
 \ttbegin
@@ -219,7 +219,7 @@ Run
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 
-one just ensures that convergence of the nonlinear level was really obtained. 
+one just ensures that convergence of the non-linear level was really obtained. 
 The norm of the solution should be?
 
 When the solution has finished we may start the postprocessor to view some results.

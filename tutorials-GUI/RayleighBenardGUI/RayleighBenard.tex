@@ -74,11 +74,11 @@ Choose (left wall + right wall (Ctrl down)) -> unify edge
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the Setup we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The simulation is carried out in 2-dimensional cartesian
-coordinates. 2nd order bdf time-stepping method is selected with 200 steps
+The simulation is carried out in 2-dimensional Cartesian
+coordinates. 2nd order bdf time stepping method is selected with 200 steps
 and with step size of two seconds.
-Gravity is needed for the bouyancy force and it is defined by a vector with fourc components. 
-The three define a unit vector and the fourth its magnitude. 
+Gravity is needed for the buoyancy force and it is defined by a vector with four components. 
+The first three components define a unit vector and the fourth its magnitude. 
 \ttbegin
 Model
   Setup 
@@ -91,18 +91,17 @@ Model
     Gravity = 0 -1 0 9.82
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
-In this case we'll have one set of equations (named ``Natural Convection'') which consists of the heat equation
-and of the Navier-Stokes equation.
+In this case we'll have one set of equations (named ``Natural Convection'') which consists of the heat equation and of the Navier-Stokes equation.
 
-When defining Equations and Materials it is possible to assign the to bodies immediately, or to use mouse
+When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case we have just one body and therefore its easier to assign 
 the Equation and Material to it directly.
 It is important to select the 
 convection to be computed since that couples the velocity field to the heat equation.
 
-The system may include nonlinear iterations of each equation and steady state iterations 
+The system may include non-linear iterations of each equation and steady state iterations 
 to obtain convergence of the coupled system. It is often a good idea to keep the number of 
-nonlinear iterations in a coupled case low. Here we select just one nonlinear iteration
+non-linear iterations in a coupled case low. Here we select just one non-linear iteration
 for both equations.
 For the linear system solvers we are happy to use the defaults. One may however, try out different
 preconditioners (ILU1,\ldots) or direct Umfpack solver, for example.
@@ -126,13 +125,13 @@ Model
     OK
 \ttend        
 The Material section includes all the material parameters.
-They are divided to generic parameters which are direct properties of the material
+They are divided into generic parameters which are direct properties of the material
 without making any assumptions on the physical model, such as the mass. Other properties assume
 a physical law, such as conductivities and viscosity. 
 
 Here we choose water at room temperature from the material library.
 You may click trough the material parameters of the various solvers to ensure that
-the properties are indeed as they should be. Any consistant set of units may be used in Elmer.
+the properties are indeed as they should be. Any consistent set of units may be used in Elmer.
 The natural choice is of course to perform the computations in SI units. 
 
 Apart from the properties from the material database, we
@@ -164,8 +163,7 @@ Model
     OK
 \ttend    
 
-Initial conditions should be given to transient cases. In this case we choose a constant Temperature field
-and an small initial velocity that initializes the symmetry break. 
+Initial conditions should be given to transient cases. In this case we choose a constant Temperature field and an small initial velocity that initializes the symmetry break. 
 \ttbegin
 Model
   Initial Condition 
@@ -233,7 +231,7 @@ Model
 %\ttend
 
 For the execution 
-ElmerSolver needs the mesh files and the command file. We have know basically defined
+ElmerSolver needs the mesh files and the command file. We have now basically defined
 all the information for ElmerGUI to write the command file. After writing it we may also visually 
 inspect the command file.
 \ttbegin
@@ -265,14 +263,13 @@ Run
 
 \subsection*{Results}
 
-Due to the number of the time-steps the simulation may take around ten minutes.
-You may inspect the results with Paraview as the time-steps are computed, or
-wait until all timesteps have been computed. You must reload the files if their number has changed. 
+Due to the number of the time steps the simulation may take around ten minutes.
+You may inspect the results with Paraview as the time steps are computed, or
+wait until all time steps have been computed. You must reload the files if their number has changed. 
 The time series can be automatically animated and even saved to an animation file.
 
 In Figures \ref{fg:rb_temp} and \ref{fg:rb_vel} the obtained temperature 
-distribution and the velocity vectors are presented (note that the pictures are generated by the obsolite ElmerPost
-software). 
+distribution and the velocity vectors are presented (note that the pictures are generated by the obsolete ElmerPost software). 
 The maximum velocity in the system should be about 0.516~mm/s. 
 
 \begin{figure}[h]
@@ -292,9 +289,8 @@ The maximum velocity in the system should be about 0.516~mm/s.
 \subsection*{Extra task: Sensitivity to temperature difference}
 
 If you have time you may try to solve the case with different parameters. Changing the temperature difference
-is one way of affecting the instability of the system. Decreasing the tempereture differences the system eventually becomes 
-steady state and the convection rolls vanish alltogether. Increasing the temperature difference may increase the 
-number of convection rolls and eventually the system becomes fully chaotic. Note that changing the temperature difference
-also affects to the time scale of the wake. 
+is one way of affecting the instability of the system. Decreasing the temperature differences the system eventually becomes 
+steady state and the convection rolls vanish altogether. Increasing the temperature difference may increase the 
+number of convection rolls and eventually the system becomes fully chaotic. Note that changing the temperature difference also affects to the time scale of the wake. 
 
 \hfill
