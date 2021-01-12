@@ -1,0 +1,225 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,english]{report}    % list options between brackets
+
+\RequirePackage{color}
+\RequirePackage{float}
+\RequirePackage{amsfonts}
+\RequirePackage{amsmath}
+\RequirePackage{alltt}
+\RequirePackage{ae}
+\RequirePackage{times}
+\RequirePackage{fancyhdr}
+\RequirePackage{graphicx} 
+\RequirePackage{makeidx}  
+
+\RequirePackage{hyperref}
+
+\UseRawInputEncoding
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat�s bookmarks
+    pdftoolbar=true,        % show Acrobat�s toolbar?
+    pdfmenubar=true,        % show Acrobat�s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={Fit},    % fits the width of the page to the window
+    pdftitle={Elmer non-GUI Tutorials},    % title
+    pdfauthor={CSC - IT Center for Science},     % author
+%    pdfsubject={Subject},   % subject of the document
+%    pdfcreator={Creator},   % creator of the document
+%    pdfproducer={Producer}, % producer of the document
+%    pdfkeywords={keywords}, % list of keywords
+    pageanchor=true,
+    hyperindex=true,
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=black           % color of external links
+}
+ 
+\makeindex             
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{../elmerdef}
+\input{../elmerversion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\Huge{\bf Elmer non-GUI Tutorials}}
+\author{CSC -- IT Center for Science}
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\include{about}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\pagenumbering{roman}
+\pagestyle{empty}
+
+% Table of contents:
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{1}  % set this to 1 in the final version
+
+\phantomsection
+\addcontentsline{toc}{part}{Table of Contents}
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\renewcommand{\chaptername}{Tutorial}
+
+% change the plain style used for chapter pages
+\fancypagestyle{plain}{
+\lhead{}
+\rhead{}
+\rfoot{\includegraphics[width=18mm]{by-nc}}
+\lfoot{\footnotesize{CSC -- IT Center for Science}}
+\chead{}
+%\cfoot{\bfseries \thepage}
+\cfoot{}
+\renewcommand{\headrulewidth}{0.0pt}
+}
+
+% and the fancy style used elsewhere
+\pagestyle{fancy}
+\rhead{\bfseries \thepage}
+\lhead{\bfseries \rightmark}
+\rfoot{\includegraphics[width=18mm]{by-nc}}
+\lfoot{\footnotesize{CSC -- IT Center for Science}}
+\chead{}
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+%\pagenumbering{arabic}
+
+ 
+%\part{non-GUI Problems}
+
+\graphicspath{{./}{TemperatureRadiation/}}
+\include{TemperatureRadiation/radiation}
+
+\graphicspath{{./}{ElasticEigenValues/}}
+\include{ElasticEigenValues/eigen_values}
+
+\graphicspath{{./}{ElasticPlateLinear/}}
+\include{ElasticPlateLinear/simple_plate}
+
+\graphicspath{{./}{FlowStepCompressible/}}
+\include{FlowStepCompressible/compress_step}
+
+\graphicspath{{./}{FlowResistance/}}
+\include{FlowResistance/flow_resistance}
+
+\graphicspath{{./}{Electrostatics/}}
+\include{Electrostatics/electrostatics}
+
+\graphicspath{{./}{AcousticWaves/}}
+\include{AcousticWaves/helmholtz}
+
+
+% this has changed!
+%\graphicspath{{./}{CapacitanceMatrix/}}
+%\include{CapacitanceMatrix/CapacitanceMatrix}
+
+\graphicspath{{./}{InductionHeating/}}
+\include{InductionHeating/ind_heat}
+
+%\graphicspath{{./}{FluidStructureBeam/}}
+%\include{FluidStructureBeam/Fsi}
+
+\graphicspath{{./}{ThermalActuator/}}
+\include{ThermalActuator/thermal_actuator}
+
+\graphicspath{{./}{CoatingProcess/}}
+\include{CoatingProcess/coat}
+
+\graphicspath{{./}{ArteryFlow/}}
+\include{ArteryFlow/arteryflow}
+
+
+
+%\part{Utility Problems}
+
+%\graphicspath{{./}{TemperatureOperatorSplitting/}}
+%\include{TemperatureOperatorSplitting/os-capability}
+
+\graphicspath{{./}{PoissonBEM/}}
+\include{PoissonBEM/PoissonBEM}
+
+\graphicspath{{./}{Temperature1D/}}
+\include{Temperature1D/1dheat}
+
+\graphicspath{{./}{FlowLinearRestriction/}}
+\include{FlowLinearRestriction/linearrestriction}
+
+\graphicspath{{./}{FlowStreamlines/}}
+\include{FlowStreamlines/streamlines}
+
+\graphicspath{{./}{Microfluidic/}}
+\include{Microfluidic/mfluid}
+
+\graphicspath{{./}{PassiveElements/}}
+\include{PassiveElements/passive}
+
+
+% Under construction
+%\graphicspath{{./}{elast_elstat_beam3d/}}
+%\include{elast_elstat_beam3d/elast_elstat_beam}
+
+
+% Now these are truly obsolete so let's not include them any more
+%\part{Obsolite Problems}
+
+%These tutorials have become obsolete due to the transition from 
+%ElmerFront to ElmerGUI. If you still want to continue using ElmerFront these
+%tutorials may be perfectly valid.
+
+%\graphicspath{{./}{TemperatureAngle/}}
+%\include{TemperatureAngle/TempDist}
+
+%\graphicspath{{./}{ElasticBeam/}}
+%\include{ElasticBeam/ElasticBeam}
+
+%\graphicspath{{./}{FlowStepIncompressible/}}
+%\include{FlowStepIncompressible/flow_step}
+
+%\graphicspath{{./}{RayleighBenard/}}
+%\include{RayleighBenard/RayleighBenard}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendices 
+
+\appendix
+
+%\graphicspath{{./}{units/}}
+%\include{units/units}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\cleardoublepage 
+\phantomsection % sets an anchor
+\addcontentsline{toc}{part}{Index}
+
+% Include the index
+\printindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

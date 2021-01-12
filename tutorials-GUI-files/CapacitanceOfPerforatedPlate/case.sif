@@ -14,9 +14,9 @@ Simulation
   Output Intervals = 1
   Timestepping Method = BDF
   BDF Order = 1
+  Coordinate Scaling = 0.001
   Solver Input File = case.sif
   Post File = case.vtu
-Coordinate Scaling = 0.001
 End
 
 Constants
@@ -36,11 +36,10 @@ End
 
 Solver 1
   Equation = Electrostatics
-  Calculate Electric Energy = True
   Calculate Electric Field = True
-  Variable = Potential
   Procedure = "StatElecSolve" "StatElecSolver"
-  Calculate Electric Flux = True
+  Variable = Potential
+  Calculate Electric Energy = True
   Exec Solver = Always
   Stabilize = True
   Bubbles = False
@@ -56,10 +55,11 @@ Solver 1
   Linear System Iterative Method = BiCGStab
   Linear System Max Iterations = 500
   Linear System Convergence Tolerance = 1.0e-10
+  BiCGstabl polynomial degree = 2
   Linear System Preconditioning = ILU0
   Linear System ILUT Tolerance = 1.0e-3
   Linear System Abort Not Converged = False
-  Linear System Residual Output = 1
+  Linear System Residual Output = 10
   Linear System Precondition Recompute = 1
 End
 
@@ -70,13 +70,13 @@ End
 
 Material 1
   Name = "Air (room temperature)"
-  Heat Conductivity = 0.0257
   Heat Capacity = 1005.0
   Density = 1.205
-  Relative Permittivity = 1.00059
+  Heat Conductivity = 0.0257
   Viscosity = 1.983e-5
-  Sound speed = 343.0
   Heat expansion Coefficient = 3.43e-3
+  Relative Permittivity = 1.00059
+  Sound speed = 343.0
 End
 
 Boundary Condition 1

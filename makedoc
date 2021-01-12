@@ -1,7 +1,7 @@
 #!/bin/sh 
 # make the pdf documentation and put them to a subdirectory ElmerDocumentation
 
-modules="gui tutorials-GUI tutorials-CL"
+modules="latex-elmergui latex-tutorials-CL latex-tutorials-GUI"
 for m in $modules; do
   cd $m && make manual && make install && make clean && cd ..
 done

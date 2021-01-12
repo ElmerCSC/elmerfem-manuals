@@ -7,7 +7,7 @@ End
 
 Simulation
   Max Output Level = 5
-  Coordinate System = Axi Symmetric
+  Coordinate System = Cartesian
   Coordinate Mapping(3) = 1 2 3
   Simulation Type = Steady state
   Steady State Max Iterations = 1
@@ -69,6 +69,34 @@ Body 6
   Material = 1
 End
 
+Solver 2
+  Equation = MgDyn2DPost
+  Target Variable Complex = True
+  Procedure = "MagnetoDynamics2D" "BSolver"
+  Calculate Joule Heating = True
+  Exec Solver = Always
+  Stabilize = True
+  Bubbles = False
+  Lumped Mass Matrix = False
+  Optimize Bandwidth = True
+  Steady State Convergence Tolerance = 1.0e-5
+  Nonlinear System Convergence Tolerance = 1.0e-7
+  Nonlinear System Max Iterations = 20
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-3
+  Nonlinear System Relaxation Factor = 1
+  Linear System Solver = Iterative
+  Linear System Iterative Method = BiCGStab
+  Linear System Max Iterations = 500
+  Linear System Convergence Tolerance = 1.0e-10
+  BiCGstabl polynomial degree = 2
+  Linear System Preconditioning = ILU0
+  Linear System ILUT Tolerance = 1.0e-3
+  Linear System Abort Not Converged = False
+  Linear System Residual Output = 10
+  Linear System Precondition Recompute = 1
+End
+
 Solver 1
   Equation = MgDyn2DHarmonic
   Procedure = "MagnetoDynamics2D" "MagnetoDynamics2DHarmonic"
@@ -88,44 +116,18 @@ Solver 1
   Linear System Iterative Method = BiCGStab
   Linear System Max Iterations = 500
   Linear System Convergence Tolerance = 1.0e-10
+  BiCGstabl polynomial degree = 2
   Linear System Preconditioning = ILU0
   Linear System ILUT Tolerance = 1.0e-3
   Linear System Abort Not Converged = False
-  Linear System Residual Output = 1
-  Linear System Precondition Recompute = 1
-End
-
-Solver 2
-  Equation = MgDyn2DPost
-  Calculate Joule Heating = True
-  Target Variable Complex = True
-  Procedure = "MagnetoDynamics2D" "BSolver"
-  Exec Solver = Always
-  Stabilize = True
-  Bubbles = False
-  Lumped Mass Matrix = False
-  Optimize Bandwidth = True
-  Steady State Convergence Tolerance = 1.0e-5
-  Nonlinear System Convergence Tolerance = 1.0e-7
-  Nonlinear System Max Iterations = 20
-  Nonlinear System Newton After Iterations = 3
-  Nonlinear System Newton After Tolerance = 1.0e-3
-  Nonlinear System Relaxation Factor = 1
-  Linear System Solver = Iterative
-  Linear System Iterative Method = BiCGStab
-  Linear System Max Iterations = 500
-  Linear System Convergence Tolerance = 1.0e-10
-  Linear System Preconditioning = ILU0
-  Linear System ILUT Tolerance = 1.0e-3
-  Linear System Abort Not Converged = False
-  Linear System Residual Output = 1
+  Linear System Residual Output = 10
   Linear System Precondition Recompute = 1
 End
 
 Equation 1
   Name = "Induction"
   Angular Frequency = 50.0e3
-  Active Solvers(2) = 1 2
+  Active Solvers(2) = 2 1
 End
 
 Material 1
@@ -148,17 +150,17 @@ End
 
 Material 4
   Name = "Powder"
-  Electric Conductivity = 1.0e4
   Relative Permeability = 1.0
+  Electric Conductivity = 1.0e4
 End
 
 Body Force 1
   Name = "CurrentSource"
-  Current Density = 1.0e6
+  Current Density = 2.5e5
 End
 
 Boundary Condition 1
-  Target Boundaries(2) = 24 25 
-  Name = "Infinity"
+  Target Boundaries(2) = 22 23 
+  Name = "Farfield"
   Infinity BC = True
 End

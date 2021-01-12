@@ -15,7 +15,7 @@ Simulation
   Timestepping Method = BDF
   BDF Order = 1
   Solver Input File = case.sif
-  Post File = case.ep
+  Post File = case.vtu
 End
 
 Constants
@@ -26,12 +26,19 @@ Constants
   Unit Charge = 1.602e-19
 End
 
+Body 1
+  Target Bodies(1) = 1
+  Name = "Body Property 1"
+  Equation = 1
+  Material = 1
+End
+
 Solver 1
   Equation = Electrostatics
-  Calculate Electric Energy = True
   Calculate Electric Field = True
-  Variable = -dofs 1 Potential
+  Variable = Potential
   Procedure = "StatElecSolve" "StatElecSolver"
+  Calculate Electric Energy = True
   Exec Solver = Always
   Stabilize = True
   Bubbles = False
@@ -47,6 +54,7 @@ Solver 1
   Linear System Iterative Method = BiCGStab
   Linear System Max Iterations = 500
   Linear System Convergence Tolerance = 1.0e-8
+  BiCGstabl polynomial degree = 2
   Linear System Preconditioning = ILU0
   Linear System ILUT Tolerance = 1.0e-3
   Linear System Abort Not Converged = False
@@ -65,13 +73,13 @@ Material 1
 End
 
 Boundary Condition 1
-  Target Boundaries(1) = 1
-  Name = "Capacitor"
-  Potential = 1
+  Target Boundaries(1) = 2 
+  Name = "Ground"
+  Potential = 0
 End
 
 Boundary Condition 2
-  Target Boundaries(1) = 2
-  Name = "Ground"
-  Potential = 0
+  Target Boundaries(1) = 1 
+  Name = "Capacitor"
+  Potential = 1
 End
