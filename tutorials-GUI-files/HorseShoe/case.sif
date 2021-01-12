@@ -15,7 +15,7 @@ Simulation
   Timestepping Method = BDF
   BDF Order = 1
   Solver Input File = case.sif
-  Post File = case.ep
+  Post File = case.vtu
 End
 
 Constants
@@ -73,10 +73,11 @@ Solver 1
   Linear System Iterative Method = BiCGStab
   Linear System Max Iterations = 500
   Linear System Convergence Tolerance = 1.0e-10
+  BiCGstabl polynomial degree = 2
   Linear System Preconditioning = ILU0
   Linear System ILUT Tolerance = 1.0e-3
   Linear System Abort Not Converged = False
-  Linear System Residual Output = 1
+  Linear System Residual Output = 10
   Linear System Precondition Recompute = 1
 End
 
@@ -98,10 +99,11 @@ Solver 2
   Linear System Iterative Method = BiCGStab
   Linear System Max Iterations = 500
   Linear System Convergence Tolerance = 1.0e-10
+  BiCGstabl polynomial degree = 2
   Linear System Preconditioning = ILU0
   Linear System ILUT Tolerance = 1.0e-3
   Linear System Abort Not Converged = False
-  Linear System Residual Output = 1
+  Linear System Residual Output = 10
   Linear System Precondition Recompute = 1
 End
 
@@ -128,8 +130,8 @@ End
 
 Material 4
   Name = "IronMinus"
-  Magnetization 1 = -750.0e3
   Relative Permeability = 5000.0
+  Magnetization 1 = -750.0e3
 End
 
 Boundary Condition 1
