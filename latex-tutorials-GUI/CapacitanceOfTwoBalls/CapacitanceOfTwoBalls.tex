@@ -34,10 +34,13 @@ the balls are assumed to have a radius of $a=0.5$ and they are placed at distanc
 each other (measured from the ball origins). 
 
 
-\subsection*{Meshing}
+\subsection*{Meshing with Netgen (Optional)}
 
-In this case meshing is performed with the graphical user interface of netgen. Netgen creates tetrahedral quality meshes
-and provides a native output for Elmer.
+If you have Netgen installed and running, then you can generate the mesh before starting ElmerGUI, following the below instructions.  
+
+If you don't have Netgen available, don't worry, an Elmer mesh has been provided in the `CapacitanceOfTwoBalls'  subfolder under `tutorials-GUI-files'.  Just load the ElmerGUI project in that subfolder, and it will load the mesh for you.  After loading the mesh, skip ahead to the next section, `Solution Procedure'.
+
+If you have Netgen installed, then meshing is performed with the graphical user interface of Netgen. Netgen creates tetrahedral quality meshes and provides a native output for Elmer.
 At the time of writing this tutorial the quadratic elements had some problems with numbering 
 but these should not affect the linear elements.
 
@@ -64,7 +67,7 @@ Open the file and apply the default meshing. In this example two consecutive uni
 final mesh consisted of 41\,693 nodes and 238\,976 linear tetrahedrons. 
 
 To save the mesh first choose under \texttt{File} the \texttt{Export Filetype} to be \texttt{Elmer}. Then choose
-\texttt{Export Mesh} and save the mesh into a suitable directory to be opended
+\texttt{Export Mesh} and save the mesh into a suitable directory to be opened
 by ElmerGUI. 
 
 \begin{figure}[h]
@@ -108,6 +111,15 @@ File
 \includegraphics[width=140mm]{ElmerGUI_capture}
 \caption{The mesh with one highlighted ball as seen in ElmerGUI}\label{fg:ballselmergui}
 \end{figure}  
+
+The display in ElmerGUI upon loading the mesh will show the outside of the large ball.  
+To view the inner two smaller balls, double click on the outside of the large ball, then 
+click on `Hide/show selected'.
+
+\ttbegin
+View 
+  Hide/show selected   Ctrl+H
+\ttend
 
 
 After we have the mesh we start to go through the Model menu from the top to bottom. 
@@ -156,7 +168,7 @@ Model
     Name = Ideal
     Electrostatics
       Relative Permittivity = 1.0
-    Apply to Bodies = 1 
+    Apply to Bodies = 1 2
     Add
     OK
 \ttend
