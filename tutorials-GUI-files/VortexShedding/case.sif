@@ -17,7 +17,7 @@ Simulation
   Timestep intervals = 200
   Timestep Sizes = $ 8.0/200
   Solver Input File = case.sif
-  Post File = case.ep
+  Post File = case.vtu
 End
 
 Constants
@@ -26,6 +26,13 @@ Constants
   Permittivity of Vacuum = 8.8542e-12
   Boltzmann Constant = 1.3807e-23
   Unit Charge = 1.602e-19
+End
+
+Body 1
+  Target Bodies(1) = 1
+  Name = "Body Property 1"
+  Equation = 1
+  Material = 1
 End
 
 Solver 1
@@ -47,6 +54,7 @@ Solver 1
   Linear System Iterative Method = BiCGStab
   Linear System Max Iterations = 500
   Linear System Convergence Tolerance = 1.0e-6
+  BiCGstabl polynomial degree = 2
   Linear System Preconditioning = ILU0
   Linear System ILUT Tolerance = 1.0e-3
   Linear System Abort Not Converged = False
@@ -66,28 +74,21 @@ Material 1
 End
 
 Boundary Condition 1
-  Target Boundaries(1) = 1
+  Target Boundaries(1) = 1 
   Name = "Inlet"
   Velocity 1 = Variable Coordinate 2; Real MATC "4*1.5*tx*(0.41-tx)/0.41^2"
   Velocity 2 = 0.0
 End
 
 Boundary Condition 2
-  Target Boundaries(1) = 2
-  Name = "Outlet"
+  Target Boundaries(2) = 3 4 
+  Name = "Walls"
   Velocity 2 = 0.0
+  Velocity 1 = 0.0
 End
 
 Boundary Condition 3
-  Target Boundaries(1) = 3
-  Name = "Walls"
-  Velocity 1 = 0.0
-  Velocity 2 = 0.0
-End
-
-Boundary Condition 4
-  Target Boundaries(1) = 4
-  Name = "Walls"
-  Velocity 1 = 0.0
+  Target Boundaries(1) = 2 
+  Name = "Outlet"
   Velocity 2 = 0.0
 End

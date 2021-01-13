@@ -15,7 +15,7 @@ Simulation
   Timestepping Method = BDF
   BDF Order = 1
   Solver Input File = case.sif
-  Post File = case.ep
+  Post File = case.vtu
 End
 
 Constants
@@ -53,7 +53,8 @@ Solver 1
   Linear System Iterative Method = GCR
   Linear System Max Iterations = 500
   Linear System Convergence Tolerance = 1.0e-8
-  Linear System Preconditioning = ILU1
+  BiCGstabl polynomial degree = 2
+  Linear System Preconditioning = ILU0
   Linear System ILUT Tolerance = 1.0e-3
   Linear System Abort Not Converged = False
   Linear System Residual Output = 1
@@ -69,8 +70,8 @@ End
 Material 1
   Name = "Pine"
   Density = 550.0
-  Poisson ratio = 0.37
   Youngs modulus = 10.0e9
+  Poisson ratio = 0.37
 End
 
 Body Force 1
@@ -79,15 +80,15 @@ Body Force 1
 End
 
 Boundary Condition 1
-  Target Boundaries(1) = 5
+  Target Boundaries(1) = 5 
   Name = "Wall"
-  Displacement 3 = 0.0
-  Displacement 2 = 0.0
   Displacement 1 = 0.0
+  Displacement 2 = 0.0
+  Displacement 3 = 0.0
 End
 
 Boundary Condition 2
-  Target Boundaries(1) = 6
+  Target Boundaries(1) = 6 
   Name = "Mass"
   Force 2 = -4.0e5
 End
