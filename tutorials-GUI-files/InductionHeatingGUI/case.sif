@@ -7,7 +7,7 @@ End
 
 Simulation
   Max Output Level = 5
-  Coordinate System = Cartesian
+  Coordinate System = Axi Symmetric
   Coordinate Mapping(3) = 1 2 3
   Simulation Type = Steady state
   Steady State Max Iterations = 1
@@ -71,9 +71,9 @@ End
 
 Solver 2
   Equation = MgDyn2DPost
-  Target Variable Complex = True
-  Procedure = "MagnetoDynamics2D" "BSolver"
   Calculate Joule Heating = True
+  Procedure = "MagnetoDynamics2D" "BSolver"
+  Target Variable Complex = True
   Exec Solver = Always
   Stabilize = True
   Bubbles = False
@@ -99,8 +99,8 @@ End
 
 Solver 1
   Equation = MgDyn2DHarmonic
-  Procedure = "MagnetoDynamics2D" "MagnetoDynamics2DHarmonic"
   Variable = Potential[Potential Re:1 Potential:1]
+  Procedure = "MagnetoDynamics2D" "MagnetoDynamics2DHarmonic"
   Exec Solver = Always
   Stabilize = True
   Bubbles = False
@@ -138,8 +138,8 @@ End
 
 Material 2
   Name = "Graphite"
-  Electric Conductivity = 2.0e4
   Relative Permeability = 1.0
+  Electric Conductivity = 2.0e4
 End
 
 Material 3
@@ -150,8 +150,8 @@ End
 
 Material 4
   Name = "Powder"
-  Relative Permeability = 1.0
   Electric Conductivity = 1.0e4
+  Relative Permeability = 1.0
 End
 
 Body Force 1
@@ -160,7 +160,7 @@ Body Force 1
 End
 
 Boundary Condition 1
-  Target Boundaries(2) = 22 23 
+  Target Boundaries(2) = 24 25 
   Name = "Farfield"
   Infinity BC = True
 End
