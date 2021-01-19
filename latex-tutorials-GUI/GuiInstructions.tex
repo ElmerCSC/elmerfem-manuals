@@ -1,41 +1,48 @@
-\chapter*{Instructions for the Elmer GUI tutorials}
+\chapter*{Instructions for the Elmer tutorials using ElmerGUI}
 
-Here are some instructions for following the GUI tutorials:
+Here are some instructions for following the Elmer tutorials:
 \begin{itemize}
-\item All the needed input files should be available among the \texttt{ElmerGUI/samples} 
-  directory that should have come with the installation. Look under a subdirectory
-  named after the suffix of the sample file.
+\item All of the needed geometry input files should be available among 
+the \texttt{ElmerGUI/samples} directory that should have come with the 
+Elmer installation. Look under a subdirectory named after the suffix of the sample file.  
 %
 \item The instructions written in \texttt{verbatim} refer to operations 
   with the GUI. Indentation means step in the menu hierarchy. 
-  The instructions should not be mixed with those in the command file. 
+  The ElmerGUI instructions should not be mixed with the statements in 
+the .sif command file. 
 %
 \item The menu structure for the default set of equations is located 
   in directory \texttt{edf}, there are a few additional ones in 
   directory \texttt{edf-extra}. These may be copied to the directory \texttt{edf}
-  permanently, or be appended to the menus while running the ElmerGUI. 
+  permanently, or may be appended to the menus while running the ElmerGUI. 
 %
 \item The default menu structure may differ from the configuration used
   when writing the tutorial. Hence the user is encouraged to check by herself 
-  whether the menu structures exist or not. 
+  whether the menu structure needed for a particular tutorial has been loaded 
+into ElmerGUI. 
 %
-\item After having once defined the case you may go to the working directory 
-  and launch ElmerSolver from command-line. There you may edit the .sif file 
-  to alter the parameters.
+\item After having once defined the case in ElmerGUI you may go to the 
+working directory and launch ElmerSolver from command-line. There you 
+may manually edit the .sif file using a text editor to alter the parameters.
 %
-\item Manual alteration to the sif file will not be communicated to the
-  ElmerGUI project. All edits or changes will be overwritten by the GUI when saving the 
-  project.
+\item Manual alteration to the .sif file will not be communicated to the
+  ElmerGUI project. All edits or changes will be overwritten by ElmerGUI the 
+next time the project is saved.  Copy the manually altered .sif files to another
+folder or change the name of the .sif file, to prevent losing your edits.
 %
-\item It is assumed that the default method for visualization is Paraview (or ViSit) using \texttt{.vtu} format.
-  \texttt{ElmerPost} that uses the \texttt{.ep} format is no longer available in most installations.
-  Unfortunately, all of the tutorials do not yet use Paraview for visualization.
+\item It is assumed that the default method for visualization is Paraview (or ElmerVTK) 
+using \texttt{.vtu} format.  \texttt{ElmerPost} that uses the \texttt{.ep} 
+format is no longer available in most installations.  Unfortunately, not all of the tutorials 
+currently use Paraview for visualization.
   
-\item Since ElmerGUI v. 9.0 the VTK widget that comes with
-  ElmerGUI has been upgraded to use \texttt{.vtu} files. It may still be an ideal visualization tool
-  for most straight-forward demonstrations.
+\item Since ElmerGUI v. 9.0 the ElmerVTK widget that comes built into ElmerGUI has 
+been upgraded to use \texttt{.vtu} files. ElmerVTK may be an ideal visualization 
+tool for most straight-forward demonstrations, since it is easy to use.  More 
+complicated applications, such as animation of transient studies, may require the 
+use of Paraview.  Regardless of which post processing visualization tool is used, the
+construction of an ElmerGUI project remains the same for both.
 %
-\item The cases have been run a number of times but errors are still possible.
+\item These cases have been run a number of times but errors are still possible.
   Reporting them to elmeradm@csc.fi, for example, is greatly appreciated. 
   
 \end{itemize}

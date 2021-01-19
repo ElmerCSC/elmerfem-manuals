@@ -11,20 +11,20 @@
 
 \subsection*{Case definition}
 
-This tutorial is a natural contination of the tutorial~\ref{tut:stepflowgui}
-where the same case was solved with a smaller Reynolds number. It is advicable 
-to study that case before. 
+This tutorial is a natural continuation of the tutorial~\ref{tut:stepflowgui}
+where the same case was solved with a smaller Reynolds number. It is advisable 
+to study that case before working with this case. 
 
-When Reynolds number increases the 
-Navier-Stokes equations do not posses any steady-state 
+When the Reynolds number increases, the 
+Navier-Stokes equations do not possess any steady-state 
 solution. Basically the solution can be averaged simulating the transient 
 flow over time. However, the computational cost of this approach is often very 
 heavy particularly while at high Reynolds numbers the computational mesh
 in direct numerical simulation needs to be very dense. Instead its customary
-to solve timeaveraged equations. Unfortunately these equations include 
-unknown correlations between quantities that need to modeled in some way.
+to solve time averaged equations. Unfortunately these equations include 
+unknown correlations between quantities that need to modelled in some way.
 
-The workhorse of turbulence modeling is the $k-\varepsilon$ model which 
+The workhorse of turbulence modelling is the $k-\varepsilon$ model which 
 is used in this tutorial. The $k-\varepsilon$ model is a two-equation model
 that introduces two additional variables -- the turbulent kinetic energy $k$ and the 
 turbulent dissipation~$\varepsilon$
@@ -41,16 +41,16 @@ the vertical component is defined, $v_y=0.0$~m/s. At all other
 walls the no-slip boundary condition, $\vec{v}=0$, is applied. 
 
 Also the new turbulent variables require boundary conditions. 
-In the inflow the condition could reflect the values for developed turbulent
+In the inlet the condition should reflect the values for developed turbulent
 profile. Here we roughly estimate the turbulent kinetic energy and 
-elongate the distance before the step 
+elongate the inlet distance before the step 
 to have a fully developed turbulent profile. 
 From the literature it is the the turbulent intensity i.e. the 
 kinetic energy of turbulence vs. the kinetic energy of mean flow 
-scalas as $0.16$Re$^{-1/8}$. For our current configuration a estimate for the 
+scales as $0.16$Re$^{-1/8}$. For our current configuration an estimate for the 
 turbulent kinetic energy is 0.00457. 
 For the walls a no-slip condition is applied which also set the values of the
-turbulent parameters accordingly. Also boundary layer model could be used but here
+turbulent parameters accordingly. Also a boundary layer model could be used but here
 our mesh should be able to capture even the boundary phenomena quite well. 
 
 %\begin{figure}[h]
@@ -62,6 +62,21 @@ our mesh should be able to capture even the boundary phenomena quite well.
 
 
 \subsection*{Solution procedure}
+
+The definitions for the relevant equation are not loaded into ElmerGUI by default. Hence, 
+one needs to load these before starting the simulations.
+\ttbegin
+File 
+  Definitions
+    Append -> k-epsilon.xml
+\ttend
+The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.\\
+
+Optionally, one may copy the desired \texttt{xml} files to the \texttt{edf}-directory from the 
+directory \texttt{edf-extra} which will enable automatic loading of the 
+definitions every time ElmerGUI is started. By inspecting the definitions in 
+the \texttt{Elmer Definitions File editor} one
+may verify that the new definitions were really appended.\newline
 
 The mesh is given in ElmerGrid format in file \texttt{steplong.grd}, load this file.
 \ttbegin
@@ -79,8 +94,7 @@ After we have the mesh we start to go through the Model menu from the top to bot
 In the Setup we choose things related to the whole simulation.
 The steady-state simulation is carried out in 2-dimensional Cartesian
 coordinates, which are also the defaults.  
-The coupled system converges unfortunately quite slowly and hence we need to increase the number of maximum 
-iterations. 
+The coupled system converges unfortunately quite slowly and hence we need to increase the number of maximum iterations. 
 \ttbegin
 Model
   Setup 
@@ -92,12 +106,12 @@ Model
 In the equation section we choose the relevant equations and 
 parameters related to their solution. 
 In this case the Navier-Stokes and $k-\varepsilon$ equations are needed.
-We want to solve the Navier-Stokes and $k-\varepsilon$ equations iteratively using only one nonlinear iteration
+We want to solve the Navier-Stokes and $k-\varepsilon$ equations iteratively using only one non-linear iteration
 for optimal convergence of the coupled system. Some relaxation is needed in order to achieve convergence 
 at all. We also relax a little bit on the steady state convergence tolerance. 
 Initially the Navier-Stokes
 solver uses the more robust Picard iteration which may be changed to Newton iteration after the iteration 
-progresses. However, here we want to supress the use of Newton lineariarization since it seems to
+progresses. However, here we want to suppress the use of Newton linearisation since it seems to
 cause problems with the $k-\varepsilon$ equation.
 \ttbegin
 Model
@@ -126,7 +140,7 @@ Model
 \ttend        
 
 The Material section includes all the material parameters.
-They are divided to generic parameters which are direct properties of the material
+They are divided into generic parameters which are direct properties of the material
 without making any assumptions on the physical model, such as the density. Other properties assume
 a physical law, such as viscosity. For the model parameters of the turbulent equations we are 
 happy with the defaults. 
@@ -145,7 +159,7 @@ Model
 \ttend
 
 The current case does not have any body forces. To help in the convergence we make 
-an rude intial guess.
+a rude initial guess.
 \ttbegin
 Model
   Initial Condition 
@@ -156,13 +170,16 @@ Model
     K-Epsilon
       Kinetic Energy = 0.00457
       Kinetic Dissipation = 1.0e-4
+    Apply to Bodies = Body 1 
+    Add
+    OK
 \ttend
 
-When defining Boundary conditions it is possible to assign the to boundaries immediately, or to use mouse
-selection to assign them later. In this case we have use the latter since we do not necessarily know 
+When defining Boundary conditions it is possible to assign to the boundaries immediately, or to use mouse
+selection to assign them later. In this case we use the latter approach since we do not necessarily know 
 the numbering of boundaries by heart.
 There is a special boundary condition that takes care of the 
-Boundary conditions for the noslip walls for both the Navier-Stokes and
+Boundary conditions for the no-slip walls for both the Navier-Stokes and
 $k-\varepsilon$ equation. Additionally there are inlet and outlet conditions. 
 For the inlet click \texttt{Enter} to open an edit box for the \texttt{Velocity 1} when typing in the expression.
 which will be evaluated at run-time so that $v_x=6(y-1)(2-y)$. 
@@ -172,7 +189,7 @@ Model
     Add 
     Name = Inlet
     Navier-Stokes 
-      Velocity 1 = Variable Coordinate 2; Real MATC ``6*(tx-1)*(2-tx)''
+      Velocity 1 = Variable Coordinate 2; Real MATC "6*(tx-1)*(2-tx)"
       Velocity 2 = 0.0
     K-Epsilon
       Kinetic Energy = 0.00457
