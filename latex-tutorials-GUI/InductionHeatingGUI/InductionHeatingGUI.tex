@@ -1,4 +1,4 @@
-\chapter{Harmonic magnetic field in 2D - Induction heating of a graphite crucible}
+\chapter{Harmonic magnetic field -- 2D -- Induction heating of a graphite crucible}
 
 \modinfo{Directory}{InductionHeatingGUI}
 \modinfo{Solvers}{\Idx{MagnetoDynamics2DHarmonic}}
@@ -9,19 +9,15 @@
 
 \subsection*{Case definition}
 
-At high temperatures the most practical 
-method to heat up the crucible 
-is by electromagnetic induction. 
-The induction coil generates an alternating 
+At high temperatures the most practical method to heat up the crucible 
+is by electromagnetic induction.  The induction coil generates an alternating 
 current that flows through the crucible. 
 The Ohmic resistance encountered by this current dissipates 
-energy, thereby directly
-heating the crucible via internal heat generation.
+energy, thereby directly heating the crucible via internal heat generation.
 
 The tutorial case is a simple axi-symmetric crucible that could be
 used, for example, to grow silicon carbide (SiC) with physical vapour deposition.
-The crucible 
-is made of dense graphite and isolated by 
+The crucible is made of dense graphite and isolated by 
 porous graphite. At the bottom of the crucible there is
 some SiC powder. The physical properties of the 
 material are given in Table~\ref{tab:ind_heat_a}. The dimensions of the
@@ -86,14 +82,13 @@ The ElmerGrid plug-in of ElmerGUI will read the mesh and convert it to a format 
 \begin{figure}[h]
 \centering
 \includegraphics[width=60mm]{crucible_mesh}
-\caption{The mesh for the horseshoe and surrounding air as see in ElmerGUI}\label{fg:crucible_mesh}
+\caption{The mesh for the crucible and coil}\label{fg:crucible_mesh}
 \end{figure}  
 
 
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the Setup we choose things related to the whole simulation such as file names, 
-time stepping, constants etc.
-Currently the permeability of vacuum is not given
+time stepping, constants etc.  Currently the permeability of vacuum is not given
 in the ElmerGUI. To set other than the default value for it, the free text box can be used. 
 The steady-state simulation is carried out in rotationally symmetric 2-dimensional 
 coordinates which must be changed.
@@ -168,8 +163,7 @@ Model
 \ttend
 
 We may now assign the material properties by selecting with the mouse.
-This spares us of the 
-need to know the indexes of each body.
+This spares us of the need to know the indexes of each body.
 \ttbegin
 Model
   Set body properties
@@ -181,7 +175,7 @@ Model
     Choose internal air above the powder-> set Material to Air
 \ttend
 
-We need to provide a current source in order for the equation to have a nontrivial solution.
+We need to provide a current source in order for the equation to have a non-trivial solution.
 \ttbegin
 Model
   BodyForce
@@ -191,7 +185,7 @@ Model
     Add
     OK
 \ttend   
-This must be also joinded with the coil
+This must be also joined with the coil
 \ttbegin
 Model
   Set body properties
@@ -199,7 +193,7 @@ Model
 \ttend
 
 
-We have just one boundary condition i.e. the outer boundary for which we use the farfield condition.
+We have just one boundary condition i.e. the outer boundary for which we use the far field condition.
 \ttbegin
 Model
   BoundaryCondition
@@ -216,7 +210,7 @@ need to know the indexes of each boundary.
 \ttbegin
 Model
   Set boundary properties
-    Choose the 2 pieces of the exterior -> set boundary condition Farfield
+    Choose the 2 pieces of the exterior -> set boundary condition Far field
 \ttend
 
 For the execution 
@@ -257,7 +251,7 @@ Run
 
 With the given computational mesh the problem is solved in 
 a few seconds. With the 6\,542 linear triangles the heating
-efficieny is estimated to be 18.9~W. The corresponding results are shown
+efficiency is estimated to be 18.9~W. The corresponding results are shown
 in Fig.~\ref{fig:ind_heat1}.
 
 It can be noted that would the estimated heating efficiency be different from the known one
