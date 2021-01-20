@@ -68,8 +68,8 @@ End
 
 Material 1
   Name = "Ideal"
-  Heat Conductivity = 1.0
   Density = 1.0
+  Heat Conductivity = 1.0
 End
 
 Body Force 1
