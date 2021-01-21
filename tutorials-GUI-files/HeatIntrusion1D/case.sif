@@ -11,7 +11,7 @@ Simulation
   Coordinate Mapping(3) = 1 2 3
   Simulation Type = Transient
   Steady State Max Iterations = 1
-  Output Intervals = 2
+  Output Intervals = 100
   Timestepping Method = BDF
   BDF Order = 2
   Timestep intervals = 10000
@@ -70,8 +70,8 @@ End
 
 Material 1
   Name = "Granite"
-  Heat Conductivity = 2.5
   Heat Capacity = 1250.0
+  Heat Conductivity = 2.5
   Density = 2700.0
 End
 
