@@ -21,7 +21,7 @@ End
 Constants
   Gravity(4) = 0 -1 0 9.82
   Stefan Boltzmann = 5.67e-08
-  Permittivity of Vacuum = 8.8542e-12
+  Permittivity of Vacuum = 1.0
   Boltzmann Constant = 1.3807e-23
   Unit Charge = 1.602e-19
 End
@@ -31,20 +31,21 @@ Body 1
   Name = "Body Property 1"
   Equation = 1
   Material = 1
-  Body Force = 1
 End
 
 Solver 1
-  Equation = Heat Equation
-  Variable = Temperature
-  Procedure = "HeatSolve" "HeatSolver"
+  Equation = Electrostatics
+  Procedure = "StatElecSolve" "StatElecSolver"
+  Calculate Electric Field = True
+  Calculate Electric Energy = True
+  Variable = Potential
   Exec Solver = Always
   Stabilize = True
   Bubbles = False
   Lumped Mass Matrix = False
   Optimize Bandwidth = True
   Steady State Convergence Tolerance = 1.0e-5
-  Nonlinear System Convergence Tolerance = 1.0e-7
+  Nonlinear System Convergence Tolerance = 1.0e-8
   Nonlinear System Max Iterations = 20
   Nonlinear System Newton After Iterations = 3
   Nonlinear System Newton After Tolerance = 1.0e-3
@@ -52,33 +53,33 @@ Solver 1
   Linear System Solver = Iterative
   Linear System Iterative Method = BiCGStab
   Linear System Max Iterations = 500
-  Linear System Convergence Tolerance = 1.0e-10
+  Linear System Convergence Tolerance = 1.0e-8
   BiCGstabl polynomial degree = 2
   Linear System Preconditioning = ILU0
   Linear System ILUT Tolerance = 1.0e-3
   Linear System Abort Not Converged = False
-  Linear System Residual Output = 10
+  Linear System Residual Output = 1
   Linear System Precondition Recompute = 1
 End
 
 Equation 1
-  Name = "Heat equation"
+  Name = "Electrostatics"
   Active Solvers(1) = 1
 End
 
 Material 1
   Name = "Ideal"
-  Density = 1.0
-  Heat Conductivity = 1.0
-End
-
-Body Force 1
-  Name = "Heating"
-  Heat Source = 1.0
+  Relative Permittivity = 1.0
 End
 
 Boundary Condition 1
+  Target Boundaries(1) = 2 
+  Name = "Ground"
+  Potential = 0
+End
+
+Boundary Condition 2
   Target Boundaries(1) = 1 
-  Name = "Zero"
-  Temperature = 0.0
+  Name = "Capacitor"
+  Potential = 1
 End

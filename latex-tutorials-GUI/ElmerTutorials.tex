@@ -116,24 +116,23 @@
 
 %\part{ElmerGUI Problems}
 
-%\graphicspath{{./}{HeatIntrusion1D/}}
-%\include{HeatIntrusion1D/HeatIntrusion1D}
-
-
-%3D alternative
+%\part{Heat}
+%3D heat equation
 \graphicspath{{./}{TemperatureGeneric/}}
 \include{TemperatureGeneric/TempDist}
 
-%2D alternative
-%\graphicspath{{./}{TemperatureAngleGUI/}}
-%\include{TemperatureAngleGUI/TempDist}
+%2D heat equation
+\graphicspath{{./}{TemperatureAngleGUI/}}
+\include{TemperatureAngleGUI/TempDist}
 
+%1D heat equation
+\graphicspath{{./}{HeatIntrusion1D/}}
+\include{HeatIntrusion1D/HeatIntrusion1D}
+
+%\part{Elastic}
 %2D
-%\graphicspath{{./}{ElasticBeamGUI/}}
-%\include{ElasticBeamGUI/ElasticBeamGUI}
-
-\graphicspath{{./}{ModelPDE3D/}}
-\include{ModelPDE3D/ModelPDE3D}
+\graphicspath{{./}{ElasticBeam2D/}}
+\include{ElasticBeam2D/ElasticBeam2D}
 
 \graphicspath{{./}{ElasticBeam3D/}}
 \include{ElasticBeam3D/ElasticBeam3D}
@@ -141,17 +140,42 @@
 \graphicspath{{./}{ElasticHookNonlinear/}}
 \include{ElasticHookNonlinear/ElasticHookNonlinear}
 
+\graphicspath{{./}{ElasticPlateLinear/}}
+\include{ElasticPlateLinear/ElasticPlateLinear}
+
 \graphicspath{{./}{ElasticPlateEigenmodesGUI/}}
 \include{ElasticPlateEigenmodesGUI/elasticplate}
 
+%\part{Capacitance}
+%The perforated plate case is much fancier
+\graphicspath{{./}{FringeCapacitance/}}
+\include{FringeCapacitance/FringeCapacitance}
+
 \graphicspath{{./}{CapacitanceOfTwoBalls/}}
 \include{CapacitanceOfTwoBalls/CapacitanceOfTwoBalls}
+
+\graphicspath{{./}{CapacitanceOfPerforatedPlate/}}
+\include{CapacitanceOfPerforatedPlate/CapacitanceOfPerforatedPlate}
+
+%\part{Magnetism}
 
 \graphicspath{{./}{MagneticFieldWire/}}
 \include{MagneticFieldWire/MagneticFieldWire}
 
 \graphicspath{{./}{HorseShoeGUI/}}
 \include{HorseShoeGUI/HorseShoeGUI}
+
+%\part{Induction}
+
+\graphicspath{{./}{InductionHeatingGUI/}}
+\include{InductionHeatingGUI/InductionHeatingGUI}
+
+%\part{Waves}
+
+\graphicspath{{./}{WaveguideGUI/}}
+\include{WaveguideGUI/waveguide}
+
+%\part{Flow}
 
 \graphicspath{{./}{FlowStepGUI/}}
 \include{FlowStepGUI/FlowStepGUI}
@@ -171,27 +195,16 @@
 \graphicspath{{./}{RayleighBenardGUI/}}
 \include{RayleighBenardGUI/RayleighBenard}
 
-
-\graphicspath{{./}{CapacitanceOfPerforatedPlate/}}
-\include{CapacitanceOfPerforatedPlate/CapacitanceOfPerforatedPlate}
-
-
-\graphicspath{{./}{InductionHeatingGUI/}}
-\include{InductionHeatingGUI/InductionHeatingGUI}
-
-\graphicspath{{./}{WaveguideGUI/}}
-\include{WaveguideGUI/waveguide}
-
-
-%The upper is much fancier
-%\graphicspath{{./}{FringeCapacitance/}}
-%\include{FringeCapacitance/FringeCapacitance}
-
-%\part{Simple Glaceology Problems}
+%\part{Glaciology Problems}
 
 \graphicspath{{./}{ToyGlacierTemperature/}}
 \include{ToyGlacierTemperature/TempDist}
 \include{ToyGlacierTemperature/TempAndFlow}
+
+%\part{Modeling PDE}
+
+\graphicspath{{./}{ModelPDE3D/}}
+\include{ModelPDE3D/ModelPDE3D}
 
 
 %\end{document}

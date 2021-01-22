@@ -1,6 +1,6 @@
-\chapter{Linear elasticity equation -- Loaded elastic beam}
+\chapter{Linear elasticity equation -- 2D -- Loaded elastic beam}
 
-\modinfo{Directory}{ElasticBeamGUI}
+\modinfo{Directory}{ElasticBeam2D}
 \modinfo{Solvers}{\Idx{StressSolve}}
 \modinfo{Tools}{\Idx{ElmerGUI}}
 \modinfo{Dimensions}{2D, Steady-state}
@@ -51,7 +51,8 @@ The mesh is given in ElmerGrid format in file \texttt{beam.grd}, load this file.
 File 
   Open -> beam.grd
 \ttend
-You should obtain your mesh and may check that it consists of 1000 biquadratic elements.
+You should obtain your mesh, \texttt{Model, Summary...} and may check that
+it consists of 1000 biquadratic elements.
 \begin{figure}[h!]
 \begin{center}
   \includegraphics[width=0.8\textwidth,viewport=0 30 900 270,clip]{beammesh}
@@ -63,8 +64,7 @@ You should obtain your mesh and may check that it consists of 1000 biquadratic e
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the Setup we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
-The simulation is carried in steady-state in 2-dimensional Cartesian
-coordinates. 
+The simulation is carried in steady-state in 2-dimensional Cartesian coordinates. 
 \ttbegin
 Model
   Setup 
@@ -73,8 +73,7 @@ Model
 \ttend
 
 In the Equation section we choose the relevant equations which in this case only includes 
-the \texttt{Linear elasticity} equation
-which solves the problem according to 
+the \texttt{Linear elasticity} equation which solves the problem according to 
 linear elastic theory.
 In this case we assume that the beam is thin in the $z$-direction and hence assume plane stresses.
 When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
