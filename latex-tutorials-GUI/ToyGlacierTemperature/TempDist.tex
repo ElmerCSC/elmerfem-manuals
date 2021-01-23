@@ -43,8 +43,8 @@ T&=&T_0 & \mathrm{ on } \, \, \Gamma_D \\
 
 \subsection*{Starting and meshing}
 
-Start \texttt{ElmerGUI} from command line or by clicking the icon in your desktop (or in the /bin directory of you installation). 
-Here we describe the essential steps in the ElmerGUI by writing out the clicking procedure. Tabulation generally means that the 
+Start \texttt{ElmerGUI} from command line or by clicking the icon in your desktop (or in the /bin directory of your installation). 
+Here we describe the essential steps in the ElmerGUI by writing out the clicking procedure. Indentation generally means that the 
 selections are done within the window chosen at the higher level. 
 
 The mesh is given in ElmerGrid format in file \texttt{glacier\_toy.in2d} in the samples directory of ElmerGUI, 
@@ -85,7 +85,7 @@ Model
     Simulation Type = Steady state
     Steady state max. iter = 1
 \ttend
-Choose \texttt{Accept} to close the window.
+Choose \texttt{Apply} to close the window.
 
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have one set only one equation -- the heat equation.
@@ -148,14 +148,14 @@ A screenshot of the case when setting the BCs is shown in figure~\ref{glac:bc}.
 Model
   BoundaryCondition
     Add 
+      Name = Tsurface
       Heat Equation
         Temperature = -10.0
-      Name = Tsurface
       OK
     Add 
+      Name = Tflux
       Heat Equation
         Heat Flux = 0.02
-      Name = Tflux
       OK
     Add 
       Name = Tnatural
@@ -166,8 +166,7 @@ Then we set the boundary properties
 Model 
   Set boundary properties  
 \ttend
-Choose the correct boundary by clicking with the mouse
-and apply the condition for this boundary.
+Choose the correct boundary by clicking with the mouse and apply the condition for this boundary.
 \ttbegin
 Boundary condition
   Click top boundary -> choose Tsurface
@@ -177,10 +176,9 @@ Boundary condition
 
 \subsection*{Saving and solution}
 
-For the execution 
-ElmerSolver needs the mesh files and the command file. We have now basically defined
-all the information for ElmerGUI to write the command file. After writing it we may also visually 
-inspect the command file.
+For the execution ElmerSolver needs the mesh files and the command file. We have 
+now basically defined all the information for ElmerGUI to write the command file. 
+After writing it we may also visually inspect the command file.
 \ttbegin
 Sif 
   Generate
@@ -188,8 +186,7 @@ Sif
 \ttend
 
 Before we can execute the solver we should save the files in a directory. In saving the project all the
-necessary files for restarting the case will be saved to the 
-destination directory.
+necessary files for restarting the case will be saved to the destination directory.
 \ttbegin
 File 
   Save Project
@@ -223,7 +220,7 @@ Run
   Start Paraview
 \ttend
 Picture~\ref{glac:figtemp} shows
-the surface mesh colored with temperature.
+the surface mesh coloured with temperature.
 Note that these results were carried out with the obsolete
 VTK based tool within ElmerGUI, and therefore look different than in Paraview.
 
@@ -236,8 +233,8 @@ VTK based tool within ElmerGUI, and therefore look different than in Paraview.
 
 
 The maximum temperature obtained with the above choices is 0.11166~C. 
-With a denser mesh the result is
-naturally more accurate, but solving the problem takes more calculation time.
+With a denser mesh the result is naturally more accurate, but solving the
+ problem takes more calculation time.
 
 You may study the effect of mesh refinement by choosing 
 a different value for the \texttt{Max H} parameter.
