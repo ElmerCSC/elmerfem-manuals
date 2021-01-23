@@ -18,6 +18,15 @@ of solver capable of dealing with large displacement.
 
 \subsection*{Solution procedure}
 
+The definitions for the relevant equation are not loaded into ElmerGUI by default. Hence, 
+one needs to load these before starting the simulations.
+\ttbegin
+File 
+  Definitions
+    Append -> nonlinearelasticity.xml
+\ttend
+The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.\\
+
 The mesh is given in ElmerGrid format in file \texttt{u\_turn.grd},
 load this file.
 \ttbegin
@@ -51,11 +60,10 @@ Model
 \ttend
 
 In the Equation section we choose the relevant equations which in this case only includes 
-the \texttt{Nonlinear elasticity} equation.
-We have just one body and therefore its easy to assign 
-the Equation and Material to it directly.
-We can use linear system solvers we are happy to use the defaults. One may however, try out different
-preconditioners (ILU1,\ldots) or more efficient iterative methods (BiCGStabl), for example.
+the \texttt{Nonlinear elasticity} equation.  We have just one body and therefore its easy to assign 
+the Equation and Material to it directly.  We can use linear system solvers we are happy to 
+use the defaults. One may however, try out different preconditioners (ILU1,\ldots) or more 
+efficient iterative methods (BiCGStabl), for example.
 \ttbegin
 Model
   Equation
