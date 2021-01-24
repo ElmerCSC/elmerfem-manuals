@@ -1,4 +1,4 @@
-\chapter{Transient flow and heat equations -- Rayleigh-Benard instability}
+\chapter{Flow and Heat --2D -- Transient -- Rayleigh-Benard instability}
 
 \modinfo{Directory}{RayleighBenardGUI}
 \modinfo{Solvers}{\Idx{HeatSolve}, \Idx{FlowSolve}}
@@ -11,11 +11,12 @@
 
 %\begin{flushleft}
 This tutorial is about simulating the developing of the
-Rayleigh-Benard instability in a rectangular domain  (Figure
+\Idx{Rayleigh-Benard} instability in a rectangular domain  (Figure
 \ref{fg:rb_geometry}) of dimensions 0.01 m height and 0.06 m
 length. The simulation is performed with water and the material
-parameters of water required by the Elmer model are presented in Table \ref{tb:matpar}. The
-temperature difference between the upper and lower boundary is set to
+parameters of water required by the Elmer model are presented in 
+Table \ref{tb:matpar} and can be loaded from the Material Library. 
+The temperature difference between the upper and lower boundary is set to
 0.5 so that lower one has the temperature of  293.5 K and the upper
 one has the temperature of 293 K.
 
@@ -30,7 +31,8 @@ Boussinesq approximation
 \begin{displaymath}
 \rho = {\rho}_0(1-\beta(T-{T}_0))
 \end{displaymath}
-where $\beta$ is the heat expansion coefficient and the subscript 0 refers to a reference sate.
+where $\beta$ is the heat expansion coefficient and the subscript 0 
+refers to a reference state.
 
 
 \begin{figure}[h]
@@ -64,7 +66,9 @@ The mesh is given in ElmerGrid format in file \texttt{rectangle.grd}, load this 
 File 
   Open -> rectangle.grd
 \ttend
-You should obtain your mesh and may check that it consists of 3036 bilinear elements.
+You should obtain your mesh and may check \texttt{Model Summary...} that it consists 
+of 3036 bilinear elements.  The geometry and mesh should look like 
+figure \ref{fg:rb_geometry}.
 
 There is a possibility to divide and unify edges to simplify the case definition in the future.
 \ttbegin
@@ -91,7 +95,8 @@ Model
     Gravity = 0 -1 0 9.82
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
-In this case we'll have one set of equations (named ``Natural Convection'') which consists of the heat equation and of the Navier-Stokes equation.
+In this case we'll have one set of equations (named ``Natural Convection'') which 
+consists of the heat equation and of the Navier-Stokes equation.
 
 When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
 selection to assign them later. In this case we have just one body and therefore its easier to assign 
@@ -103,6 +108,7 @@ The system may include non-linear iterations of each equation and steady state i
 to obtain convergence of the coupled system. It is often a good idea to keep the number of 
 non-linear iterations in a coupled case low. Here we select just one non-linear iteration
 for both equations.
+
 For the linear system solvers we are happy to use the defaults. One may however, try out different
 preconditioners (ILU1,\ldots) or direct Umfpack solver, for example.
 \ttbegin
@@ -129,22 +135,22 @@ They are divided into generic parameters which are direct properties of the mate
 without making any assumptions on the physical model, such as the mass. Other properties assume
 a physical law, such as conductivities and viscosity. 
 
-Here we choose water at room temperature from the material library.
-You may click trough the material parameters of the various solvers to ensure that
+Here we choose water at room temperature from the Material Library.
+You may click through the material parameters of the various solvers to ensure that
 the properties are indeed as they should be. Any consistent set of units may be used in Elmer.
 The natural choice is of course to perform the computations in SI units. 
 
-Apart from the properties from the material database, we
+Apart from the properties from the material database, we enter a
 reference temperature for the Boussinesq approximation.    
 
 \ttbegin
 Model
   Material
+    Apply to Bodies = 1 
     Material library    
       Water (room temperature)
     General 
       Reference Temperature = 293
-    Apply to Bodies = 1 
     Add
     OK
 \ttend
@@ -163,7 +169,8 @@ Model
     OK
 \ttend    
 
-Initial conditions should be given to transient cases. In this case we choose a constant Temperature field and an small initial velocity that initializes the symmetry break. 
+Initial conditions should be given to transient cases. In this case we choose a 
+constant Temperature field and an small initial velocity that initializes the symmetry break. 
 \ttbegin
 Model
   Initial Condition 
@@ -217,31 +224,17 @@ Model
     Choose Sides -> set boundary condition Sides
 \ttend
 
-%After the case have been set-up we may check that all edges and surfaces have been assigned 
-%boundary condition, or an equation and material parameters.
-%\ttbegin
-%View
-%  Select defined edges 
-%  Select defined surfaces
-%\ttend 
-%If everything is set we may continue, otherwise one should go back to check what data is missing.
-%\ttbegin
-%View
-%  Reset model view
-%\ttend
-
-For the execution 
-ElmerSolver needs the mesh files and the command file. We have now basically defined
-all the information for ElmerGUI to write the command file. After writing it we may also visually 
-inspect the command file.
+For the execution ElmerSolver needs the mesh files and the command file. 
+We have now basically defined all the information for ElmerGUI to write 
+the command file. After writing it we may also visually inspect the command file.
 \ttbegin
 Sif 
   Generate
   Edit -> look how your command file came out  
 \ttend
 
-Before we can execute the solver we should save the files in a directory. The project includes
-all the files needed to restart the case.
+Before we can execute the solver we should save the files in a directory. 
+The ElmerGUI project includes all the files needed to restart the case.
 \ttbegin
 File 
   Save Project
@@ -268,29 +261,31 @@ You may inspect the results with Paraview as the time steps are computed, or
 wait until all time steps have been computed. You must reload the files if their number has changed. 
 The time series can be automatically animated and even saved to an animation file.
 
-In Figures \ref{fg:rb_temp} and \ref{fg:rb_vel} the obtained temperature 
-distribution and the velocity vectors are presented (note that the pictures are generated by the obsolete ElmerPost software). 
-The maximum velocity in the system should be about 0.516~mm/s. 
+In Figures \ref{fg:rb_temp}  through \ref{fg:rb_velo} the obtained temperature 
+and  velocity distribution are presented.  The maximum velocity in the system 
+should be about 0.516~mm/s. 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=15cm, viewport=0 50 1000 250,clip]{rb_temp}
-\caption{Temperature distribution at 260 s.}\label{fg:rb_temp}
+\includegraphics[width=150mm]{rb_temp}
+\caption{Temperature distribution}\label{fg:rb_temp}
 \end{figure} 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=15cm, viewport=0 50 1000 250,clip]{rb_velo}
-\caption{Velocity vectors at 260 s.}\label{fg:rb_vel}
+\includegraphics[width=150mm]{rb_velo}
+\caption{Velocity magnitudes}\label{fg:rb_velo}
 \end{figure} 
 
 
+\newpage
 
 \subsection*{Extra task: Sensitivity to temperature difference}
 
 If you have time you may try to solve the case with different parameters. Changing the temperature difference
 is one way of affecting the instability of the system. Decreasing the temperature differences the system eventually becomes 
 steady state and the convection rolls vanish altogether. Increasing the temperature difference may increase the 
-number of convection rolls and eventually the system becomes fully chaotic. Note that changing the temperature difference also affects to the time scale of the wake. 
+number of convection rolls and eventually the system becomes fully chaotic. 
+Note that changing the temperature difference also affects to the time scale of the wake. 
 
 \hfill
