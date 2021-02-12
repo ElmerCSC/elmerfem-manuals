@@ -13,9 +13,9 @@ This tutorial demonstrates the use of the generic advection-diffusion-reaction
 equation through ElmerGUI. The solver may be found in module ModelPDE. 
 The purposes of the model pde and also this tutorial is to help 
 those who want to understand Elmer from a mathematical perspective to be
-able to carry some of their own code development. 
+able to carry out some of their own code development. 
 
-The problem is a simple 3d structure \texttt{winkel.grd} that can be charectized by a 
+The problem is a simple 3d structure \texttt{winkel.grd} that can be characterized by a 
 $2\times 2\times 2$ topological grid where entries $(1,1,1)$, $(1,2,1)$, $(2,1,1)$ and
 $(2,1,2)$ are meshed. This is the simplest Cartesian structure with full 3D 
 solution. 
@@ -81,7 +81,8 @@ In transient cases the user may also give an initial condition for $u$,
 \subsection*{Solution procedure}
 
 Start \texttt{ElmerGUI} from command line or by clicking the icon in your desktop. Here we describe 
-the essential steps in the ElmerGUI by writing out the clicking procedure. Tabulation generally means that the selections are done within the window chosen at the higher level. 
+the essential steps in the ElmerGUI by writing out the clicking procedure. Indentation generally means 
+that the selections are done within the window chosen at the higher level. 
 
 The mesh is given in ElmerGrid format in file \texttt{winkel.grd} in the samples directory of ElmerGUI, 
 load this file.
@@ -103,17 +104,15 @@ for.
 
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the \texttt{Setup} we choose things related to the whole simulation such as file names, 
-time stepping, constants etc.
-The simulation is carried out in 2-dimensional Cartesian
-coordinates and in steady-state. 
-Only one steady-state iteration is needed as the case is linear. 
+time stepping, constants etc.  The simulation is carried out in 2-dimensional Cartesian
+coordinates and in steady-state. Only one steady-state iteration is needed as the case is linear. 
 \ttbegin
 Model
   Setup 
     Simulation Type = Steady state
     Steady state max. iter = 1
 \ttend
-Choose \texttt{Accept} to close the window.
+Choose \texttt{Apply} to close the window.
 
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have one set only one equation -- the Model PDE.
@@ -133,7 +132,7 @@ Model
       Apply to bodies = 1
       Model PDE
         Active = on
-  Apply   
+  Add   
   OK
 \ttend        
 
@@ -143,12 +142,11 @@ Here we just set the diffusivity to one.
 \ttbegin
 Model
   Material
-    Add 
       Name = Ideal
       Apply to bodies = 1 
       Model PDE
         Diffusion Coefficient = 1.0
-    Apply
+    Add
     OK
 \ttend
 
@@ -156,32 +154,30 @@ A Body Force represents the right-hand-side of a equation,
 \ttbegin
 Model
   Body Force
-    Add 
       Name = Source
-      Field Source = 1.0
       Apply to bodies = 1
-    Apply
+      Model PDE
+        Field Source = 1.0
+    Add
     OK
 \ttend    
 
 No initial conditions are required in steady state case.
 
 Finally, for the BCs first define them and then use the mouse to apply them to the correct
-boundary patches,
+boundary patches.  Refer to figure~\ref{fg:modelpde1} and select the two surfaces as shown.
 \ttbegin
 Model
   BoundaryCondition
-    Add 
+      Name = Zero
       Model PDE
         Field = 0.0
-      Name = Zero
-    Apply
+    Add
     OK
 \ttend   
 
 
-For the execution 
-ElmerSolver needs the mesh files and the command file. We have now basically defined
+For the execution ElmerSolver needs the mesh files and the command file. We have now basically defined
 all the information for ElmerGUI to write the command file. After writing it we may also visually 
 inspect the command file.
 \ttbegin
@@ -229,14 +225,15 @@ Here are some things you could try out, or are at least possible. The menus of t
 elementary so more advanced features may need that the keywords are added by hand to the 
 command file. No coding is needed to implement these features though. 
 \begin{itemize}
-\item You can also solve the problem with an unstructured tetrahedral mesh using Gmsh format file \texttt{winkel.msh}. 
+\item You can also solve the problem with an unstructured tetrahedral mesh 
+using Gmsh format file \texttt{winkel.msh}. 
 \item Play with the reaction, diffusion, convection coefficient, and also the advection velocity.
 As far as they remain constant the equation should be solvable with one sweep.
 \item You could try to use Neumann or Robin BCs as well. Remember though that
 a steady state equation needs definitions that uniquely define the solution.
 \item Make the problem time-dependent. Note that then you most likely need to define the 
 coefficient for the time derivative. 
-\item When the advection increases in size the solution may becore eventually oscillatory.
+\item When the advection increases in size the solution may eventually become oscillatory.
 To eliminate that some bubbles or p-elements may be needed. You may play around with 
 element settings, for example use \texttt{Element = p:2} or \texttt{Element = n:1 b:1} etc. 
 \item You could try to increase the number of elements either by using \texttt{-relh} 

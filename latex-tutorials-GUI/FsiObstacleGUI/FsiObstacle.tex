@@ -1,6 +1,6 @@
 \chapter{Interaction between fluid flow and elastic obstacle}
 
-\modinfo{Files}{\texttt{obstacle\_in\_channel.in2d}}
+\modinfo{Directory}{FsiObstacleGUI}
 \modinfo{Solvers}{\Idx{FlowSolve},\Idx{ElasticSolve},\Idx{MeshSolve}}
 \modinfo{Tools}{\Idx{ElmerGUI}}
 \modinfo{Dimensions}{2D, Steady-state}
@@ -76,12 +76,12 @@ and choose
 \ttbegin
 Mesh -> Remesh 
 \ttend
-You should obtain a denser mesh and may check that it consists 
+You should obtain a denser mesh and may check \texttt{Model Summary...} that it consists 
 of around 4140 nodes and 7890 linear triangles.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm]{fsi_obstacle_gui}
+\includegraphics[width=140mm]{fsi_obstacle_gui}
 \caption{The mesh of the obstacle in channel case as seen in ElmerGUI}\label{fg:obstacle_in_channel_mesh}
 \end{figure} 
 
@@ -315,25 +315,33 @@ for the saved results the displacement and mesh update fields have been merged i
 In Figures \ref{fg:fsi_obstacle_velo}, \ref{fg:fsi_obstacle_pres}, and
 \ref{fg:fsi_obstacle_disp}
 the obtained velocity, pressure and displacement 
-distributions are presented in the deformed mesh.
+distributions are presented in the deformed mesh.  A close up showing the deformed mesh is shown
+in figure  \ref{fg:fsi_obstacle_deformed}
  
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm,viewport=0 5 1024 250,clip]{fsi_obstacle_velo}
+\includegraphics[width=140mm,viewport=0 5 1024 400,clip]{fsi_obstacle_velo}
 \caption{Velocity distribution of the obstacle in channel case.}\label{fg:fsi_obstacle_velo}
 \end{figure} 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm,viewport=0 5 1024 250,clip]{fsi_obstacle_pres}
+\includegraphics[width=140mm,viewport=0 5 1024 400,clip]{fsi_obstacle_pres}
 \caption{Pressure distribution of the obstacle in channel case.}\label{fg:fsi_obstacle_pres}
 \end{figure} 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm,viewport=0 5 1024 250,clip]{fsi_obstacle_disp}
+\includegraphics[width=140mm,viewport=0 5 1024 400,clip]{fsi_obstacle_disp}
 \caption{Displacement distribution of the obstacle in channel case.}\label{fg:fsi_obstacle_disp}
 \end{figure} 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=140mm]{fsi_obstacle_deformed}
+\caption{Deformed mesh of the obstacle in channel case.}\label{fg:fsi_obstacle_deformed}
+\end{figure} 
+
 
 
 \hfill
