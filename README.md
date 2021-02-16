@@ -8,7 +8,10 @@ ElmerGUI manual and tutorials
 Content of the directories
 --------------------------
 
+* latex-elmer-getstart - Get Started with Elmer document
 * latex-elmergui - latex input files to build ElmerGUI manual
+* latex-tex-start - getting started with TeXworks and editing manuals
+* latex-tex-template - a template in TeXworks for building new tutorials
 * latex-tutorials-CL - latex input files to build tutorials manual without graphical user interface (command-line usage, files explained)
 * latex-tutorials-GUI - latex input files to build tutorials manual where ElmerGUI is used
 * tutorials-CL-files - sample input output files related to the tutorials wihout using the graphical user interface 
