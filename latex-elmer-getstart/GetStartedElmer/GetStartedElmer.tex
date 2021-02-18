@@ -12,35 +12,57 @@ This chapter will discuss installing Elmer in Windows.  Windows 10 is used for t
 
 \subsection*{Download Elmer}
 
-Go to the following page for the Elmer project on Sourceforge:\\
+To download the most recent release of Elmer, go to the following website:\\
 
- \url{https://sourceforge.net/projects/elmerfem/files/ElmerDocumentation/}\\
+\url{https://www.nic.funet.fi/pub/sci/physics/elmer/}
 
-\begin{wrapfigure}{r}{0.4\textwidth}
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{sf-files-3}
-\caption{Elmer on Sourceforge}\label{fg:sf-files-3}
-\end{wrapfigure}
+\includegraphics[width=0.8\textwidth]{elmer}
+\caption{Elmer Bin Windows}\label{fg:elmer}
+\end{figure}
 
-See Figure~\ref{fg:sf-files-3}.  Click on the green \texttt{Download Latest Version} button, which will start the download of the Windows installer for Elmer, with ElmerGUI, without mpi, 64 bits.  Once the download starts, go back to the \texttt{ElmerDocumentation} page, and download the Elmer Documentation zip file containing the Elmer Manuals.
+Once on that page, there are several folders to notice, such as `bin', `doc', `slides', and `tests', as shown in Figure~\ref{fg:elmer}.  To download Elmer, click on `bin' and then `windows', and the list of Elmer installers will appear, as shown in Figure~\ref{fg:elmer-bin-win}.
 
-At this point, you should have two files, like the following:
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{elmer-bin-win}
+\caption{Elmer Installers}\label{fg:elmer-bin-win}
+\end{figure}
 
-\texttt{ElmerFEM-gui-nompi-Windows-AMD64.exe}
+There four main categories to select from, such as `gui-mpi', `gui-nompi', `nogui-mpi', and `nogui-nompi'.  There also some labelled with `rel9.0', which are builds of the most recent official release and should be considered as the stable builds.  The other files not labelled with `rel9.0', are the nightly builds and are the most recent builds.\\
 
-\texttt{ElmerDocumentation.zip}
+For the first time installing Elmer in Windows, it is recommended to select `gui-nompi', and `rel9.0'.  The files with .exe extension are an installer for Windows, which is what is recommended.  So out of the entire list, we want to download this file:\\
 
-%\newpage
+\texttt{ElmerFEM-gui-nompi-Windows-AMD64-rel9.0.exe}
+
+\subsection*{Download Elmer Documentation}
+
+Return to this page, this time select `doc' for the most recent documentation for Elmer:\\
+
+\url{https://www.nic.funet.fi/pub/sci/physics/elmer/}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{elmer-doc}
+\caption{Elmer Doc}\label{fg:elmer-doc}
+\end{figure}
+
+Download the individual files to get the most recent build of the manuals.  Be sure to download `ElmerTutorials' for the ElmerGUI tutorials, `ElmerGUI Manual' for instructions about ElmerGUI, and `ElmerSolverManual', which describes each solver in detail.\\
+
+Also be sure to download the file, `tutorials-GUI-files.zip', because this zipped folder contains working examples of ElmerGUI projects, one for each tutorial.
+
+\newpage
 
 \subsection*{Download Paraview}
 
 Since we are taking care of downloads, let's go ahead and get Paraview.  It's not really needed to get started with Elmer and ElmerGUI, but you'll need it at some point in the near future.  Download Paraview now, but don't install it just yet.  We'll cover installation of Paraview a little later in this discussion.\\
 
-Go to the Download section of the Paraview website:
+Go to the Download section of the Paraview website:\\
 
  \url{https://www.paraview.org/download/}\\
 
-Select one of the top items, in particular a file ending in .exe, so you will download a Windows installer version.  You should now have a file like this:
+Select one of the top items, in particular a file ending in .exe, so you will download a Windows installer version.  You should now have a file like this:\\
 
 \texttt{ParaView-5.9.0-RC3-Windows-Python3.8-msvc2017-64bit.exe}\\
 
