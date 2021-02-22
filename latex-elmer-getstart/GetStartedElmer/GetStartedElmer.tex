@@ -1,8 +1,8 @@
 \chapter{Get Started with Elmer}
 
-\subsection*{Introduction}
+\section{Introduction}
 
-Getting started using \texttt{Elmer} should be a smooth and easy process.  Beginners at all levels may have issues with getting started and that can be a barrier to the use of  \texttt{Elmer}.  This chapter is meant to provide help to beginners, to make it easy to start using \texttt{Elmer} and \texttt{ElmerGUI}.
+Getting started using \texttt{Elmer} should be a smooth and easy process.  Beginners at all levels may have issues with getting started and that can be a barrier to the use of  \texttt{Elmer}.  This chapter is meant to provide help to beginners, to make it easy to start using \texttt{Elmer} and \texttt{ElmerGUI}.\\
 
 A typical use case would be for someone with a particular application in mind that wants to find out whether \texttt{Elmer} is a suitable choice.  Being able to quickly download and run an Elmer tutorial should make the experience easy enough so the user gets an answer in a short amount of time.
 
@@ -10,7 +10,7 @@ A typical use case would be for someone with a particular application in mind th
 
 This chapter will discuss installing Elmer in Windows.  Windows 10 is used for these instructions.  The steps should also work with earlier versions of Windows, as long as they are 64 bits.
 
-\subsection*{Download Elmer}
+\section{Download Elmer}
 
 To download the most recent release of Elmer, go to the following website:\\
 
@@ -36,7 +36,7 @@ For the first time installing Elmer in Windows, it is recommended to select `gui
 
 \texttt{ElmerFEM-gui-nompi-Windows-AMD64-rel9.0.exe}
 
-\subsection*{Download Elmer Documentation}
+\section{Download Elmer Documentation}
 
 Return to this page, this time select `doc' for the most recent documentation for Elmer:\\
 
@@ -54,7 +54,7 @@ Also be sure to download the file, `tutorials-GUI-files.zip', because this zippe
 
 \newpage
 
-\subsection*{Download Paraview}
+\section{Download Paraview}
 
 Since we are taking care of downloads, let's go ahead and get Paraview.  It's not really needed to get started with Elmer and ElmerGUI, but you'll need it at some point in the near future.  Download Paraview now, but don't install it just yet.  We'll cover installation of Paraview a little later in this discussion.\\
 
@@ -70,6 +70,8 @@ On the Paraview download page, there are several other files, such as `getting s
 
 
 \chapter{Windows -- Install}
+
+\section{Install Elmer}
 
 Navigate to the folder containing the Elmer installer and the documentation zip file.  Extract the zip file to a suitable folder.  Double click on the Elmer installer .exe file.  The installation process should look like figures~\ref{fg:installer-1}  through figure~\ref{fg:installer-10} on the following pages.  
 
@@ -122,7 +124,7 @@ After the installation process has finished, you should see an icon on the deskt
 Since Paraview hasn't been installed yet, after loading the first tutorial  if you click on the little RGB flag icon in the upper right of the menu bar to try and start Paraview, nothing much will happen.  If you hover the cursor over the flag after clicking on it, you will see in the lower left of the window the message `Unable to start Paraview'.  In the meantime, to start ElmerVTK click on the top menu bar icon `Run', then click on `Start ElmerVTK'.
 
 
-\subsection*{Install Paraview}
+\section{Install Paraview}
 
 Navigate to the folder containing the Paraview installer.  Double click on the installer to start the installation process.  There really aren't any options that need to selected or changed for a successful installation.  The installer won't create a desktop icon, but will create an entry in the Start menu.\\
 
@@ -130,6 +132,8 @@ The installer will not add Paraview to the system path, so we will perform that 
 
 
 \chapter{Windows -- Add the path to Paraview}
+
+\section{Path to Elmer}
 
 If we set the path to Paraview, then ElmerGUI will be able to start Paraview from inside of ElmerGUI.  In other words, with a proper path setting, clicking on the ElmerGUI icon for Paraview, will start Paraview and load the current .vtu file, if it exists.
 
@@ -152,6 +156,8 @@ As part of the operation of the Elmer installer, the path to Elmer will be creat
 \caption{Path to Elmer installation}\label{fg:path-2}
 \end{center}
 \end{figure}
+
+\section{Path to Paraview}
 
 While you have the path variable open for editing, click on `new', and enter the path to Paraview.\\
 
@@ -184,6 +190,8 @@ Finally, move the entry for the path to Paraview up to just under the path to El
 \caption{Create new path to Paraview}\label{fg:path-5}
 \end{center}
 \end{figure}
+
+\section{Start Paraview from within ElmerGUI}
 
 Open ElmerGUI, and click on the flag icon for Paraview, you should see a pop up window that says `Paraview Starting', followed by Paraview actually starting.  If you see an output window containing a red statement like `critical: In unknown, line 0', don't worry, it just means there wasn't a valid .vtu file found.  Run a tutorial, or find a valid .vtu file, and try again, Paraview should load the .vtu file and display a blank grey screen.
 

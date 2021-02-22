@@ -30,6 +30,39 @@ zzz Enter your geometry figure here.
 \caption{zzz Geometry}\label{fg:geometry}
 \end{figure}  
 
+\subsection*{ElmerGUI Equation Menu}
+
+zzz Note that we include both edf and edf-extra examples.  If you don't need the edf-extra example, it can be deleted.  It is suggested to keep the edf example, to show where the edf file comes from.
+
+zzz The GUI definitions of VectorHelmholtz solver utilized in this tutorial are located in the \texttt{edf-extra} folder and thus need to be manually activated in the ElmerGUI.\\
+
+zzz Note that the extra definition needs to be loaded first, before any other steps in building any tutorial.  Once the extra definition has been loaded, and the ElmerGUI project has been saved, then the instructions for the extra definition will be stored in the project, and you won't have to load the extra definition again.
+
+zzz
+\begin{verbatim}
+File
+  Definitions
+    Append -> vectorhelmholtz.xml
+  Close
+\end{verbatim}
+
+zzz The \texttt{\Idx{vectorhelmholtz.xml}} definition file is, by default, located in Linux in:
+
+zzz \texttt{\$ELMER\_HOME/share/ElmerGUI/edf-extra}\\
+
+zzz and in Windows, located in:
+
+zzz \texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf-extra}\\
+
+zzz We will also be using the \Idx{Result Output Solver}, which is one of the default, pre-loaded GUI definitions, so it does not need to be manually activated.  For reference, the  \texttt{\Idx{resultoutput.xml}} definition file is, by default, located in Linux in:
+
+zzz \texttt{\$ELMER\_HOME/share/ElmerGUI/edf}\\
+
+zzz and in Windows, located in:
+
+zzz \texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
+
+
 \subsection*{Solution procedure}
 
 The mesh is given in ElmerGrid format in file \texttt{zzz}, load this file.
