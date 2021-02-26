@@ -1,4 +1,5 @@
 Header
+  CHECK KEYWORDS Warn
   Mesh DB "." "thermal"
 End
 
@@ -8,7 +9,7 @@ Simulation
   Steady State Max Iterations = 30
   Output Intervals = 1
   Output File = "actuator.result"
-  Post File = "actuator.ep"
+  Post File = "actuator.vtu"
 End
 
 Body 1
@@ -20,7 +21,6 @@ End
 
 Equation 1
   Active Solvers(3) = Integer 1 2 3
-  Calculate Joule Heating = True
 End
 
 Solver 1
@@ -101,7 +101,7 @@ Initial Condition 1
 End
 
 Body Force 1
-  Heat Source = Equals Joule Heating
+  Joule Heat = True
 End
 
 Boundary Condition 1
