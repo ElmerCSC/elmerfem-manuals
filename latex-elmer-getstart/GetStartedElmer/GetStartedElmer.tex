@@ -1,4 +1,4 @@
-\chapter{Get Started with Elmer}
+\chapter{Get Started with Elmer on Windows}
 
 \section{Introduction}
 
@@ -277,49 +277,7 @@ We used a 2D example, so the choice of Isocontours made sense.  If we had used a
 
 As promised, ElmerVTK is fairly simple to use, and will make some pretty nice graphics in a short amount of time.
 
-\chapter{Linux}
-
-The Elmer website has instructions showing how to download binaries.\\
-
- \url{https://www.csc.fi/web/elmer/binaries}\\
-
-Notice the section about using Launchpad Ubuntu and Debian based systems, as shown in Figure~\ref{fg:binaries}:\\
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{binaries}
-\caption{www.csc.fi/web/elmer/binaries}\label{fg:binaries}
-\end{center}
-\end{figure}
-
-
-\texttt{sudo apt-add-repository ppa:elmer-csc-ubuntu/elmer-csc-ppa}
-
-\texttt{sudo apt-get update}
-
-\texttt{sudo apt-get install elmerfem-csc}
-
-\texttt{sudo apt-get install elmerfem-csc-eg}\\
-
-To start ElmerGrid and ElmerSolver, enter this in a terminal window:\\
-
-\texttt{/bin/ElmerGrid}
-
-\texttt{/bin/ElmerSolver}\\
-
-To run ElmerGUI, enter this in a terminal window:\\
-
-\texttt{/bin/ElmerGUI}\\
-
-Next, install Paraview:\\
-
-\texttt{sudo apt-get update}
-
-\texttt{sudo apt-get install paraview}\\
-
-Start ElmerGUI, run the first tutorial, and start Paraview from within ElmerGUI, by clicking on `Run', then `Start Paraview'.
-
-\chapter{Virtual machine}
+\chapter{Windows -- Virtual machine}
 
 The Elmer website has instructions showing how to download a virtual machine.\\
 
@@ -379,9 +337,120 @@ Once Virtual Box is done importing the appliance, as usual with Virtual Box take
 \end{center}
 \end{figure}
 
- Go ahead and update, when prompted, enter `elmerfem' to authenticate.  After updating is finished, it will restart once.  Shutdown and take another snapshot, now you have a fully updated Elmer Virtual Machine that you can always restore if needed.\\
+Go ahead and update, when prompted, enter `elmerfem' to authenticate.  After updating is finished, it will restart once.  Shutdown and take another snapshot, now you have a fully updated Elmer Virtual Machine that you can always restore if needed.\\
 
-One of many reasons to have an Elmer Virtual Machine is that now it is easy to compile ElmerSolver, ElmerGrid, and ElmerGUI, because all of the dependencies are included in the VM.
+Next, let's verify the settings for \texttt{Region and Language} in Ubuntu.  More than likely, we will need to change the keyboard layout to suit your particular region.  The default keyboard layout is for a Finnish keyboard.  If you have any issues at all with the keyboard layout, be sure to go through these steps to update your keyboard setting.\\
+
+For example, when initially starting the freshly downloaded and updated Virtual Machine with Ubuntu, and using an English keyboard laptop, entering the following in a terminal had a problem:  `./buildelmer.sh'.  Pressing the key for the forward slash yielded a hyphen, and caused an error.  Updating \texttt{Region and Language} in Ubuntu fixed the issue.\\ 
+
+Locate the settings icon, as shown in Figure~\ref{fg:virt-7}, and double click to open Settings.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{virt-7}
+\caption{Settings Icon}\label{fg:virt-7}
+\end{center}
+\end{figure}
+
+Scroll down the page and locate the entry for \texttt{Region and Language}, as shown in Figure~\ref{fg:virt-8}, and double click to open.  You should see that the keyboard is set to Finnish.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{virt-8}
+\caption{Region and Language}\label{fg:virt-8}
+\end{center}
+\end{figure}
+
+Click on the plus sign to add a keyboard as an input source, as shown in Figure~\ref{fg:virt-9}.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{virt-9}
+\caption{Add an Input Source}\label{fg:virt-9}
+\end{center}
+\end{figure}
+
+\newpage
+
+Select your region, as shown in Figure~\ref{fg:virt-10}.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{virt-10}
+\caption{Select your region}\label{fg:virt-10}
+\end{center}
+\end{figure}
+
+Add your region, as shown in Figure~\ref{fg:virt-11}.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{virt-11}
+\caption{Add your region}\label{fg:virt-11}
+\end{center}
+\end{figure}
+
+You should see two keyboard layouts, as shown in Figure~\ref{fg:virt-12}.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{virt-12}
+\caption{Two keyboards}\label{fg:virt-12}
+\end{center}
+\end{figure}
+
+Go ahead and delete the old keyboard layout since you won't need it any more, as shown in Figure~\ref{fg:virt-13}.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{virt-13}
+\caption{Final result, updated keyboard layout}\label{fg:virt-13}
+\end{center}
+\end{figure}
+
+That's it, you are done and can close the settings window.
+
+\chapter{Linux}
+
+The Elmer website has instructions showing how to download binaries.  Here is a quick summary of the steps needed to install Elmer in Linux.\\
+
+ \url{https://www.csc.fi/web/elmer/binaries}\\
+
+Notice the section about using Launchpad Ubuntu and Debian based systems, as shown in Figure~\ref{fg:binaries}:\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{binaries}
+\caption{www.csc.fi/web/elmer/binaries}\label{fg:binaries}
+\end{center}
+\end{figure}
+
+
+\texttt{sudo apt-add-repository ppa:elmer-csc-ubuntu/elmer-csc-ppa}
+
+\texttt{sudo apt-get update}
+
+\texttt{sudo apt-get install elmerfem-csc}
+
+\texttt{sudo apt-get install elmerfem-csc-eg}\\
+
+To start ElmerGrid and ElmerSolver, enter this in a terminal window:\\
+
+\texttt{/bin/ElmerGrid}
+
+\texttt{/bin/ElmerSolver}\\
+
+To run ElmerGUI, enter this in a terminal window:\\
+
+\texttt{/bin/ElmerGUI}\\
+
+Next, install Paraview:\\
+
+\texttt{sudo apt-get update}
+
+\texttt{sudo apt-get install paraview}\\
+
+Start ElmerGUI, run the first tutorial, and start Paraview from within ElmerGUI, by clicking on `Run', then `Start Paraview'.
 
 
 
