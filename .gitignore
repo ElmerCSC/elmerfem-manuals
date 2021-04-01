@@ -7,3 +7,5 @@
 *.idx
 *.ilg
 *.ind
+# Some Mac file
+.DS_Store
