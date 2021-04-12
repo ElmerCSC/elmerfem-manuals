@@ -7,6 +7,8 @@
 \modinfo{Author}{zzz Rich Bayless}
 
 
+\subsection*{Introduction}
+
 zzz This Template For Tutorials is designed to help make it easy to create a new tutorial using ElmerGUI.  Having an outline of a tutorial should allow for simpler development of new tutorials, and will help keep the look and feel of new tutorials in unison with existing tutorials.
 
 zzz Anywhere you see `zzz', it means that section needs to be replaced.  Any text that begins with `zzz', should be deleted and replaced by the appropriate text for your tutorial.  
@@ -27,40 +29,39 @@ zzz Enter your geometry figure here.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{geometry.png}
-\caption{zzz Geometry}\label{fg:geometry}
+\caption{Geometry}\label{fg:geometry}
 \end{figure}  
 
 \subsection*{ElmerGUI Equation Menu}
 
-zzz Note that we include both edf and edf-extra examples.  If you don't need the edf-extra example, it can be deleted.  It is suggested to keep the edf example, to show where the edf file comes from.
+zzz Note that we include both edf and edf-extra examples.  If you don't need the edf-extra example, the first section can be deleted.  It is suggested to keep the edf example, to show where the edf file comes from.
 
-zzz The GUI definitions of VectorHelmholtz solver utilized in this tutorial are located in the \texttt{edf-extra} folder and thus need to be manually activated in the ElmerGUI.\\
+zzz The GUI definitions of zzz solver utilized in this tutorial are located in the \texttt{edf-extra} folder and thus need to be manually activated in the ElmerGUI.\\
 
-zzz Note that the extra definition needs to be loaded first, before any other steps in building any tutorial.  Once the extra definition has been loaded, and the ElmerGUI project has been saved, then the instructions for the extra definition will be stored in the project, and you won't have to load the extra definition again.
+zzz Note that the extra definition needs to be loaded first, before any other steps in building any tutorial.  Once the extra definition has been loaded, and the ElmerGUI project has been saved, then the reference to the extra definition will be stored in the project, and you won't have to load the extra definition again.
 
-zzz
 \begin{verbatim}
 File
   Definitions
-    Append -> vectorhelmholtz.xml
+    Append -> zzz.xml
   Close
 \end{verbatim}
 
-zzz The \texttt{\Idx{vectorhelmholtz.xml}} definition file is, by default, located in Linux in:
+\noindent The \texttt{\Idx{zzz.xml}} definition file is, by default, located in Linux in:
 
-zzz \texttt{\$ELMER\_HOME/share/ElmerGUI/edf-extra}\\
+\texttt{\$ELMER\_HOME/share/ElmerGUI/edf-extra}
 
-zzz and in Windows, located in:
+\noindent and in Windows, located in:
 
-zzz \texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf-extra}\\
+\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf-extra}\\
 
-zzz We will also be using the \Idx{Result Output Solver}, which is one of the default, pre-loaded GUI definitions, so it does not need to be manually activated.  For reference, the  \texttt{\Idx{resultoutput.xml}} definition file is, by default, located in Linux in:
+We will also be using the \Idx{zzz Solver}, which is one of the default, pre-loaded GUI definitions, so it does not need to be manually activated.  For reference, the  \texttt{\Idx{zzz.xml}} definition file is, by default, located in Linux in:
 
-zzz \texttt{\$ELMER\_HOME/share/ElmerGUI/edf}\\
+\texttt{\$ELMER\_HOME/share/ElmerGUI/edf}
 
-zzz and in Windows, located in:
+\noindent and in Windows, located in:
 
-zzz \texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
+\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
 
 
 \subsection*{Solution procedure}
@@ -77,7 +78,7 @@ You should obtain your mesh and may check \texttt{Model Summary...} that it cons
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{mesh}
-\caption{zzz Mesh.}\label{fg:mesh}
+\caption{Mesh}\label{fg:mesh}
 \end{figure}
 
 After we have the mesh we start to go through the Model menu from the top to bottom.  In the Setup we choose things related to the whole simulation such as file names, time stepping, constants etc.  
@@ -112,9 +113,9 @@ zzz Every menu selection section must be revised for each tutorial.  These examp
 \ttbegin
 Model
   Equation
-   zzz Name = Natural Convection
+   Name = Natural Convection
     Apply to Bodies = 1
-    zzz Heat Equation
+    Heat Equation
       Active = on
     Add 
     OK
@@ -146,7 +147,7 @@ zzz Every menu selection section must be revised for each tutorial.  These examp
 \ttbegin
 Model
   Body Force
-    zzz Name = Buoyancy
+    Name = Buoyancy
     Apply to Bodies = 1
     Navier-Stokes
       Boussinesq = on
@@ -163,7 +164,7 @@ zzz Every menu selection section must be revised for each tutorial.  These examp
 \ttbegin
 Model
   Initial Condition 
-    zzz Name = Initial Guess
+    Name = Initial Guess
     Heat Equation
       Temperature = 293
     Navier-Stokes
@@ -180,7 +181,7 @@ zzz Every menu selection section must be revised for each tutorial.  These examp
 \ttbegin
 Model
   BoundaryCondition
-    zzz Name = Bottom
+    Name = Bottom
     Heat Equation
       Temperature = 293.5
     Navier-Stokes 
@@ -189,7 +190,7 @@ Model
     Add
     New
 
-    zzz Name = Top
+    Name = Top
     Heat Equation
       Temperature = 293
     Navier-Stokes 
@@ -206,7 +207,7 @@ zzz Every menu selection section must be revised for each tutorial.  These examp
 \ttbegin
 Model
   Set boundary properties
-    zzz Choose Bottom -> set boundary condition Bottom
+    Choose Bottom -> set boundary condition Bottom
     Choose Top -> set boundary condition Top
     Choose Sides -> set boundary condition Sides
    OK 
@@ -250,9 +251,9 @@ You may inspect the results with Paraview or with ElmerVTK.\\
 
 zzz In Figure \ref{fg:temp} the obtained temperature distribution is presented. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[width=120mm]{temp}
+\includegraphics[width=0.8\textwidth]{temp}
 \caption{zzz Temperature distribution at 260 s.}\label{fg:temp}
 \end{figure} 
 
