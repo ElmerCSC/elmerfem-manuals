@@ -277,6 +277,112 @@ We used a 2D example, so the choice of Isocontours made sense.  If we had used a
 
 As promised, ElmerVTK is fairly simple to use, and will make some pretty nice graphics in a short amount of time.
 
+\chapter{Windows  -- More Information}
+
+\section{Open a Command Prompt Anywhere}
+
+Most Windows programs use the graphical interface and so most Windows users have little experience using the command prompt.  Being proficient with the command prompt is useful when working with Elmer, such as running Elmergrid or running Elmersolver.\\
+
+Windows includes the command prompt window and also Powershell, which is a more recent version.  For our purposes, either one is sufficient, and these notes will apply to both.\\
+
+First, one can open a command window by clicking on the Start button, and then just start typing `command', and select the bar for `Command Prompt'.  Likewise, click on the start button and start typing `powershell', and select the bar for `PowerShell'.  From here on to make things simpler, we will only use `Command Prompt' for these examples.\\
+
+The Command Prompt window will open, and the default directory (C:/Users/...>) will be shown with a blinking cursor.  Since the default directory is almost never the directory you want, there must be a better method of opening a command prompt window.\\
+
+Windows includes File Explorer, which most people use all the time to navigate directories and files within Windows.  One way to open File Explorer is to click on the start button, and start typing `file explorer' and select the bar for `File Explorer'.  You may already have shortcuts to open File Explorer on your desktop or on the taskbar, so use whatever method you prefer to open File Explorer.\\
+
+Let's assume that you have already created \texttt{C:/Elmer/PassiveElements}, by copying one of the tutorials.  Open File Explorer and navigate to the PassiveElements folder.  You will see the folder with the directory contents on the right, and there will be a bar near the top containing: \texttt{This PC > Local Disk (C:) > Elmer > PassiveElements}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{cmd-1}
+\caption{File Explorer}\label{fg:cmd-1}
+\end{figure}
+
+Click in the bar with the mouse, and the contents will change to: \texttt{C:/Elmer/PassiveElements}, and will be highlighted in blue.  
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{cmd-2}
+\caption{Highlight in Blue}\label{fg:cmd-2}
+\end{figure}
+
+While the content is highlighted blue, type `cmd' and press enter.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{cmd-3}
+\caption{Type in cmd}\label{fg:cmd-3}
+\end{figure}
+
+A command prompt window will open up, and will be located in the PassiveElements folder.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{cmd-4}
+\caption{Command prompt window}\label{fg:cmd-4}
+\end{figure}
+
+\newpage
+
+One can use the same method to open a Powershell window.  While the content is highlighted blue, type `powershell' and press enter.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{cmd-5}
+\caption{Type in powershell}\label{fg:cmd-5}
+\end{figure}
+
+A Powershell window will open up, and will be located in the PassiveElements folder.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{cmd-6}
+\caption{Powershell window}\label{fg:cmd-6}
+\end{figure}
+
+
+The command prompt accepts many commands, such as type `dir', press enter, and a directory listing will appear with the files inside the current folder.  Changing directories is done with the `cd' command.   Type `cd ..' to change to the parent directory, and type `cd PassiveElements' to change back to the sub folder.  If you use the File Explorer and cmd approach to open your command prompt windows, you won't need to use `cd' much.
+
+\section{Batch files}
+
+A typical use of the command prompt in Elmer will be to run Elmergrid and Elmersolver.  One can also use batch files to run Elmergrid and Elmersolver, which can be handy and sometimes faster.  For example, use a text editor such as Notepad to create a text file named \texttt{run.bat} with the following contents:
+
+\ttbegin
+elmergrid 1 2 mesh
+pause
+elmersolver
+pause
+\ttend
+
+This assumes you have a valid elmergrid geometry input file named \texttt{mesh.grd}, an elmer sif file named \texttt{case.sif}, and a file named \texttt{ELMERSOLVER STARTINFO} in the same folder as the batch file.  In File Explorer, double click on the file \texttt{run.bat} and a command window will open and elmergrid will execute, followed by a pause.  Press any key, and elmersolver will execute, followed by a pause.  You have run an Elmer case inside a command window, but without having to actually open a command window or type any commands in the window.  If you are running the same example over and over, and making changes to the sif file each time, then using a batch file will save some time.
+
+\section{Tutorial files}
+
+The Elmer Documentation that was previously downloaded includes working examples of the tutorials, in the folders named  \texttt{tutorials-GUI-files} and  \texttt{tutorials-CL-files}.  These folders include the geometry input files and the egproject files.
+
+\section{Elmerfem test files}
+
+The source code for Elmer is located on github, at \url{https://github.com/ElmerCSC/elmerfem}.  Open that webpage, click on the green button that says \texttt{Code}, and select \texttt{Download ZIP}.  The zip file will download, copy the file to a good folder, such as \texttt{C:/Elmer} and extract the contents.  A new folder named \texttt{elmerfem} will contain the source code for the Elmer suite.  Open the sub folder \texttt{elmerfem/fem/tests} and you will see about 700 folders, one for each test case.  Each test folder will have all the files needed to run each test.  Searching through the 700 folders for a particular solver will lead one to the desired tests.
+
+\section{ElmerGrid sample files}
+
+If you download the github repository as described above in the Elmerfem test files section, there is a folder \texttt{elmerfem/ElmerGUI/samples/grd} that contains samples of elmergrid input files.  These samples plus the ElmerGrid manual will help get started with ElmerGrid.
+
+\section{Elmer Forum}
+
+The Elmer user forum has many years of history, from many users.\\
+
+\url{http://www.elmerfem.org/forum/}\\
+
+There are quite a few example cases contributed by users, and are described nicely in the sub-forum, `Contributed Cases'.
+
+\section{Elmer on Youtube}
+
+There are many videos on Youtube about Elmer, here's a link:\\
+
+\url{https://www.youtube.com/user/elmerfem/videos}
+
 \chapter{Windows -- Virtual machine}
 
 The Elmer website has instructions showing how to download a virtual machine.\\
