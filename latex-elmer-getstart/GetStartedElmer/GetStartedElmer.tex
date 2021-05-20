@@ -385,6 +385,8 @@ There are many videos on Youtube about Elmer, here's a link:\\
 
 \chapter{Windows -- Virtual machine}
 
+\section{Installing Elmer Virtual Machine}
+
 The Elmer website has instructions showing how to download a virtual machine.\\
 
  \url{http://www.nic.funet.fi/pub/sci/physics/elmer/bin/VirtualMachines}\\
@@ -444,6 +446,8 @@ Once Virtual Box is done importing the appliance, as usual with Virtual Box take
 \end{figure}
 
 Go ahead and update, when prompted, enter `elmerfem' to authenticate.  After updating is finished, it will restart once.  Shutdown and take another snapshot, now you have a fully updated Elmer Virtual Machine that you can always restore if needed.\\
+
+\section{Update Keyboard}
 
 Next, let's verify the settings for \texttt{Region and Language} in Ubuntu.  More than likely, we will need to change the keyboard layout to suit your particular region.  The default keyboard layout is for a Finnish keyboard.  If you have any issues at all with the keyboard layout, be sure to go through these steps to update your keyboard setting.\\
 
@@ -518,7 +522,7 @@ That's it, you are done and can close the settings window.
 
 \chapter{Linux}
 
-The Elmer website has instructions showing how to download binaries.  Here is a quick summary of the steps needed to install Elmer in Linux.\\
+The Elmer website has instructions showing how to download binaries, including Linux binaries from Launchpad.  Here is a quick summary of the steps needed to install Elmer in Linux.\\
 
  \url{https://www.csc.fi/web/elmer/binaries}\\
 
@@ -526,7 +530,7 @@ Notice the section about using Launchpad Ubuntu and Debian based systems, as sho
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{binaries}
+\includegraphics[width=0.95\textwidth]{binaries}
 \caption{www.csc.fi/web/elmer/binaries}\label{fg:binaries}
 \end{center}
 \end{figure}
@@ -539,6 +543,8 @@ Notice the section about using Launchpad Ubuntu and Debian based systems, as sho
 \texttt{sudo apt-get install elmerfem-csc}
 
 \texttt{sudo apt-get install elmerfem-csc-eg}\\
+
+Installing elmerfem-csc will install Elmer, then installing elmerfem-csc-eg will add ElmerGUI to Elmer.\\
 
 To start ElmerGrid and ElmerSolver, enter this in a terminal window:\\
 
