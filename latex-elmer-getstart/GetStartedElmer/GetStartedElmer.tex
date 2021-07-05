@@ -6,6 +6,8 @@ Getting started using \texttt{Elmer} should be a smooth and easy process.  Begin
 
 A typical use case would be for someone with a particular application in mind that wants to find out whether \texttt{Elmer} is a suitable choice.  Being able to quickly download and run an Elmer tutorial should make the experience easy enough so the user gets an answer in a short amount of time.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{Windows -- Download}
 
 This chapter will discuss installing Elmer in Windows.  Windows 10 is used for these instructions.  The steps should also work with earlier versions of Windows, as long as they are 64 bits.
@@ -30,11 +32,18 @@ Once on that page, there are several folders to notice, such as `bin', `doc', `s
 \caption{Elmer Installers}\label{fg:elmer-bin-win}
 \end{figure}
 
-There four main categories to select from, such as `gui-mpi', `gui-nompi', `nogui-mpi', and `nogui-nompi'.  There also some labelled with `rel9.0', which are builds of the most recent official release and should be considered as the stable builds.  The other files not labelled with `rel9.0', are the nightly builds and are the most recent builds.\\
+There are four main categories to select from, such as `gui-mpi', `gui-nompi', `nogui-mpi', and `nogui-nompi'.  There also some labelled with `rel9.0', which are builds of the most recent official release and should be considered as the stable builds.  The other files not labelled with `rel9.0', are the nightly builds and are the most recent builds.  The nightly builds are actually quite stable, so feel free to start with the nightly build.\\
 
-For the first time installing Elmer in Windows, it is recommended to select `gui-nompi', and `rel9.0'.  The files with .exe extension are an installer for Windows, which is what is recommended.  So out of the entire list, we want to download this file:\\
+For the first time installing Elmer in Windows, it is recommended to select `gui-mpi', and `rel9.0'.  The files with .exe extension are an installer for Windows, which is what is recommended.  So out of the entire list, we want to download this file:
 
-\texttt{ElmerFEM-gui-nompi-Windows-AMD64-rel9.0.exe}
+\texttt{ElmerFEM-gui-mpi-Windows-AMD64-rel9.0.exe}\\
+
+Conveniently, this is the first file in the directory listing.  If you decide to start with the nightly build, then download this file:
+
+\texttt{ElmerFEM-gui-mpi-Windows-AMD64.exe}\\
+
+which is the third entry in the directory listing.  If you can't decide, download both files and you can try them out separately.
+
 
 \section{Download Elmer Documentation}
 
@@ -48,11 +57,11 @@ Return to this page, this time select `doc' for the most recent documentation fo
 \caption{Elmer Doc}\label{fg:elmer-doc}
 \end{figure}
 
-Download the individual files to get the most recent build of the manuals.  Be sure to download `ElmerTutorials' for the ElmerGUI tutorials, `ElmerGUI Manual' for instructions about ElmerGUI, and `ElmerSolverManual', which describes each solver in detail.\\
+Note the two files ending in *.zip and *.tar.gz contain compressed copies of eleven out of fourteen of the documentation files.  Downloading the *.zip file should be sufficient for most Windows users to get started with Elmer.  Feel free to download all documents and all *.zip files in this directory.\\
 
-Also be sure to download the file, `tutorials-GUI-files.zip', because this zipped folder contains working examples of ElmerGUI projects, one for each tutorial.
+Start with the `GetStarted' manual, which is this document.  Then look at these three documents, `ElmerTutorials' for the ElmerGUI tutorials, `ElmerGUI Manual' for instructions about ElmerGUI, and `ElmerSolverManual', which describes each solver in detail.  \\
 
-\newpage
+Finally, be sure to download `tutorials-GUI-files.zip', because this zipped folder contains working examples of ElmerGUI projects, one for each tutorial.
 
 \section{Download Paraview}
 
@@ -69,11 +78,15 @@ Select one of the top items, in particular a file ending in .exe, so you will do
 On the Paraview download page, there are several other files, such as `getting started', `tutorial', that would be very useful to download.  This would be a good opportunity to download the instructions for Paraview.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{Windows -- Install}
 
 \section{Install Elmer}
 
-Navigate to the folder containing the Elmer installer and the documentation zip file.  Extract the zip file to a suitable folder.  Double click on the Elmer installer .exe file.  The installation process should look like figures~\ref{fg:installer-1}  through figure~\ref{fg:installer-10} on the following pages.  
+Navigate to the folder containing the Elmer installer and the documentation zip file.  Extract the zip file to a suitable folder.  You should have selected one version of the Elmer installer by now.  The installer with \texttt{gui-mpi} will install ElmerGUI, Elmersolver, Elmersolver\_mpi, and Microsoft MPI.  This will provide the capability to run solutions serially or in parallel.  To get started with Elmer and ElmerGUI, running solutions serially is the best way to learn how to use the program.  We will cover setting up and running in parallel in a later chapter.  It is suggested to get some experience with serial solutions, then later on refer to the chapter on Parallel Solutions.\\
+
+Double click on the Elmer installer .exe file.  The installation process should look like figures~\ref{fg:installer-1}  through figures~\ref{fg:installer-13} on the following pages.  
 
 \begin{figure}[H]
 \begin{center}
@@ -83,59 +96,97 @@ Navigate to the folder containing the Elmer installer and the documentation zip 
 \end{center}
 \end{figure}
 
-You may get a blue screen while beginning the installation.  The first blue screen has a small button, `More info', that you must click on to get the second blue screen, where you will click on `Run anyway'. \\
+You may get a blue screen while beginning the installation.  The first blue screen has a small button, `More info', that you must click on to get the second blue screen, where you will click on `Run anyway'. 
 
-From there just take the default actions up until you reach `Install Options', where you have a chance to select adding the path to Elmer.  Be sure to click on `Add Elmer...', either for all users or for current user.  If you aren't sure, pick `for current user'.  Also put a check into the check box for `Create Elmer Desktop Icon'.  From here, take the defaults and it should properly install Elmer.
+From there just take the default actions up until you reach `Install Options', where you have a chance to select adding the path to Elmer.  Be sure to click on `Add Elmer...', either for all users or for current user.  If you aren't sure, pick `for current user'.  Also put a check into the check box for `Create Elmer Desktop Icon'.  From here, take the defaults and it should properly install Elmer.\\
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.48\textwidth]{installer-3}
-\includegraphics[width=0.48\textwidth]{installer-4}
-\caption{Elmer installation}\label{fg:installer-3}
+\includegraphics[width=0.45\textwidth]{installer-3}
+\includegraphics[width=0.45\textwidth]{installer-4}
+\caption{Elmer installation, agree to the license}\label{fg:installer-3}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.48\textwidth]{installer-5}
-\includegraphics[width=0.48\textwidth]{installer-6}
+\includegraphics[width=0.45\textwidth]{installer-5}
+\includegraphics[width=0.45\textwidth]{installer-6}
 \caption{Select Install Option: Add Elmer to the system PATH for current user}\label{fg:installer-5}
 \end{center}
 \end{figure}
 
+If this is the first time installation of Elmer, be sure to select all four components.  If upgrading or reinstalling, then you can uncheck the box for `MS MPI', no need to reinstall MPI.
+
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.48\textwidth]{installer-7}
-\includegraphics[width=0.48\textwidth]{installer-8}
-\caption{Elmer installation}\label{fg:installer-7}
+\includegraphics[width=0.45\textwidth]{installer-7}
+\includegraphics[width=0.45\textwidth]{installer-8}
+\caption{Select Components, take the defaults}\label{fg:installer-7}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.4\textwidth]{installer-9}
-\includegraphics[width=0.4\textwidth]{installer-10}
-\caption{Elmer installation}\label{fg:installer-9}
+\includegraphics[width=0.45\textwidth]{installer-9}
+\includegraphics[width=0.45\textwidth]{mpi-1}
+\caption{MPI installation occurs on first installation of Elmer}\label{fg:installer-9}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{mpi-2}
+\includegraphics[width=0.45\textwidth]{mpi-3}
+\caption{Agree to the license and take the default directory}\label{fg:installer-10}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{mpi-4}
+\includegraphics[width=0.45\textwidth]{mpi-5}
+\caption{Complete MPI installation}\label{fg:installer-11}
+\end{center}
+\end{figure}
+
+\newpage
+
+If you see the below Figure \ref{fg:installer-12} during the installation process, don't worry, just go ahead and click on the \texttt{OK} button.  This message appears if you have previously installed Microsoft MPI, and as the notice box says, there is already a version of MPI installed.  This will happen every time you install a newer version of Elmer with MPI, regardless of whether you uninstall Elmer first, or if you just install a newer version on top of an old version.  The Elmer uninstaller doesn't uninstall Microsoft MPI, so if you want to uninstall MPI, you will have to go find the right instructions from Microsoft.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.60\textwidth]{mpi-6}
+\caption{Don't repeat MPI installation, click on OK}\label{fg:installer-12}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.60\textwidth]{installer-10}
+\caption{Complete the Elmer installation}\label{fg:installer-13}
 \end{center}
 \end{figure}
 
 After the installation process has finished, you should see an icon on the desktop for ElmerGUI.  Go ahead and double click on the icon to start ElmerGUI.  Please refer to the ElmerGUI manual for instructions on using ElmerGUI, and try out the first tutorial. 
 
-Since Paraview hasn't been installed yet, after loading the first tutorial  if you click on the little RGB flag icon in the upper right of the menu bar to try and start Paraview, nothing much will happen.  If you hover the cursor over the flag after clicking on it, you will see in the lower left of the window the message `Unable to start Paraview'.  In the meantime, to start ElmerVTK click on the top menu bar icon `Run', then click on `Start ElmerVTK'.
+Since Paraview hasn't been installed yet, after loading the first tutorial  if you click on the `Run', then on `Start Paraview', nothing much will happen.  If you hover the cursor over the flag after clicking on it, you will see in the lower left of the window the message `Unable to start Paraview'.  In the meantime, to start ElmerVTK click on the top menu bar icon `Run', then click on `Start ElmerVTK'.
 
 
 \section{Install Paraview}
 
-Navigate to the folder containing the Paraview installer.  Double click on the installer to start the installation process.  There really aren't any options that need to selected or changed for a successful installation.  The installer won't create a desktop icon, but will create an entry in the Start menu.\\
+Navigate to the folder containing the Paraview installer.  Double click on the installer to start the installation process.  There really aren't any options that need to be selected or changed for a successful installation.  The installer won't create a desktop icon, but will create an entry in the Start menu.\\
 
-The installer will not add Paraview to the system path, so we will perform that step ourselves.
+The installer will not add Paraview to the system path, we will have to perform that step ourselves.
 
 
-\chapter{Windows -- Add the path to Paraview}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Path to Elmer}
+\chapter{Windows -- Path to Paraview}
 
-If we set the path to Paraview, then ElmerGUI will be able to start Paraview from inside of ElmerGUI.  In other words, with a proper path setting, clicking on the ElmerGUI icon for Paraview, will start Paraview and load the current .vtu file, if it exists.
+\section{View the Path to Elmer}
+
+If we set the path to Paraview, then ElmerGUI will be able to start Paraview from inside of ElmerGUI.  In other words, with a proper path setting, clicking on `Start Paraview', will start Paraview and load the current .vtu file, if it exists.
 
 To set the path after installing Paraview, click on `Start', then `Settings'.  As shown in figure~\ref{fg:path-1}, start typing in the search box `environment', then select the result for `Edit environment variables for your account'.  
 
@@ -157,7 +208,7 @@ As part of the operation of the Elmer installer, the path to Elmer will be creat
 \end{center}
 \end{figure}
 
-\section{Path to Paraview}
+\section{Add the Path to Paraview}
 
 While you have the path variable open for editing, click on `new', and enter the path to Paraview.\\
 
@@ -193,42 +244,46 @@ Finally, move the entry for the path to Paraview up to just under the path to El
 
 \section{Start Paraview from within ElmerGUI}
 
-Open ElmerGUI, and click on the flag icon for Paraview, you should see a pop up window that says `Paraview Starting', followed by Paraview actually starting.  If you see an output window containing a red statement like `critical: In unknown, line 0', don't worry, it just means there wasn't a valid .vtu file found.  Run a tutorial, or find a valid .vtu file, and try again, Paraview should load the .vtu file and display a blank grey screen.
+Open ElmerGUI, and click on 'Run', then `Start Paraview', you should see a pop up window that says `Paraview Starting', followed by Paraview actually starting.  If you see an output window containing a red statement like `critical: In unknown, line 0', don't worry, it just means there wasn't a valid .vtu file found.  Run a tutorial, or find a valid .vtu file, and try again, Paraview should load the .vtu file and display a blank grey screen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Introduction to Paraview}
 
-If you have loaded a valid Elmer .vtu file, upon opening Paraview you will see a blank grey screen, and many small icons, as shown in Figure~\ref{fg:para-2}.
+If you have loaded a valid Elmer .vtu file, upon opening Paraview you will see a blank grey screen, and many small icons, as shown in Figure~\ref{fg:paraview-2}.
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.58\textwidth]{para-2}
-\caption{Initial Paraview screen}\label{fg:para-2}
+\includegraphics[width=0.58\textwidth]{paraview-2}
+\caption{Initial Paraview screen}\label{fg:paraview-2}
 \end{center}
 \end{figure}
 
-On the left side of the screen, as shown in Figure~\ref{fg:para-4}, near the middle is a light green button `Apply'.  Click on that button and the geometry will appear.
+On the left side of the screen, as shown in Figure~\ref{fg:paraview-4}, near the middle is a light green button `Apply'.  Click on that button and the geometry will appear.
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.38\textwidth]{para-3}
-\includegraphics[width=0.57\textwidth]{para-4}
-\caption{Left side click Apply, right side geometry appears}\label{fg:para-4}
+\includegraphics[width=0.38\textwidth]{paraview-3}
+\includegraphics[width=0.57\textwidth]{paraview-4}
+\caption{Left side click Apply, right side geometry appears}\label{fg:paraview-4}
 \end{center}
 \end{figure}
 
 \newpage
 
-Next, look on the left side below the window showing the variables, as shown in Figure~\ref{fg:para-5}, for a box labelled `Coloring'.  Click in that box for a drop down selection, pick `potential', then click `Apply'.  The potential will appear superimposed on the geometry, along with a color bar with the range of the potential.
+Next, look on the left side below the window showing the variables, as shown in Figure~\ref{fg:paraview-5}, for a box labelled `Coloring'.  Click in that box for a drop down selection, pick `potential', then click `Apply'.  The potential will appear superimposed on the geometry, along with a color bar with the range of the potential.
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.3\textwidth]{para-5}
-\includegraphics[width=0.68\textwidth]{para-6}
-\caption{Initial Paraview screen}\label{fg:para-5}
+\includegraphics[width=0.3\textwidth]{paraview-5}
+\includegraphics[width=0.68\textwidth]{paraview-6}
+\caption{Initial Paraview screen}\label{fg:paraview-5}
 \end{center}
 \end{figure}
 
 That is a very basic introduction to Paraview.  For more information, refer to the  Paraview website.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Introduction to ElmerVTK}
 
@@ -277,9 +332,11 @@ We used a 2D example, so the choice of Isocontours made sense.  If we had used a
 
 As promised, ElmerVTK is fairly simple to use, and will make some pretty nice graphics in a short amount of time.
 
-\chapter{Windows  -- More Information}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Open a Command Prompt Anywhere}
+\chapter{More Information -- Elmer -- Windows}
+
+\section{Windows -- Open a Command Prompt Anywhere}
 
 Most Windows programs use the graphical interface and so most Windows users have little experience using the command prompt.  Being proficient with the command prompt is useful when working with Elmer, such as running Elmergrid or running Elmersolver.\\
 
@@ -344,7 +401,7 @@ A Powershell window will open up, and will be located in the PassiveElements fol
 
 The command prompt accepts many commands, such as type `dir', press enter, and a directory listing will appear with the files inside the current folder.  Changing directories is done with the `cd' command.   Type `cd ..' to change to the parent directory, and type `cd PassiveElements' to change back to the sub folder.  If you use the File Explorer and cmd approach to open your command prompt windows, you won't need to use `cd' much.
 
-\section{Batch files}
+\section{Windows -- Batch files}
 
 A typical use of the command prompt in Elmer will be to run Elmergrid and Elmersolver.  One can also use batch files to run Elmergrid and Elmersolver, which can be handy and sometimes faster.  For example, use a text editor such as Notepad to create a text file named \texttt{run.bat} with the following contents:
 
@@ -355,7 +412,7 @@ elmersolver
 pause
 \ttend
 
-This assumes you have a valid elmergrid geometry input file named \texttt{mesh.grd}, an elmer sif file named \texttt{case.sif}, and a file named \texttt{ELMERSOLVER STARTINFO} in the same folder as the batch file.  In File Explorer, double click on the file \texttt{run.bat} and a command window will open and elmergrid will execute, followed by a pause.  Press any key, and elmersolver will execute, followed by a pause.  You have run an Elmer case inside a command window, but without having to actually open a command window or type any commands in the window.  If you are running the same example over and over, and making changes to the sif file each time, then using a batch file will save some time.
+This assumes you have a valid elmergrid geometry input file named \texttt{mesh.grd}, an elmer sif file named \texttt{case.sif}, and a file named \texttt{ELMERSOLVER\_STARTINFO} in the same folder as the batch file.  In File Explorer, double click on the file \texttt{run.bat} and a command window will open and Elmergrid will execute, followed by a pause.  Press any key, and elmersolver will execute, followed by a pause.  You have run an Elmer case inside a command window, but without having to actually open a command window or type any commands in the window.  If you are running the same example over and over, and making changes to the sif file each time, then using a batch file will save some time.
 
 \section{Tutorial files}
 
@@ -383,9 +440,629 @@ There are many videos on Youtube about Elmer, here's a link:\\
 
 \url{https://www.youtube.com/user/elmerfem/videos}
 
-\chapter{Windows -- Virtual machine}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Installing Elmer Virtual Machine}
+\chapter{Elmer and Parallel Solutions}
+
+Running Elmer solutions in parallel is not difficult, whether run from a command prompt or from within ElmerGUI.  As always, make sure you have a project that runs to completion in serial, with a single processor, then you can convert to a parallel run.
+
+\section{Test serial operation}
+
+Let's run an example in serial operation, to make sure we have a working example.  We will also compare the example directory contents between serial and parallel operation, so running the serial example first will be helpful.
+
+Start by creating a new folder that we will use to hold several example directories.  We will use \texttt{C:\textbackslash{}Elmer}, but you can use whatever folder make sense.
+
+Next, let's select an example tutorial to work with, such as \texttt{FlowStepGUI}, and copy the tutorial folder from \texttt{tutorials-GUI-files} into our new folder.
+
+Then copy the newly copied tutorial folder and paste it twice into our new folder, so you end up with three identical folders as shown in Figure~\ref{fg:folders}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{serial-10}
+\caption{Setup example folders}\label{fg:folders}
+\end{figure}
+
+\newpage
+
+Let's rename two of the three folders, so we can keep track of our work.  Add a suffix of `serial' and of `parallel', as shown in Figure~\ref{fg:folders-rename}.  Don't rename the folder ending in `- Copy', we'll need it later on.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{serial-11}
+\caption{Rename two of the example folders}\label{fg:folders-rename}
+\end{figure}
+
+Open the folder \texttt{FlowStepGUI-serial} containing the Flow Step tutorial, there will be 6 files as shown in Figure~\ref{fg:folders-orig}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{serial-12}
+\caption{Tutorial files}\label{fg:folders-orig}
+\end{figure}
+
+\newpage
+
+Start ElmerGUI and \texttt{Load Project} from the folder \texttt{FlowStepGUI-serial}.  Once the project has loaded, click on Run, Parallel Settings, you should see the settings window as shown in Figure~\ref{fg:settings}.  Verify that the box \texttt{Use parallel solver} IS NOT checked.  Click on the \texttt{Accept} button at the bottom of the window.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{serial-13}
+\caption{Run, Parallel Settings}\label{fg:settings}
+\end{figure}
+
+Click on the right green arrow to `Generate and save sif, save project,  then run the solver'.  The solver log window and the convergence history window should pop up and the solver will finish in 4 or 5 seconds.  Refer to Figure~\ref{fg:solver}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{serial-14}
+\caption{Solver Log and Convergence History}\label{fg:solver}
+\end{figure}
+
+\newpage
+
+Take a look at the folder \texttt{FlowStepGUI-serial}, now there will be 9 or 10 files, as shown in Figure~\ref{fg:results}.  The file `case.sif' was generated by ElmerGUI and the file `case\_t0001.vtu' is the Paraview results file.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{serial-15}
+\caption{Sif and Vtu files}\label{fg:results}
+\end{figure}
+
+\section{Parallel settings in ElmerGUI}
+
+We are almost ready to run our example in parallel, but first we must verify the required settings.  The default settings for parallel operation may not work, so we may need to adjust the settings before beginning parallel solutions.  ElmerGUI will store the settings so we only need to go through this step once.  Of course, if a new version of ElmerGUI is installed, then we will need to verify the settings again.  Typical settings for ElmerGUI in Windows 10 are shown in Figure~\ref{fg:parallel-settings}.\\
+
+To activate parallel solutions, check the check box for \texttt{Use parallel solver}.  To change back to serial solution, uncheck this box.  Second, adjust the \texttt{Number of processes} to match the number of physical processors in your system.
+
+Third, enter the name of the executable for MPI.  For Windows, the Elmer Installer will install Microsoft MPI the first time the installer is run, and the name of the executable is \texttt{mpiexec}.  The Microsoft MPI installer will add  \texttt{C:\textbackslash{}Program Files\textbackslash{}Microsoft MPI\textbackslash{}Bin\textbackslash{}mpiexec.exe} to the system Path, so you should not need to add the directory path to the executable, so just enter \texttt{mpiexec}.
+
+When using Linux (such as in the Elmer Virtual Machine), the MPI executable is named \texttt{mpirun}, so one would add \texttt{mpirun} into the Executable box.
+
+Fourth, enter the following into the Arguments box: \texttt{-n \%{}n ElmerSolver\_{}mpi.exe}.  
+\texttt{}
+The `-n' indicates that the number of processes will be next, followed by `\%{}n' which is a variable placeholder equal to the number of processes selected in the second step above.
+
+Fifth, enter the following into the Divide box: \texttt{ElmerGrid 2 2 \%msh -partdual -metiskway \%n}.  This command calls ElmerGrid with formats 2 and 2, meaning input an Elmer mesh.* and output an Elmer mesh.*.  The \%msh is a variable placeholder equal to the Mesh name.  The commands -partdual and -metiskway are commands used by ElmerGrid when calling Metis to perform the partitioning of the mesh.  Finally, the \%n is a variable placeholder equal to the number of processes selected in the second step above.
+
+The Merge box is not needed because Paraview takes care of merging the resulting .vtu files when displaying the results.
+
+Click on the \texttt{Accept} button at the bottom to save your settings and close the window.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{parallel-settings}
+\caption{Parallel settings in ElmerGUI}\label{fg:parallel-settings}
+\end{figure}
+
+\section{Test parallel operation}
+
+Start ElmerGUI and \texttt{Load Project} from the folder \texttt{FlowStepGUI-parallel}.  Once the project has loaded, click on Run, Parallel Settings, you should see the settings window as shown in Figure~\ref{fg:parallel-settings}.  Verify that the box \texttt{Use parallel solver} IS checked.  Click on the \texttt{Accept} button at the bottom of the window.
+
+Click on the right green arrow to `Generate and save sif, save project,  then run the solver'.  The solver log window and the convergence history window should pop up and the solver will finish in 2 or 3 seconds.  Refer to Figure~\ref{fg:solver-parallel}.
+
+Take a look at the folder \texttt{FlowStepGUI-parallel}, now there will be 14 or 15 files, as shown in Figure~\ref{fg:results-parallel}.  The file `case.sif' was generated by ElmerGUI and the four files like `case\_4np1\_t0001.vtu' are the Paraview results file for each of the four partitions.  The file `case\_t0001.pvtu' is new, and is the Paraview result file that will merge the four partitions back into a single model.  There is also a new sub-folder `partitioning.4' that contains the partitioned mesh files generated by the call to ElmerGrid.
+
+Well, that was easy.  Now that ElmerGUI has stored the parallel settings in the xml file for this project, all you have to do is check or uncheck the box for \texttt{Use parallel solver} and you can switch from serial to parallel and back to serial operation. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{parallel-10}
+\caption{Solver Log and Convergence History}\label{fg:solver-parallel}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{parallel-11}
+\caption{Sif and Vtu files}\label{fg:results-parallel}
+\end{figure}
+
+\section{Spaces in path to project}
+
+With verified settings and example tutorial files for practice, what could possibly go wrong?  Let's check to see what happens if there are spaces in the path to your ElmerGUI folder.
+
+Start ElmerGUI and \texttt{Load Project} from the folder \texttt{FlowStepGUI - Copy} that we created before starting `Test serial operation'.  Note that there are two spaces in the directory name.  Once the project has loaded, click on Run, Parallel Settings, you should see the settings window as shown in Figure~\ref{fg:parallel-settings}.  Update the parallel settings, as needed.  Verify that the box \texttt{Use parallel solver} IS checked.  Click on the \texttt{Accept} button at the bottom of the window.
+
+Click on the right green arrow to `Generate and save sif, save project,  then run the solver'.  The solver log window  should pop up and the solver will stop early with errors, as shown in to Figure~\ref{fg:spaces}. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{parallel-12}
+\caption{Spaces in the directory name}\label{fg:spaces}
+\end{figure}
+
+ The key error message is `WARNING:: LoadMesh: Requested mesh > ./. < in partition 4 does not exist!'.  Remove the spaces from the directory name, and the errors will go away.  The problem is that the call to ElmerGrid uses the path to the folder, up to the first space.  If you look at the example folders, you will see there are now four folders, and the fourth folder will contain the partitioned mesh files.
+
+
+\section{Information about Parallel}
+
+For an overview and background information about Elmer parallel operation, download the file \texttt{ElmerParallel.pdf} from this site:\\
+
+\url{http://www.nic.funet.fi/pub/sci/physics/elmer/slides/}
+
+
+\section{Sif file}
+
+Note that when going from serial to parallel, in general the sif file does not change and only how the project is started changes.  One section in the sif that may change may be the mesh directory, depending on how ElmerGrid is run.  The solver, equation, materials, boundary conditions, etc., should not need any changes.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Elmerfem Wiki}
+
+The Elmer Wiki used to exist at \url{http://www.elmerfem.org/elmerwiki}.  Some of the pages from the wiki have been copied from Wayback Machine into this chapter.  The original authors are not known.
+
+\section{Frequently Asked Questions}
+
+Below is a list of some of the most frequently asked questions. You can suggest new FAQs on the forum.
+
+\subsection{Technical Questions}
+
+    Q: How do I create geometries with Elmer?
+    A: Elmer suite does not include proper geometry generation tools. You should use other geometry and proposal software mesh generations tools and import the files into Elmer. Gmsh and GiD (mesh) and SALOME (CAD) are the most commonly used ones. Some simple geometries may be defined directly in ascii-format using the .grd (ElmerGrid) and .in2d (netgen) formats, for example.
+
+    Q: I edit the .sif file manually but modifications are erased by ElmerGUI
+    Q: How can I import my .sif file into ElmerGUI?
+    A: The state of ElmerGUI is defined by the project file which is used to generate the sif file. Therefore the modifications in the .sif file are not communicated to the ElmerGUI and a .sif file cannot be used as a starting point for ElmerGUI work.
+
+    Q: I try to set a "keyword" value in the .sif file but ElmerSolver gives an error "Unknown specifier" for property name:"keyword". What's wrong?
+    A: The list of known keywords is defined in the SOLVER.KEYWORDS file. The list can never be complete since the code is all the time developing and the user may also invent new variable names. If the type of the keyword is not known, the user must provide it from one of the following: Logical, Integer, Real, String and File. Also Equals defines the type implicitly to be of type Real.
+
+    Q: Where can I find examples on how to use a specific solver?
+    A: The are a few walk-through cases in Elmer Tutorials. In addition there are more than 700 minimalistic tests in the Elmer distribution in the `tests' folder.  Among the .sif files you can try to find the ones that include the the solver of interest. By increasing the "Max Output Level" and link building defining a "Post File" in the "Simulation" section it is easier to get acquainted to the solver.
+
+    Q: What unit system should I use in Elmer?
+    A: Elmer does not assume any specific units so you can use any unit system that is consistent. The natural choice is SI units. By default the equations are scaled to an optimal range so usually there is no need for altering the unit system for the sake of numerical accuracy. However, if you choose, for example, your mesh to be in millimetres remember that it reflects to the units of velocity, density, force, viscosity etc., as well.
+
+    Q: I want to restart using the .ep result file, how do I do that?
+    A: Unfortunately Elmer uses the "Post File", with the usual suffix .ep, only for visualization. If you want to restart you need to save the data in a "Result File" which has some additional information required.
+
+    Q: I want to virtualize my results using graphs, how should I proceed?
+    A: There are auxiliary solvers SaveLine and SaveScalars that may be used to generate appropriate data in ASCII format. See the Models manual or search the discussion forum for more information.
+
+    Q: I want to use Paraview (or other VTK based visualization software). How should I proceed?
+    A: You can utilize the ResultOutputSolve with vtu (or vtk) output format. See Models manual for details.
+
+\subsection{Generic Questions}
+    Q: How large is the Elmer community?
+    A: Based on different web \& download statistics, a rough estimate would be hundreds of active users and thousands of test users each year.
+
+    Q: There have been quite few official releases of Elmer. Has the development stopped?
+    A: No. Elmer is actively developed and each major commit is run against a large number of tests cases. Therefore we consider the trunk version to be stable and recommend it as starting point for any compilation. However, we plan to give more regularly official releases in the future.
+
+    Q: Are you trying to make money with Elmer?
+    A: No. Elmer is maintained by CSC - IT Center for Science which is a governmental non-profit organization in Finland. However, in order to fund the development of the code we do have to put a price tag on the labour when we're not serving the Finnish universities.
+
+    Q: Can I use Elmer for commercial consultation or other non-academic work?
+    A: Yes. GPL license does not limit commercial use in any way.
+
+    Q: Can I use parts of Elmer in my own code?
+    A: Yes, with the condition that if you publish the code it must be published under the same license i.e. GPL.
+
+    Q: Can I copy the documentation freely?
+    A: Yes. They have been published under Creative Commons licence. However, no derivative works are allowed i.e. the copies must not include any modifications to the originals.
+
+    Q: I would like to write a solver for my own problem. Is it difficult?
+    A: It depends. Most solvers can be written as dynamically linked modules utilizing high level library functions. A simple Poisson equation ready for all dimensions and all massively parallel simulations takes just 30 lines of code, or so. Using some special element types for complicated vector valued equations is more laborious and requires some know how of finite elements.
+
+    Q: I would like to contribute but I can't program, is there anything I could do?
+    A: Yes. Often in the development defining what equations to solve, setting up appropriate test cases and creating the computational mesh is easily 80\% of the work load. If you can help in these aspects then the actual coding work will be much more attractive to the developers. Also sharing your simulation work will benefit the project by attracting new users.
+
+    Q: How are the new features of Elmer decided?
+    A: In large, Elmer development is guided by a number of externally funded projects which result to new features in different application areas. For minor issues a good idea is often a sufficient starting point and therefore feature requests and bug reports are always welcome.
+
+\newpage
+
+\section{Parallel Overview}
+
+The parallel solution within Elmer utilizes the Message Passing Interface (MPI) standard for inter-process communication. The distribution of load to the different processes is based on domain decomposition, as shown in Figure~\ref{fg:concept}. This implies that the mesh is split into N parts (if the parallel computation consists of N processes). 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{Parallelconcept}
+\caption{Overview of Parallel Operation}\label{fg:concept}
+\end{figure}
+
+\section{Using the SaveLine solver for parallel computations}
+
+The SaveLine solver module allows the extraction of one or multiple data sets along lines through the complete geometric domain. Such a line may cross concurrently calculated partition boundaries. The data output from the SaveLine solver is dumped into different data sets, named accordingly anyhow.dat.0, anyhow.dat.1. etc., the end number representing the partition domain of the parallel run.
+
+The user or rather the evaluation program then has to take care that the data of the individual calculation domains have to be recombined into one display. An example is given for a quad-core calculation of the time dependent temperature profiles in a brick wall: 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Temp-Profile}
+\caption{Saveline}\label{fg:saveline}
+\end{figure}
+
+The image was obtained from GnuPlot, with the three different colours representing the data output from three of the four partition domains. The fourth did not contribute data to the extracted line. 
+
+\section{MATC}
+
+\subsection{Introduction}
+
+Elmer uses MATC to evaluate mathematical expressions in the Solver Input Files. Also ElmerPost includes MATC.  MATC was written by Juha Ruokolainen.  You can find the official manual at:\\
+
+\url{http://www.nic.funet.fi/pub/sci/physics/elmer/doc/MATCManual.pdf}
+
+\subsection{Embedding in sif files}
+
+There are two options for embedding MATC in Solver Input Files. Variables can be defined as
+
+\begin{verbatim}
+    gravity = Real $ 0 0 -1 * 9.81
+\end{verbatim}
+
+\noindent which would be evaluated once at program start. or by
+
+\begin{verbatim}
+    gravity = Real MATC 0 0 -1 * 9.81
+\end{verbatim}
+
+\noindent which is evaluated every time the gravity variable is used.
+
+\subsection{Operator Precedence}
+
+The mathematical operations are evaluated from high to low precedence and within each level from left to right (everything as usual).
+
+\noindent The most important operators ordered from high to low precedence:
+
+\begin{verbatim}
+    () (parentheses)
+    ' ' (SPACE as a separator for vector components)
+    ^ (power)
+    */ 
+    +- 
+\end{verbatim}
+
+\noindent A full list can be found in the MATC Manual.
+
+\subsection{Scalars and Vectors}
+
+Vectors in MATC are written by separating their entries with spaces. Since the space forming vectors has a higher precedence than the algebraic operations
+
+\begin{verbatim}
+    min(3*4 2) = min(12 6) = 6
+\end{verbatim}
+
+\noindent while
+
+\begin{verbatim}
+    min((3*4) 2) = min(12 2) = 2
+\end{verbatim}
+
+\noindent this can lead to strange behaviour of boundary conditions if the parentheses are forgotten. 
+
+\subsection{Calling MATC from the command line}
+
+MATC can be called from the command line by entering \begin{verbatim}$ELMER_HOME/bin/matc\end{verbatim} Under Unix/Linux (and Windows) this should be part of your \$PATH and entering `matc' on the command line should suffice, as shown in Figure~\ref{fg:matc}.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{matc}
+\caption{MATC in command prompt}\label{fg:matc}
+\end{figure}
+
+\noindent To quit using command line MATC, type \texttt{quit}, or just close the command prompt window.
+
+\newpage
+
+\section{Multiple bodies from Salome to Elmer}
+
+\subsection{Introduction}
+
+This wiki page describes how to create a mesh that contains multiple bodies with Salome MECA 2009 and how to import it in Elmer.
+
+\subsection{Define your geometry in Salome}
+
+First, you need to define a geometry. In this example we deal with a simple one, with three boxes. We create two boxes which are intersecting each other. The intersection will be the third box. (You don't actually need to use the intersection operation, just make the two boxes.) Of course, you might as well define three separate boxes that share their respective surfaces geometrically. In this example, let's stick with the two intersecting ones, as shown in Figure~\ref{fg:salome-1}. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Salome-1-twoboxes}
+\caption{Draw the two boxes}\label{fg:salome-1}
+\end{figure}
+
+Now we have defined our geometry, but it is not ready for meshing. Because, in order to mesh you need a single object and now you have two. Therefore we need to combine those solids together.
+
+IT WOULD be natural to create a compound object which contains two solids, but this is not right way to do it. Because, when you create a compound, Salome will consider the solids as individuals and tries to create two separate meshes for each solid. For example in this case it would fail miserably.
+
+\subsection{Partition the geometry}
+
+What we need to do is to use the partition operation. You can find it from: Operations -> Partition (You need to be in geometry module). Then you pick up the objects, in this case the boxes we created. And you must not put anything at the tool object. This will create a partition object which you can mesh, as shown in Figure~\ref{fg:salome-2}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Salome-2-partition}
+\caption{Use the partition tool}\label{fg:salome-2}
+\end{figure}
+
+\subsection{Create volume groups}
+
+Before we mesh anything, we must create volume groups for the geometry. These are needed later, when we create mesh groups (these are the things, to have different bodies in Elmer).
+
+You can find the geometry group creation tool at: New Entity -> Group -> Create. Now, you pick volumes of course. You can either pick them from the picture or you can click the "Add All" button, and afterwards the "remove" button to get rid of the not wanted volumes. If you decide to pick them from the picture, it is recommended to show only the partition object (click the right mouse button and select "Show only"). In this case we have three volumes in the partition object. Make a group from each one of the volumes, as shown in Figure~\ref{fg:salome-3}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Salome-3-pickvolumes}
+\caption{Pick volumes at the partition}\label{fg:salome-3}
+\end{figure}
+
+Now, you should have a partition, made of two intersecting boxes, which contains three geometry groups, as shown in Figure~\ref{fg:salome-4}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Salome-4-geometrymodule}
+\caption{The three boxes in the partition}\label{fg:salome-4}
+\end{figure}
+
+To define boundaries, proceed in a similar manner: Create groups of faces (you can also explode your geometry so that you have all faces defined as groups at once).
+
+\subsection{Create the mesh}
+
+At this point you can move to the mesh module, to create a mesh for the partition object and compute it. In this example we use automatic netgen 1D-2D-3D, as shown in Figure~\ref{fg:salome-5} and Figure~\ref{fg:salome-6}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Salome-5-createmesh}
+\caption{Define the mesh}\label{fg:salome-5}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Salome-6-computemesh}
+\caption{Compute the mesh}\label{fg:salome-6}
+\end{figure}
+
+The mesh already obeys the internal surfaces of our three body assembly now, but does not separate them for Elmer to attribute boundary or body conditions later.
+
+\subsection{Create mesh groups}
+
+So, you have the mesh now but you are not yet having the mesh groups. You can find the mesh group creation tool in mesh module at: Mesh -> Create Group. There you have to pick your mesh, select the volumes radio button, and pick the groups you defined before in the geometry section: You push the "geometrical object" button, and after that you choose "Direct geometry selection", as shown in Figure~\ref{fg:salome-7}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Salome-7-directgeometryselection}
+\caption{Choose the groups}\label{fg:salome-7}
+\end{figure}
+
+Then you pick one GEOMETRY GROUP at a time and create the same groups that you already defined in the geometry module, as shown in Figure~\ref{fg:salome-8}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Salome-8-pickgeometrygroups}
+\caption{Pick the groups}\label{fg:salome-8}
+\end{figure}
+
+\subsection{Import and use the created mesh in Elmer}
+
+Now you have everything you need. You need just to export the mesh in UNV format (from the file menu: Export -> UNV file).\\
+
+\noindent 1st alternative:\\
+
+To get the native elmer mesh format, you need to convert the mesh using ElmerGrid. Open your terminal, and change to the directory where you exported the unv -file. Then use the command:\\
+
+\texttt{ElmerGrid 8 2 nameOfYourFile.unv -autoclean}\\
+
+\noindent And there you have it. In ElmerGUI you use the "load mesh" button to open it.  In case you need parallel runs, you may partition the mesh with:\\
+
+\texttt{ElmerGrid 2 2 nameOfYourFile -metis [number of procs] [method]}\\
+
+where number of procs is obviously the number of your parallel processes and method is an integer number. Please do not use ".unv" after the name of the file (since actually now we are not operating to the unv file any more but the native Elmer mesh (it is actually a directory with the base name of the transformed unv file) that was generated with the previous command. For example:\\
+
+\texttt{ElmerGrid 2 2 nameOfYourFile -metis 16 4}\\
+
+is for partitioning the mesh with metis in 16 partitions with a metis method number 4. The partitioned mesh data will be found in the nameOfYourFile directory.\\
+
+\noindent 2nd alternative:\\
+
+Load the UNV mesh directly into ElmerGUI by the command File -> Open. (This works at least for ElmerGUI versions later than April 2010.) Depending on the locale setting of the used machine you may need to change the pure text format of the UNV file from a "." representation to a "," representation prior to loading, though: An indication that this step is necessary is an obviously wrong geometrical representation of the geometry in ElmerGUI. This has e.g. been necessary for a German Ubuntu machine. One way to perform this step is the usage of the sed command:\\
+
+\texttt{sed "s/\./,/g" <Salome-out.unv >Elmer-in.unv}\\
+
+If you didn't define face groups in your mesh before, the individual boundaries of the defined boxes are not separated. With a simple "divide surface" operation from ElmerGUI's icon menu, or by the menu operation Mesh -> Divide surface, this is dealt with. Choose a value of 70 degrees for rectangular boxes - at least this value always worked for me. For bent edges, please experiment and check by marking individual result surfaces in ElmerGUI by double-clicking on them!\\
+
+After this step the body indexes and your individual surfaces exist, and boundary conditions can be attributed to them. 
+
+\newpage
+
+\section{ParaView}
+
+\subsection{Introduction}
+
+ParaView is a parallel visualization software developed by Kitware, Inc. and based on the Visualization ToolKit (VTK). You can download it freely at:\\
+
+\url{http://www.paraview.org/paraview/resources/software.html}\\
+
+\noindent It is supported by Elmer using the old .vtk and the newer .vtu or .pvtu formats. 
+
+\subsection{Generating Paraview output}
+
+Paraview output is generated by the ResultOutputSolver which is documented in the Elmer Models Manual.  Paraview vtu output is also generated automatically, for all variables, without specifically calling ResultOutputSolver, by including 
+
+\begin{verbatim}
+  Post File = case.vtu
+\end{verbatim}
+ \noindent in the simulation section of the sif file.
+
+\subsection{Paraview vtk files}
+
+VTK files contain the full set of variables (like the ElmerPost files). This often generates unnecessarily large files which slow ParaView down. They can only be used in serial runs.
+
+To generate .vtk output include the following section in your Solver Input File:
+
+\begin{verbatim}
+Solver NUMBER ! Set the correct solver number here.
+              ! Usually you want to use the highest number
+              ! so the results are saved at the end of a timestep.
+  Exec Solver = String "after timestep"	
+  exec interval = 1
+  Equation = String "ResultOutput"
+  Procedure = File "ResultOutputSolve" "ResultOutputSolver"
+  Output File Name = String "paraver." !or any output file name of your choice
+  Output Format = String "vtk"
+  Vtk Format = Logical True
+End
+\end{verbatim}
+
+
+\subsection{Paraview vtu files}
+
+VTU is the new VTK Format for unstructured grids. To use it with Elmer, you have to specify each variable, that you want to save, separately.
+
+\begin{verbatim}
+Solver NUMBER !Set the correct solver number here.
+              ! Usually you want to use the highest number 
+              ! so the results are saved at the end of a timestep.
+  Exec Solver = String "after timestep"	
+  exec interval = 1
+  Equation = String "ResultOutput"
+  Procedure = File "ResultOutputSolve" "ResultOutputSolver"
+  Output File Name = String "paraver." !or any output file name of your choice
+  Output Format = String "vtu"
+  Vtu Format = Logical True
+  Scalar Field 1 = Freesurfgrad1
+  Scalar Field 2 = Freesurfgrad2
+  Scalar Field 3 = Height
+  Scalar Field 4 = Depth
+  Scalar Field 5 = Pressure
+  Vector Field 1 = Velocity
+End
+\end{verbatim}
+
+\subsection{Error due to 32/64 bit floats}
+
+If paraview fails to read your .vtu files and complains about something like
+
+\begin{verbatim}
+vtkXMLUnstructuredGridReader (0x9749468): Cannot read point data 
+array "velocity" from PointData in piece 0.  The data array in the
+element may be too short.
+\end{verbatim}
+
+This might be, because there are 64 bit floats declared as 32 bit floats in your .vtu files. In this case, the best help is to change all occurrences of Float32 to Float64 in ResultOutputSolve.src and ResultOutputSolve.f90 and recompile. Alternatively, you can do this substitution on all .vtu files. Under Linux/...
+
+\begin{verbatim}
+    sed -i s/Float32/Float64/ *.vtu
+\end{verbatim}
+
+\noindent will do the job. Some versions of Paraview have this problem, some don't.
+
+\subsection{Mesh Update}
+
+To make Paraview use the Mesh.Update variable, create a calculator filter and set the variable to Mesh.Update+coords (from the Vectors drop down menu). Then activate Coordinate Results and press apply. 
+
+\subsection{Parallel runs}
+
+When Elmer is run in parallel, it generates one .vtu file per partition and time step and a .pvtu file per time step that contains references to all partitions. If ParaView refuses to display the pvtu files as a time series, a .pvd (ParaViewData) file can help.
+
+This python script will print out a .pvd file containing references to all .pvtu files in a directory. And sets the time to be the number of the file.
+
+\begin{verbatim}
+#!/usr/bin/python
+
+import glob
+
+files = glob.glob('*.pvtu')
+files.sort()
+
+print """<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1" byte_order="LittleEndian">
+<Collection>
+"""
+
+for (num,name) in enumerate(files):
+   print '<DataSet timestep="'+str(num+1)+'" group="" part="0" file="'+name+'"/>'
+
+print """</Collection>
+</VTKFile>"""
+\end{verbatim}
+
+\subsection{Paraview node numbering}
+
+ParaView uses C-Style numbering, beginning at 0 and ending at Number\_of\_nodes-1. Thus, the node numbers in ParaView are always one below the numbers in Elmer. 
+
+\section{Electrochemistry}
+
+This section has been transferred from Wayback Machine downloads, and uses screen shots to capture the equations and variable names accurately.  The attachments are also missing, so we don't have the original sif files or the resulting graphics.
+
+\subsection{Introduction}
+
+Until 2010, only expensive FEA suites like COMSOL, or specialized consultants, could do electrochemistry simulations. Full treatment of this topic requires coupled solutions of the Navier-Stokes equations with diffusion and electromigration (Advection Diffusion model) for convective mass transfer. With the addition of electromigration, Elmer now has this capability. 
+
+\subsection{Formulation}
+
+The Advection Diffusion equation is given in the Elmer Models Manual (using bold instead of arrows for vectors):\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{ec-20}
+\end{figure}
+
+\subsection{Implementation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{ec-21}
+\end{figure}
+
+\subsection{Bug}
+
+This code does not create a velocity array, so one must use Navier-Stokes when modelling electromigration. If one runs with non-zero ion charge to induce electromigration but without Navier-Stokes, ElmerSolver fails with a segmentation fault. 
+
+\subsection{Example}
+
+[DISCLAIMER: This example is for purposes of illustration and mathematical consistency verification only. Material properties and results may differ from reality by orders of magnitude. Use at your own risk.] \\
+
+The following example describes electroplating a small hemisphere with copper. This problem has an axisymmetric geometry with a cylindrical container of aqueous copper sulfate (CuSO4) 1 cm in diameter and 1 cm deep, with the 0.5 cm radius hemisphere to be plated pointing downward into the center of the container (along the axis of symmetry). Only the aqueous solution has a mesh, which is densest near the hemisphere in order to resolve the diffusion/electromigration boundary layer there. To generate the mesh, run Gmsh and import the geometry from File:Np-simple.geo.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{ec-22}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{ec-23}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{ec-24}
+\end{figure}
+
+\subsection{Analytical Calculations}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{ec-25}
+\end{figure}
+
+\subsection{Numerical Results}
+
+With no temperature difference (cathode and anode at 298 K like initial condition) and no electromigration (zero ion charge), this results in simple growth of a diffusion boundary layer from the cathode hemisphere. This trend is shown in the series of figures here: the diffusion boundary layer is twice as thick at 480 seconds as at 120, and twice as thick then as at 30 (boundary layer thickness at 7.5 seconds is not accurate because it is comparable to element thickness). This corresponds roughly to "electro-less" plating using a reducing agent in solution instead of electrons at the cathode.
+
+To regenerate the diffusion-only result, remove the line "Concentration Ion Charge = 2" from Np-case.sif (above) and change the anode and cathode boundary condition temperatures to 298 K.
+
+With no temperature difference at the boundaries but with ion charge of 2, the boundary layer grows as before until about 120 seconds, then stops growing at about 1 mm thickness by 480 seconds, as predicted above. Note that the boundary layer at 480 seconds is slightly thicker on the bottom than on the right, because of the higher electric field there. Joule heating produces a small temperature increase, leading to natural convection flow. But maximum vertical velocity is about 15 nm/s is much lower than the 1.5 μm/s ion drift velocity. And with the 0.5-1 cm domain size and the diffusivity here, this gives a Peclet number of 0.075-0.15, indicating that convection is not a significant means of mass transfer.
+
+To regenerate this electromigration result, change the anode and cathode boundary condition temperatures to 298 in Np-case.sif (above).  The hot cathode and cold anode boundary conditions given above lead to a natural convection cell. The velocity reaches a maximum of around 1 mm/second at five seconds of simulation time, then declines as temperature gradients smooth out. At this velocity, convection is a very significant means of mass transfer, and it drags the low-copper region across the top then down in front of the anode, approaching steady state at 480 seconds of simulation time as shown here. This illustrates coupling of diffusion, Nernst-Planck electromigration, and flow driven by natural convection.
+
+This simulation uses the full Np-case.sif input file as given above.
+
+\subsection{Future Work}
+
+It would be helpful for the AdvectionDiffusion module to export the Nernst-Einstein ionic conductivity (tensor field) so one could just provide the electronic conductivity into the StatCurrent module and have it add all of the ionic conductivities. This would let StatCurrent compute the full current accurately for Joule heating and magneto-hydrodynamic forcing.
+
+Also, the example should have a better cathode boundary condition than zero concentration, full Butler-Volmer isn't necessary but at least a linearisation would be nice. As it is, ionic conductivity is zero at the boundary, and there is only diffusive flux due to the concentration gradient, but this does not enter the StatCurrent calculations.
+
+In view of this, it might be best for AdvectionDiffusion to export the actual ion current density (vector field), including electromigration and diffusion, for accurate coupling with StatCurrent and other modules. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Elmer Virtual Machine}
+
+\section{Download Elmer Virtual Machine}
 
 The Elmer website has instructions showing how to download a virtual machine.\\
 
@@ -395,16 +1072,20 @@ Open that link, and there will be a directory with a few entries, as shown in Fi
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{virt-1}
+\includegraphics[width=0.95\textwidth]{virt-1}
 \caption{www.csc.fi/web/elmer/bin/VirtualMachines}\label{fg:virt-1}
 \end{center}
 \end{figure}
 
-Create an appropriate folder, such as `Elmer/VirtualMachine', and copy both files into that folder.  Open the file `Readme1st.txt', and follow the instructions for installing the .ova file in Virtual Box.  Open Import Appliance, as shown in Figure~\ref{fg:virt-2}.
+Create an appropriate folder, such as `Elmer/VirtualMachine', and copy both files into that folder.  
+
+\section{Install Elmer Virtual Machine}
+
+Open the file `Readme1st.txt', and follow the instructions for installing the .ova file in Virtual Box.  Open Import Appliance, as shown in Figure~\ref{fg:virt-2}.
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{virt-2}
+\includegraphics[width=0.95\textwidth]{virt-2}
 \caption{Import Appliance}\label{fg:virt-2}
 \end{center}
 \end{figure}
@@ -413,7 +1094,7 @@ Select the .ova file in the `Elmer/VirtualMachine' folder, as shown in Figure~\r
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{virt-3}
+\includegraphics[width=0.95\textwidth]{virt-3}
 \caption{Select the .ova file}\label{fg:virt-3}
 \end{center}
 \end{figure}
@@ -422,7 +1103,7 @@ Click `Next' at the bottom of the screen.  The `Appliance settings' screen, as s
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{virt-4}
+\includegraphics[width=0.95\textwidth]{virt-4}
 \caption{Appliance settings}\label{fg:virt-4}
 \end{center}
 \end{figure}
@@ -519,6 +1200,8 @@ Go ahead and delete the old keyboard layout since you won't need it any more, as
 \end{figure}
 
 That's it, you are done and can close the settings window.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Linux}
 
