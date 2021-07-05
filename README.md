@@ -21,14 +21,14 @@ Building in Linux
 -----------------
 
 - To build the documentation requires LaTex being installed.
-- To create the documentation under Linux you can open a terminal window in the 'elmerfem-manuals' directory and type "source makedoc".
+- To create the documentation under Linux you can open a terminal window in the 'elmerfem-manuals' directory and type "source makedoc.sh".
 - If you get an error like 'float.sty not found', then you may need to install the 'extra' package:   'sudo apt-get install texlive-latex-extra'.
 
 Building in Windows
 -------------------
 
 - To build with LaTeX in Windows, install 'MikTex'.
-- Msys2 has a bash shell that can run the 'source makedoc' script.
+- Msys2 has a bash shell that can run the 'source makedoc.sh' script.
 - Installing Git usually also installs 'Git Bash' as a right click context menu selection and Git Bash can run the 'source makedoc' script.
 
 TeXworks
