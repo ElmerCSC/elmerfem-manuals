@@ -611,17 +611,19 @@ Elmer Wiki is intended to serve as a platform for the exchange of ideas and solu
 
 \noindent ElmerGUI
 
-\noindent MATC 
+\noindent MATC
 
 \subsection{External Tools}
 
 \noindent Salome
 
-\noindent ParaView 
+\noindent ParaView
 
 \subsection{Elmer use in different application areas}
 
-\noindent Elmer Ice Sheet modeling (old and outdated pages for Elmer Ice Sheet modeling)
+\noindent Elmer Ice Sheet modelling (old and outdated pages for Elmer Ice Sheet modelling).  Note that the Elmer Ice Sheet section has not been included in this document, refer to the active Elmer Ice website at
+
+\url{http://elmerice.elmerfem.org/}
 
 \noindent Crystal growth and phase change
 
@@ -633,13 +635,17 @@ Elmer Wiki is intended to serve as a platform for the exchange of ideas and solu
 
 \noindent Elmer Wood Modelling
 
-\noindent More user groups welcome! 
+\noindent More user groups welcome!
 
 \subsection{Further information}
 
-\noindent Elmer Discussion Forum
+\noindent Elmer Discussion Forum at:
 
-\noindent Articles and papers featuring Elmer 
+\url{http://www.elmerfem.org/forum/}\\
+
+\noindent Articles and papers featuring Elmer at:
+
+\url{https://www.csc.fi/web/elmer/white-papers}\\
 
 \section{Frequently Asked Questions}
 
@@ -1152,9 +1158,77 @@ print """</Collection>
 
 ParaView uses C-Style numbering, beginning at 0 and ending at Number\_of\_nodes-1. Thus, the node numbers in ParaView are always one below the numbers in Elmer. 
 
+\section{Crystal growth and phase change}
+
+One of the first applications of Elmer was the modelling of Czockralksi crystal growth. Many features have been developed this application in mind: Lagrangian phase change models, heat transfer via radiation, rotating coordinate system etc. Also Eulerian phase change models exist to account for tracking the phase change interface.\\
+
+\noindent The most relevant solvers in the Models Manual include:\\
+
+    HeatSolver: the heat solver with internal Eulerian phase change
+
+    MeshSolver: accommodates the mesh for Lagrangian case
+
+    TransientPhaseChange
+
+    SteadyPhaseChange
+
+    LevelsetSolver: a rudimentary version of Eulerian level-set technique\\
+
+\noindent The most relevant test cases in the distribution include:\\
+
+    PhaseChange: Eulerian
+
+    PhaseChange2: Lagrangian and steady state
+
+    PhaseChange3: Lagrangian and transient\\
+
+\noindent If you have any work you would like to share on this aspect of Elmer, please feel free to contribute. 
+
+\section{Lubrication and squeezed films}
+
+Flow in narrow regions suites Elmer quite well since the Reynolds number is often rather small making the equation elliptic in nature. The monolithic formulation of Elmer can deal with such flow fields with ease. There is also a reduced dimensional Reynolds equation including the effects of cavitation. The lubrication may also be quite easily coupled with elastic and thermal phenomena making Elmer applicable to a large variety of problems.\\
+
+\noindent The most relevant solvers in the Models Manual include:\\
+
+    FlowSolver: the 2d \& 3d Navier-Stokes solver
+
+    ReynoldsSolver: the reduced dimensional flow solver\\
+
+\noindent The most relevant test cases in the distribution include:\\
+
+    reynolds1: film pressure between rotating non-cocentric cylinders in true 2D coordinates
+
+    reynolds2: film pressure between rotating non-cocentric cylinders in the plane with periodic BCs
+
+    ElasticLubrication: simple 2D case with elastic
+
+    LubricationTunedForce: simple 2D with feedback for force control\\
+
+\noindent If you have any work you would like to share on this aspect of Elmer, please feel free to contribute. 
+
+\section{Pulling, drawing and extrusion}
+
+One of the early application areas of Elmer was the modelling of optical fiber drawing and fiber coating. For this purpose there are some tailored models that are particularly well suited for resolving steady-state pulling, drawing and extrusion problems. Later some models have been developed even more complicated 3D problems.\\
+
+\noindent The most relevant solvers in the Models Manual include:\\
+
+    FlowSolver: the Navier-Stokes solver
+
+    MeshSolver: accomodates for the mesh deformation
+
+    FreeSurfaceReduced: finds the radius assuming flux conservation
+
+    StructuredFlowLine: 2D and 3D extrusion problems\\
+
+\noindent The most relevant test cases in the distribution include:\\
+
+    coating: coating in axisymmetric drawing process\\
+
+\noindent If you have any work you would like to share on this aspect of Elmer, please feel free to contribute. 
+
 \section{Electrochemistry}
 
-This section has been transferred from Wayback Machine downloads, and uses screen shots to capture the equations and variable names accurately.  The attachments are also missing, so we don't have the original sif files or the resulting graphics.
+This section has been transferred from Wayback Machine downloads, and uses screen shots to capture the equations and variable names accurately.  The attachments are also missing, so we don't have the original sif files or the resulting graphics.  If anyone has stored copies of the missing files, please either submit a PR adding the files or post the files on the forum.
 
 \subsection{Introduction}
 
@@ -1227,6 +1301,28 @@ It would be helpful for the AdvectionDiffusion module to export the Nernst-Einst
 Also, the example should have a better cathode boundary condition than zero concentration, full Butler-Volmer isn't necessary but at least a linearisation would be nice. As it is, ionic conductivity is zero at the boundary, and there is only diffusive flux due to the concentration gradient, but this does not enter the StatCurrent calculations.
 
 In view of this, it might be best for AdvectionDiffusion to export the actual ion current density (vector field), including electromigration and diffusion, for accurate coupling with StatCurrent and other modules. 
+
+\section{Wood Modelling with Elmer}
+
+Currently (2012) several institutions start working to provide solvers for wood specific simulations. The first one was a result of a master thesis written at Institute for Wood Technology Dresden/ Germany and chair of non-linear solid mechanics at TU Dresden but others might follow.
+
+Goal is to share those solvers and get linked with other institutions and private persons to advance the solvers and deepen the understanding of transport phenomena and mechanical properties of wood and maybe of wooden materials/composites, etc.
+
+Elmer is used as a basis to provide the general methods used in finite element analysis and extended with user-functions for non-linear parameters and solvers for non-linear (coupled) partial differential equations.\\
+
+\noindent XTwoodSim, strongly coupled hygrothermal modelling below fiber saturation point.  Follow this link to learn more about XTwoodSim.
+
+    \url{https://savannah.nongnu.org/projects/xtwoodsim/}\\
+
+Click on the link below to download the Elmer project files from this repository, including a sif file, mesh files, and Fortran source files:
+
+\url{https://git.savannah.nongnu.org/cgit/xtwoodsim.git}\\
+
+\noindent Related Projects, the following projects have been dealing/are being dealt with using Elmer.
+
+    Hygrothermal modeling of parquet at:
+
+\url{https://www.ihd-dresden.com/en/home/}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
