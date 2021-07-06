@@ -589,7 +589,57 @@ Note that when going from serial to parallel, in general the sif file does not c
 
 \chapter{Elmerfem Wiki}
 
-The Elmer Wiki used to exist at \url{http://www.elmerfem.org/elmerwiki}.  Some of the pages from the wiki have been copied from Wayback Machine into this chapter.  The original authors are not known.
+The Elmer Wiki used to exist at \url{http://www.elmerfem.org/elmerwiki}.  Some of the pages from the wiki have been copied from Wayback Machine into this chapter. Note that pages discussing Compilation are not included, they are a little out of date.  The original authors are not known.
+
+\section{Main}
+
+\subsection{Elmer Wiki}
+
+Elmer Wiki is intended to serve as a platform for the exchange of ideas and solutions for Elmer FEM users. While the main source of information is still at http:///www.csc.fi/elmer these pages provide a media for the user community to share their work. If you're interested in contributing to Elmer Wiki, create an account and have a look at the MediaWiki HandBook to get started.
+
+\subsection{Elmer Instructions}
+
+\noindent Frequently Asked Questions
+
+\noindent Parallel Computations
+
+\noindent Making Animations
+
+\noindent Compilation and Installation(not included)
+
+\subsection{Elmer Components}
+
+\noindent ElmerGUI
+
+\noindent MATC 
+
+\subsection{External Tools}
+
+\noindent Salome
+
+\noindent ParaView 
+
+\subsection{Elmer use in different application areas}
+
+\noindent Elmer Ice Sheet modeling (old and outdated pages for Elmer Ice Sheet modeling)
+
+\noindent Crystal growth and phase change
+
+\noindent Lubrication and squeezed films
+
+\noindent Pulling, drawing and extrusion
+
+\noindent Electrochemistry
+
+\noindent Elmer Wood Modelling
+
+\noindent More user groups welcome! 
+
+\subsection{Further information}
+
+\noindent Elmer Discussion Forum
+
+\noindent Articles and papers featuring Elmer 
 
 \section{Frequently Asked Questions}
 
@@ -598,59 +648,76 @@ Below is a list of some of the most frequently asked questions. You can suggest 
 \subsection{Technical Questions}
 
     Q: How do I create geometries with Elmer?
-    A: Elmer suite does not include proper geometry generation tools. You should use other geometry and proposal software mesh generations tools and import the files into Elmer. Gmsh and GiD (mesh) and SALOME (CAD) are the most commonly used ones. Some simple geometries may be defined directly in ascii-format using the .grd (ElmerGrid) and .in2d (netgen) formats, for example.
+
+    A: Elmer suite does not include proper geometry generation tools. You should use other geometry and proposal software mesh generations tools and import the files into Elmer. Gmsh and GiD (mesh) and SALOME (CAD) are the most commonly used ones. Some simple geometries may be defined directly in ascii-format using the .grd (ElmerGrid) and .in2d (netgen) formats, for example.\\
 
     Q: I edit the .sif file manually but modifications are erased by ElmerGUI
+
     Q: How can I import my .sif file into ElmerGUI?
-    A: The state of ElmerGUI is defined by the project file which is used to generate the sif file. Therefore the modifications in the .sif file are not communicated to the ElmerGUI and a .sif file cannot be used as a starting point for ElmerGUI work.
+
+    A: The state of ElmerGUI is defined by the project file which is used to generate the sif file. Therefore the modifications in the .sif file are not communicated to the ElmerGUI and a .sif file cannot be used as a starting point for ElmerGUI work.\\
 
     Q: I try to set a "keyword" value in the .sif file but ElmerSolver gives an error "Unknown specifier" for property name:"keyword". What's wrong?
-    A: The list of known keywords is defined in the SOLVER.KEYWORDS file. The list can never be complete since the code is all the time developing and the user may also invent new variable names. If the type of the keyword is not known, the user must provide it from one of the following: Logical, Integer, Real, String and File. Also Equals defines the type implicitly to be of type Real.
+
+    A: The list of known keywords is defined in the SOLVER.KEYWORDS file. The list can never be complete since the code is all the time developing and the user may also invent new variable names. If the type of the keyword is not known, the user must provide it from one of the following: Logical, Integer, Real, String and File. Also Equals defines the type implicitly to be of type Real.\\
 
     Q: Where can I find examples on how to use a specific solver?
-    A: The are a few walk-through cases in Elmer Tutorials. In addition there are more than 700 minimalistic tests in the Elmer distribution in the `tests' folder.  Among the .sif files you can try to find the ones that include the the solver of interest. By increasing the "Max Output Level" and link building defining a "Post File" in the "Simulation" section it is easier to get acquainted to the solver.
+
+    A: The are a few walk-through cases in Elmer Tutorials. In addition there are more than 700 minimalistic tests in the Elmer distribution in the `tests' folder.  Among the .sif files you can try to find the ones that include the the solver of interest. By increasing the "Max Output Level" and link building defining a "Post File" in the "Simulation" section it is easier to get acquainted to the solver.\\
 
     Q: What unit system should I use in Elmer?
-    A: Elmer does not assume any specific units so you can use any unit system that is consistent. The natural choice is SI units. By default the equations are scaled to an optimal range so usually there is no need for altering the unit system for the sake of numerical accuracy. However, if you choose, for example, your mesh to be in millimetres remember that it reflects to the units of velocity, density, force, viscosity etc., as well.
+
+    A: Elmer does not assume any specific units so you can use any unit system that is consistent. The natural choice is SI units. By default the equations are scaled to an optimal range so usually there is no need for altering the unit system for the sake of numerical accuracy. However, if you choose, for example, your mesh to be in millimetres remember that it reflects to the units of velocity, density, force, viscosity etc., as well.\\
 
     Q: I want to restart using the .ep result file, how do I do that?
-    A: Unfortunately Elmer uses the "Post File", with the usual suffix .ep, only for visualization. If you want to restart you need to save the data in a "Result File" which has some additional information required.
+
+    A: Unfortunately Elmer uses the "Post File", with the usual suffix .ep, only for visualization. If you want to restart you need to save the data in a "Result File" which has some additional information required.\\
 
     Q: I want to virtualize my results using graphs, how should I proceed?
-    A: There are auxiliary solvers SaveLine and SaveScalars that may be used to generate appropriate data in ASCII format. See the Models manual or search the discussion forum for more information.
+
+    A: There are auxiliary solvers SaveLine and SaveScalars that may be used to generate appropriate data in ASCII format. See the Models manual or search the discussion forum for more information.\\
 
     Q: I want to use Paraview (or other VTK based visualization software). How should I proceed?
-    A: You can utilize the ResultOutputSolve with vtu (or vtk) output format. See Models manual for details.
+
+    A: You can utilize the ResultOutputSolve with vtu (or vtk) output format. See Models manual for details.\\
 
 \subsection{Generic Questions}
+
     Q: How large is the Elmer community?
-    A: Based on different web \& download statistics, a rough estimate would be hundreds of active users and thousands of test users each year.
+
+    A: Based on different web \& download statistics, a rough estimate would be hundreds of active users and thousands of test users each year.\\
 
     Q: There have been quite few official releases of Elmer. Has the development stopped?
-    A: No. Elmer is actively developed and each major commit is run against a large number of tests cases. Therefore we consider the trunk version to be stable and recommend it as starting point for any compilation. However, we plan to give more regularly official releases in the future.
+
+    A: No. Elmer is actively developed and each major commit is run against a large number of tests cases. Therefore we consider the trunk version to be stable and recommend it as starting point for any compilation. However, we plan to give more regularly official releases in the future.\\
 
     Q: Are you trying to make money with Elmer?
-    A: No. Elmer is maintained by CSC - IT Center for Science which is a governmental non-profit organization in Finland. However, in order to fund the development of the code we do have to put a price tag on the labour when we're not serving the Finnish universities.
+
+    A: No. Elmer is maintained by CSC - IT Center for Science which is a governmental non-profit organization in Finland. However, in order to fund the development of the code we do have to put a price tag on the labour when we're not serving the Finnish universities.\\
 
     Q: Can I use Elmer for commercial consultation or other non-academic work?
-    A: Yes. GPL license does not limit commercial use in any way.
+
+    A: Yes. GPL license does not limit commercial use in any way.\\
 
     Q: Can I use parts of Elmer in my own code?
-    A: Yes, with the condition that if you publish the code it must be published under the same license i.e. GPL.
+
+    A: Yes, with the condition that if you publish the code it must be published under the same license i.e. GPL.\\
 
     Q: Can I copy the documentation freely?
-    A: Yes. They have been published under Creative Commons licence. However, no derivative works are allowed i.e. the copies must not include any modifications to the originals.
+
+    A: Yes. They have been published under Creative Commons licence. However, no derivative works are allowed i.e. the copies must not include any modifications to the originals.\\
 
     Q: I would like to write a solver for my own problem. Is it difficult?
-    A: It depends. Most solvers can be written as dynamically linked modules utilizing high level library functions. A simple Poisson equation ready for all dimensions and all massively parallel simulations takes just 30 lines of code, or so. Using some special element types for complicated vector valued equations is more laborious and requires some know how of finite elements.
+
+    A: It depends. Most solvers can be written as dynamically linked modules utilizing high level library functions. A simple Poisson equation ready for all dimensions and all massively parallel simulations takes just 30 lines of code, or so. Using some special element types for complicated vector valued equations is more laborious and requires some know how of finite elements.\\
 
     Q: I would like to contribute but I can't program, is there anything I could do?
-    A: Yes. Often in the development defining what equations to solve, setting up appropriate test cases and creating the computational mesh is easily 80\% of the work load. If you can help in these aspects then the actual coding work will be much more attractive to the developers. Also sharing your simulation work will benefit the project by attracting new users.
+
+    A: Yes. Often in the development defining what equations to solve, setting up appropriate test cases and creating the computational mesh is easily 80\% of the work load. If you can help in these aspects then the actual coding work will be much more attractive to the developers. Also sharing your simulation work will benefit the project by attracting new users.\\
 
     Q: How are the new features of Elmer decided?
-    A: In large, Elmer development is guided by a number of externally funded projects which result to new features in different application areas. For minor issues a good idea is often a sufficient starting point and therefore feature requests and bug reports are always welcome.
 
-\newpage
+    A: In large, Elmer development is guided by a number of externally funded projects which result to new features in different application areas. For minor issues a good idea is often a sufficient starting point and therefore feature requests and bug reports are always welcome.
 
 \section{Parallel Overview}
 
@@ -675,6 +742,109 @@ The user or rather the evaluation program then has to take care that the data of
 \end{figure}
 
 The image was obtained from GnuPlot, with the three different colours representing the data output from three of the four partition domains. The fourth did not contribute data to the extracted line. 
+
+\section{Making Animations}
+
+There are different variants for animating and making animations. Below some instructions are given.
+
+\subsection{Doing animation with ParaView}
+
+ParaView is a nice tool for doing animations. It has the advantage that the graphics card memory is not used for the figures and therefore the animations may be done in the background, and the may be of any resolution (even Full HD, 1920 x 1080).
+
+To get the needed vtu files add the following sequence with the next free Solver id to your sif file, or use ElmerGUI to add it.
+
+\begin{verbatim}
+Solver 5 
+  Exec Solver = String "after timestep"	
+  Equation = String "ResultOutput"
+  Procedure = File "ResultOutputSolve" "ResultOutputSolver"
+  Output File Name = String "case" 
+  Output Format = String "vtu"
+End
+\end{verbatim}
+
+Then open the file case*.vtu in ParaView and perform the visualization as explained in the documentation of ParaView. You may also use other tools based on VTK library (i.e. ViSit)
+
+\subsection{Running animation on the screen with ElmerPost}
+
+\begin{verbatim}
+    start ElmerPost
+    read the results in ReadModelFile menu selecting all the relevant timesteps
+    In Edit / Timestep Control Loop all the timesteps and check
+    that your animation is working 
+\end{verbatim}
+
+\subsection{Saving the animation into a file}
+
+This assumes that you have the "savempg" plugin in the right-hand-corner of ElmerPost.
+
+\begin{verbatim}
+    Choose the plug-in Modules / savempg
+    In the Savempg control pop-up window choose the packing
+    and parameters, and pres Start
+    In Edit / Timestep Control write the following string in the
+   "Do after frame" box savempg append and press "Loop"
+    In Savempg control pres Stop and you're done. 
+\end{verbatim}
+
+In the VTK widget the animation is more or less similar, except there is no built-in plugin for doing the animations. However, you can compose the animation from a frequence of frames with some auxiliary program. Also in ElmerPost if you happen to miss the plugin you can create a set of files with setting in the "Do after frame" box something like
+
+\begin{verbatim}
+$ xwd -name "ELMER POST GRAPHICS" -out pic$t.xwd
+\end{verbatim}
+
+where xwd is the system level call for grabbing the window.
+
+You should note that the coding algorithms prefer multiples of 16. Hence you may tune the window size for best performance by saying in the ElmerPost command line something like
+
+\begin{verbatim}
+winsize 1024 768
+\end{verbatim}
+
+Or whatever your preferred size of animation is. Note that ElmerPost has the unfortunate handicap that the visualization screen needs to be intact while doing the animations.
+
+\subsection{Animations with geometry deformation}
+
+Sometimes the geometry is changing with time. ElmerPost assumes that the node coordinates are defined in the "nodes" matrix such that nodes=[x y z]. Now if you want to have the displacement/deflection included in the nodes you should alter it accordingly i.e. x=x0+dx etc. For that we first save the original nodes:
+
+\begin{verbatim}
+math n0=nodes
+\end{verbatim}
+
+The simplest case is if you have just one timestep/eigenvalue read: In the math window of the main window
+
+\begin{verbatim}
+math nodes=n0+Displacement*scale
+\end{verbatim}
+
+and press the psychedelic button in the upper righthand corner. Here "scale" is a scaling factor of your choice
+
+When you have more than one step open "Timestep control" panel, write the following in the "Do after Frame" field:
+
+\begin{verbatim}
+math nodes=n0+Displacement(0:2,time($t))
+\end{verbatim}
+
+and press the "Loop" button. Otherwise the making of animations is similar as in the basic case.
+
+\subsection{Animations of harmonic solutions}
+
+Sometimes it is nice to animation harmonic solutions or eigenmode as a time-dependent simulation. The sinusoidal time-dependency may be done within ElmerPost. You need to create time-harmonic behaviour on-the-fly in the main math window using a small loop. For example over 2*pi:
+
+\begin{verbatim}
+do i 0 20 { math phi=2*pi*$i/20; math 
+nodes=n0+Displacement(0:2,time(0))*sin(phi)*0.02; display}
+\end{verbatim}
+
+or if you have a complex function, like in this case a complex pressure,
+
+\begin{verbatim}
+do i 1 50 \{ math phi=2*pi*$i/50; math nodes=n+Displacement*sin(phi)*1.0e-5; 
+math pres=Pressure.1*cos(phi)-Pressure.2*sin(phi); display; savempg append \}
+\end{verbatim}
+
+In this case its a good idea to a priori set the scaling and fix it since otherwise the colorscale will be changing all the time. For sinusoidal movement the interval should be [-max(Displacement\_abs),max(Displacement\_abs)]. Otherwise the making of animations is similar as in the basic case.
+
 
 \section{MATC}
 
