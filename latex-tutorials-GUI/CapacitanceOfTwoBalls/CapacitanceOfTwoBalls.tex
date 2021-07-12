@@ -18,7 +18,7 @@ The capacitances may be computed from two different voltage configurations.
 For both the electrostatic equation is solved automatically. 
 
 The problem does not have an analytical solution in a closed form. 
-However, the cross-capacitance between the balls may be approximated from the series solution~\cite[Ch.~A.3]{wasshuber97}:
+However, the cross-capacitance between the balls may be approximated from the series solution in \texttt{Wasshuber 1997, Appendix A.3, Capacitance of Two Spheres}:
 \begin{equation}
 C_{12} = 4 \pi \varepsilon \frac{a^2}{d}\left ( 1 + \frac{a^2}{d^2-2a^2} + \frac{a^4}{d^4-4d^2a^2 + 3a^4}+ \ldots \right )
 \end{equation}
@@ -232,7 +232,7 @@ Run
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 
 one just ensures that convergence of the non-linear level was really obtained. 
-The norm of the solution should be?
+The norm of the solution should be 0.36356324.
 
 When the solution has finished we may start the postprocessor to view some results.
 \ttbegin
