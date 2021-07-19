@@ -4,7 +4,7 @@
 \modinfo{Author}{Rich Bayless}
 
 
-\subsection*{Purpose}
+\section{Purpose}
 
 The Elmer tutorials are written using LaTeX, which is a powerful tool.  Like any favourite tool, once you know a little about how to use that tool, it will become second nature for its use.  To help turn a steep learning curve into a gentle on-ramp, the following examples that use TexWorks will help one get started with editing of Elmer tutorials, or to create new Elmer tutorials.  These instructions should work with just about any LaTeX editor, since these are the basics of working with LaTeX documents.\\
 
@@ -13,7 +13,7 @@ Adding graphics to Elmer tutorials provide a great visual aid for subjects that 
 If any of you out there have spent an hour or two trying to figure out how to add the perfect graphic, in the perfect format, and in just the right location using Texworks or other LaTeX editors, then this may be the right spot for you to pass on your knowledge.
 
 
-\subsection*{Examples}
+\section{Examples}
 
 Note that the full explanation for each example is given in the .tex file. There may be an explanation in the text of the .pdf, but look at the .tex source for the real story.\\
 
@@ -27,7 +27,9 @@ For graphics, we will use a blank yellow picture, with a 20 pixel wide black bor
 % end that section and start again on a new page
 \newpage
 
-\subsection*{Lines and paragraphs, what to do}
+\chapter{Lines and paragraphs}
+
+\section{Lines and paragraphs, what to do}
 
 Here are several text examples that show how to control lines and paragraphs.   TexWorks and LaTeX work a little differently than the typical text editor that you may have used, specifically one needs to use a double return to end a paragraph.\\
 
@@ -39,7 +41,7 @@ Here is the beginning of the requested second paragraph. Cum sociis natoque pena
 
 Use double returns to end a paragraph, or use double backslashes and double returns to end a paragraph.
 
-\subsection*{Lines and paragraphs, what NOT to do}
+\section{Lines and paragraphs, what NOT to do}
 
 In terms of style, IMHO, the use of single returns should be discouraged.  Single returns will create a simulated word wrap, that doesn't show up in the published .pdf document.
 This line starts with a single return and ends with a single return.
@@ -49,9 +51,11 @@ Likewise, in terms of style, IMHO, the use of double backslashes in the middle o
 
 Note:  Please follow these guidelines while creating new documents, and possibly while editing old documents.  Particularly, when the documents are under source control, such as git, editing existing documents solely to change what is strictly formatting, is frowned upon.  In other words, don't edit a document where the only change is to the formatting, such as removing single returns, and then create a pull request with the formatting changes.  The pull request will be rejected 99 times out of 100, and you will probably get a sternly worded message saying `Stop It'.
 
-\newpage
+% end that section and start again on a new page
 
-\subsection*{Simple graphics and controlling blank space}
+\chapter{Figures}
+
+\section{Simple graphics and controlling blank space}
 
 TexWorks, and LaTeX, add graphics as `floating'.  That means TexWorks will try it's best to move the text and the graphic around, so they end up `near' each other. That may or may not be what you want, which is the point of these instructions. Let's start by using what we just learned about lines and paragraphs, and we'll see what they do in terms of locating our floating graphics.  We can just add a graphic into the text and TexWorks will try to locate the graphic at the end of this sentence. \includegraphics{1000x200} So TexWorks added the graphic right at the end of the sentence, almost literally.  Not exactly what we want, right?\\
 
@@ -61,7 +65,7 @@ This time, let's use the double back slash and double return, both before and af
 
 That's more like it.  Why isn't our graphic centered, but instead left justified?
 
-\subsection*{Figures with labels and captions}
+\section{Figures with labels and captions}
 
 See Figure~\ref{fg:1000x200}, this figure has been entered into the .tex file after this text.  
 
@@ -87,10 +91,7 @@ Adding the \texttt{[H]} to the \texttt{begin figure} command tells TeXworks to t
 
 Now if only there was a way to make that small graphic a little bigger?
 
-% end that section and start again on a new page
-%\newpage
-
-\subsection*{Scaling Figures}
+\section{Scaling Figures}
 
 See Figure~\ref{fg:250x250-2}, this figure has been scaled to one third of the width of the page.  Refer back to Figure~\ref{fg:250x250} and you can see that this graphic is much easier to read.  We scaled to the text width by entering a 0.33 scale factor to the \texttt{width =  textwidth} command. The aspect ratio has been maintained, and we didn't have to open an image editing program to change the original image size.\\
 
@@ -111,14 +112,11 @@ If you want a full width figure, see Figure~\ref{fg:1000x200-2}, and compare the
 
 The graphic has been scaled up in size, so the width of the graphic matches the width of the text, using the \texttt{width = textwidth} command.  Since it is only scaling the width, the aspect ratio is maintained and now the height is greater than displayed in Figure~\ref{fg:1000x200}.\\
 
-One can also set the width to a certain dimension, such as 150 mm, but using the text width may be a neater way to accomplish scaling.  What if we change the document orientation from portrait to landscape, or change the paper size from A4 to Letter?  In any case, scaling can be done easily, so which method to use is up to you, the author.\\
+One can also set the width to a certain dimension, such as 150 mm, but using the text width may be a simpler way to accomplish scaling.  What if we change the document orientation from portrait to landscape, or change the paper size from A4 to Letter?  In any case, scaling can be done easily, so which method to use is up to you, the author.\\
 
 What if you want to add two related graphics, such as two graphics that show before and after, and you want them to show up together as a single figure with a single caption?
 
-% end that section and start again on a new page
-\newpage
-
-\subsection*{Two Figures}
+\section{Two Figures}
 
 \begin{figure}[H]
 \centering
@@ -127,7 +125,7 @@ What if you want to add two related graphics, such as two graphics that show bef
 \caption{Graphic 250 by 250 pixels}\label{fg:250x250-3}
 \end{figure}
 
-\subsection*{Three Figures}
+\section{Three Figures}
 
 \begin{figure}[H]
 \centering
@@ -137,7 +135,7 @@ What if you want to add two related graphics, such as two graphics that show bef
 \caption{Graphic 250 by 250 pixels}\label{fg:250x250-4}
 \end{figure}
 
-\subsection*{Four Figures}
+\section{Four Figures}
 
 \begin{figure}[H]
 \centering
@@ -155,7 +153,7 @@ What if you liked the size of the Two Figures, but you have four graphics that y
 % end that section and start again on a new page
 \newpage
 
-\subsection*{Two Figures by Two Figures}
+\section{Two Figures by Two Figures}
 
 \begin{figure}[H]
 \centering
@@ -178,12 +176,32 @@ Next let's try stacking some graphics vertically, from top to bottom.
 
 As you can see, it's easy to accomplish some impressive arrangements of graphics using TexWorks.\\
 
+How about wrapping the text around the figures?
+
+\section{Wrap Figures}
+
+Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero, pretium at, lobortis vitae, ultricies et, tellus.   Nulla ullamcorper vestibulum turpis.
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+\centering
+\includegraphics[width=0.3\textwidth]{330x330}
+\caption{Graphic 330 by 330 pixels}\label{fg:330x330}
+\end{wrapfigure}
+
+Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna, vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt urna. Pellentesque cursus luctus mauris.
+
+Nulla malesuada porttitor diam. Donec felis erat, congue non, volutpat at, tincidunt tristique, libero. Vivamus viverra fermentum felis. Donec nonummy pellentesque ante. Phasellus adipiscing semper elit. Proin fermentum massa ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. Sed lacinia nulla vitae enim. Pellentesque tincidunt purus vel magna. Integer non enim. Praesent euismod nunc eu purus. Donec bibendum quam in tellus. Nullam cursus pulvinar lectus. Donec et mi. Nam vulputate metus eu enim. Vestibulum pellentesque felis eu massa.\\
+
+Once again, that wasn't too hard.  Instead of starting with \texttt{figure} we start with \texttt{wrapfigure}.  The same two parameters are needed with \texttt{wrapfigure}, just like with \texttt{wraptable}.\\
+
 What about tables, are they easy too?
 
 % end that section and start again on a new page
 \newpage
 
-\subsection*{Tables and Wrap Tables}
+\chapter{Tables}
+
+\section{Tables}
 
 Here's a table from the Rayleigh-Benard tutorial, showing the properties of water.\\
 
@@ -202,11 +220,13 @@ reference temperature & 293 K       \\ \hline
 \end{tabular}
 \end{table}
 
-The table is nicely centred on the page and the text entered before the table shows up before the table, and likewise the text entered  after the table shows up after the table.\\
+The table is nicely centred on the page and the text entered before the table shows up before the table, and likewise the text entered  after the table shows up after the table.
+
+\section{Wrap Tables}
 
 There's a lot of white space to the left of the table and to the right of the table, why can't we wrap the text tightly around the table,  like you see in books and technical articles?\\
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris.  Cras viverra metus rhoncus sem.\\
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris.  Cras viverra metus rhoncus sem.
 
 \begin{wraptable}{r}{0.45\textwidth}
 \caption{Material parameters for water}
@@ -227,37 +247,33 @@ Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicu
 
 Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc. Praesent eget sem vel leo ultrices bibendum. Aenean faucibus.  Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla. Curabitur auctor semper nulla. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum.   Cras viverra metus rhoncus sem.\\
 
-There, that wasn't too bad.  Instead of using \texttt{begin table}, we just started with \texttt{begin wraptable}.  The two entries after the \texttt{begin...} statement mean `r' for right justified, (`l' would mean left justified) and 0.45 text width means we want the table to be that wide on the page.  For fun, experiment with `r' versus `l', and vary the width factor.  Also experiment with adding/removing  the double returns and double back slashes located at the end of the paragraph before the table block.\\
+There, that wasn't too bad.  Instead of using \texttt{begin table}, we just started with \texttt{begin wraptable}.  The two entries after the \texttt{begin...} statement mean `r' for right justified, (`l' would mean left justified) and 0.45 text width means we want the table to be that wide on the page.  
 
-Do you think there may be a way to wrap text around a figure?
-
-% end that section and start again on a new page
-\newpage
-
-\subsection*{Wrap Figures}
-
-Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero, pretium at, lobortis vitae, ultricies et, tellus.   Nulla ullamcorper vestibulum turpis.
-
-\begin{wrapfigure}{r}{0.4\textwidth}
-\centering
-\includegraphics[width=0.3\textwidth]{330x330}
-\caption{Graphic 330 by 330 pixels}\label{fg:330x330}
-\end{wrapfigure}
-
-Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna, vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt urna. Pellentesque cursus luctus mauris.
-
-Nulla malesuada porttitor diam. Donec felis erat, congue non, volutpat at, tincidunt tristique, libero. Vivamus viverra fermentum felis. Donec nonummy pellentesque ante. Phasellus adipiscing semper elit. Proin fermentum massa ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. Sed lacinia nulla vitae enim. Pellentesque tincidunt purus vel magna. Integer non enim. Praesent euismod nunc eu purus. Donec bibendum quam in tellus. Nullam cursus pulvinar lectus. Donec et mi. Nam vulputate metus eu enim. Vestibulum pellentesque felis eu massa.\\
-
-Once again, that wasn't too hard.  Instead of starting with \texttt{figure} we start with \texttt{wrapfigure}.  The same two parameters are needed with \texttt{wrapfigure}, just like with \texttt{wraptable}.\\
+For fun, experiment with `r' versus `l', and vary the width factor.  Also experiment with adding and removing  the double returns and double back slashes located at the end of the paragraph before the table block.\\
 
 What about equations?
 
-\subsection*{Equations}
+\chapter{Equations}
 
-Here are some equations taken from the first Heat tutorial:\\
+\section{Equations}
 
+Here are some equation examples taken from some of the tutorials.\\
 
-Mathematically the problem is described by the Poisson equation
+\noindent If you want to write the equation in line, right in a sentence in text, add the equation like this:\\
+
+``The velocity profile at the inlet is parabolic with a mean velocity $<v_x>=1.0$~m/s and $v_y=0.0$~m/s.''\\
+
+\noindent To place the equations with text above and text below the equations, just add the equations in between lines of text, like this:\\
+
+``in the incompressible Navier-Stokes equation can be redefined by the Boussinesq approximation
+\begin{displaymath}
+\rho = {\rho}_0(1-\beta(T-{T}_0))
+\end{displaymath}
+where $\beta$ is the heat expansion coefficient and the subscript 0 refers to a reference state.''\\
+
+\noindent Here's another example of equations in between lines of text, this time using the `array' command:\\
+
+``Mathematically the problem is described by the Poisson equation
 \begin{equation}
 \left \{
 \begin{array}{ccccc}
@@ -266,7 +282,39 @@ T&=&0 & \mathrm{ on } & \Gamma
 \end{array}
 \right .
 \end{equation}
-where $\kappa$ is the heat conductivity, $T$  is the temperature and $f$ is the heat source. It is assumed that density and heat conductivity are constants.\\
+where $\kappa$ is the heat conductivity, $T$  is the temperature and $f$ is the heat source. It is assumed that density and heat conductivity are constants.''\\
+
+\noindent Here are two more examples of equations in between lines of text, this time with more symbols, such as the integral:\\
+
+``This case presents solving the Laplace equation for electric potential.
+\begin{equation}
+  - \nabla \cdot \varepsilon \nabla \phi = 0  \, \, \, \, \in \, \, \Omega
+\end{equation}
+where the electric potential $\phi$ is given at conducting surfaces.  From the solution one may calculate derived fields, and capacitance which is obtained from the total electric energy 
+\begin{equation}
+  E=\frac{1}{2} \int \varepsilon | \nabla \phi |^2 \, d\Omega
+\end{equation}
+and the relation $E=CU^2/2$.''\\
+
+\noindent Here another example of equations in between lines of text, this time with more symbols, such as the partial derivative:\\
+
+``We solve for the temperature distribution $T$ of the glacier. A heat flux of $q=0.02$~W/m$^2$ is applied at the bottom of the glacier while the surface stays at a fixed temperature of $T_0=-10$~C. The temperature distribution in the glacier may be solved from:
+\begin{equation}
+\left \{
+\begin{array}{cccc}
+- \kappa \Delta T &= & 0 & \mathrm{ in } \, \, \Omega \\
+T&=&T_0 & \mathrm{ on } \, \, \Gamma_D \\
+\kappa \frac{\partial T}{\partial n} &=& q & \mathrm{ on } \,\, \Gamma_N \\
+\end{array}
+\right .
+\end{equation}
+The material properties of ice are used for the heat conductivity $\kappa(T)$.  ''\\
+
+
+
+\section{Wrap Equations}
+
+Wrapping text around the equations requires the use of \texttt{begin wrapfigure}, using the same suffix as for \texttt{wraptable} and \texttt{wrapfigure}.  Note that the text that belongs next to the equations must appear below the equations.\\
 
 \begin{wrapfigure}{r}{.5\textwidth}
 \begin{equation}
@@ -279,17 +327,25 @@ T&=&0 & \mathrm{ on } & \Gamma
 \end{equation}
 \end{wrapfigure}
 
-Mathematically the problem is described by the Poisson equation where $\kappa$ is the heat conductivity, $T$  is the temperature and $f$ is the heat source. It is assumed that density and heat conductivity are constants.\\
+``Mathematically the problem is described by the Poisson equation where $\kappa$ is the heat conductivity, $T$  is the temperature and $f$ is the heat source. It is assumed that density and heat conductivity are constants.''\\
 
-Adding equations were relatively easy.  Wrapping text around the equations requires the use of \texttt{begin wrapfigure}, using the same suffix as for \texttt{wraptable} and \texttt{wrapfigure}.  Note that the text that belongs next to the equations must appear below the equations.\\
+\section{Writing Equations}
 
-Mathematically the problem is described by the Poisson equation where $\kappa$ is the heat conductivity, $T$  is the temperature and $f$ is the heat source. It is assumed that density and heat conductivity are constants.\\
+LaTeX is the first and may be the best tool to write mathematical equations for publications.  There are many tutorials on the Internet describing in great detail how to write equations.  This document will not try to explain all the many ways of writing equations.\\
 
-Adding equations were relatively easy.  Wrapping text around the equations requires the use of \texttt{begin wrapfigure}, using the same suffix as for \texttt{wraptable} and \texttt{wrapfigure}.  Note that the text that belongs next to the equations must appear below the equations.\\
+Be sure to visit this website:\\
 
-\subsection*{Centering}
+\url{https://www.ctan.org/}\\
 
-For those of you wondering why these examples of figures and tables use the command \texttt{centering}, instead of using the pair of commands \texttt{begin center} and \texttt{end center}, here are two examples.  As you can see, not much of a difference between them.  If you look closely, you will see that the white space at the top of Figure~\ref{fg:200x200-5} is about one line high, while the white space at the top of Figure~\ref{fg:200x200-6} is two lines high.  Really just a matter of taste, IMHO, I'd rather go with \texttt{centering} and occupy one less line of white space.  Many of the existing tutorials use the pair of commands \texttt{begin center} and \texttt{end center}, so once again, use the command \texttt{centering} for new tutorials and only when actually editing existing tutorials for content.
+And visit the starter page:\\
+
+\url{https://www.ctan.org/starter}
+
+\chapter{Notes}
+
+\section{Centering}
+
+For those of you wondering why these examples of figures and tables use the command \texttt{centering}, instead of using the pair of commands \texttt{begin center} and \texttt{end center}, here are two examples.  As you can see, not much of a difference between them.  If you look closely, you will see that the white space at the top of Figure~\ref{fg:200x200-5} is about one line high, while the white space at the top of Figure~\ref{fg:200x200-6} is two lines high.  Really just a matter of taste, IMHO, I'd rather go with \texttt{centering} and occupy one less line in the tex source.  Many of the existing tutorials use the pair of commands \texttt{begin center} and \texttt{end center}, so once again, use the command \texttt{centering} for new tutorials and only when actually editing existing tutorials for content.
 
 \begin{wrapfigure}{r}{0.25\textwidth}
 \centering
@@ -306,8 +362,22 @@ Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna, vitae or
 
 Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna, vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque a nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt urna. Pellentesque cursus luctus mauris. Nulla malesuada porttitor diam. Donec felis erat, congue non, volutpat at, tincidunt tristique, libero. Vivamus viverra fermentum felis. Donec nonummy pellentesque ante. Phasellus adipiscing semper elit. Proin fermentum massa ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. Sed lacinia nulla vitae enim. Pellentesque tincidunt purus vel magna. Integer non enim. Praesent euismod nunc eu purus. Donec bibendum quam in tellus. Nullam cursus pulvinar lectus. Donec et mi. Nam vulputate metus eu enim. Vestibulum pellentesque felis eu massa. Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero, pretium at, lobortis vitae, ultricies et, tellus.   Nulla ullamcorper vestibulum turpis. Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero, pretium at, lobortis vitae, ultricies et, tellus.   Nulla ullamcorper vestibulum turpis.
 
-\subsection*{The End}
+\section{The beginning}
 
-That's it for these instructions.  If you need something more complicated that these examples, then I'm sure you will find an answer somewhere on the Internet.  Consider adding what you have found into this document, to expand on these few examples.  
+That's it for these instructions.  If you need something more complicated that these examples, then I'm sure you will find an answer somewhere on the Internet.  Consider adding what you have found into this document, to expand on these few examples.\\
 
-\hfill
+If you search the Internet for `texworks equations', you will find lot's of references, such as:\\
+
+\url{https://www.overleaf.com}\\
+
+\url{https://en.wikibooks.org}\\
+
+\url{https://tex.stackexchange.com}\\
+
+\url{https://latex-tutorial.com}\\
+
+\url{https://www1.cmc.edu}\\
+
+\url{https://www.authorea.com}\\
+
+
