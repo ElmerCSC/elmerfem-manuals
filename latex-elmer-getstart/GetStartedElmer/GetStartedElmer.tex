@@ -926,119 +926,395 @@ MATC can be called from the command line by entering \begin{verbatim}$ELMER_HOME
 
 \subsection{Introduction}
 
-This wiki page describes how to create a mesh that contains multiple bodies with Salome MECA 2009 and how to import it in Elmer.
+The desired final result of this exercise will be a single Elmer mesh with multiple bodies and multiple boundaries.  The boundaries will be defined for each exterior face of the bodies and the interior faces between each body.  The bodies will allow assignment of two or three materials, with a boundary between each material.\\
+
+The original wiki page described how to create a mesh that contains multiple bodies with Salome MECA 2009 and how to import it in Elmer.  There is a video on Youtube from 2015 based on the elmerfem wiki:\\
+
+\url{https://www.youtube.com/watch?v=xfMLtywHSr4}\\
+
+\noindent This section in Get Started with Elmer has been rewritten in 2021 with new graphics using Salome 9.7.0 and Elmer 9.0.
+
+\subsection{Install Salome}
+
+Download the latest version of Salome from\\
+
+\url{https://www.salome-platform.org/}\\
+
+and follow the instructions to install Salome.  The Salome website has lot's of information, such as user tutorials at:\\
+
+\noindent \url{https://www.salome-platform.org/user-section/salome-tutorials/salome-tutorial}\\
+
+The tutorials will be very helpful for first time users of Salome.  The first tutorial shows the basics of creating geometry, partitioning, and meshing.  After installing and starting Salome, follow these instructions.  Note that we assume you know the basics of Salome, and so we will give high level instructions.
 
 \subsection{Define your geometry in Salome}
 
-First, you need to define a geometry. In this example we deal with a simple one, with three boxes. We create two boxes which are intersecting each other. The intersection will be the third box. (You don't actually need to use the intersection operation, just make the two boxes.) Of course, you might as well define three separate boxes that share their respective surfaces geometrically. In this example, let's stick with the two intersecting ones, as shown in Figure~\ref{fg:salome-1}. 
+First, we need to define a geometry, so activate the Geometry module, as shown in Figure~\ref{fg:salome-01}. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Salome-1-twoboxes}
-\caption{Draw the two boxes}\label{fg:salome-1}
+\includegraphics[width=0.9\textwidth]{Salome-01}
+\caption{Geometry module}\label{fg:salome-01}
 \end{figure}
 
-Now we have defined our geometry, but it is not ready for meshing. Because, in order to mesh you need a single object and now you have two. Therefore we need to combine those solids together.
+In this example we deal with a simple case, with three boxes. We create two boxes which are intersecting each other, using New Entity -> Primitives -> Box, as shown in Figure~\ref{fg:salome-02}.
 
-IT WOULD be natural to create a compound object which contains two solids, but this is not right way to do it. Because, when you create a compound, Salome will consider the solids as individuals and tries to create two separate meshes for each solid. For example in this case it would fail miserably.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-02}
+\caption{Box primitive}\label{fg:salome-02}
+\end{figure}
+
+Create Box\_1 using the default size at the origin, and increase Dx to 300, as shown in Figure~\ref{fg:salome-03}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-03}
+\caption{Create Box\_1}\label{fg:salome-03}
+\end{figure}
+
+\newpage
+
+Create Box\_2 using the default size at the origin, and increase Dy to 300, as shown in Figure~\ref{fg:salome-04}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-04}
+\caption{Create Box\_2}\label{fg:salome-04}
+\end{figure}
+
+Use Operations -> Boolean -> Cut, as shown in Figure~\ref{fg:salome-05}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-05}
+\caption{Boolean Cut}\label{fg:salome-05}
+\end{figure}
+
+\newpage
+
+Cut Box\_2 using Box\_1 as the tool, which will create the third box, as shown in Figure~\ref{fg:salome-06}.  Of course, you could as well define three separate boxes that share their respective surfaces geometrically. In this example, let's stick with the two intersecting boxes.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-06}
+\caption{Create Cut\_1}\label{fg:salome-06}
+\end{figure}
+
+We now have three boxes, named Box\_1, Box\_2, and Cut\_1, as shown in Figure~\ref{fg:salome-07}.  Note the small icon shown just above the little tool tip `Global Panning', which expanded the object to fill the view port.  Also, note that we can check the shape of each box using the visibility icon, the little eye just to the left of the entity in the geometry tree.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-07}
+\caption{Three boxes}\label{fg:salome-07}
+\end{figure}
+
+Next, let's cut again to make another small box, this time using Box\_2 to cut Box\_1, as shown in Figure~\ref{fg:salome-08}.  It may seem that some of the boxes disappear after performing the cut, but they are just invisible, so use the eye icon to make them reappear.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-08}
+\caption{Create Cut\_2}\label{fg:salome-08}
+\end{figure}
+
+For the last step, select the Operation, Boolean, Common, menu item, as shown in Figure~\ref{fg:salome-09}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-09}
+\caption{Common menu}\label{fg:salome-09}
+\end{figure}
+
+\newpage
+
+This step will create Common\_1, a cube, as shown in Figure~\ref{fg:salome-10}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-10}
+\caption{Create Common\_1}\label{fg:salome-10}
+\end{figure}
 
 \subsection{Partition the geometry}
 
-What we need to do is to use the partition operation. You can find it from: Operations -> Partition (You need to be in geometry module). Then you pick up the objects, in this case the boxes we created. And you must not put anything at the tool object. This will create a partition object which you can mesh, as shown in Figure~\ref{fg:salome-2}
+Now we have defined our geometry, but it is not ready for meshing. Because, in order to mesh you need a single object and now you have three. Therefore we need to combine those solids together.
+
+IT WOULD be natural to create a compound object which contains three solids, but this is not right way to do it. Because, when you create a compound, Salome will consider the solids as individuals and creates three separate meshes that when exported to unv will create three separate mesh files.  When you try to load each mesh in ElmerGUI, you will have three separate models, which can't be combined into one Elmer solution.
+
+What we need to do is to use the Salome operation called, Partition.  Using an analogy from computer file systems, one can create a partition to hold multiple disk drives, so in a similar fashion in Salome we will create a partition to hold several CAD objects as solid objects.
+
+First, let's select three items in the geometry tree, Cut\_1, Cut\_2, and Common\_1.  Then use menu selection Operations -> Partition, as shown in Figure~\ref{fg:salome-11}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Salome-2-partition}
-\caption{Use the partition tool}\label{fg:salome-2}
+\includegraphics[width=0.9\textwidth]{Salome-11}
+\caption{Partition menu}\label{fg:salome-11}
 \end{figure}
 
-\subsection{Create volume groups}
-
-Before we mesh anything, we must create volume groups for the geometry. These are needed later, when we create mesh groups (these are the things, to have different bodies in Elmer).
-
-You can find the geometry group creation tool at: New Entity -> Group -> Create. Now, you pick volumes of course. You can either pick them from the picture or you can click the "Add All" button, and afterwards the "remove" button to get rid of the not wanted volumes. If you decide to pick them from the picture, it is recommended to show only the partition object (click the right mouse button and select "Show only"). In this case we have three volumes in the partition object. Make a group from each one of the volumes, as shown in Figure~\ref{fg:salome-3}
+We will create Partition\_1 from 3 objects, as shown in Figure~\ref{fg:salome-12}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Salome-3-pickvolumes}
-\caption{Pick volumes at the partition}\label{fg:salome-3}
+\includegraphics[width=0.9\textwidth]{Salome-12}
+\caption{Create Partition}\label{fg:salome-12}
 \end{figure}
 
-Now, you should have a partition, made of two intersecting boxes, which contains three geometry groups, as shown in Figure~\ref{fg:salome-4}
+Partition\_1 now shows up with three sub-objects, as shown in Figure~\ref{fg:salome-13}.  
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Salome-4-geometrymodule}
-\caption{The three boxes in the partition}\label{fg:salome-4}
+\includegraphics[width=0.9\textwidth]{Salome-13}
+\caption{Partition\_1}\label{fg:salome-13}
 \end{figure}
 
-To define boundaries, proceed in a similar manner: Create groups of faces (you can also explode your geometry so that you have all faces defined as groups at once).
+\newpage
+
+We have one more step before we can start meshing the geometry.  We need to be able to select bodies within the partition, so we must use the menu selection New Entity -> Explode, as shown in Figure~\ref{fg:salome-14}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-14}
+\caption{Explode menu}\label{fg:salome-14}
+\end{figure}
+
+Be sure to select `Sub-shapes Type' as `solid', as shown in Figure~\ref{fg:salome-15}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-15}
+\caption{Select solid type}\label{fg:salome-15}
+\end{figure}
+
+\newpage
+
+Expanding Partition\_1 in the geometry tree shows three solids are now available, as shown in Figure~\ref{fg:salome-16}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-16}
+\caption{Three solids}\label{fg:salome-16}
+\end{figure}
 
 \subsection{Create the mesh}
 
-At this point you can move to the mesh module, to create a mesh for the partition object and compute it. In this example we use automatic netgen 1D-2D-3D, as shown in Figure~\ref{fg:salome-5} and Figure~\ref{fg:salome-6}.
+At this point you can move to the mesh module, to create a mesh for the partition object.  In this example we use automatic netgen 1D-2D-3D as the mesh generator.  Select the Mesh module instead of the Geometry module from the menu, as shown in Figure~\ref{fg:salome-17}.  You may need to once again use the eye icons to make the objects visible.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Salome-5-createmesh}
-\caption{Define the mesh}\label{fg:salome-5}
+\includegraphics[width=0.9\textwidth]{Salome-17}
+\caption{Mesh module}\label{fg:salome-17}
 \end{figure}
+
+\newpage
+
+Next, make sure that Partition\_1 is highlighted in the tree, then select Mesh -> Create Mesh menu option, as shown in Figure~\ref{fg:salome-18}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Salome-6-computemesh}
-\caption{Compute the mesh}\label{fg:salome-6}
+\includegraphics[width=0.9\textwidth]{Salome-18}
+\caption{Create Mesh}\label{fg:salome-18}
 \end{figure}
 
-The mesh already obeys the internal surfaces of our three body assembly now, but does not separate them for Elmer to attribute boundary or body conditions later.
-
-\subsection{Create mesh groups}
-
-So, you have the mesh now but you are not yet having the mesh groups. You can find the mesh group creation tool in mesh module at: Mesh -> Create Group. There you have to pick your mesh, select the volumes radio button, and pick the groups you defined before in the geometry section: You push the "geometrical object" button, and after that you choose "Direct geometry selection", as shown in Figure~\ref{fg:salome-7}
+In the Algorithm box, select NETGEN 1D-2D-3D, as shown in Figure~\ref{fg:salome-19}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Salome-7-directgeometryselection}
-\caption{Choose the groups}\label{fg:salome-7}
+\includegraphics[width=0.9\textwidth]{Salome-19}
+\caption{NETGEN 1D-2D-3D}\label{fg:salome-19}
 \end{figure}
 
-Then you pick one GEOMETRY GROUP at a time and create the same groups that you already defined in the geometry module, as shown in Figure~\ref{fg:salome-8}.
+\subsection{Refine the mesh}
+
+We could accept the default mesh settings and proceed to computing the mesh, but that isn't a typical usage.  Let's use Netgen to refine the mesh while computing the mesh.  Click on the settings box to the right of the Hypothesis box, and select NETGEN 3D Parameters, as shown in Figure~\ref{fg:salome-20}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Salome-8-pickgeometrygroups}
-\caption{Pick the groups}\label{fg:salome-8}
+\includegraphics[width=0.9\textwidth]{Salome-20}
+\caption{Netgen Parameters}\label{fg:salome-20}
 \end{figure}
 
-\subsection{Import and use the created mesh in Elmer}
+Change Max size to 20 and Min size to 10, as shown in Figure~\ref{fg:salome-21}.  Netgen will use these parameters to decide on element sizes.  Notice that Netgen is also capable of generating second order elements and quad dominated elements, just by checking the appropriate boxes in this window.
 
-Now you have everything you need. You need just to export the mesh in UNV format (from the file menu: Export -> UNV file).\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-21}
+\caption{Max and Min element sizes}\label{fg:salome-21}
+\end{figure}
 
-\noindent 1st alternative:\\
+\subsection{Compute the mesh}
 
-To get the native elmer mesh format, you need to convert the mesh using ElmerGrid. Open your terminal, and change to the directory where you exported the unv -file. Then use the command:\\
+That finishes definition of our desired mesh, next step is to tell Salome to actually generate the mesh, by selecting Mesh -> Compute, as shown in Figure~\ref{fg:salome-22}.
 
-\texttt{ElmerGrid 8 2 nameOfYourFile.unv -autoclean}\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-22}
+\caption{Compute the mesh}\label{fg:salome-22}
+\end{figure}
 
-\noindent And there you have it. In ElmerGUI you use the "load mesh" button to open it.  In case you need parallel runs, you may partition the mesh with:\\
+A progress window will pop up, as shown in Figure~\ref{fg:salome-23}.
 
-\texttt{ElmerGrid 2 2 nameOfYourFile -metis [number of procs] [method]}\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-23}
+\caption{Progress}\label{fg:salome-23}
+\end{figure}
 
-where number of procs is obviously the number of your parallel processes and method is an integer number. Please do not use ".unv" after the name of the file (since actually now we are not operating to the unv file any more but the native Elmer mesh (it is actually a directory with the base name of the transformed unv file) that was generated with the previous command. For example:\\
+\newpage
 
-\texttt{ElmerGrid 2 2 nameOfYourFile -metis 16 4}\\
+The final mesh results summary will then be displayed, as shown in Figure~\ref{fg:salome-24}.
 
-is for partitioning the mesh with metis in 16 partitions with a metis method number 4. The partitioned mesh data will be found in the nameOfYourFile directory.\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-24}
+\caption{Mesh results}\label{fg:salome-24}
+\end{figure}
 
-\noindent 2nd alternative:\\
+\newpage
 
-Load the UNV mesh directly into ElmerGUI by the command File -> Open. (This works at least for ElmerGUI versions later than April 2010.) Depending on the locale setting of the used machine you may need to change the pure text format of the UNV file from a "." representation to a "," representation prior to loading, though: An indication that this step is necessary is an obviously wrong geometrical representation of the geometry in ElmerGUI. This has e.g. been necessary for a German Ubuntu machine. One way to perform this step is the usage of the sed command:\\
+The computed mesh will be as shown in Figure~\ref{fg:salome-25}.  Notice that under Mesh\_1, there is an entry for `Groups of Volumes', but doesn't show anything for Faces.
 
-\texttt{sed "s/\./,/g" <Salome-out.unv >Elmer-in.unv}\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-25}
+\caption{Mesh}\label{fg:salome-25}
+\end{figure}
 
-If you didn't define face groups in your mesh before, the individual boundaries of the defined boxes are not separated. With a simple "divide surface" operation from ElmerGUI's icon menu, or by the menu operation Mesh -> Divide surface, this is dealt with. Choose a value of 70 degrees for rectangular boxes - at least this value always worked for me. For bent edges, please experiment and check by marking individual result surfaces in ElmerGUI by double-clicking on them!\\
+\newpage
 
-After this step the body indexes and your individual surfaces exist, and boundary conditions can be attributed to them. 
+\subsection{Create Groups of Faces}
+
+If we exported the mesh at this point, we would have bodies in ElmerGUI, but only one single boundary around the entire body, which is not at all usable.  We need to ask Salome to create faces that will become our individual boundaries.  Select Mesh -> Face groups separated by sharp edges, as shown in Figure~\ref{fg:salome-26}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-26}
+\caption{Face groups}\label{fg:salome-26}
+\end{figure}
+
+Accept the default settings and Apply and Close, as shown in Figure~\ref{fg:salome-27}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-27}
+\caption{Default face groups}\label{fg:salome-27}
+\end{figure}
+
+\newpage
+
+We now have Groups of Faces under the mesh tree, as shown in Figure~\ref{fg:salome-28}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-28}
+\caption{Groups of Faces}\label{fg:salome-28}
+\end{figure}
+
+\newpage
+
+\subsection{Export the mesh}
+
+We are now ready to export our mesh, once again make sure to highlight Mesh\_1 in the tree, then select File -> Export -> UNV file, as shown in Figure~\ref{fg:salome-29}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-29}
+\caption{Export menu}\label{fg:salome-29}
+\end{figure}
+
+Save the file, with an appropriate name, in an appropriate directory, as shown in Figure~\ref{fg:salome-30}.  Salome will automatically add the `unv' file extension to the file name.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Salome-30}
+\caption{Save UNV file}\label{fg:salome-30}
+\end{figure}
+
+We now have a UNV file containing all the information needed by Elmer to import the example Salome CAD model as three bodies with sixteen boundaries and with a refined tetrahedral mesh.
+
+%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\section{Elmer and UNV files}
+
+The previous section showed how to create and export a UNV file from Salome, ready to be used by Elmer.  This section will show how to use that UNV file in Elmer.\\
+
+For non-GUI users of Elmer, use ElmerGrid in a command prompt or terminal window to convert the UNV file into Elmer mesh format with this command:\\
+
+\texttt{Elmergrid 8 2 mesh\_1 -autoclean}\\
+
+ElmerGUI can read the UNV file directly, and ElmerGUI will then call ElmerGrid in the background to perform the conversion to Elmer mesh format.  This section shows step by step how to read and use the UNV file in ElmerGUI.\\
+
+As a side note, non-GUI users of Elmer may find it useful to use ElmerGUI to perform the conversion from UNV to Elmer mesh format.  ElmerGUI can group boundary faces together, thereby reducing the number of boundary faces into manageable groups.  When ElmerGUI saves the mesh to Elmer mesh format, the reduced number of boundary groups will be written to the files.
+
+\subsection{Open UNV file}
+
+After starting ElmerGUI, select File -> Open, as shown in Figure~\ref{fg:elmergui-1}, then select the Mesh\_1.unv file that you created in the previous section.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{elmergui-1}
+\caption{File -> Open}\label{fg:elmergui-1}
+\end{figure}
+
+\newpage
+
+ElmerGUI will read the file and based on the file extension, ElmerGUI will automatically call ElmerGrid to perform the conversion, as shown in Figure~\ref{fg:elmergui-2}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{elmergui-2}
+\caption{Imported model}\label{fg:elmergui-2}
+\end{figure}
+
+Examine the model parameters by selecting Model -> Summary from the menu, which will open a window to display the various dimensions of the mesh and model, as shown in Figure~\ref{fg:elmergui-3}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{elmergui-3}
+\caption{Model -> Summary}\label{fg:elmergui-3}
+\end{figure}
+
+Having a model with sixteen boundaries can be useful, but sometimes we only need a couple of the boundaries.  ElmerGUI can group faces together, which will reduce the number of boundaries, making it easier to manage working with the boundaries.\\
+
+\newpage
+
+Use the mouse and double click on a face to select that face, followed by holding down the ctrl key and double clicking on two more faces, so three faces are highlighted, as shown in Figure~\ref{fg:elmergui-4}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{elmergui-4}
+\caption{Select with ctrl double click}\label{fg:elmergui-4}
+\end{figure}
+
+Select Mesh -> Unify surface, as shown in Figure~\ref{fg:elmergui-5}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{elmergui-5}
+\caption{Mesh -> Unify surface}\label{fg:elmergui-5}
+\end{figure}
+
+The three faces will be united into one face, so the list of boundaries will decrease from 16 down to 14 boundaries.  
+
+\newpage
+
+Double click on the new unified face, and select View -> Hide/show selected, as shown in Figure~\ref{fg:elmergui-6}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{elmergui-6}
+\caption{Hide/show selected}\label{fg:elmergui-6}
+\end{figure}
+
+The selected face will be hidden from view, to reveal the interior boundary faces, as shown in Figure~\ref{fg:elmergui-7}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{elmergui-7}
+\caption{Interior boundaries}\label{fg:elmergui-7}
+\end{figure}
+
+This was a brief introduction to importing UNV files into Elmer and ElmerGUI.
 
 \newpage
 
@@ -1226,9 +1502,9 @@ One of the early application areas of Elmer was the modelling of optical fiber d
 
 \noindent If you have any work you would like to share on this aspect of Elmer, please feel free to contribute. 
 
-\section{Electrochemistry}
+\section{Electromigration}
 
-This section has been transferred from Wayback Machine downloads, and uses screen shots to capture the equations and variable names accurately.  The attachments are also missing, so we don't have the original sif files or the resulting graphics.  If anyone has stored copies of the missing files, please either submit a PR adding the files or post the files on the forum.
+This section has been transferred from Wayback Machine downloads, and uses screen shots to capture some of the equations and variable names accurately.  The original working sif file and geo file are stored in the `tutorials-GUI-files' folder and currently do not have a working ElmerGUI project.
 
 \subsection{Introduction}
 
@@ -1238,27 +1514,43 @@ Until 2010, only expensive FEA suites like COMSOL, or specialized consultants, c
 
 The Advection Diffusion equation is given in the Elmer Models Manual (using bold instead of arrows for vectors):\\
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.0\textwidth]{ec-20}
-\end{figure}
+\begin{equation}
+\partial C_i/ \partial t =  - \nabla \cdot \bold N_i + S_i
+\end{equation}
+
+where $\bold N_i$ is the total convective and diffusive flux given by:
+
+\begin{equation}
+\bold N_i = -\bold v C_i - D_i \nabla C_i - M_i C_i \nabla \phi
+\end{equation}
+
+The third term in the flux is the Nernst-Planck electromigration term using mobility $M_i$ for species $i$ and the gradient in electrical potential $\phi $. The mobility $M_i$ is in turn given by the Nernst-Einstein relation:
+
+\begin{equation}
+M_i = D_i z_i e/kT
+\end{equation}
+
+where $z_i$ is the ion charge for species $i$, $e$ the electron charge, $k$ Boltzmann's constant, and $T$ the absolute temperature. 
 
 \subsection{Implementation}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.0\textwidth]{ec-21}
-\end{figure}
+A new addition to the AdvectionDiffusion module implements this Nernst-Planck electromigration term. The implementation is based on the similarity between the electromigration flux and the convection flux $\bold v C_i$, it adds the Nernst-Planck ion drift velocity to create an "effective velocity":
 
-\subsection{Bug}
+\begin{equation}
+\bold N_i = -D_i \nabla C_i + (\bold v + D_i z_i e \nabla \phi/kT) C_i
+\end{equation}
 
-This code does not create a velocity array, so one must use Navier-Stokes when modelling electromigration. If one runs with non-zero ion charge to induce electromigration but without Navier-Stokes, ElmerSolver fails with a segmentation fault. 
+The downside of this implementation is that because neither convection nor electromigration is in the variational form, flux boundary conditions ignore them, so it is tricky to set boundary conditions properly. Then again, this is generally true for electrochemical reactions... More on that another time.
+
+This patch introduces only one new parameter or material property: the ion charge $z_i$, the others are already in the AdvectionDiffusion module or Elmer's universal constants. If ion charge is zero, then this term vanishes. Ion charge is now in the material properties section of the advection-diffusion GUI XML file, and to the solver keywords.
+
+Warning: this code does not create a velocity array, so one must use Navier-Stokes when modelling electromigration.  If one runs with non-zero ion charge to induce electromigration but without Navier-Stokes, ElmerSolver fails with a segmentation fault. 
 
 \subsection{Example}
 
 [DISCLAIMER: This example is for purposes of illustration and mathematical consistency verification only. Material properties and results may differ from reality by orders of magnitude. Use at your own risk.] \\
 
-The following example describes electroplating a small hemisphere with copper. This problem has an axisymmetric geometry with a cylindrical container of aqueous copper sulfate (CuSO4) 1 cm in diameter and 1 cm deep, with the 0.5 cm radius hemisphere to be plated pointing downward into the center of the container (along the axis of symmetry). Only the aqueous solution has a mesh, which is densest near the hemisphere in order to resolve the diffusion/electromigration boundary layer there. To generate the mesh, run Gmsh and import the geometry from File:Np-simple.geo.
+The following example describes electroplating a small hemisphere with copper. This problem has an axisymmetric geometry with a cylindrical container of aqueous copper sulfate (CuSO4) 0.01 meter in radius and 0.01 meter deep, with the 0.005 meter radius hemisphere to be plated pointing downward into the center of the container (along the axis of symmetry). Only the aqueous solution has a mesh, which is densest near the hemisphere in order to resolve the diffusion/electromigration boundary layer there. To generate the mesh, run Gmsh and import the geometry from the file `simple.geo. 
 
 \begin{figure}[H]
 \centering
