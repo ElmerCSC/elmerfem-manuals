@@ -694,9 +694,11 @@ This step will create Common\_1, a cube, as shown in Figure~\ref{fg:salome-10}.
 \caption{Create Common\_1}\label{fg:salome-10}
 \end{figure}
 
+We have successfully created three solid objects.  The objects share common nodes at the edges of each object and the volumes of each object do not overlap.
+
 \subsection{Partition the geometry}
 
-Now we have defined our geometry, but it is not ready for meshing. Because, in order to mesh you need a single object and now you have three. Therefore we need to combine those solids together.
+Now we have defined our geometry, but it is not yet ready for meshing. Because Elmer expects a single mesh, you need a single `object' for the meshing operation and now you have three objects. Therefore we need to combine these three solid objects together, before starting the meshing operation.
 
 IT WOULD be natural to create a compound object which contains three solids, but this is not right way to do it. Because, when you create a compound, Salome will consider the solids as individuals and creates three separate meshes that when exported to unv will create three separate mesh files.  When you try to load each mesh in ElmerGUI, you will have three separate models, which can't be combined into one Elmer solution.
 
@@ -786,7 +788,11 @@ We could accept the default mesh settings and proceed to computing the mesh, but
 \caption{Netgen Parameters}\label{fg:salome-20}
 \end{figure}
 
-Change Max size to 20 and Min size to 10, as shown in Figure~\ref{fg:salome-21}.  Netgen will use these parameters to decide on element sizes.  Notice that Netgen is also capable of generating second order elements and quad dominated elements, just by checking the appropriate boxes in this window.
+Change Max size to 20 and Min size to 10, as shown in Figure~\ref{fg:salome-21}.  Netgen will use these parameters to decide on element sizes.  Notice that Netgen is also capable of generating second order elements (in 2D and 3D) and quad dominated elements (in 2D only), just by checking the appropriate boxes in this window.\\
+
+When using an Elmer solver for elasticity, use of second order elements is recommended.  When using an Elmer solver for Navier-Stokes flow, some experts recommend using second order elements.\\
+
+As a side note, you can create a first mesh using first order elements, and then create a second mesh using second order elements, and export each mesh into two separate UNV files.  Then use the UNV files to compare the effect of first order versus second order elements in Elmer.
 
 \begin{figure}[H]
 \centering
@@ -873,6 +879,32 @@ Save the file, with an appropriate name, in an appropriate directory, as shown i
 \end{figure}
 
 We now have a UNV file containing all the information needed by Elmer to import the example Salome CAD model as three bodies with sixteen boundaries and with a refined tetrahedral mesh.
+
+\subsection{Summary: Short Version}
+
+The above section shows in great detail how to create a multi-body mesh for Elmer, and it is highly recommended to go through each step the first time to get familiar with the location of each step.  The second or third time going through the steps should be faster and easier, and not as much detail is needed to help create a mesh for Elmer.\\
+
+\noindent Here is a short version of the steps to be taken in Salome to create multiple bodies for export to Elmer.\\
+
+>> Select the Geometry module.\\
+
+>> Create your 3D solid bodies.  They should not overlap their volumes and they should share common nodes.\\
+
+>> Highlight the solid bodies and then `Operations -> Partition'.  Be sure to select Resulting Type as `solid'.\\
+
+>> Highlight the Partition, and then `New Entity -> Explode'.  Be sure to select Sub-shapes Type as `solid'.\\
+
+>> Select the Mesh module.\\
+
+>> Select the Partition and then `Mesh -> Create Mesh'.  In the Algorithm box, select `NETGEN 1D-2D-3D'.  In the Hypothesis box, select `NETGEN 3D Parameters'.  Change Max and/or Min sizes as needed, and select second order as needed.\\
+
+>> Select `Mesh -> Compute Mesh' to generate the mesh.\\
+
+>> Highlight the Mesh and then `Mesh -> Face groups separated by sharp edges', and accept the default settings.\\
+
+>> Highlight the Mesh and then `File -> Export -> UNV file', and save the UNV file with an appropriate name and directory.\\
+
+\noindent This ends the short version.
 
 %%%%%%%%%%%%%%%%%
 
