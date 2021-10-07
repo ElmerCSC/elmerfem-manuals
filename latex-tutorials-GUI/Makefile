@@ -16,7 +16,7 @@ bib:
 	sh loopchapterbib;
 
 biblio:
-	bibtex CapacitanceOfTwoBalls/CapacitanceOfTwoBalls
+#	bibtex CapacitanceOfTwoBalls/CapacitanceOfTwoBalls
 
 chmod:
 	chmod -R ug+rw,o= .
