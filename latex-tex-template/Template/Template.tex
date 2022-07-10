@@ -9,16 +9,9 @@
 
 \subsection*{Introduction}
 
-zzz This Template For Tutorials is designed to help make it easy to create a new tutorial using ElmerGUI.  Having an outline of a tutorial should allow for simpler development of new tutorials, and will help keep the look and feel of new tutorials in unison with existing tutorials.
-
-zzz Anywhere you see `zzz', it means that section needs to be replaced.  Any text that begins with `zzz', should be deleted and replaced by the appropriate text for your tutorial.  
-
-zzz Think of `zzz' as a spot where you should `fill in the blanks'.
-
-
+zzz The introduction section should give a general overview of the purpose and the goal of the tutorial, then proceed with the case definition in the next section.
 
 \subsection*{Case definition}
-
 
 zzz Enter your case definition here.
 
@@ -28,52 +21,62 @@ zzz Enter your geometry figure here.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{geometry.png}
+\includegraphics[width=0.7\textwidth]{geometry.png}
 \caption{Geometry}\label{fg:geometry}
 \end{figure}  
 
-\subsection*{ElmerGUI Equation Menu}
+\subsection*{Existing Project}
 
-zzz Note that we include both edf and edf-extra examples.  If you don't need the edf-extra example, the first section can be deleted.  It is suggested to keep the edf example, to show where the edf file comes from.
+The Elmer tutorials consist of the tutorial documentation and the tutorial folders.  For example, these ElmerGUI tutorials are described in the document 'ElmerTutorials.pdf' and the working project files are stored under the folder 'tutorials-GUI-files'.  
 
-zzz The GUI definitions of zzz solver utilized in this tutorial are located in the \texttt{edf-extra} folder and thus need to be manually activated in the ElmerGUI.\\
+If you need a copy of the folder 'tutorials-GUI-files', it can be downloaded from:  \url{https://www.nic.funet.fi/pub/sci/physics/elmer/doc/}
 
-zzz Note that the extra definition needs to be loaded first, before any other steps in building any tutorial.  Once the extra definition has been loaded, and the ElmerGUI project has been saved, then the reference to the extra definition will be stored in the project, and you won't have to load the extra definition again.
+Each sub-folder under 'tutorials-GUI-files' contains all the files needed to run a particular tutorial, such as the ElmerGUI project file, the geometry input file, and the generated mesh files.  
+
+If you wish to just run the existing project tutorial and examine the resulting output, start ElmerGUI and load the existing project file as follows:
 
 \begin{verbatim}
 File
-  Definitions
-    Append -> zzz.xml
-  Close
+  Load Project...
+Run
+  Start Solver
 \end{verbatim}
 
-\noindent The \texttt{\Idx{zzz.xml}} definition file is, by default, located in Linux in:
+You should see the Convergence Monitor and the Solver log windows pop up, and the solution finish in a few moments in most cases.  The results can then be examined using ElmerVTK, as follow:
 
-\texttt{\$ELMER\_HOME/share/ElmerGUI/edf-extra}
+\begin{verbatim}
+Run
+  Start ElmerVTK
+\end{verbatim}
 
-\noindent and in Windows, located in:
+Alternatively, one can examine the results using Paraview.  For a full introduction about using ElmerVTK or Paraview, refer to the document 'GetStartedElmer', which is useful for both Windows and Linux users.
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf-extra}\\
+\subsection*{New Project}
 
-We will also be using the \Idx{zzz Solver}, which is one of the default, pre-loaded GUI definitions, so it does not need to be manually activated.  For reference, the  \texttt{\Idx{zzz.xml}} definition file is, by default, located in Linux in:
+If you are more interested in learning how to use ElmerGUI by constructing an ElmerGUI project from the beginning, then the next few sections will describe in detail the step by step actions needed to build an ElmerGUI project.  The first step will be to create your own project folder, and copy in the geometry input file from the tutorial of interest.  Then start ElmerGUI and create a new project, as follows:
 
-\texttt{\$ELMER\_HOME/share/ElmerGUI/edf}
+\begin{verbatim}
+Run
+  New Project...
+\end{verbatim}
 
-\noindent and in Windows, located in:
+Start at the top and select the project directory as shown in Figure \ref{fg:new_project}.  Then select the Geometry input file, that was copied into your project folder.  This could either be an elmer mesh or a geometry input file, such as an elmergrid input file.  Lastly, if additional Equation Definition Files are needed for the tutorial, select as many as needed in the right hand box and add them to the left hand box.  Finish by clicking on OK.
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{new_project.png}
+\caption{New Project}\label{fg:new_project}
+\end{figure}  
 
+\subsection*{ElmerGUI Equation Definition Files}
+
+The New Project screen automatically locates and lists all of the available EDFs.  The left side of the screen lists the Default EDFs, which will be loaded into each ElmerGUI project.  The right hand box lists all of the extra EDFs, that are not normally loaded, allowing the option to add individual extra EDFs to a new project.\\
+
+This tutorial will use the Default EDF, \texttt{\Idx{zzz.xml}}, for the \Idx{zzz Solver}.  In addition, we will add the Extra EDF,  \texttt{\Idx{zzz.xml}}, for the \Idx{zzz Solver}.   zzz note that one should add multiple EDFs and multiple Solvers, and they will be added to the Index.
 
 \subsection*{Solution procedure}
 
-The mesh is given in ElmerGrid format in file \texttt{zzz}, load this file.
-
-\ttbegin
-File 
-  Open -> zzz
-\ttend
-
-You should obtain your mesh and may check \texttt{Model Summary...} that it consists of zzz elements.  Your mesh should look like as shown in figure \ref{fg:mesh}
+The input geometry is given in ElmerGrid format in file \texttt{zzz}, the New Project screen will select and load this file.  ElmerGUI will mesh your geometry.  You should obtain your mesh and may check \texttt{Model Summary...} that it consists of zzz elements.  Your mesh should look like as shown in figure \ref{fg:mesh}
 
 \begin{figure}[H]
 \centering
@@ -83,7 +86,7 @@ You should obtain your mesh and may check \texttt{Model Summary...} that it cons
 
 After we have the mesh we start to go through the Model menu from the top to bottom.  In the Setup we choose things related to the whole simulation such as file names, time stepping, constants etc.  
 
-The simulation is carried out in 2-dimensional Cartesian coordinates.
+zzz The simulation is carried out in 2-dimensional Cartesian coordinates.
 
 zzz 2nd order bdf time stepping method is selected with zzz steps and with step size of zzz seconds.
 
