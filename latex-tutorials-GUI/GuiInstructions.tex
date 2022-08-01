@@ -1,50 +1,34 @@
 \chapter*{Instructions for the Elmer tutorials using ElmerGUI}
 
-Here are some instructions for following the Elmer tutorials:
+\section*{Here are some general instructions for following the Elmer tutorials}
+
 \begin{itemize}
-\item All of the needed geometry input files should be available among 
-the \texttt{ElmerGUI/samples} directory that should have come with the 
-Elmer installation. Look under a subdirectory named after the suffix of the sample file.  
+\item The Elmer tutorials consist of the tutorial documentation and the tutorial folders.  For example, these ElmerGUI tutorials are described in the document 'ElmerTutorials.pdf' and the working project files are stored under the folder 'tutorials-GUI-files'.
 %
-\item The instructions written in \texttt{verbatim} refer to operations 
-  with the GUI. Indentation means step in the menu hierarchy. 
-  The ElmerGUI instructions should not be mixed with the statements in 
-the .sif command file. 
+\item If you need a copy of the folder 'tutorials-GUI-files', it can be downloaded from:  \url{https://www.nic.funet.fi/pub/sci/physics/elmer/doc/}  
 %
-\item The menu structure for the default set of equations is located 
-  in directory \texttt{edf}, there are a few additional ones in 
-  directory \texttt{edf-extra}. These may be copied to the directory \texttt{edf}
-  permanently, or may be appended to the menus while running the ElmerGUI. 
+\item Each sub-folder under 'tutorials-GUI-files' contains all the files needed to run a particular tutorial, such as the ElmerGUI project file, the geometry input file, and the generated mesh files.  If you wish to just run the existing project tutorial and examine the resulting output, start ElmerGUI and load the existing project.
 %
-\item The default menu structure may differ from the configuration used
-  when writing the tutorial. Hence the user is encouraged to check by herself 
-  whether the menu structure needed for a particular tutorial has been loaded 
-into ElmerGUI. 
+\item If you are more interested in learning how to use ElmerGUI by constructing an ElmerGUI project from the beginning, the first step will be to create your own sub-folder, and copy in the geometry input file from the tutorial of interest.  Then start ElmerGUI and create a new project, following the step by step instructions in each tutorial.
 %
-\item After having once defined the case in ElmerGUI you may go to the 
-working directory and launch ElmerSolver from command-line. There you 
-may manually edit the .sif file using a text editor to alter the parameters.
+\item Many examples of geometry input files should be available among the \texttt{ElmerGUI/samples} directory that should have come with the Elmer installation. Look under a subdirectory named after the suffix of the sample file, where the suffix indicates the type of geometry format.
 %
-\item Manual alteration to the .sif file will not be communicated to the
-  ElmerGUI project. All edits or changes will be overwritten by ElmerGUI the 
-next time the project is saved.  Copy the manually altered .sif files to another
-folder or change the name of the .sif file, to prevent losing your edits.
+\item The instructions written in \texttt{verbatim} refer to operations with the GUI. Indentation means step in the menu hierarchy.  The ElmerGUI instructions should not be mixed with the statements in the .sif command file. 
 %
-\item It is assumed that the default method for visualization is Paraview (or ElmerVTK) 
-using \texttt{.vtu} format.  \texttt{ElmerPost} that uses the \texttt{.ep} 
-format is no longer available in most installations.  Unfortunately, not all of the tutorials 
-currently use Paraview for visualization.
+\item The menu structure for the default set of equations is located in directory \texttt{edf}, there are a few additional ones in directory \texttt{edf-extra}. These may be copied to the directory \texttt{edf} permanently, or may be appended to the menus while running the ElmerGUI. 
+%
+\item The default menu structure may differ from the configuration used when writing the tutorial. Hence the user is encouraged to check by herself whether the menu structure needed for a particular tutorial has been loaded into ElmerGUI. 
+%
+\item After having once defined the case in ElmerGUI you may go to the working directory and launch ElmerSolver from command-line. There you may manually edit the .sif file using a text editor to alter the parameters.
+%
+\item Manual alteration to the .sif file will not be communicated to the ElmerGUI project. All edits or changes will be overwritten by ElmerGUI the next time the project is saved.  Copy the manually altered .sif files to another folder or change the name of the .sif file, to prevent losing your edits.
+%
+\item It is assumed that the default method for visualization uses \texttt{.vtu} format result files.  \texttt{ElmerPost} that uses the \texttt{.ep} format is no longer available in most installations.  Fortunately, most of the tutorials currently output \texttt{.vtu} format result files, so Paraview (or ElmerVTK) may be used for visualization.
   
-\item Since ElmerGUI v. 9.0 the ElmerVTK widget that comes built into ElmerGUI has 
-been upgraded to use \texttt{.vtu} files. ElmerVTK may be an ideal visualization 
-tool for most straight-forward demonstrations, since it is easy to use.  More 
-complicated applications, such as animation of transient studies, may require the 
-use of Paraview.  Regardless of which post processing visualization tool is used, the
-construction of an ElmerGUI project remains the same for both.
+\item Since ElmerGUI v. 9.0 the ElmerVTK widget that comes built into ElmerGUI has been upgraded to use \texttt{.vtu} files. ElmerVTK may be an ideal visualization tool for most straight-forward demonstrations, since it is easy to use.  More complicated applications, such as animation of transient studies, may require the use of Paraview.  Regardless of which post processing visualization tool is used, the construction of an ElmerGUI project remains the same for both.
 %
-\item These cases have been run a number of times but errors are still possible.
-  Reporting them to elmeradm@csc.fi, for example, is greatly appreciated. 
-  
+\item These cases have been run a number of times but errors are still possible.  Reporting them to elmeradm@csc.fi, for example, or posting in the Elmer Forum at \url{http://www.elmerfem.org/forum/} is greatly appreciated. 
+ %
 \end{itemize}
 
 
