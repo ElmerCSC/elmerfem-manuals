@@ -1,0 +1,9 @@
+Input File = angle
+Output File = layer
+Input Mode = ElmerGrid
+Output Mode = ElmerPost
+Boundary Layer Move = 1000
+Boundary Layer Epsilon = 1.0e-4
+Boundary Layer 
+  1 5 0.2 5.0 0 
+END

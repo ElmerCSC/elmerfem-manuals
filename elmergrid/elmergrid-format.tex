@@ -1,0 +1,542 @@
+
+
+\chapter{ElmerGrid format}
+
+The native mesh definition format of the program is the ElmerGrid
+format that has the suffix \texttt{.grd}. 
+If the user gives a name for the input file that doesn't exist
+a simple geometry file is automatically created by the program.
+This may then be edited by any text editor to suite the needs of the particular case.
+
+The ElmerGrid parser is not very bright. It knows only
+a handful of keywords. If the default values are 
+used the corresponding commands may be neglected. 
+The commands usually assume a format where the 
+the keyword is followed by its arguments. 
+If the arguments are on the same line then a equality sign 
+``='' should be used in between. 
+The parser is not case sensitive and thus the keywords may be written with 
+capital or small letters, or any combination of them.
+
+
+\section{ElmerGrid keywords}
+
+\sifbegin
+\sifitem{Version}{210903}
+Gives the version of the current input file. This should not be changed unless
+the format is changed. The parser should be downward compatible also with the older
+format of the input file but the new format is preferred.
+%
+\sifitem{MATC}{Logical}
+Setting this keyword to be true activates the MATC parser. As an effect all statements 
+starting with the \$ sign will be evaluted by MATC. This enables parametrisized mesh generation,
+for example. For more information look at the MATC manual. Note that if this does not work the 
+version of ElmerGrid may have been compiled without MATC. 
+%
+\sifitem{Coordinate System}{String}
+The choices are Cartesian 1D, Cartesian 2D, Cartesian 3D, Polar and 
+Axisymmetric. Axisymmetric and Cartesian 2D have currently
+no difference.
+A cartesian 3D grid is the default.
+%
+\sifitem{Subcell Divisions}{Integer[DIM]} 
+The mesh is composed of subcells that are 
+topologically squares. 
+This keywords should be followed by the 
+number of subcells in the main directions,
+$n_1$, $n_2$ and $n_3$.
+Thus the number of 
+arguments may be 1, 2 or 3 depending on the dimension of the geometry 
+definition. 
+\sifitem{Subcell Limits i}{Real[]}
+The size of the subcells are defined by $n_i+1$ boundaries
+in each coordinate direction. These values define the physical 
+dimensions of the mesh before possible manipulation. 
+This keyword exists for all active coordinate directions.  
+%
+\sifitem{Subcell Sizes i}{Real[]}
+An alternative way to give the subcell sizes is to give the size of 
+each subcell in each coordinate direction. 
+The subcell limits are then the cumulative sum of these sizes.
+%
+\sifitem{Subcell Origin i}{Real[]}
+When the subcells are defined by the sizes the user may also define the origin 
+in each direction. The origin may be a real number or also some of the following 
+strings, \texttt{Left}, \texttt{Center}, \texttt{Right}.
+%
+\sifitem{Material Structure}{Integer[][]}
+The subcells form a $n_1 \times n_2$ matrix in 2D. 
+The material structure of this plane may therefore be given by a matrix 
+consisting of integers relating to different materials.
+These numbers may then later be referred
+when creating the mesh and boundary conditions.
+In 1D the structure is simply a vector.
+In 3D the material structure refers to the structure of the 
+$xy$-plane before extrusion of rotation takes place. 
+%
+\sifitem{Materials Interval}{Integer[2]} 
+Elements are created only for those materials that 
+lie in the interval defined by the two integers.
+This is on easy way to define different meshes for different physical
+phenomena.
+In 3D the interval refers to the materials that should be present
+in the extrusion. 
+%
+\sifitem{Extruded Sructure}{}
+The keyword may be used to define the layered 
+structure of the geometry. Otherwise the extruded structure is just the same
+as the material structure in the plane. 
+The definition must include $n_3$ lines with three integers on each. 
+The first two integers define the materials interval that is extruded and
+the third one the new material index of the extruded layer.
+Materials outside the interval are not extruded and therefore 
+materials may selectively be dropped out during extrusion process. 
+If the new material has value zero then the corresponding material layer in the 
+extruded structure remains unaltered.
+This feature may, for example, be useful in MEM-applications. 
+
+When the 2D geometry is extruded the rectangular elements 404, 408 and 409 result to 
+elementtypes are 808, 820 and 827 (using Elmer notation). 
+Also linear triangles may be extruded and they result to 
+linear prisms of type 606.
+%
+\sifitem{Extruded Material Mappings}{}
+Sometimes the previous way of defining the extruded structure is not flexible enough. Then
+the user may given for each extruded layer the mapping between initial and extruded material indexes.
+This enables any kind of extruded structures be created. There will be $n_3$ lines and 
+each line should have \texttt{MAX(material)} entries. 
+%
+\sifitem{Extruded BC Offset}{Integer}
+When the mesh is extruded into 3D new boundaries will be created. By default the numbering of boundaries is such that 
+each boundary index number is used and a heuristic method for the numbering defines the indexes. This may be difficult for the 
+user since there is no way of knowing for sure what the indexes will be. This keyword enforces the new BCs on the extruded layers 
+to have deterministic indexes. The first layer will get indexes $N_{offset}+N_{2D}$ the following will have an additional offset 
+of $N_{offset}$ etc.  
+%
+\sifitem{Extruded Helicity}{Real}
+When the geometry is extruded in z-direction the user may optionally give a constant skew to the mesh by 
+giving the helicity of the mesh using this keyword. For example, value 360.0 means a full rotation during 
+the extruded distance. 
+%
+\sifitem{Geometry Mappings}{}
+The grid is by default rectangular since all the subcells are also
+rectangular. Non-rectangular shapes may be introduced my mapping
+the straight lines separating the subcells to lines represented by 
+analytical functions. 
+The mapping may be performed in the $xy$-plane or out of the plane.
+The number of the mappings is calculated automatically and therefore 
+the field should be ended by \texttt{End}.
+
+If the mode of the mapping is more than 50 then 
+the mapping is performed out of plane while mappings 
+in the plane is the default.
+Mapping out of the plane makes the 2D plates to become 3D shells.
+
+This keyword activates mappings as in the case of mappings in plane 
+but now the mapping is performed 
+out of the plane. 
+Thus the 2D geometry becomes 3D geometry.
+This way some simple 3D shells may be created. 
+If in addition, the coordinate system is set to be polar this 
+third coordinate is treated as radius $r$ and the second
+coordinate as angle $\phi$. 
+%
+\sifitem{Polar Radius}{Real}
+If the coordinate system is chosen to be polar then 
+the values defining the are $(z,\theta)$.
+When saving the mesh these are mapped into cartesian coordinates.
+There may be on offset in the radius when using the polar coordinates.
+This value is then added to the value of the $r$-coordinate before making the
+coordinate transformation. This would result into simple pipes, for example.
+In addition there is a possibility to have the radius change as a function
+of position using special mappings.
+%
+\sifitem{Revolve Radius}{Real}
+There are three keywords that may be used to define how a 2D mesh is revolved
+around the $y$-axis
+to create 3D cylindrical meshes.
+Defining any of the keywords enforces revolation.
+Simple rotation would result to singular elements at the 
+origin. Therefore a square block is set at the origin.
+By default this square has the same $x$-coordinate as the
+first subcell in $x$-direction.
+In rotation the material structure remains unaltered. 
+%
+\sifitem{Revolve Blocks}{Integer}
+The keyword has a parameter 1, 2, 3 or 4 depending on 
+how many degrees of rotation is desired. The values 
+correspond to rotation of 90, 180, 270 or 360 degrees.
+If there is less than 4
+blocks the program finds the sides that form the 
+symmetry axis and creates additional boundaries from them.   
+%
+\sifitem{Revolve Improve}{Real}  
+This keyword controls the quality of the rotated mesh.
+The rotation creates elements that are not rectangular as
+the whole angle of 360 degrees needs to be divided between 3
+elements. The default value for this keyword is one 
+which means that the inner block is a square.
+The value zero results to the angle being equally divided to three 
+120 degree angles by the three elements.
+%
+\sifitem{Revolve Curve Direct}{Real}
+The rotate structure may have a curve. This defines the 
+direct part of the curve.
+\sifitem{Revolve Curve Angle}{Real}
+This defines the angle of the curve.
+\sifitem{Revolve Curve Radius}{Real}
+This defines the radius of the curve.
+%
+\sifitem{Boundary Definitions}{}
+There may be several boundaries. Each is defined by a line
+of four parameters. Note that this field should be finished by 
+\texttt{End}. 
+
+Each boundary requires a \texttt{type} that refers 
+to the number of the boundary condition.
+It may then later be referred to when setting 
+up the boundary conditions.
+The boundaries are created in such a way that
+the material \texttt{int} should have elements
+created. The \texttt{out} may be an empty subcell.
+If the value of the flag \texttt{double} is 2 or more 
+secondary nodes on the
+boundary will be created. This enables the use of
+discontinuous boundary conditions.
+
+It is also possible to create boundary conditions on a 
+given side of a material. The number $-1$ refers to \textbf{down},
+$-2$ to \textbf{right}, $-3$ to \textbf{top} and $-4$ to \textbf{left}. 
+This means that the boundary is created on the given side 
+of the material that is specified by the other index.
+
+In order to make the creation of the boundary condition
+more robust there are some special numbers that may be used.
+$-11$ refers to \textbf{smaller}, $-9$ to \textbf{bigger}, 
+and $-10$ to \textbf{anything}. For example, if the 
+\texttt{intmat} is 5 and the \texttt{outmat} is $-9$, then
+the boundary is created for all materials that have a larger
+material number than 5 and have a common boundary with 
+material 5. This makes it possible to create several 
+material boundaries with one definition.
+%
+\sifitem{Numbering}{Vertical/Horizontal}
+The keyword enforces the numbering of nodes and elements.
+The numbering affects the 
+bandwidth of the resulting matrix equation.
+The numbering should rather be performed by the shorter axis.
+%
+\sifitem{Reference Density}{Real}
+This keyword defines the local global mesh parameter $h$ that
+sets the maximum size of an element. Additionally a local element density
+may be defined with respect to this. 
+%
+\sifitem{Surface Elements}{Integer}
+This keyword may be used to roughly determine the number
+of elements on the surface. This unique feature makes it possible to
+change the mesh density by altering just one figure in the
+mesh definition file.
+Using the constraints on the relative mesh densities 
+the program then tries to match this given number.  
+%
+\sifitem{Volume Elements}{Integer}
+In 3D it is not as easy to obtain the desired 
+number of elements. In this case the desired number of surface elements
+if altered iteratively until also the number of volume elements is close to the
+desired one.
+%
+\sifitem{Volume Nodes}{Integer}
+Instead of trying to meet the desired number of elements one may also 
+try to optimize the number of nodes using this keyword.
+%
+\sifitem{Element Degree}{Integer}
+The mesh generator may produce linear, quadratic and 
+cubic elements. 
+The elements are initially always topologically rectangles and
+may have 4, 5, 8, 9, 12 or 16 nodes. 
+%
+\sifitem{Element Midpoints}{Logical}
+For higher order elements the user may choose whether to
+create nodes inside the elements. For example a second order rectangle 
+may have 8 or 9 nodes. The default is \texttt{False}.
+%
+\sifitem{Triangles}{Logical}
+ElmerGrid makes originally structured quadrilateral meshes.
+These may be divided into triangles 
+using the shorter of the diagonals.
+The resulting mesh is still structured and
+often inferior in computations. For some purposes triangular meshes 
+may however be favored. The default is \texttt{False}.
+
+The quadrilateral elements may have 4, 5, 8, 9 or 16 nodes. The 
+elements with 4, 9  and 16 nodes are divided into two and the element with
+5 nodes into four, correspondingly. The 8-node element cannot be divided.
+
+If the mesh is also extruded the triangles become prisms. In this case
+only linear triangles are applicable.
+
+
+\sifitem{Elementtype}{Integer}
+An alternative way to define the elementtype is to define the 
+element type as in Elmer software.
+The allowed types are 303, 306, 310, 404, 405, 408, 409,
+412 and 416. Then the three flags above are tuned accordingly.
+%
+\sifitem{Coordinate Ratios}{Real[DIM-1]} 
+By default the relative density of the coordinate 
+directions is the same. This keyword affects the 
+mesh density ratio between different directions.
+Thus the dimension is one less than the space dimensions.
+%
+\sifitem{Element Ratios i}{Real[]}
+Defines the ratio of the first and last element in the particular
+subcell in direction \texttt{i}. The default value is 1.
+Does not compare the mesh density with other subcells.
+The ratio must be given for each coordinate direction 
+separately. Value close to unity leads to linear meshing.
+Negative values activate symmetric density profile within the subcell. 
+%
+\sifitem{Element Densities i}{Real[]}
+This keyword refers 
+to densities compared to other subcells in direction \texttt{i}.
+The default value is 1. A larger value means local 
+mesh refinement on that particular subcell.
+%
+\sifitem{Minimum Element Divisions}{Integer[DIM]} 
+This keyword defines the minimum number of elements 
+within each subcell for each coordinate direction.
+The default is 1 1 2, this is also the set of minimum values
+that may be used.
+%
+\sifitem{Element Divisions i}{Integer} 
+This keywords sets the number of elements in direction \texttt{i} in the subcells
+absolutely. Therefore it overrides the desired number of elements
+and the relative element densities. By default the relative 
+mesh density definition is used. 
+%
+\sifitem{Start New Mesh}{}
+The format includes the possibility to generate multiple
+meshes using one input file. This keyword invokes the 
+start of a new mesh. All properties are inherited from the 
+previous mesh and therefore the new mesh may be 
+defined only by few changes.
+\sifend
+
+
+
+\section{Command file keywords}
+
+Sometimes the necessary commands in the using the inline parameters
+should create an exhaustive and noninformative list. Therefore most of the
+inline parameters may also be given in an command file.
+Here the description only deals only with the command file
+syntax. For other information on these commands a more accurate description will 
+be found in the previous chapter where the inline arguments where explained.
+
+Note that these commands may also be put to the end of the ElmerGrid mesh 
+definition file.
+
+\sifbegin
+\sifitem{Input File}{String}
+The name of the input file.
+The default name the same as the name of the command file (if any) 
+attached with an appropriate suffix. 
+%
+\sifitem{Output File}{String}
+The name of the input file.
+The default name is the same as the name of the input file
+attached with an appropriate suffix. 
+%
+\sifitem{Input Mode}{String/Integer}
+The name of the Input mode or the corresponding integer. 
+The choices are ElmerGrid(1), ElmerSolver(2), ElmerPost(3), 
+Ansys(4), Ideas(5), Abaqus(6), Fidap(7), Easymesh(8), 
+FemLab(9), Fieldview(10) and Triangle(11).
+%
+\sifitem{Output Mode}{String/Integer}
+The name of the Input mode or the corresponding integer. 
+The choices are ElmerGrid(1), ElmerSolver(2), ElmerPost(3).
+%
+\sifitem{Decimals}{Integer}
+The number of decimals in output.
+%
+\sifitem{Triangles}{Logical}
+Divide rectangles into triangles.
+%
+\sifitem{Merge Nodes}{Real}
+Merges nodes close to one another, $|\vec{r}-\vec{r}_0| < \varepsilon$.
+%
+\sifitem{Unite}{Logical}
+Unite different meshes, default is \texttt{False}.
+%
+\sifitem{Order Nodes}{Real[DIM]}
+Orders the nodes using $\vec{c}\cdot\vec{r}$ as the measure.
+%
+\sifitem{Scale}{Real[DIM]}
+Scale the mesh coordinates. 
+%
+\sifitem{Translate}{Real[DIM]}
+Translate the mesh with the given vector.
+%
+\sifitem{Rotate}{Real[DIM]}
+Rotate the mesh around the main axis with the given degrees.
+%
+\sifitem{Clone}{Integer[DIM]}
+Make a multiple copies of the mesh.
+%
+\sifitem{Clone Size}{Real[DIM]}
+The size of the mesh to be cloned.
+%
+\sifitem{Mirror}{Real[DIM]}
+Mirror the mesh around the main axis.
+%
+\sifitem{Polar Radius}{Real}
+Gives the radius of the 2D mesh in polar coordinates 
+and also enforces the new coordinate system.
+%
+\sifitem{Reduce Degree}{Integer[2]}
+Reduces the element degree in the given interval.
+%
+\sifitem{Increase Degree}{Logical}
+Increase the degree. Default is \texttt{False}.
+%
+\sifitem{Power Elements}{}
+This keyword activates the p-elements. 
+There may be several p-element definition. Is 
+has a separate line and defines with three integers the interval
+on which the p-element is applied and the power of the element.
+The field should be ended with \texttt{End}.
+%
+\sifitem{Partition}{Integer[DIM]}
+Activates the simple mesh partitioning.
+Gives the number of divisions in each coordinate 
+direction.
+%
+\sifitem{Partition Order}{Real[DIM]}
+The ordering used in making the simple partitioning.
+%
+\sifitem{Metis}{Integer}
+Activates the Metis partitioning.
+%
+\sifitem{Periodic}{Integer}
+Enforces periodic boundary conditions with the partitioning algorithms.
+%
+\sifitem{Material Boundary}{}
+Define boundaries between materials. 
+Each boundary is an a separate line
+and the field should be ended with \texttt{End}
+%
+\sifitem{Boundary Boundary}{}
+Define boundaries between boundaries.
+Each boundary is an a separate line
+and the field should be ended with \texttt{End}
+%
+\sifitem{Renumber Material}{}
+Renumbers the materials on the given interval to be of desired type.
+Each renumbering is an a separate line
+and the field should be ended with \texttt{End}
+%
+\sifitem{Renumber Boundary}{Integer[3]}
+Renumbers the boundaries on the given interval to be of desired type.
+Each renumbering is an a separate line
+and the field should be ended with \texttt{End}
+%
+\sifitem{Isoparametric}{Logical}
+Sets the intermediate nodes in elements to be in between 
+the corner nodes.
+%
+\sifitem{No Boundary}{Logical}
+Disables the saving of boundary information.
+Default is \texttt{False}.
+%
+\sifitem{Extruded Divisions}{Integer} 
+A two-dimensional mesh may be extruded to multiple layers. This
+keyword gives the number of subcell in the extruded direction $n_3$.
+\sifitem{Extruded Limits}{Real[$n_3+1$]}
+The dimensions of the extruded layers.
+\sifitem{Extruded Elements}{Integer[$n_3$]}
+The number of elements in each extruded layer.
+\sifitem{Extruded Ratios}{Real[$n_3$]}
+Defines the ratio of the first and last element in the particular
+subcell in the extruded direction.
+\sifitem{Extruded Structure}{}
+Functionality as in the \texttt{ElmerGrid} geometry format.
+%
+\sifend
+
+
+
+\section{Mapping modes}
+The use of different mapping options is quite an 
+unintuitive matter. Unfortunately it is the only way to 
+create non-rectangular shapes in ElmerGrid. 
+The mesh mapping is activated by the keyword \texttt{Geometry Mappings}.
+There are several mapping modes that define the type of mapping.
+
+Most of the mappings operate on the lines separating different subcells.
+Positive mode refers to mapping of horizontal lines, 
+and negative mode to mapping of vertical lines.
+The limits of the mapping define the distance at which the 
+mapping of the line settles down. If the distance is large compared to 
+the size of geometry then the same mapping is performed to the 
+whole geometry. 
+
+Several mappings may be applied at the same time. The 
+coordinates are then mapped as a linear combination of the 
+individual mappings. Mappings may also be performed 
+consecutively up to five levels. This is obtained by adding 
+the figure 10 to the mode. Mappings of the same 
+level are done at the same time while mappings of different levels
+are done at on increasing order of modulo 10s.
+
+In order to perform mappings out of plane a value
+of 50 may be added in the mapping mode.
+
+The parameters used in the mapping vary from case to case.
+Note that if a vertical line is mapped the coordinates $x$ and $y$
+are switched.
+\begin{description}
+\item[1: piecewise linear] \mbox{} \\
+Parameters are $(x_0,dy_0)$, $(x_1,dy_1)$, $(x_2,dy_2)$,~$\ldots$
+Between the points linear interpolation is used. 
+\item[2: piecewise power law] \mbox{} \\
+Parameters are
+$(x_0,dy_0)$, $b_1$, $(x_1,dy_1)$, $b_2$, $(x_2,dy_2)$,~$\ldots$
+Between the points the values for $dy$ are interpolated from
+$a_i (x-x_i)^{b_i}$.
+\item[3: piecewise circle arc] \mbox{} \\
+Parameters are
+$(x_0,dy_0)$, $r_1$, $(x_1,dy_1)$, $r_2$, $(x_2,dy_2)$,~$\ldots$
+Between the points the values for $dy$ are calculated assuming that
+there is a circle with radius $r_i$ drawn through the lines.
+If radius is larger than zero the origin of the circle is 
+above the mapped line and vice versa.
+\item[4: line to circle] \mbox{} \\
+Parameters are $x_0$, $r_0$, $x_1$, $r_1$,~$\ldots$
+Different from other models also the other coordinate is 
+transformed. In order to get a circle with radius $r_i$ 
+as a result there must initially be a square with 
+side length $2r_i$. The line to be mapped is originally 
+one of the sides of this squares.
+\item[5: line to sinus] \mbox{} \\
+Parameters are $x_0$, $x_1$, $c$, $dy_1$,
+where $c$ is the number of waves between $x_0$ and $x_1$
+and $dy_1$ is the height of the wave.
+\item[6: line to power series] \mbox{} \\	
+Parameters are $x_0$, $x_1$, $a_0$,\ldots,$a_i$
+and the displacement is then $\sum_i a_i u^i$,
+where $u$ is $x$ normalized between 0 and 1. 
+\item[7: line to power series variation] \mbox{} \\	
+Parameters are $x_0$, $x_1$, $a_0$,\ldots,$a_n$
+and the displacement is then $\sum_i a_i p_i(u)$,
+where $u$ is $x$ normalized between 0 and 1.
+The polynom $p_0=1$, $p_1=u$, $p_2=u(u-1)$, 
+$p_3=u(u-1/2)(u-1)$, $p_4=u(u-1/3)(u-2/3)(u-1)$,~$\ldots$
+\item[8: piecewise constant angle] \mbox{} \\
+Parameters are $(x_0,\phi_0)$, $(x_1,\phi_1)$, $(x_2,\phi_2)$,~$\ldots$
+This is used to create 3D shells only. 
+The angle of the shell is $\phi_i$ if $x \in [x_i,x_{i+1}]$. 
+May be used to create polygonal shells.
+
+\end{description}
+

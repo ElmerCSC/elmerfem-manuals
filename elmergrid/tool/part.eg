@@ -1,0 +1,5 @@
+Input File = angle
+Output File = angle
+Input Mode = ElmerGrid
+Output Mode = ElmerPost
+Partition = 2 2

@@ -1,0 +1,130 @@
+
+Starting program Elmergrid
+****************** Elmergrid ************************
+This program can create simple 2D structured meshes consisting of
+linear, quadratic or cubic rectangles or triangles. The meshes may
+also be extruded and revolved to create 3D forms. In addition many
+mesh formats may be imported into Elmer software. Some options have
+not been properly tested. Contact the author if you face problems.
+
+The program has two operation modes
+A) Command file mode which has the command file as the only argument
+   'ElmerGrid commandfile.eg'
+
+B) Inline mode which expects at least three input parameters
+   'ElmerGrid 1 3 test'
+
+The first parameter defines the input file format:
+1)  .grd      : ElmerGrid file format
+2)  .mesh.*   : Elmer input format
+3)  .ep       : Elmer output format
+4)  .ansys    : Ansys input format
+5)  .inp      : Abaqus input format by Ideas
+6)  .fil      : Abaqus output format
+7)  .FDNEUT   : Gambit (Fidap) neutral file
+8)  .unv      : Universal mesh file format
+9)  .mphtxt   : Comsol Multiphysics mesh format
+10) .dat      : Fieldview format
+11) .node,.ele: Triangle 2D mesh format
+12) .mesh     : Medit mesh format
+13) .msh      : GID mesh format
+14) .msh      : Gmsh mesh format
+15) .ep.i     : Partitioned ElmerPost format
+16) .2dm      : 2D triangular FVCOM format
+
+The second parameter defines the output file format:
+1)  .grd      : ElmerGrid file format
+2)  .mesh.*   : ElmerSolver format (also partitioned .part format)
+3)  .ep       : ElmerPost format
+4)  .msh      : Gmsh mesh format
+5)  .vtu      : VTK ascii XML format
+
+The third parameter is the name of the input file.
+If the file does not exist, an example with the same name is created.
+The default output file name is the same with a different suffix.
+
+There are several additional in-line parameters that are
+taken into account only when applicable to the given format.
+-out str             : name of the output file
+-in str              : name of a secondary input file
+-decimals            : number of decimals in the saved mesh (eg. 8)
+-relh real           : give relative mesh density parameter for ElmerGrid meshing
+-triangles           : rectangles will be divided to triangles
+-merge real          : merges nodes that are close to each other
+-order real[3]       : reorder elements and nodes using c1*x+c2*y+c3*z
+-centralize          : set the center of the mesh to origin
+-scale real[3]       : scale the coordinates with vector real[3]
+-translate real[3]   : translate the nodes with vector real[3]
+-rotate real[3]      : rotate around the main axis with angles real[3]
+-clone int[3]        : make ideantilcal copies of the mesh
+-clonesize real[3]   : the size of the mesh to be cloned if larger to the original
+-mirror int[3]       : copy the mesh around the origin in coordinate directions
+-cloneinds           : when performing cloning should cloned entities be given new indexes
+-unite               : the meshes will be united
+-unitenooverlap      : the meshes will be united without overlap in entity numbering
+-polar real          : map 2D mesh to a cylindrical shell with given radius
+-cylinder            : map 2D/3D cylindrical mesh to a cartesian mesh
+-reduce int[2]       : reduce element order at material interval [int1 int2]
+-increase            : increase element order from linear to quadratic
+-bcoffset int        : add an offset to the boundary conditions
+-discont int         : make the boundary to have secondary nodes
+-connect int         : make the boundary to have internal connection among its elements
+-removeintbcs        : remove internal boundaries if they are not needed
+-removelowdim        : remove boundaries that are two ranks lower than highest dim
+-removeunused        : remove nodes that are not used in any element
+-bulkorder           : renumber materials types from 1 so that every number is used
+-boundorder          : renumber boundary types from 1 so that every number is used
+-autoclean           : this performs the united action of the four above
+-multidim            : keep lower order entities even if they are not boundaries
+-bulkbound int[3]    : set the intersection of materials [int1 int2] to be boundary int3
+-boundbound int[3]   : set the intersection of boundaries [int1 int2] to be boundary int3
+-bulktype int[3]     : set material types in interval [int1 int2] to type int3
+-boundtype int[3]    : set sidetypes in interval [int1 int2] to type int3
+-layer int[2] real[2]: make a boundary layer for given boundary
+-layermove int       : apply Jacobi filter int times to move the layered mesh
+-divlayer int[2] real[2]: make a boundary layer for given boundary
+-3d / -2d / -1d      : mesh is 3, 2 or 1-dimensional (applies to examples)
+-isoparam            : ensure that higher order elements are convex
+-nonames             : disable use of mesh.names even if it would be supported by the format
+-nosave              : disable saving part altogether
+-nooverwrite         : if mesh already exists don't overwrite it
+-vtuone              : start real node indexes in vtu file from one
+-timer               : show timer information
+-infofile str        : file for saving the timer and size information
+
+Keywords are related to mesh partitioning for parallel ElmerSolver runs:
+-partition int[3]    : the mesh will be partitioned in cartesian main directions
+-partorder real[3]   : in the 'partition' method set the direction of the ordering
+-parttol real        : in the 'partition' method set the tolerance for ordering
+-partcell int[3]     : the mesh will be partitioned in cells of fixed sizes
+-partcyl int[3]      : the mesh will be partitioned in cylindrical main directions
+-metiskway int       : mesh will be partitioned with Metis using graph Kway routine
+-metisrec int        : mesh will be partitioned with Metis using graph Recursive routine
+-metiscontig         : enforce that the metis partitions are contiguous
+-metisvol            : minimize total communication volume in Metis
+-metisminconn        : minimize the maximum connectivity count in Metis
+-metisseed int       : random number generator seed for Metis algorithms
+-metisncuts int      : number of competing partitions to generate
+-partdual            : use the dual graph in partition method (when available)
+-halo                : create halo for the partitioning for DG
+-halobc              : create halo for the partitioning at boundaries only
+-haloz / -halor      : create halo for the the special z- or r-partitioning
+-halogreedy          : create halo being greedy over the partition interfaces
+-indirect            : create indirect connections (102 elements) in the partitioning
+-periodic int[3]     : periodic coordinate directions for parallel & conforming meshes
+-partoptim           : apply aggressive optimization to node sharing
+-partnobcoptim       : do not apply optimization to bc ownership sharing
+-partbw              : minimize the bandwidth of partition-partion couplings
+-parthypre           : number the nodes continuously partitionwise
+-partzbc             : partition connected BCs separately to partitions in Z-direction
+-partrbc             : partition connected BCs separately to partitions in R-direction
+-metisbc             : partition connected BCs separately to partitions by Metis
+-partlayers int      : extend boundary partitioning by element layers
+
+Keywords are related to (nearly obsolete) ElmerPost format:
+-partjoin int        : number of ElmerPost partitions in the data to be joined
+-saveinterval int[3] : the first, last and step for fusing parallel data
+-nobound             : disable saving of boundary elements in ElmerPost format
+
+Thank you for using Elmergrid!
+Send bug reports and feature wishes to elmeradm@csc.fi

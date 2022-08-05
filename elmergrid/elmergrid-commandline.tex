@@ -1,0 +1,247 @@
+\section{ElmerGrid Command-line Arguments}
+
+ElmerGrid has a lot of simple functionalities that may be activated 
+with the right command-line arguments. Most of them may operate on
+all meshes, some or limited to 2D meshes, for example. 
+
+In the command-line operation mode
+there are only three mandatory arguments: The input format,
+the output format, and the name of the input file.
+All other arguments are optional.
+
+\sifbegin
+\sifitem{-out}{String}
+Gives an alternative name for the output file or directory. 
+The default name is the same as the name of the input file
+attached with an appropriate suffix. 
+%
+\sifitem{-in}{String}
+Sometimes there are may be more than one input mesh. 
+Then the name of the secondary input file may be given 
+after this keyword.
+%
+\sifitem{-decimals}{Integer}
+The number of decimals for Elmer mesh is by default set to 6.
+Sometimes more decimals may be needed and this command may then
+be used. This could be the case, for example, if the elements are 
+small compared to the absolute values of the coordinates.
+The size of the ascii file is affected by the number of 
+decimals and therefore the default is quite small.
+%
+\sifitem{-triangles}{}
+The meshes consisting of rectangles may be divided into 
+triangles. This operation may be performed on all 2D meshes, 
+not only to the ones created using ElmerGrid format.
+%
+\sifitem{-merge}{Real}
+Sometimes when creating the computational mesh the 
+different domains are not properly joined. Then it is possible to 
+use this option, where nodes that are close to each other are
+fused. The value given for the node separation should be smaller than
+the smallest element size. Otherwise there is a risk of ruining the mesh.
+
+For optimal computational efficiency the merging of nodes is done 
+in two stages. In the first stage the nodes are ordered and in the second
+stage the nodes close to each other are checked for distance. 
+If distance is smaller than the critical one the nodes are given one
+common coordinate and the other node is eliminated from the holes mesh.
+%
+\sifitem{-order}{Real[DIM]} 
+The nodes may be ordered if the original ordering is uneconomical.
+The three components gives the direction in which the nodes are reordered.
+More accurately, the nodes are ordered using the 
+dot product $\vec{c}\cdot\vec{r}$ as a measure.
+%
+The reordering of the degrees of freedom is usually performed 
+within ElmerSolver and therefore 
+it is usually not necessary to renumber the nodes within ElmerGrid.
+%
+%\sifitem{-autoorder}{}
+%This uses heuristic ordering methods to optimize the bandwidth. The same
+%optimization method is used consecutively and the best choice is kept. 
+%This seems, however, usually be inferior to the algorithm in 
+%ElmerSolver.
+%
+\sifitem{-scale}{Real[DIM]}
+This simply scales the coordinates of the mesh by 
+multiplying with the given constants, i.e.
+$x:=c_x x$, $y:=c_y y$ and $z:=c_z z$.
+This is useful, for example, if the mesh is in other units that is 
+preferable. 
+%
+\sifitem{-translate}{Real[DIM]} 
+This option translates the mesh with a given vector by
+simly adding the given values to the original coordinates,
+i.e. $\vec{r} := \vec{r} + \vec{r}_0$.
+%
+\sifitem{-rotate}{Real[3]} 
+The mesh may be rotated around the main axis. 
+The rotation is done consequtively in all three angles.
+This feature may be handy in the debugging of some equation --
+in cartesian grids the solution should be rotation invariant.
+%
+\sifitem{-clone}{Integer[DIM]}
+The mesh may be copied so that the same 
+structure is repeated over and over. The number of copies in 
+each coordinate direction may be given independently.
+The total number of individual copies is their product.
+%
+\sifitem{-clonesize}{Real[DIM]} 
+By default the copies of the mesh are performed so that the 
+new meshes are set directly desides the old ones. This flag may be used to define
+a larger size for the mesh which enables empty space being left 
+between the meshed.
+%
+\sifitem{-mirrror}{Integer[DIM]} 
+The mesh may be mirrored over the main axis. The arguments 
+tell over which axis the mesh should be mirrored. If all three axis
+are active then the original mesh will be eight times the size of the original one.
+Note that the origin is assumed to be att zero in all directions.
+%
+\sifitem{-unite}{}
+This option unites the ElmerGrid meshes. In every other format its currently
+not possible to create more than one mesh at a time.
+%
+\sifitem{-polar}{Real}
+This option maps the 2D mesh an a cylindrical shell with the radius
+given as a parameter.
+%
+\sifitem{-cylinder}{}
+This option assumes that the original 3D mesh was given in 
+cylindrical coordinates $(r,\theta,z)$ and maps them to cartesian 
+coordinates $(x,y,z)$.
+%
+\sifitem{-reduce}{int[2]} 
+This feature reduces the element order of materials at the interval
+defined by the two parameters. It may be used to lower the element order 
+only in parts of the geometry. For example, in fluid-structure-interaction the 
+fluid could be modeled with linear elements while the 
+stucture might need second order elements.
+%
+\sifitem{-increase}{} 
+Increase the element order in all the elements from one to two.
+This may be used to improve computational accuracy of existing 
+linear meshes by making the quadratic.
+%
+\sifitem{-pelem}{Integer[3]}
+ElmerGrid usually assumes elements of Lagrange type where 
+the element degree is increased by introducing intermiediate nodes
+in the element. The other option is just to use a higher polynomical basis
+with the existing nodes -- the p-elements. 
+This option is used to make p-elements for materials at the interval given by
+the first two parameters. The desired power is given by the third parameter.
+The p-elements are only seen in the Elmer mesh -format.
+%
+\sifitem{-partition}{Integer[DIM] opt} 
+There are two methods to partition geometry for parallel computing. This
+method takes each coordinate direction and divides the mesh in the number
+of slices given in the parameter list. For example option
+\texttt{-partition 2 3 5} would split the mesh into 30 partitions. 
+The split may be done either first for elements (default, opt=0), or 
+for nodes (opt=1). Ideally, the former corresponds to using a dual graph while 
+the latter to a direct graph. 
+Each split is done so that the number of elements (or nodes) in each partition
+is almost equal. The method is best suited for simple geometries 
+where more generic strategies usually do not work as well.
+There is also a possibility to make an division based on a unform
+grid setting opt=2. This does not guarantee anything on the size of 
+the partitions but it does give optimal partitioning for some simple 
+shapes.
+%
+\sifitem{-partorder}{Real[DIM]} 
+The simple partitioning is done by dividing the elements
+into subgroups. The division is done by first ordering the nodes. This
+keyword is follewed by the normal vector of the desired ordering.
+%
+\sifitem{-metis}{Integer opt}
+This utility does the partitioning utilizing the Metis library, see
+\url{http://glaros.dtc.umn.edu/gkhome/views/metis}. Metis has subroutines
+for basic linear elements. Also higher order elements may be partitioned
+by first neglecting the higher order nodes.
+
+In partitioning a major problem is to save just the right information
+needed by each processor. There are some very complicated dependencies that
+result from the parallel solution of the matrix equations. To simplify these
+the communication, ElmerGrid does some load-balancing so that each processors
+owns roughly as many shared nodes. Also on the interfaces of more than two
+partitions the ownership is optimized so that nodes cannot be 
+undirectly related to each other in a way that is in conflict with 
+the parallel solution algorithm. 
+
+Note that this option may not be active if the code has been compiled
+without the Metis library.
+
+\sifitem{-periodic}{Integer[3]} 
+If the solution of the mesh is known to be periodic ElmerSolver uses
+a special kind of boundary condition. Also in partitioned meshes
+used in parallel computation the periodic boundaries must be known
+as they require the flow of information between opposing sides.
+This option finds periodic boundaries in the given directions 
+given by 0/1 logical values. If periodic boundary is found it is taken into
+account in saving and partitioning the mesh.
+The determination of the periodic nodes only works when there is one-to-one mapping
+between the nodes on the boundaries. 
+%
+\sifitem{-discont}{Integer}
+Sometimes the field variables behave discontinuously over a short distance.
+For example, in solving the heat equation there may be a small gap between
+different bodies. To account for such discontinuities the mesh should
+have duplicate nodes over the discontinuity. This feature does exactly that
+and saves the boundary conditions for both sides.
+%
+\sifitem{-bulkbound}{Integer[3]}
+Sometimes the geometry does not include all the necessary boundary conditions. 
+Then this inline parameter may be used to define a new boundatry 
+(first parameter) on the interval of the two given materials.
+%
+\sifitem{-boundbound}{Integer[3]}
+Sometimes the geometry does not include all the necessary boundary conditions. 
+Then this inline parameter may be used to define a new boundatry 
+(first parameter) on the interval of two already existing boundaries.
+This makes it possible to define lines or even single points 
+in 3D geometry that has only surfaces defined.
+%
+\sifitem{-bulktype}{Integer[3]} 
+This option does exactly the same as the above but now for the bulk elements.
+Again the advantage may be that the command-file will be more economical as 
+if the number of bodies is reduced.
+%
+\sifitem{-boundtype}{Integer[3]}
+Sometimes there is a multitude of sides that may be united with this opition.
+It may be easier to perform the further analysis if the number of sides is not too large.
+For example, in ElmerPost a very lengthy list of boundaries is difficult to visualize.
+%
+\sifitem{-layer}{Integer[2] Real[2]} 
+This option may be used to create boundary layers on an existing 2D mesh.
+The given boundary is extruded with the given number of layers. Also the total
+thickness of the layer and the desired ratio between first and last element
+is given.
+%
+\sifitem{-layermove}{int}
+This option activates a filter that applied the given number of times
+to map the node coordinates 
+so that the boundary layers are fittid to the original geometry.
+%
+\sifitem{-3d / -2d / -1d}{}
+This option is usually not needed as the files most often have the information
+of the space dimension. The exception is the creation of an example file.
+3D is the default, thus the \texttt{-2d} should be used if one wants to create
+a 2D example file. Also some command-line parameter lists are by default assumed to have 
+three values if 2D dimension is not given.
+%
+\sifitem{-isoparam}{}
+In creating mapped meshes by ElmerGrid the higher-order nodes may sometimes be 
+oddly displaced. This utility sets the intermediate nodes to lie on the connecting lines
+between the corner nodes. 
+%
+\sifitem{-nobound}{}
+Disable the saving of boundary elements.
+This may sometimes be usefull if there are a lot of boundaries and one is just interested 
+in the bulk elements.
+
+%
+%\sifitem{-sidefind int[]} \\
+%
+\sifend
+
+

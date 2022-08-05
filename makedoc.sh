@@ -1,7 +1,7 @@
 #!/bin/sh 
 # make the documentation ready to be included in directory "doc" in nic.
 
-modules="latex-elmergui latex-tutorials-CL latex-tutorials-GUI latex-elmer-getstart latex-tex-start latex-tex-template"
+modules="latex-elmergui latex-tutorials-CL latex-tutorials-GUI latex-elmer-getstart latex-tex-start latex-tex-template elmergrid matc overview"
 for m in $modules; do
   cd $m && make manual && make install && make clean && cd ..
 done

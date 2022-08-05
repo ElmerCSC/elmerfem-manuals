@@ -1,0 +1,100 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\documentclass[a4paper,english]{report}    % list options between brackets
+\documentclass[a4paper,english]{article}    % list options between brackets
+
+\RequirePackage[dvips]{color}
+\RequirePackage{setspace}
+\RequirePackage{epsfig}
+%\RequirePackage{floatflt}
+\RequirePackage{float}
+\RequirePackage{amsfonts}
+\RequirePackage{amsmath}
+\RequirePackage{alltt}
+%\RequirePackage[sectionbib]{chapterbib}
+\RequirePackage{ae}
+\RequirePackage{times}
+\RequirePackage{fancyhdr}
+
+\usepackage{makeidx}  
+%\makeindex             
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{elmerdef}
+\input{../elmerversion}
+%\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\Huge{\bf MATC Manual}}
+\author{Juha Ruokolainen \\ CSC -- IT Center for Science}
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%\include{about}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\pagenumbering{roman}
+\pagestyle{empty}
+
+% Table of contents:
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{1}  
+%\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Headings and Chapter name
+
+%\renewcommand{\chaptername}{Model}
+\newpage
+
+% change the plain style used for chapter pages
+\fancypagestyle{plain}{
+\lhead{}
+\rhead{}
+\rfoot{\includegraphics[width=18mm]{by-nd}}
+\lfoot{\footnotesize{CSC -- IT Center for Science}}
+\chead{}
+%\cfoot{\bfseries \thepage}
+\cfoot{}
+\renewcommand{\headrulewidth}{0.0pt}
+}
+
+% and the fancy style used elsewhere
+\pagestyle{fancy}
+\rhead{\bfseries \thepage}
+\lhead{\bfseries \rightmark}
+\rfoot{\includegraphics[width=18mm]{by-nd}}
+\lfoot{\footnotesize{CSC -- IT Center for Science}}
+\chead{}
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Heat and Mass Transfer
+\graphicspath{{./}{figs/}}
+\include{matc}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include the index
+%\printindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
