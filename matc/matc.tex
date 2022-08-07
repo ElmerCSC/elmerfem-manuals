@@ -152,7 +152,7 @@ export var3,var4
 Functions have their own list of variables. Global variables are not seen in this 
 function unless imported by import or given as arguments. Local variables can be made global by the export statement. 
 
-Functions, if returing matrices, behave in many ways as variables do. So if you have defined function mult as follows 
+Functions, if returning matrices, behave in many ways as variables do. So if you have defined function mult as follows 
 \ttbegin
 function mult(a,b)
 {
@@ -219,12 +219,12 @@ Read next line from fp. File pointer fp shoud have been obtained from a call to 
 SEE ALSO: fopen,freopen,fread,fscanf,matcvt,cvtmat. 
 
 \ttitem{n = fwrite(fp,buf,n)}
-Write n bytes form buf to file fp. File pointer fp shoud have been obtained from a call to fopen or freopen or be the standard output (stdout) or standard error (stderr). Return value is number of bytes actually written. 
+Write n bytes from buf to file fp. File pointer fp shoud have been obtained from a call to fopen or freopen or be the standard output (stdout) or standard error (stderr). Return value is number of bytes actually written. 
 Note that one matrix element reserves 8 bytes of space. \\
 SEE ALSO: fopen,freopen,fputs,fprintf,matcvt,cvtmat. 
 
 \ttitem{n = fprintf(fp,fmt[, vec])}
-Write formatted string to file fp. File pointer fp shoud have been obtained from a call to fopen or freopen or be the standard output (stdout) or standard error (stderr). The format fmt is equal to C-language format. \\
+Write formatted string to file fp. File pointer fp should have been obtained from a call to fopen or freopen or be the standard output (stdout) or standard error (stderr). The format fmt is equal to C-language format. \\
 SEE ALSO: fopen,freopen,fputs,fwrite,matcvt,cvtmat. 
 
 \ttitem{fputs(fp,str)}
