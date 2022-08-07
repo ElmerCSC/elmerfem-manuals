@@ -24,7 +24,7 @@ solution procedures and to develop new solvers for equations of interest to the 
 The development of Elmer was started in 1995 as part of a national CFD technology 
 program funded by the Finnish funding agency for technology and innovation, Tekes. 
 The original development consortia included partners from CSC -- IT Center 
-for Science (formely known as CSC -- Scientific Computing). 
+for Science (formerly known as CSC -- Scientific Computing). 
 Helsinki University of Technology HUT, VTT Technical Research Centre of Finland,
 University of Jyv{\"a}skyl{\"a}, and Okmetic Ltd. 
 CSC is a governmental non-profit company fully owned by the Ministry of Education. 
@@ -213,7 +213,7 @@ These provide the recommended way of obtaining the source code since this gives 
 As an alternate that does not necessitate perfoming the compilation
 the Elmer installer for Windows systems can be found at
 \begin{verbatim}
-https://sourceforge.net/projects/elmerfem/
+https://www.nic.funet.fi/pub/sci/physics/elmer/bin/windows/
 \end{verbatim}
 
 %Elmer source code is also available 
@@ -261,12 +261,18 @@ This includes the source code of the Umfpack (GPL version 4.4) library from Univ
 \section{Elmer documentation}
 
 The Elmer documentation is constantly under development. The date of the manual version is 
-printed in the cover of the manual. The current set of Elmer manuals is as follows.
+printed in the cover of the manual.  The Elmer documentation may be downloaded from:
+
+\begin{verbatim}
+https://www.nic.funet.fi/pub/sci/physics/elmer/
+\end{verbatim}
+
+This webpage includes sub-folders for documents, slides, and webinars.  The current set of Elmer manuals is as follows.
 
 \sifbegin
 \sifitem{ElmerguiManual.pdf}{}
 	ElmerGUI manual gives a detailed desription of the new graphical user interface of Elmer suite.
- 	The tutorials includes some techical details and is complemented by the walk-trough tutorials.
+ 	The tutorials includes some technical details and is complemented by the walk-through tutorials.
 \sifitem{ElmerSolverManual.pdf}{}
 	ElmerSolver Manual gives an overview of the general capabilities of the solver,
         focusing on the utilities that are of use to several physical models. It follows 
@@ -279,7 +285,7 @@ printed in the cover of the manual. The current set of Elmer manuals is as follo
         derived quantities.  
 \sifitem{ElmerTutorials.pdf}{}
 	The tutorials of the Elmer software have two different approaches. The tutorials utilizing the 
-	graphical user interface are walk-trough examples that guide to choose the right menus and
+	graphical user interface are walk-through examples that guide to choose the right menus and
 	write the right values. The tutorials that do not rely on the graphical user interface
  	are basically just example files with documentation.
         The files related to the tutorials are contained in 
@@ -297,7 +303,7 @@ printed in the cover of the manual. The current set of Elmer manuals is as follo
 \sifend
 In addition to these manuals there are separate documentation for some input interfaces (GiD) and
 for visualization tasks (making animations). Look at the www-pages for more information on these
-documents. The following documents are now more or less obsolite but may still contain some 
+documents. The following documents are now more or less obsolete but may still contain some 
 information not found in the above.
 \sifbegin
 \sifitem{ElmerFrontUserGuide.pdf}{}
@@ -378,7 +384,7 @@ the mesh directory. The file format is compatible only with ElmerSolver.
 This file is written by ElmerSolver and can be read by ElmerPost. 
 ElmerSolver by default writes this file to the mesh directory.
 The file is used mainly for visualization purposes.
-ElmerPost is obsolite and the file format is provided mainly for backward compatibility.
+ElmerPost is obsolete and the file format is provided mainly for backward compatibility.
 Many people have written their own workflows using this simple ascii format. 
 
 \sifitem{ElmerGrid mesh definition file}{*.grd}
@@ -407,7 +413,7 @@ do a strict checking of keywords.
 
 \sifitem{Elmer geometry file}{*.egf}
 This file defines a 2D geometry using primitives such as points and lines.
-It is read by the now obsolite ElmerFront program.
+It is read by the now obsolete ElmerFront program.
 
 \sifitem{Elmer mesh generator input file}{*.mif}
 This is the file that Mesh2D uses to create Delaunay triangulations. 
@@ -454,7 +460,7 @@ even for the most complicated cases, provided that a good mesh generation softwa
 ElmerGUI is often used as the first-step tool in the simulations. However, if in following simulations only minor
 modifications to the initial setup are needed, it is often most practical to edit the command file 
 (*.sif) by some text editor (e.g. emacs). A good place to start may be one of the minimal test cases 
-provided in the source distribution. The set of more than one hundred tests often provides a close-enough starting point
+provided in the source distribution. The set of more than seven hundred tests often provides a close-enough starting point
 for consecutive simulations particularly if the geometry is rather simple.
 Also it may be that some new solvers are not implemented in the 
 ElmerGUI and hence adding them manually is the only option. 
@@ -550,5 +556,5 @@ If you have some question concerning collaboration of some sort, you may direct 
 %\item Mika Malinen, mika.malinen@csc.fi
 %\item Pursula Antti, antti.pursula@csc.fi
 %\item Ruokolainen Juha, juha.ruokolainen@csc.fi
-%\item Råback Peter, peter.raback@csc.fi
+%\item Rï¿½back Peter, peter.raback@csc.fi
 %\end{itemize}
