@@ -4,14 +4,14 @@
 
 The native mesh definition format of the program is the ElmerGrid
 format that has the suffix \texttt{.grd}. 
-If the user gives a name for the input file that doesn't exist
+If the user gives a name for the input file that doesn't exist, then
 a simple geometry file is automatically created by the program.
-This may then be edited by any text editor to suite the needs of the particular case.
+This may then be edited by any text editor to suit the needs of the particular case.
 
 The ElmerGrid parser is not very bright. It knows only
 a handful of keywords. If the default values are 
 used the corresponding commands may be neglected. 
-The commands usually assume a format where the 
+The commands usually assume a format where 
 the keyword is followed by its arguments. 
 If the arguments are on the same line then a equality sign 
 ``='' should be used in between. 
@@ -37,7 +37,7 @@ version of ElmerGrid may have been compiled without MATC.
 The choices are Cartesian 1D, Cartesian 2D, Cartesian 3D, Polar and 
 Axisymmetric. Axisymmetric and Cartesian 2D have currently
 no difference.
-A cartesian 3D grid is the default.
+A Cartesian 3D grid is the default.
 %
 \sifitem{Subcell Divisions}{Integer[DIM]} 
 The mesh is composed of subcells that are 
@@ -72,7 +72,7 @@ These numbers may then later be referred
 when creating the mesh and boundary conditions.
 In 1D the structure is simply a vector.
 In 3D the material structure refers to the structure of the 
-$xy$-plane before extrusion of rotation takes place. 
+$xy$-plane before extrusion or rotation takes place. 
 %
 \sifitem{Materials Interval}{Integer[2]} 
 Elements are created only for those materials that 
@@ -120,7 +120,7 @@ the extruded distance.
 %
 \sifitem{Geometry Mappings}{}
 The grid is by default rectangular since all the subcells are also
-rectangular. Non-rectangular shapes may be introduced my mapping
+rectangular. Non-rectangular shapes may be introduced by mapping
 the straight lines separating the subcells to lines represented by 
 analytical functions. 
 The mapping may be performed in the $xy$-plane or out of the plane.
@@ -143,9 +143,9 @@ coordinate as angle $\phi$.
 %
 \sifitem{Polar Radius}{Real}
 If the coordinate system is chosen to be polar then 
-the values defining the are $(z,\theta)$.
+the values defining the ?? are $(z,\theta)$.
 When saving the mesh these are mapped into cartesian coordinates.
-There may be on offset in the radius when using the polar coordinates.
+There may be an offset in the radius when using the polar coordinates.
 This value is then added to the value of the $r$-coordinate before making the
 coordinate transformation. This would result into simple pipes, for example.
 In addition there is a possibility to have the radius change as a function
@@ -180,7 +180,7 @@ The value zero results to the angle being equally divided to three
 120 degree angles by the three elements.
 %
 \sifitem{Revolve Curve Direct}{Real}
-The rotate structure may have a curve. This defines the 
+The rotated structure may have a curve. This defines the 
 direct part of the curve.
 \sifitem{Revolve Curve Angle}{Real}
 This defines the angle of the curve.
@@ -189,7 +189,11 @@ This defines the radius of the curve.
 %
 \sifitem{Boundary Definitions}{}
 There may be several boundaries. Each is defined by a line
-of four parameters. Note that this field should be finished by 
+of four parameters.  For example,
+
+\texttt{type out int double}
+
+Note that this field should be finished by 
 \texttt{End}. 
 
 Each boundary requires a \texttt{type} that refers 
@@ -242,7 +246,7 @@ the program then tries to match this given number.
 \sifitem{Volume Elements}{Integer}
 In 3D it is not as easy to obtain the desired 
 number of elements. In this case the desired number of surface elements
-if altered iteratively until also the number of volume elements is close to the
+is altered iteratively until also the number of volume elements is close to the
 desired one.
 %
 \sifitem{Volume Nodes}{Integer}
@@ -326,12 +330,12 @@ defined only by few changes.
 
 \section{Command file keywords}
 
-Sometimes the necessary commands in the using the inline parameters
+Sometimes the necessary commands in using the inline parameters
 should create an exhaustive and noninformative list. Therefore most of the
 inline parameters may also be given in an command file.
-Here the description only deals only with the command file
+Here the description only deals with the command file
 syntax. For other information on these commands a more accurate description will 
-be found in the previous chapter where the inline arguments where explained.
+be found in the previous chapter where the inline arguments were explained.
 
 Note that these commands may also be put to the end of the ElmerGrid mesh 
 definition file.
