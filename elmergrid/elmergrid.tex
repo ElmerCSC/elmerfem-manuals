@@ -20,7 +20,7 @@ Since that the software has been modified to meet the
 needs of Elmer development.
 Thus the name has been changed from Quickmesh to ElmerGrid.
 Because ElmerGrid was never designed to be an stand-alone mesh generator 
-it has been developed in on uncontrolled manner. The data structures 
+it has been developed in an uncontrolled manner. The data structures 
 are not optimal for all the added features. Therefore the software may
 at times cause problems.
 
@@ -97,7 +97,7 @@ Also created by Gambit, the preprocessor of Fluent.
 A subset of the universal mesh file format commands may be read by ElmerGrid.
 
 \item \texttt{9)  .mphtxt   : Comsol mesh format} \\
-The phhtxt format created by Comsol Multiphysics. 
+The mphtxt format created by Comsol Multiphysics. 
 
 \item \texttt{10)  .dat      : Fieldview format} \\
 This may be used with Gridgen preprocessor.
@@ -105,7 +105,7 @@ This may be used with Gridgen preprocessor.
 \item \texttt{11) .node,.ele: Triangle 2D mesh format} \\
 Read in meshes created by Triangle 2D Delaunay mesh generator.
 
-\item \texttt{.mesh     : Medit mesh format} \\
+\item \texttt{12) .mesh     : Medit mesh format} \\
 Format of Medit mesh generation program.
 
 \item \texttt{13) .msh      : GID mesh format} \\
@@ -131,7 +131,7 @@ ask for the possibilities.
 
 \begin{description}
 
-\item \texttt{1)  .grid     : ElmerGrid file format} \\
+\item \texttt{1)  .grd     : ElmerGrid file format} \\
 The native format, may be used to refresh the input file if it becomes
 corrupted or outdated.
 
@@ -156,7 +156,7 @@ mesh before it is used in the solution. Then the only variable that is saved is
 the node index referred to by field variable \texttt{Number}.
 
 \item \texttt{4)  .msh      : Gmsh file format} \\
-Format for Gmhs mesh generator. This may be useful if one wants to use Gmsh to view entity numbers or mesh quality. 
+Format for Gmsh mesh generator. This may be useful if one wants to use Gmsh to view entity numbers or mesh quality. 
 Also one could export meshes from Elmer project to a more commonly used format for interoperability with other software.
 
 \item \texttt{5)  .vtu      : XML based unstructured VTK format} \\
@@ -173,11 +173,16 @@ The format could be useful for studying the mesh prior to actual solution.
 
 ElmerGrid has a lot of simple functionalities that may be activated 
 with the right command-line arguments. Most of them may operate on
-all meshes, some or limited to 2D meshes, for example. 
+all meshes, some are limited to 2D meshes, for example. 
 
 In the command-line operation mode
 there are only three mandatory arguments: The input format,
-the output format, and the name of the input file.
+the output format, and the name of the input file.  For example, 
+to read an ElmerGrid file named \texttt{angle.grd}, and to output the
+ElmerSolver files to a folder named \texttt{angle}:\\
+
+\texttt{elmergrid 1 2 angle}\\
+
 All other arguments are optional.
 
 \sifbegin
@@ -219,8 +224,8 @@ the smallest element size. Otherwise there is a risk of ruining the mesh.
 For optimal computational efficiency the merging of nodes is done 
 in two stages. In the first stage the nodes are ordered and in the second
 stage the nodes close to each other are checked for distance. 
-If distance is smaller than the critical one the nodes are given one
-common coordinate and the other node is eliminated from the holes mesh.
+If distance is smaller than the critical one, then the nodes are given one
+common coordinate and the other node is eliminated from the whole mesh.
 %
 \sifitem{-order}{Real[DIM]} 
 The nodes may be ordered if the original ordering is uneconomical.
@@ -232,7 +237,7 @@ The reordering of the degrees of freedom is usually performed
 within ElmerSolver and therefore 
 it is usually not necessary to renumber the nodes within ElmerGrid.
 %
-\sifitem{-centralize}
+\sifitem{-centralize}{}
 Sets the center of the mesh to origin. The bounding box is used to define the size of the mesh. 
 %
 %\sifitem{-autoorder}{}
@@ -303,7 +308,7 @@ structure might need second order elements.
 \sifitem{-increase}{} 
 Increase the element order in all the elements from one to two.
 This may be used to improve computational accuracy of existing 
-linear meshes by making the quadratic.
+linear meshes by making them quadratic.
 %
 \sifitem{-bcoffset}{Integer}
 Adds on offset to the boundary condition numbering. This may be useful for multimesh
@@ -447,9 +452,9 @@ keyword is followed by the normal vector of the desired ordering.
 \sifitem{-parttol}{Real}
 Sometimes when using the geometric partitioning we use the ideal
 structured form of the mesh in the process. For example extruded meshes
-may result to partitions that could no have been extruded. The remedy
+may result to partitions that could not have been extruded. The remedy
 is to let the elements be in the same partition if they are close enough
-to each other when order geometrically.
+to each other when ordered geometrically.
 %
 \sifitem{-metiskway}{Integer}
 This utility does the partitioning utilizing the Metis library, see
@@ -469,12 +474,12 @@ This is as the previous one except the suffix \texttt{rec} refers to the \texttt
 This may be used for the nodal and dual graph. The dual graph is recommended. 
 The parameter is the desired number of partitions. 
 
-\sifitem{-metiscontig}
+\sifitem{-metiscontig}{}
 This flag enforces that the Metis partitions are contiguous. This means that
 each partition is continuous. This may be numerically favourable and
 certainly needed by some algorithms. 
 
-\sifitem{-metisseed int}
+\sifitem{-metisseed}{Integer}
 This allows the user to change the Metis seed. The purpose for this could be
 to study the effect on partitioning on the parallel solution.
 Some preconditioners are not fully parallel and their success may vary between
