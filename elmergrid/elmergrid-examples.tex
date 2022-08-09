@@ -5,7 +5,8 @@
 
 \subsection*{Unit square: \texttt{rect.grd}}
 
-The first example is a simple unit square. The input file is the simplest
+The first example is a simple unit square, as shown in 
+Figure \ref{fg:pic1}a.  The input file is the simplest
 possible as the geometry consists of $1 \times 1$ subcells.
 The boundaries in $x$- and $y$-directions are 0 and 1.
 The desired number of elements is 100 and the distribution is uniform.
@@ -20,7 +21,7 @@ The elements do not need to be bilinear. In 2D also
 second and third order elements are possible. They are created by
 setting the number of nodes to 5, 8, 9, 12 or 16 depending on the
 preferred element type. Some types may be divided to triangles.
-The first variation of the rectangle case has 200 second order 
+The first variation of the rectangle case, shown in Figure \ref{fg:pic1}b has 200 second order 
 triangles that are created with the lines. 
 %
 \begin{verbatim}
@@ -31,39 +32,42 @@ Triangles = True
 
 \noindent
 Within the subcells the division of elements may be controlled in both 
-directions independently. A variation of the unit square has different
+directions independently, as shown in Figure \ref{fg:pic1}c. 
+A variation of the unit square has different
 division in the $x$ and $y$-directions. In $x$-direction the
 last and first elements have a size ratio of 2.0.
 In $y$-direction the division is symmetric so that the middle element
 is 3.0 times larger than the side elements.
+
 \begin{verbatim}
 Element Ratios 1 = 2.0
 Element Ratios 2 = -3.0
 \end{verbatim}
 
-\begin{figure}
-\begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[width=4cm]{rect.png}
 \includegraphics[width=4cm]{rect2.png}
 \includegraphics[width=4cm]{rect3.png}
-\end{center}
 \caption{Unit square with different meshes. a) 100 bilinear rectangles
 b) 200 quadratic triangles c) 200 bilinear elements with nonuniform 
 division.}
-\label{pic1}
+\label{fg:pic1}
 \end{figure}
 
 \subsection*{Tube: \texttt{tube.grd}}
 
-The next case could be a simple 2D tube. 
+The next case could be a simple 2D tube, as shown in Figure \ref{fg:pic2}a. 
 Now the width is 5.0 which is reflected in 
 the subcell boundaries. Again the mesh has some nonuniform division.
+
 \verbatiminput{examples/tube.grd}
 %
-The variation of the case includes two mapping. The first mapping
+The variation of the case includes two mappings. The first mapping in Figure \ref{fg:pic2}b
 maps the lower horizontal boundary so that it goes linearly between four points.
-The second mapping sets the upper horizontal boundary to be a sinusoidal
-function with three periods. 
+The second mapping in Figure \ref{fg:pic3}b sets the upper horizontal boundary 
+to be a sinusoidal function with three periods.\\
+
 \begin{verbatim}
 Geometry Mappings 
 ! mode  line  limits(2)   Np  params(Np)
@@ -72,36 +76,36 @@ Geometry Mappings
 End 
 \end{verbatim}
 %
-\begin{figure}
-\begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[width=8cm]{tube.png} 
 \includegraphics[width=8cm]{tube2.png}
-\end{center}
 \caption{Tube with 200 bilinear rectangles.
 a) straight tube with 
 two kinds of mesh refinement
 b) sinusoidal and linear boundary mappings}
-\label{pic3}
+\label{fg:pic2}
 \end{figure}
 
 \subsection*{Square with holes: \texttt{holes.grd}}
 
 The subcell structure may be quite complicated. This is reflected by an
-example of a square with a large number of square holes. Even at such a complicated
+example of a square with a large number of square holes, as shown in 
+Figure \ref{fg:pic3}a. Even at such a complicated
 case almost the desired amount of elements may be created quite quickly.
-The second case with 81 holes and 112000 elements was created in 
-about a second an a normal PC.
+The second case in Figure \ref{fg:pic3}b with 81 holes and 112000 
+elements was created in about a second an a normal PC.
+
 \verbatiminput{examples/holes.grd}
 %
-\begin{figure}
-\begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[width=5.5cm]{holes.png}
 \includegraphics[width=5.5cm]{holes2.png}
-\end{center}
 \caption{Squares with holes: 
 a) square with 16 square holes and 1040 elements,
 b) square with 81 square holes and 112000 elements.}
-\label{pic5}
+\label{fg:pic3}
 \end{figure}
 
 
@@ -109,23 +113,28 @@ b) square with 81 square holes and 112000 elements.}
 
 To show that multiple mappings may be used at the same time
 a more complicated case is given. Here two horizontal and two vertical lines
-are mapped. The mesher has the nice property that the same file may be used
-to created multiple meshes with different settings. The other mesh is now
-the external mesh and it is divided to triangles.
+are mapped, as shown in Figure \ref{fg:pic4}a. The mesher has the 
+nice property that the same file may be used
+to created multiple meshes with different settings. The other mesh in 
+Figure \ref{fg:pic4}b is now the external mesh and it is divided to triangles.
+
 \verbatiminput{examples/cross.grd}
 
-\begin{figure}
-\begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[width=5.5cm]{cross1.png}
 \includegraphics[width=5.5cm]{cross2.png}
-\end{center}
 \caption{Cross with shape used to create 2 computational meshes:
       a) the internal mesh of 400 bilinear rectangles
       b) the external mesh of 800 linear triangles.}
-\label{pic7}
+\label{fg:pic4}
 \end{figure}
 
 \subsection*{Hand-weight: \texttt{weight.grd}}
+
+First we will create a 2D mesh, as shown in Figure \ref{fg:pic5}a.
+Then we will use extrusion to create a 3D mesh, as shown in 
+Figure \ref{fg:pic5}b.
 
 \verbatiminput{examples/weight.grd}
 %
@@ -144,15 +153,14 @@ subcell boundaries in the extruded direction must be given.
 Subcell Limits 3 = 0.0 0.5
 \end{verbatim}
 
-\begin{figure}
-\begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[width=8cm]{weight.png} 
 \includegraphics[width=8cm]{weight3.png}
-\end{center}
 \caption{Hand-weight consisting of two spheres and a joining tube
       a) 2D mesh with 1000 linear triangles
 	b) extruded 3D mesh with 1200 prisms.}
-\label{pic8}
+\label{fg:pic5}
 \end{figure}
 
 
@@ -164,17 +172,16 @@ Subcell Limits 3 = 0.0 0.5
 The originally 2D mesh may be given a third dimension with the help of mapping.
 In this example two sinusoidal mappings are used. They have a amplitude
 with different sign and therefore there is a phase-shift of 180 degrees between the 
-two opposing sides. 
-
-\begin{figure}
-\begin{center}
-\includegraphics[width=7cm]{waves.png}
-\end{center}
-\caption{A shell with a wave pattern}
-\label{pic9b}
-\end{figure}
+two opposing sides, as shown in Figure \ref{fg:pic6}. 
 
 \verbatiminput{examples/waves.grd}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{waves.png}
+\caption{A shell with a wave pattern}
+\label{fg:pic6}
+\end{figure}
 
 
 \subsection*{Shell consisting of two adjacent cones: \texttt{cones.grd}}
@@ -192,17 +199,16 @@ a function of positions is given. The same mappings may be used
 as for 2D meshes in cartesian coordinates.
 
 The examples shows a simple cylinder where a mapping is
-used to create two cones. 
-
-\begin{figure}
-\begin{center}
-\includegraphics[width=6cm]{cones.png}
-\end{center}
-\caption{A 2D mesh mapped into two 3D cones}
-\label{pic10}
-\end{figure}
+used to create two cones, as shown in Figure \ref{fg:pic7}. 
 
 \verbatiminput{examples/cones.grd}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=6cm]{cones.png}
+\caption{A 2D mesh mapped into two 3D cones}
+\label{fg:pic7}
+\end{figure}
 
 
 \subsection*{A rolled shell: \texttt{cones.grd}}
@@ -210,17 +216,16 @@ used to create two cones.
 The mappings out of plane may also be used to create a simple roll.
 Now the angles extends to 3600 degrees making 10
 full rotations. The radius goes linearly from 1 to 101 and thus the
-roll has a spiraling structure.
-
-\begin{figure}
-\begin{center}
-\includegraphics[width=7cm]{roll.png}
-\end{center}
-\caption{A rolled shell with a spiraling structure}
-\label{pic11}
-\end{figure}
+roll has a spiraling structure, as shown in Figure \ref{fg:pic8}.
 
 \verbatiminput{examples/roll.grd}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{roll.png}
+\caption{A rolled shell with a spiraling structure}
+\label{fg:pic8}
+\end{figure}
 
 
 \subsection*{A hexagonal frame: \texttt{hexframe.grd}}
@@ -228,57 +233,56 @@ roll has a spiraling structure.
 There is also a very special mapping for creating 
 3D shell structures. The mapping is used to give an
 angle for the shell. The angle is stepwise constant which makes
-is possible to create polygonal 3D shells.  
-
-\begin{figure}
-\begin{center}
-\includegraphics[width=7cm]{hexframe.png}
-\end{center}
-\caption{A hexagonal 3D frame made by mapping by angle}
-%\label{pic11}
-\end{figure}
+is possible to create polygonal 3D shells, as shown in Figure \ref{fg:pic9}.  
 
 \verbatiminput{examples/hexframe.grd}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{hexframe.png}
+\caption{A hexagonal 3D frame made by mapping by angle}
+\label{fg:pic9}
+\end{figure}
 
 
 
 \subsection*{Rotated step structure: \texttt{barrel.grd}}
 
-\begin{figure}
-\begin{center}
-\includegraphics[width=8cm]{barrel.png}
-\end{center}
-\caption{Step structure rotated 180 degrees to create
-      3D object with 1312 elements}
-\label{pic9}
-\end{figure}
+Rotate a 2D step structure to create a 3D barrel shaped
+structure, as shown in Figure \ref{fg:pic10}.
 
 \verbatiminput{examples/barrel.grd}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{barrel.png}
+\caption{Step structure rotated 180 degrees to create
+      3D object with 1312 elements}
+\label{fg:pic10}
+\end{figure}
 
 
 \subsection*{Extruded structure: \texttt{blocks.grd}}
 The 2D structures may be extruded in the third dimension. 
 Then the third dimension is added to the subcells
-boundaries and to the mesh definitions.
+boundaries and to the mesh definitions, as shown in Figure \ref{fg:pic11}.
 
-The material
-structure is always 2D. 
+The material structure is always 2D. 
 The given material structure may be 
 extruded as is, or alternatively a selective extrusion for
 different materials may be performed as is done in this example.
 It is therefore possible to omit some materials, and to rename 
 the extruded layer to some new material.
 
-\begin{figure}
-\begin{center}
+\verbatiminput{examples/blocks.grd}
+
+\begin{figure}[H]
+\centering
 \includegraphics[width=8cm]{blocks.png}
-\end{center}
 \caption{Simple 3D structure created by selective extrusion. 
 	The upper part has been removed for visualization purposes.}
-\label{pic12}
+\label{fg:pic11}
 \end{figure}
-
-\verbatiminput{examples/blocks.grd}
 
 
 \section{1D examples}
@@ -291,14 +295,13 @@ This is rarely needed as most FEM computations are at least two dimensional.
 
 The example of the 1D case is naturally a line segment -- there are no other kind of basic 1D structures.
 It consists of two sections, the first one has a increasing mesh density to the right and the second one
-has an even distribution of nodes.
+has an even distribution of nodes, as shown in Figure \ref{fg:pic12}.
 \verbatiminput{examples/line.grd}
 
-\begin{figure}
-\begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[width=12cm]{line.png} 
-\end{center}
 \caption{A line segment where the element nodes are marked with polygons.
 The mesh has 50 elements and thus 51 nodes.}
-\label{pic8b}
+\label{fg:pic12}
 \end{figure}

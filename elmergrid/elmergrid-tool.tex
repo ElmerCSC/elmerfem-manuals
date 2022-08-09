@@ -6,7 +6,7 @@ originally have been made by some other mesh
 generator. There are many basic 
 operations, such as scaling or rotation, which do not 
 require any special attention. Here we look at some more 
-advanced things that may be performed an a mesh. 
+advanced things that may be performed on a mesh. 
 
 
 
@@ -19,40 +19,39 @@ that are solved by single processors. The domains should
 be chosen so that the extra work needed for the communications is
 minimized. This procedure is called mesh partitioning. 
 ElmerGrid offers two different techniques for this. 
-The first one uses Metis library and the second one divides the
-mesh using simple ordering schemes. 
+The first one divides the mesh using simple ordering schemes,
+ and the second one uses the METIS library. 
 
 As an example we choose an L-shaped domain of bilinear elements.
-The grid file for creating this one is given below.
+The ElmerGrid file for creating this example is given below.
 \verbatiminput{tool/angle.grd}
 
 The partitioning may be invoked using command line arguments, or
 as here using command file. Below is the command file
 for using the simple partitioning scheme to partition the
-mesh into $2 \times 2$ domains. 
+mesh into $2 \times 2$ domains, as shown in Figure~\ref{fg:pic50}a. 
 %
 \verbatiminput{tool/part.eg}
 %
 In the start of the command file the user defines the input and 
 output formats and filenames. The only additional command is the 
 last line that defines how the mesh is partitioned.
-Another choice is to use Metis which is invoked with the line
+Another choice is to use METIS which is invoked with the line
 \begin{verbatim}
 Metis = 4
 \end{verbatim}
-The resulting partitionings are shown in Figure~\ref{pic50}. In this case
+The resulting partitionings are shown in Figure~\ref{fg:pic50}. In this case
 the partitionings are almost equally good. In very simple
 cases the simple geometrical algorithm may give better results
-but in general cases Metis should be favored.
+but in general cases METIS should be favored.
 %
-\begin{figure}
-\begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[width=7cm]{part.png}
 \includegraphics[width=7cm]{metis.png}
-\end{center}
-\caption{A simple mesh partitioned with a simple geometrical scheme and 
-Metis library.}
-\label{pic50}
+\caption{A simple mesh partitioned with a) a simple geometrical scheme and 
+b) METIS library.}
+\label{fg:pic50}
 \end{figure}
 
 
@@ -86,32 +85,30 @@ In the geometry there is only one boundary and therefore
 only one boundary layer is also created. There can however be several
 boundary layers at a time. In the intersections of different boundary
 layers one should however notice that the number of new elements should be
-the same. The resulting mesh is shown in Figure~\ref{pic51}.
+the same. The resulting mesh is shown in Figure~\ref{fg:pic51}.
 %
 \verbatiminput{tool/layer.eg}
 
-\begin{figure}
-\begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[width=7cm]{layer.png}
-\end{center}
 \caption{A simple boundary layer created on an angle mesh}
-\label{pic51}
+\label{fg:pic51}
 \end{figure}
 
 \section{Mesh extrusion}
 
 ElmerGrid enables that any mesh on a plane may be extruded in the 
-third dimension by given the specifications on how to extrude.
+third dimension by giving the specifications on how to extrude.
 For example the command file below may be used to extrude the mesh 
 created in the first example in the third dimension. The result is a unit 
 cube with 1000 trilinear elements.
 %
 \verbatiminput{tool/rect2cube.eg}
 %
-\begin{figure}[bh]
-\begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[width=7cm]{cube.png}
-\end{center}
 \caption{A simple cube created by the extrusion of a unit square}
-\label{pic52}
+\label{fg:pic52}
 \end{figure}
