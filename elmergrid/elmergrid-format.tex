@@ -13,7 +13,7 @@ a handful of keywords. If the default values are
 used the corresponding commands may be neglected. 
 The commands usually assume a format where 
 the keyword is followed by its arguments. 
-If the arguments are on the same line then a equality sign 
+If the arguments are on the same line then an equality sign 
 ``='' should be used in between. 
 The parser is not case sensitive and thus the keywords may be written with 
 capital or small letters, or any combination of them.
@@ -143,7 +143,7 @@ coordinate as angle $\phi$.
 %
 \sifitem{Polar Radius}{Real}
 If the coordinate system is chosen to be polar then 
-the values defining the ?? are $(z,\theta)$.
+the values defining the grid are $(z,\theta)$.
 When saving the mesh these are mapped into cartesian coordinates.
 There may be an offset in the radius when using the polar coordinates.
 This value is then added to the value of the $r$-coordinate before making the
@@ -155,7 +155,7 @@ of position using special mappings.
 There are three keywords that may be used to define how a 2D mesh is revolved
 around the $y$-axis
 to create 3D cylindrical meshes.
-Defining any of the keywords enforces revolation.
+Defining any of the keywords enforces revolution.
 Simple rotation would result to singular elements at the 
 origin. Therefore a square block is set at the origin.
 By default this square has the same $x$-coordinate as the
@@ -491,7 +491,7 @@ individual mappings. Mappings may also be performed
 consecutively up to five levels. This is obtained by adding 
 the figure 10 to the mode. Mappings of the same 
 level are done at the same time while mappings of different levels
-are done at on increasing order of modulo 10s.
+are done at an increasing order of modulo 10s.
 
 In order to perform mappings out of plane a value
 of 50 may be added in the mapping mode.
