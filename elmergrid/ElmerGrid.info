@@ -48,7 +48,8 @@ taken into account only when applicable to the given format.
 -out str             : name of the output file
 -in str              : name of a secondary input file
 -decimals            : number of decimals in the saved mesh (eg. 8)
--relh real           : give relative mesh density parameter for ElmerGrid meshing
+-relh real           : give relative mesh density parameter for ElmerGrid
+                       meshing
 -triangles           : rectangles will be divided to triangles
 -merge real          : merges nodes that are close to each other
 -order real[3]       : reorder elements and nodes using c1*x+c2*y+c3*z
@@ -57,35 +58,52 @@ taken into account only when applicable to the given format.
 -translate real[3]   : translate the nodes with vector real[3]
 -rotate real[3]      : rotate around the main axis with angles real[3]
 -clone int[3]        : make ideantilcal copies of the mesh
--clonesize real[3]   : the size of the mesh to be cloned if larger to the original
--mirror int[3]       : copy the mesh around the origin in coordinate directions
--cloneinds           : when performing cloning should cloned entities be given new indexes
+-clonesize real[3]   : the size of the mesh to be cloned if larger to
+                       the original
+-mirror int[3]       : copy the mesh around the origin in coordinate
+                       directions
+-cloneinds           : when performing cloning should cloned entities
+                       be given new indexes
 -unite               : the meshes will be united
--unitenooverlap      : the meshes will be united without overlap in entity numbering
--polar real          : map 2D mesh to a cylindrical shell with given radius
+-unitenooverlap      : the meshes will be united without overlap in
+                       entity numbering
+-polar real          : map 2D mesh to a cylindrical shell with given
+                       radius
 -cylinder            : map 2D/3D cylindrical mesh to a cartesian mesh
--reduce int[2]       : reduce element order at material interval [int1 int2]
+-reduce int[2]       : reduce element order at material interval
+                       [int1 int2]
 -increase            : increase element order from linear to quadratic
 -bcoffset int        : add an offset to the boundary conditions
 -discont int         : make the boundary to have secondary nodes
--connect int         : make the boundary to have internal connection among its elements
+-connect int         : make the boundary to have internal connection
+                       among its elements
 -removeintbcs        : remove internal boundaries if they are not needed
--removelowdim        : remove boundaries that are two ranks lower than highest dim
+-removelowdim        : remove boundaries that are two ranks lower than
+                       highest dim
 -removeunused        : remove nodes that are not used in any element
--bulkorder           : renumber materials types from 1 so that every number is used
--boundorder          : renumber boundary types from 1 so that every number is used
+-bulkorder           : renumber materials types from 1 so that every
+                       number is used
+-boundorder          : renumber boundary types from 1 so that every
+                       number is used
 -autoclean           : this performs the united action of the four above
--multidim            : keep lower order entities even if they are not boundaries
--bulkbound int[3]    : set the intersection of materials [int1 int2] to be boundary int3
--boundbound int[3]   : set the intersection of boundaries [int1 int2] to be boundary int3
--bulktype int[3]     : set material types in interval [int1 int2] to type int3
+-multidim            : keep lower order entities even if they are not
+                       boundaries
+-bulkbound int[3]    : set the intersection of materials [int1 int2]
+                       to be boundary int3
+-boundbound int[3]   : set the intersection of boundaries [int1 int2]
+                       to be boundary int3
+-bulktype int[3]     : set material types in interval [int1 int2] to
+                       type int3
 -boundtype int[3]    : set sidetypes in interval [int1 int2] to type int3
 -layer int[2] real[2]: make a boundary layer for given boundary
--layermove int       : apply Jacobi filter int times to move the layered mesh
+-layermove int       : apply Jacobi filter int times to move the layered
+                       mesh
 -divlayer int[2] real[2]: make a boundary layer for given boundary
--3d / -2d / -1d      : mesh is 3, 2 or 1-dimensional (applies to examples)
+-3d / -2d / -1d      : mesh is 3, 2 or 1-dimensional (applies to
+                       examples)
 -isoparam            : ensure that higher order elements are convex
--nonames             : disable use of mesh.names even if it would be supported by the format
+-nonames             : disable use of mesh.names even if it would be
+                       supported by the format
 -nosave              : disable saving part altogether
 -nooverwrite         : if mesh already exists don't overwrite it
 -vtuone              : start real node indexes in vtu file from one
@@ -93,38 +111,56 @@ taken into account only when applicable to the given format.
 -infofile str        : file for saving the timer and size information
 
 Keywords are related to mesh partitioning for parallel ElmerSolver runs:
--partition int[3]    : the mesh will be partitioned in cartesian main directions
--partorder real[3]   : in the 'partition' method set the direction of the ordering
--parttol real        : in the 'partition' method set the tolerance for ordering
--partcell int[3]     : the mesh will be partitioned in cells of fixed sizes
--partcyl int[3]      : the mesh will be partitioned in cylindrical main directions
--metiskway int       : mesh will be partitioned with Metis using graph Kway routine
--metisrec int        : mesh will be partitioned with Metis using graph Recursive routine
+-partition int[3]    : the mesh will be partitioned in cartesian main
+                       directions
+-partorder real[3]   : in the 'partition' method set the direction of
+                       the ordering
+-parttol real        : in the 'partition' method set the tolerance for
+                       ordering
+-partcell int[3]     : the mesh will be partitioned in cells of fixed
+                       sizes
+-partcyl int[3]      : the mesh will be partitioned in cylindrical main
+                       directions
+-metiskway int       : mesh will be partitioned with Metis using graph
+                       Kway routine
+-metisrec int        : mesh will be partitioned with Metis using graph
+                       Recursive routine
 -metiscontig         : enforce that the metis partitions are contiguous
 -metisvol            : minimize total communication volume in Metis
 -metisminconn        : minimize the maximum connectivity count in Metis
 -metisseed int       : random number generator seed for Metis algorithms
 -metisncuts int      : number of competing partitions to generate
--partdual            : use the dual graph in partition method (when available)
+-partdual            : use the dual graph in partition method (when
+                       available)
 -halo                : create halo for the partitioning for DG
 -halobc              : create halo for the partitioning at boundaries only
--haloz / -halor      : create halo for the the special z- or r-partitioning
--halogreedy          : create halo being greedy over the partition interfaces
--indirect            : create indirect connections (102 elements) in the partitioning
--periodic int[3]     : periodic coordinate directions for parallel & conforming meshes
+-haloz / -halor      : create halo for the the special z- or
+                       r-partitioning
+-halogreedy          : create halo being greedy over the partition
+                       interfaces
+-indirect            : create indirect connections (102 elements) in
+                       the partitioning
+-periodic int[3]     : periodic coordinate directions for parallel
+                       & conforming meshes
 -partoptim           : apply aggressive optimization to node sharing
 -partnobcoptim       : do not apply optimization to bc ownership sharing
--partbw              : minimize the bandwidth of partition-partion couplings
+-partbw              : minimize the bandwidth of partition-partion
+                       couplings
 -parthypre           : number the nodes continuously partitionwise
--partzbc             : partition connected BCs separately to partitions in Z-direction
--partrbc             : partition connected BCs separately to partitions in R-direction
--metisbc             : partition connected BCs separately to partitions by Metis
+-partzbc             : partition connected BCs separately to partitions
+                       in Z-direction
+-partrbc             : partition connected BCs separately to partitions
+                       in R-direction
+-metisbc             : partition connected BCs separately to partitions
+                       by Metis
 -partlayers int      : extend boundary partitioning by element layers
 
 Keywords are related to (nearly obsolete) ElmerPost format:
--partjoin int        : number of ElmerPost partitions in the data to be joined
+-partjoin int        : number of ElmerPost partitions in the data to
+                       be joined
 -saveinterval int[3] : the first, last and step for fusing parallel data
--nobound             : disable saving of boundary elements in ElmerPost format
+-nobound             : disable saving of boundary elements in ElmerPost
+                       format
 
 Thank you for using Elmergrid!
 Send bug reports and feature wishes to elmeradm@csc.fi
