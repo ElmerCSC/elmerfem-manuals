@@ -9,9 +9,9 @@
 \subsection*{Case description}
 
 This tutorial is about simulating blood ejection in to the elastic human aorta.
-The idea is to mimic left ventricle contration and resulting pulse propagation 
+The idea is to mimic left ventricle contraction and resulting pulse propagation 
 in an elastic conduit. In the simulation about 0.8 
-desiliters of blood is ejected to a 50 cm long elastic aorta during a time 
+deciliters of blood is ejected to a 50 cm long elastic aorta during a time 
 period of 400 ms.  In order to get the outlet of the model behave 
 physiologically more realistic way, a one dimensional model is coupled
 with the higher order model.
@@ -34,7 +34,7 @@ of which the first three are for the fluid volume.  Body number 1 os the
 contracting volume.  Body 2 is a short rigid channel between the body 1 and 
 the elastic artery. Artificial compressibility
 method is used for the fluid volume (body 3) which is in contact with the 
-elastic wall (body 4).  One dimesional model is the body 5. 
+elastic wall (body 4).  One dimensional model is the body 5. 
 Material settings for those are 
 following:
 \ttbegin
@@ -63,7 +63,7 @@ Material 3
   Poisson Ratio = 0.45
 End
 
-! One dimesional model
+! One dimensional model
 Material 4
    Density = 1010.0
    Artery Wall Youngs Modulus = Real 3.0e5 
@@ -73,9 +73,9 @@ Material 4
 End
 \ttend
 
-Notice that the radius of the one dimesional model ({\tt Artery Radius})
+Notice that the radius of the one dimensional model ({\tt Artery Radius})
 is to the midplane of the wall (inner radius + half of the wall thickness).
-The overall FSI iteration scheme is started by one dimesional solver
+The overall FSI iteration scheme is started by one dimensional solver
 ({\tt OutletCompute}, see the solver manual), after that Navier-Stokes, 
 elasticity and mesh update solvers are run.  Steady state convergence tolerance
 is set equalt to 1.0E-4 for each of the solvers.  The nonlinearities
@@ -84,7 +84,7 @@ the flag {\tt Nonlinear System Max Iterations} is set equal to 1.
 Artificial compressibility coefficient is computed by the equation
 $c = (1-\nu^2) [D/(E~h)]$, where $\nu$ is the Poisson ratio of the
 artery wall, $D$, $E$ and $h$ are the inner diameter, Young's modulus
-and the thichness of the artery, respectively.
+and the thickness of the artery, respectively.
 
 The only driving force of the system, the wall motion of the contracting 
 fluid domain is given by the fortran function {\tt Motion}, see the
@@ -163,7 +163,7 @@ are given in the file {\tt PostProcessingInstr.txt}.
 
 \begin{figure}[!hb]
 \begin{center}
-\includegraphics[width=\textwidth]{kollaasi}
+\includegraphics[width=\textwidth]{collage}
 \caption{The geometry of the model and velocity fields at 5 time steps, 
 100, 200, 300, 400 and 500 ms.  The displacements of the wall are 
 magnified by factor of 10.}

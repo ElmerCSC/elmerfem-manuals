@@ -453,7 +453,7 @@ Finally, there is a menu entry for setting up the boundary conditions:
 
 It is possible to apply a boundary condition to a boundary by holding down 
 the \texttt{Alt} or \texttt{AltGr}-key while double clicking a surface or edge. (or simply double clicking the surface or edge while ``Set boundary properties'' button in the toolbar is pressed down).
-As shown in Figure \ref{fig:boundarypropertyeditor}, a Boundary Property Editor will appear, listing all possible conditions that can be applyed to the selection. The Boundary Property Editor will show up also by double clicking the boundary name under ``Boundary'' item in the Object Browser. 
+As shown in Figure \ref{fig:boundarypropertyeditor}, a Boundary Property Editor will appear, listing all possible conditions that can be applied to the selection. The Boundary Property Editor will show up also by double clicking the boundary name under ``Boundary'' item in the Object Browser. 
 
 Choose a condition from the combo box and finally press \texttt{Ok}.
 \begin{figure}[htb]
@@ -609,12 +609,12 @@ The second post processor is based on the Visualization Toolkit, VTK. It is acti
 \noindent A new window will then pop up, providing methods for drawing surfaces, contours,
 vectors, and stream lines.
 
-In the toolbar of ElmerGUI main window, there is a button for launching postprocessor. The postprocessor to be launched can be selected by long pressing the button as shown in Figure \ref{fig:prostprocessors}.  
+In the toolbar of ElmerGUI main window, there is a button for launching postprocessor. The postprocessor to be launched can be selected by long pressing the button as shown in Figure \ref{fig:postprocessors}.  
 \begin{figure}[htb]
 	\begin{center}
 		\includegraphics[scale=0.5]{images/postprocessors.png}
 		\caption{Selecting postprocessor in toolbar.}
-		\label{fig:prostprocessors}
+		\label{fig:postprocessors}
 	\end{center}
 \end{figure}
 
@@ -637,7 +637,7 @@ vectors	        // controls for vector fields
 isoContours     // controls for isocontours
 isoSurfaces     // controls for isosurfaces
 streamLines     // controls for streamlines
-colorBar        // cotrols for the colorbar
+colorBar        // controls for the colorbar
 timeStep        // controls for transient results
 text            // text annotation
 \end{verbatim}
@@ -832,7 +832,7 @@ class isoSurfaces:
   void SetMaxColorVal(double);                   // set color max
   void KeepColorLimits(bool);                    // keep color limits
   void ComputeNormals(bool);                     // shade model
-  void UseClipPlane(bool);                       // set clpping on/off
+  void UseClipPlane(bool);                       // set clipping on/off
   void SetFeatureAngle(int);                     // set feature angle
   void SetOpacity(int);                          // set opacity
 
@@ -914,7 +914,7 @@ class text:
 
 \subsection{Example scripts}
 
-The exampels below are executed from the PythonQt-console as
+The examples below are executed from the PythonQt-console as
 \begin{footnotesize}
 \begin{verbatim}
 py> execfile("sample.py")

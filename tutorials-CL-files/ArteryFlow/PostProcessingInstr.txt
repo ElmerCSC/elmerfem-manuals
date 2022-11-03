@@ -17,7 +17,7 @@ math nodes = nodes0 + u
 - the node indexes 416-1221 correspond the 
   the volumes which face the FSI coupling.
 
-- integer 20 is the magification parameter
+- integer 20 is the magnification parameter
   for the displacements 
 
 

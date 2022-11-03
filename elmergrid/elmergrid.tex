@@ -74,11 +74,11 @@ node, coordinate and topology files.
 \item \texttt{3)  .ep      : Elmer input format} \\
 This format is the same that
 ElmerSolver uses in saving the results to be 
-postprosessed with ElmerPost. 
+postprocessed with ElmerPost. 
 
 \item \texttt{4)  .ansys    : Ansys input format} \\
 This format is the input format 
-created by the preprosessor of Ansys using a special
+created by the preprocessor of Ansys using a special
 Ansys macro.
 An example is given in later chapters.
 
@@ -151,7 +151,7 @@ subdirectory with suffix \texttt{.part.n}, where
 \texttt{n} is the running number of the partition.
 
 \item \texttt{3)  .ep       : ElmerPost file format} \\
-Format for Elmer postprosessing. This is particularly handy for tuning the
+Format for Elmer postprocessing. This is particularly handy for tuning the
 mesh before it is used in the solution. Then the only variable that is saved is 
 the node index referred to by field variable \texttt{Number}.
 
@@ -432,7 +432,7 @@ Each split is done so that the number of elements in each partition
 is almost equal. The method is best suited for simple geometries 
 where more generic strategies usually do not work as well.
 
-%The last flag is an optional flag which defines additional strategies for doing the partitioing. 
+%The last flag is an optional flag which defines additional strategies for doing the partitioning. 
 %For value 0 a recursive partitioning is applied so that the partition is first done for elements and
 %thereafter for nodes. For value 1 the same algorithm is applied but now first for the nodes and then for
 %elements. 
@@ -441,7 +441,7 @@ where more generic strategies usually do not work as well.
 %are divided into each cell. Not all cells need to be active. This kind of partitioning could be ideal for evenly distributed meshes
 %that follow the cell boundaries. For example, the canonical L-shaped domain is ideally partitioning by this flag.
 
-%The value 3 for the optional parameter invokes tailored partitioning for cylindircally symmetric structures for which the division is performed 
+%The value 3 for the optional parameter invokes tailored partitioning for cylindrically symmetric structures for which the division is performed 
 %in $(r,\phi,z)$ coordinates rather than $(x,y,z)$. 
 %
 \sifitem{-partorder}{Real[DIM]} 

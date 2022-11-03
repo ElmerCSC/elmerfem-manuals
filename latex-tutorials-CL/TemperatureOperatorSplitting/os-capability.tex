@@ -15,7 +15,7 @@ equations is that these methods are computationally expensive, in particular
 when the residual-free-bubbles formulation is used.
 In evolutionary problems the reduction of computational cost may be attempted
 by applying operator splitting techniques in which the original equation at
-each time step is splitted up into subproblems that are
+each time step is split up into subproblems that are
 easier to solve numerically.
 
 The aim of this chapter is to provide an illustrative example on
@@ -369,7 +369,7 @@ RFB               & 340.70  \\ \hline
 \subsection*{Discussion}
 
 The benefit of the wave-like equation formulation of the convective 
-transport problem is that this formulation can be discretizated without
+transport problem is that this formulation can be discretized without
 using stabilized finite element formulations. Thus all the subproblems
 arising from operator splitting can be solved using standard FE
 techniques. On the other hand,
@@ -377,7 +377,7 @@ the expense of this approach is that one is lead to handle the second
 order in time equation. 
 
 In the current implementation of the method the 
-wave-like equation is discretizated in time
+wave-like equation is discretized in time
 using the Crank-Nicolson scheme which is expected to perform well if 
 the solution to the convective transport problem is smooth. Spurious
 oscillations may however occur in the case of a rough solution changing 
