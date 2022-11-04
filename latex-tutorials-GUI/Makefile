@@ -29,7 +29,7 @@ install:
 	mv ElmerTutorials.pdf ..
 
 clean:
-	/bin/rm -f *~ .*~ *.log *.aux *.bbl *.blg *.toc *.ilg *.idx *.ind
+	/bin/rm -f *~ .*~ *.log *.aux *.bbl *.blg *.toc *.ilg *.idx *.ind *.out
 	/bin/rm -f */*~ */.*~ */*.aux */*.bbl */*.blg */*.log */*.db
 
 
