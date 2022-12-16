@@ -21,7 +21,7 @@ FUNCTION AddMassFlow( Model, Solver, StiffMatrix, ForceVector, &
 !     INPUT: Linear equation matrix information
 !
 !  INTEGER :: DOFs
-!     INPUT: Number of degrees of freedon of the equation
+!     INPUT: Number of degrees of freedom of the equation
 !
 !  INTEGER :: NORs
 !     INPUT: Length of solution vector i.e. number of rows in matrix

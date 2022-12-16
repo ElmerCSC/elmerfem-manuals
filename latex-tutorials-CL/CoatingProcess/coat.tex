@@ -79,7 +79,7 @@ End
 A tailored free surface solver is used to find the 
 position of the free surface with a given flow field.
 The variable being solved is the displacement of the free surface.
-Relaxation is used to avoid over-shooting during the itaration.
+Relaxation is used to avoid over-shooting during the iteration.
 This solver does not solve any matrix equations. Instead it solves
 the radius from the mass conservation constraint for each node on the
 free surface separately. There is a possibility to do the mapping also 
@@ -126,7 +126,7 @@ Solver 4
 End
 \ttend
 %
-Addiationally there are two solvers for saving the results in a form
+Additionally there are two solvers for saving the results in a form
 that is more useful than plain pictures. The \texttt{SaveScalars} saves
 the scalar values, such as the diameter and force values,
 and the \texttt{SaveLine} saves the free surface.
@@ -166,8 +166,8 @@ End
 \ttend
 
 Five different boundary conditions are needed.
-The origin is a symmetry axis and thefore the radial velocity is 
-set to zero. The axial velovity is the draw velocity.
+The origin is a symmetry axis and therefore the radial velocity is 
+set to zero. The axial velocity is the draw velocity.
 \ttbegin
 Boundary Condition 1
   Name = "Symmetry"

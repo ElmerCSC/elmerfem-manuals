@@ -81,7 +81,7 @@ flow to heat transfer. In order to follow the direction of causality we address 
 priority than the heat solver (default is zero). 	
 
 Here we are quite happy with the default solver settings of the individual equations. 
-However, for the flow solver we change the default proconditioner \texttt{ILU0} to \texttt{ILU1} to 
+However, for the flow solver we change the default preconditioner \texttt{ILU0} to \texttt{ILU1} to 
 enhance convergence (with increased memory consumption). For 3D cases the direct solvers are usually 
 not feasible so it is better to stick with the iterative \texttt{BiCGstab} linear solver. 
 \\

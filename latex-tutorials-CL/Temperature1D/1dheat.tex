@@ -21,7 +21,7 @@ Mathematically the problem we solve is
 \right .
 \end{equation}
 
-Allthough this example is in 1d the same solver code also applies to 2D and 3D
+Although this example is in 1d the same solver code also applies to 2D and 3D
 problems.
 
 \subsection*{Solution procedure}
@@ -47,7 +47,7 @@ ElmerPost
 
 The example Fortran code may be found in the tutorial files under the
 name Poisson.f90.  The example run is defined in 1dheat.sif.
-Only a rough guidline is given here of both of the files, refer to the
+Only a rough guideline is given here of both of the files, refer to the
 files themselves for more details.
 
 All the  equation solvers in Elmer have the following common interface
@@ -109,7 +109,7 @@ REAL(KIND=dp), POINTER :: ForceVector(:)
 ForceVector => StiffMatrix % RHS
 \ttend
 
-The solution vector is obtainable similarily
+The solution vector is obtainable similarly
 \ttbegin
 TYPE(Variable_t), POINTER :: Solution
 Solution => Solver % Variable

@@ -71,12 +71,12 @@ preferable.
 %
 \sifitem{-translate}{Real[DIM]} 
 This option translates the mesh with a given vector by
-simly adding the given values to the original coordinates,
+simply adding the given values to the original coordinates,
 i.e. $\vec{r} := \vec{r} + \vec{r}_0$.
 %
 \sifitem{-rotate}{Real[3]} 
 The mesh may be rotated around the main axis. 
-The rotation is done consequtively in all three angles.
+The rotation is done consecutively in all three angles.
 This feature may be handy in the debugging of some equation --
 in cartesian grids the solution should be rotation invariant.
 %
@@ -88,11 +88,11 @@ The total number of individual copies is their product.
 %
 \sifitem{-clonesize}{Real[DIM]} 
 By default the copies of the mesh are performed so that the 
-new meshes are set directly desides the old ones. This flag may be used to define
+new meshes are set directly beside the old ones. This flag may be used to define
 a larger size for the mesh which enables empty space being left 
 between the meshed.
 %
-\sifitem{-mirrror}{Integer[DIM]} 
+\sifitem{-mirror}{Integer[DIM]} 
 The mesh may be mirrored over the main axis. The arguments 
 tell over which axis the mesh should be mirrored. If all three axis
 are active then the original mesh will be eight times the size of the original one.
@@ -116,7 +116,7 @@ This feature reduces the element order of materials at the interval
 defined by the two parameters. It may be used to lower the element order 
 only in parts of the geometry. For example, in fluid-structure-interaction the 
 fluid could be modeled with linear elements while the 
-stucture might need second order elements.
+structure might need second order elements.
 %
 \sifitem{-increase}{} 
 Increase the element order in all the elements from one to two.
@@ -125,8 +125,8 @@ linear meshes by making the quadratic.
 %
 \sifitem{-pelem}{Integer[3]}
 ElmerGrid usually assumes elements of Lagrange type where 
-the element degree is increased by introducing intermiediate nodes
-in the element. The other option is just to use a higher polynomical basis
+the element degree is increased by introducing intermediate nodes
+in the element. The other option is just to use a higher polynomial basis
 with the existing nodes -- the p-elements. 
 This option is used to make p-elements for materials at the interval given by
 the first two parameters. The desired power is given by the third parameter.
@@ -151,7 +151,7 @@ shapes.
 \sifitem{-partorder}{Real[DIM]} 
 The simple partitioning is done by dividing the elements
 into subgroups. The division is done by first ordering the nodes. This
-keyword is follewed by the normal vector of the desired ordering.
+keyword is followed by the normal vector of the desired ordering.
 %
 \sifitem{-metis}{Integer opt}
 This utility does the partitioning utilizing the Metis library, see
@@ -165,7 +165,7 @@ result from the parallel solution of the matrix equations. To simplify these
 the communication, ElmerGrid does some load-balancing so that each processors
 owns roughly as many shared nodes. Also on the interfaces of more than two
 partitions the ownership is optimized so that nodes cannot be 
-undirectly related to each other in a way that is in conflict with 
+indirectly related to each other in a way that is in conflict with 
 the parallel solution algorithm. 
 
 Note that this option may not be active if the code has been compiled
@@ -191,12 +191,12 @@ and saves the boundary conditions for both sides.
 %
 \sifitem{-bulkbound}{Integer[3]}
 Sometimes the geometry does not include all the necessary boundary conditions. 
-Then this inline parameter may be used to define a new boundatry 
+Then this inline parameter may be used to define a new boundary 
 (first parameter) on the interval of the two given materials.
 %
 \sifitem{-boundbound}{Integer[3]}
 Sometimes the geometry does not include all the necessary boundary conditions. 
-Then this inline parameter may be used to define a new boundatry 
+Then this inline parameter may be used to define a new boundary 
 (first parameter) on the interval of two already existing boundaries.
 This makes it possible to define lines or even single points 
 in 3D geometry that has only surfaces defined.
@@ -207,7 +207,7 @@ Again the advantage may be that the command-file will be more economical as
 if the number of bodies is reduced.
 %
 \sifitem{-boundtype}{Integer[3]}
-Sometimes there is a multitude of sides that may be united with this opition.
+Sometimes there is a multitude of sides that may be united with this option.
 It may be easier to perform the further analysis if the number of sides is not too large.
 For example, in ElmerPost a very lengthy list of boundaries is difficult to visualize.
 %

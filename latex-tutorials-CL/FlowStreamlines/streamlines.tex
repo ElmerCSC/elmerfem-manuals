@@ -22,7 +22,7 @@ First we create a mesh with ElmerGrid. The mesh is defined in
 ElmerGrid 1 2 step
 \ttend
 You may need to compile the StreamSolver yourself. If the Elmer environment is 
-succesfully setup the compilation command should look like
+successfully setup the compilation command should look like
 the following lines, 
 \ttbegin
 elmerf90 -o StreamSolver StreamSolver.f90
@@ -111,7 +111,7 @@ Next set of keywords is for the StreamSolver. More info on keywords is in the El
 Models Manual.
 \begin{itemize}
 \item Name of the flow field variable. The name of the FlowSolves variable is FlowSolution.
-\item Global number of the offset node. 1 is always a safe choise.
+\item Global number of the offset node. 1 is always a safe choice.
 \item Shift the smallest value to zero.
 \item Scale the maximum value to 1.
 \item Use the normal stream function i.e. don't use Stokes stream function.
@@ -144,7 +144,7 @@ The condition 1 is for the lower and upper side of the step
 ($\Gamma_1$,$\Gamma_2$,$\Gamma_3$,$\Gamma_5$ in case definition).
 Here both velocities are zero.
 The condition 2 is for the output edge ($\Gamma_4$). Here vertical velocity is zero. 
-The condition 3 is for the input edge ($\Gamma_6$). Here horzontal velocity is 1 and 
+The condition 3 is for the input edge ($\Gamma_6$). Here horizontal velocity is 1 and 
 vertical velocity is zero.
 \ttbegin
 Boundary Condition 1

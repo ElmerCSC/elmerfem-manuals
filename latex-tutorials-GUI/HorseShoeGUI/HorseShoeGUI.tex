@@ -129,7 +129,7 @@ need to know the indexes of each body.
 \ttbegin
 Model
   Set body properties
-    Choose air -> set Materail to Air
+    Choose air -> set Material to Air
     Choose curved part of horseshoe -> set Material to Iron
     Choose upper straight part of horseshoe -> set Material to IronPlus
     Choose lower straight part of horseshoe -> set Material to IronMinus
@@ -210,6 +210,6 @@ masked away to demonstrate the well known field shape in the free space.}\label{
 The resulting z-component of the vector potential is depicted in Figure~\ref{fg:HorseShoeA}.
 The corresponding postprocessed magnetic field intensity is depicted in Figure~\ref{fg:HorseShoeB}. 
 Note that the derived fields is enforced to be continuous by default which is not 
-optimal for visualization. For optimal results use Discontinous Galerkin (DG) method
+optimal for visualization. For optimal results use Discontinuous Galerkin (DG) method
 for the postprocessing. Note that when using DG the postprocessing should be done with .vtu files and 
 Paraview. The postprocessing tools of Elmer cannot deal with elementwise-fields. 

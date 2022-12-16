@@ -61,9 +61,9 @@ ElmerGrid 14 2 TEAM7.msh
  
 \subsection*{Necessary Solver Modules} 
  
-The TEAM7 magnetodynamics problem can be solved using two modules: the \textit{Coil Current Solver} and the \textit{WhitneyAVSolver}.  The field solution can be retreived using the \textit{MagnetoDynamicsCalcFields} module.\\
+The TEAM7 magnetodynamics problem can be solved using two modules: the \textit{Coil Current Solver} and the \textit{WhitneyAVSolver}.  The field solution can be retrieved using the \textit{MagnetoDynamicsCalcFields} module.\\
 
-The \textit{Coil Current Solver} solves for the irrotational electric field associated with the gradient of the electric scalar potential.  Hence,  the current density is calculated and may be used as an external source (Body Force) when solving the magnetodynamics problem.  The magnetodynamics problem is then solved throughout the whole domain (coil,  plate and air) using the  \textit{WhitneyAVSolver} and the field solution such as the magnetic flux density,  magnetic field strenth among other variables can be obtained for postprocessing visualization using the \textit{MagnetoDynamicsCalcFields} module.
+The \textit{Coil Current Solver} solves for the irrotational electric field associated with the gradient of the electric scalar potential.  Hence,  the current density is calculated and may be used as an external source (Body Force) when solving the magnetodynamics problem.  The magnetodynamics problem is then solved throughout the whole domain (coil,  plate and air) using the  \textit{WhitneyAVSolver} and the field solution such as the magnetic flux density,  magnetic field strength among other variables can be obtained for postprocessing visualization using the \textit{MagnetoDynamicsCalcFields} module.
 
 
 

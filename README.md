@@ -1,8 +1,8 @@
 ElmerGUI manual and tutorials
 =============================
 
-* This repository includes the source files for building part of the Elmer doumentation.
-* Currently ElmerGUI Manual and Elmer Tutorials are provided.  The other parts of the domentation are not yet in open repository.
+* This repository includes the source files for building part of the Elmer documentation.
+* Currently ElmerGUI Manual and Elmer Tutorials are provided.  The other parts of the documentation are not yet in open repository.
 * The documentation here is licensed under Creative Commons Attribution-NonCommercial.
 
 Content of the directories
@@ -14,7 +14,7 @@ Content of the directories
 * latex-tex-template - a template in TeXworks for building new tutorials
 * latex-tutorials-CL - latex input files to build tutorials manual without graphical user interface (command-line usage, files explained)
 * latex-tutorials-GUI - latex input files to build tutorials manual where ElmerGUI is used
-* tutorials-CL-files - sample input output files related to the tutorials wihout using the graphical user interface 
+* tutorials-CL-files - sample input output files related to the tutorials without using the graphical user interface 
 * tutorials-GUI-files - sample input output files related to using ElmerGUI for the tutorials
 
 Building in Linux
