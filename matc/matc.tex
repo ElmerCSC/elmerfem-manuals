@@ -124,7 +124,7 @@ otherwise if they are of the same size or at least one of them is scalar, an ele
 \ttitem{l=a$|$b} elementwise logical or of a and b. 
 \ttitem{c=a?b} reduction: set values of a where b is zero to zero. 
 \ttitem{b=n m \% a} resize a to matrix of size n by m. 
-\ttitem{b=a} assing a to b. 
+\ttitem{b=a} assigning a to b. 
 \sifend
 
 
@@ -207,19 +207,19 @@ Execute commands from file given name.
 First form of the command gives list of available commands. Second form gives help on specific routine. 
 
 \ttitem{str = fread(fp,n)}
-Read n bytes from file given by fp. File pointer fp shoud have been obtained from a call to fopen or freopen, or be the standard input file stdin. Data is returned as function value.  \\
+Read n bytes from file given by fp. File pointer fp should have been obtained from a call to fopen or freopen, or be the standard input file stdin. Data is returned as function value.  \\
 SEE ALSO: fopen,freopen,fgets,fscanf,matcvt,cvtmat. 
 
 \ttitem{vec = fscanf(fp,fmt)}
-Read file fp as given in format. Format fmt is equal to C-language format. File pointer fp shoud have been obtained from a call to fopen or freopen, or be the standard input. \\
+Read file fp as given in format. Format fmt is equal to C-language format. File pointer fp should have been obtained from a call to fopen or freopen, or be the standard input. \\
 SEE ALSO: fopen,freopen,fgets,fread,matcvt,cvtmat. 
 
 \ttitem{str = fgets(fp)}
-Read next line from fp. File pointer fp shoud have been obtained from a call to fopen or freopen or be the standard input. \\ 
+Read next line from fp. File pointer fp should have been obtained from a call to fopen or freopen or be the standard input. \\ 
 SEE ALSO: fopen,freopen,fread,fscanf,matcvt,cvtmat. 
 
 \ttitem{n = fwrite(fp,buf,n)}
-Write n bytes from buf to file fp. File pointer fp shoud have been obtained from a call to fopen or freopen or be the standard output (stdout) or standard error (stderr). Return value is number of bytes actually written. 
+Write n bytes from buf to file fp. File pointer fp should have been obtained from a call to fopen or freopen or be the standard output (stdout) or standard error (stderr). Return value is number of bytes actually written. 
 Note that one matrix element reserves 8 bytes of space. \\
 SEE ALSO: fopen,freopen,fputs,fprintf,matcvt,cvtmat. 
 
