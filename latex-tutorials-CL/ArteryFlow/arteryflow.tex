@@ -78,7 +78,7 @@ is to the midplane of the wall (inner radius + half of the wall thickness).
 The overall FSI iteration scheme is started by one dimensional solver
 ({\tt OutletCompute}, see the solver manual), after that Navier-Stokes, 
 elasticity and mesh update solvers are run.  Steady state convergence tolerance
-is set equalt to 1.0E-4 for each of the solvers.  The nonlinearities
+is set equal to 1.0E-4 for each of the solvers.  The nonlinearities
 of each of the solvers are computed within the FSI scheme loop, that is,
 the flag {\tt Nonlinear System Max Iterations} is set equal to 1.
 Artificial compressibility coefficient is computed by the equation
