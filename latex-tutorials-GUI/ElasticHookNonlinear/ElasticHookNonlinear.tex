@@ -1,4 +1,4 @@
-\chapter{Non-linear elasticity equation --3D -- Loaded elastic curve}
+\chapter{Non-linear elasticity equation -- 3D -- Loaded elastic curve}
 
 \modinfo{Directory}{ElasticHookNonlinear}
 \modinfo{Solvers}{\Idx{ElasticSolve}}
@@ -13,7 +13,7 @@ An elastic U-shaped cylinder is pressed from its ends such that
 the object faces large displacements. The material properties of
 stainless steel are used. Problem is to gradually increase the displacement
 and visualize the increase of stresses. The problem requires the use
-of solver capable of dealing with large displacement.
+of a solver capable of dealing with large displacements.
 
 
 \subsection*{Solution procedure}
@@ -46,10 +46,10 @@ After we have the mesh we start to go through the Model menu from the top to bot
 In the Setup we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
 The simulation is carried as a transient problem in 3-dimensional Cartesian
-coordinates. The inertial forces of no importance so we could as well scan through a set of steady state
+coordinates. The inertial forces are of no importance so we could as well scan through a set of steady state
 loading conditions. We choose the time step such that the total time being simulated is 1~s.
 We assume that the original mesh (with diameter 0.6 is given units of cm. Hence we need to scale the
-system down to work in SI units. 
+system down to work in SI units of meters. 
 \ttbegin
 Model
   Setup 
@@ -61,7 +61,7 @@ Model
 
 In the Equation section we choose the relevant equations which in this case only includes 
 the \texttt{Nonlinear elasticity} equation.  We have just one body and therefore its easy to assign 
-the Equation and Material to it directly.  We can use linear system solvers we are happy to 
+the Equation and Material to it directly.  We can use linear system solvers and we are happy to 
 use the defaults. One may however, try out different preconditioners (ILU1,\ldots) or more 
 efficient iterative methods (BiCGStabl), for example.
 \ttbegin
@@ -78,7 +78,7 @@ Model
     OK
 \ttend        
 Here we choose the stainless steel from the material library.
-You may click trough the material parameters of the various solvers to ensure that
+You may click through the material parameters of the various solvers to ensure that
 the properties are indeed as they should be. Any consistent set of units may be used in Elmer.
 The natural choice is of course to perform the computations in SI units. 
 \ttbegin
@@ -98,7 +98,7 @@ We need to type now boundary conditions that we will later assign with the mouse
 We set boundary conditions for both ends of the hook such that
 they close with respect to each other with time. The distance travelled in 1~s will be set to
 0.006~m i.e. to same as the radius. The other displacement components are set to zero.  
-To type in the multiline expressions for the boundary condition just press \texttt{Enter}
+To type in the multiline expressions for the boundary condition just press \texttt{Enter} in the 
 \texttt{Displacement 1} checkbox.
 Note that the semicolon is an alternative separator
 to line break. 
@@ -186,8 +186,8 @@ We need to enforce rigid body rotations to the ends of the mesh. The following
 types of Dirichlet conditions need to be implemented
 \begin{equation}
   \begin{array}{ll}
-    u_x = & ( \cos(\phi) - 1)x - \sin(\phi)y ) \\
-    u_y = & ( \cos(\phi) - 1)y + \sin(\phi)x )     
+    u_x = & ( \cos(\phi) - 1)x - \sin(\phi)y \\
+    u_y = & ( \cos(\phi) - 1)y + \sin(\phi)x
   \end{array}
 \end{equation}
 These can be set using the following \texttt{MATC} function
