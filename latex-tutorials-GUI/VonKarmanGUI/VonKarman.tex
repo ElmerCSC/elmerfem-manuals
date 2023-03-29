@@ -9,11 +9,18 @@
 \subsection*{Case definition}
 
 %\begin{flushleft}
-This tutorial is about simulating the development of vortex shedding i.e. the von Karman instability. 
-The geometry is a tube with a circular obstacle. 
-For more details on the problem look at the benchmark case definition by
-by M. Sch�fer and S. Turek in \textit{"Benchmark computations of laminar flow around a cylinder"}.
+This tutorial is about simulating the development of \Idx{vortex shedding} i.e. the \Idx{von Karman} instability. 
+For full details on the problem look at the benchmark case definition in the 1996 article
+by M. Sch{\"a}fer and S. Turek, \textit{"Benchmark computations of laminar flow around a cylinder"}.
 
+The geometry is a 2D channel with a circular obstacle.  The channel height is 0.41 meters and the channel length is 2.2 meters.  The circular obstacle is 0.1 meters in diameter, located at x = 0.2 meters
+and y = 0.2 meters.  The obstacle is slightly off centerline of the channel.
+
+The flow enters from x = 0 and exits at x = 2.2 meters.   The upper and lower walls and the circular obstacle are set to the no-slip condition, U = V = 0.0.  The inlet flow has a parabolic profile, with a maximum flow velocity at centerline of 1.5 m/s.  The mean inlet flow velocity is then 1.0 m/s.
+
+The \Idx{Reynolds Number} equals the mean velocity times the obstacle diameter, divided by the
+kinematic viscosity, Re = $U*D / nu$.  Re = $1.0~m/s * 0.1~m / 0.001~m^2/s = 100$.  
+The fluid density equals $1.0~kg/m^3$.
 
 \subsection*{Solution procedure}
 
@@ -22,8 +29,19 @@ The mesh is given in 2d netgen format in file \texttt{circle\_in\_channel.in2d},
 File 
   Open -> circle_in_channel.in2d
 \ttend
-You should get a mesh consisting of 749 nodes and 1328 triangles. This
-is a rather sparse mesh. To increase the element number 
+You should get a mesh consisting of 749 nodes and 1328 triangles,
+as shown in Figure~\ref{fg:vonkarman_mesh}.  Note the increased mesh density near the
+circular obstacle.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{vonkarman_mesh}
+\caption{Computational mesh of the problem.}
+\label{fg:vonkarman_mesh}
+\end{figure}
+
+This is a rather sparse mesh. To decrease the element size we can refine the mesh using
+ElmerGUI commands.
 \ttbegin
 Mesh 
  Configure
@@ -31,21 +49,18 @@ Mesh
 Mesh 
   Remesh
 \ttend
-This mesh includes 3464 nodes and 6506 triangles. The mesh is presented in figure~\ref{fg:vonkarman_mesh}.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=150 mm, height=55 mm]{vonkarman_mesh}
-\caption{Computational mesh of the problem.}\label{fg:vonkarman_mesh}
-\end{figure}  
-
+This refined mesh now includes 3464 nodes and 6506 triangles.
 
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the Setup we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
 The simulation is carried out in 2-dimensional Cartesian
 coordinates. 2nd order bdf time stepping method is selected with 200 steps
-and we want the total simulation time to be 8 seconds. 
+and we want the total simulation time to be 8 seconds.  Rather than calculating the
+time step manually, we will use \Idx{MATC} to perform the calculation.  MATC statements
+that start with a `\$' will be evaluated once at the program start.  When added to an
+ElmerGUI project the statement should be entered without internal spaces.
+
 \ttbegin
 Model
   Setup 
@@ -54,7 +69,7 @@ Model
     Time Stepping Method = bdf
     BDF Order = 2
     Time Step Intervals = 200
-    Time Step Sizes = $ 8/200
+    Time Step Sizes = $8/200
 \ttend
 For the solver specific settings we are quite happy to use the defaults. However, we relax a little bit the 
 convergence tolerances to get speedier simulation.
@@ -98,6 +113,11 @@ Additionally for the inlet the vertical velocity component is assumed zero.
 The circle and the lower and upper walls are given the no-slip treatment.
 For the outlet only the vertical component is set to zero since the default discretization
 weakly imposes a zero pressure condition if the normal velocity component is not defined.
+
+MATC statements that start with `MATC' will be evaluated repeatedly while the simulation
+is running.  For more details on using MATC, refer to `GetStartedElmer.pdf' that contains
+the old Elmerfem wiki explanation.
+
 \ttbegin
 Model
   BoundaryCondition
@@ -125,6 +145,7 @@ Model
 The conditions may also be assigned to boundaries in the Boundary condition menu, or 
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
+
 \ttbegin
 Model
   Set boundary properties
@@ -132,7 +153,6 @@ Model
     Choose both horizontal walls and circle -> set boundary condition Walls
     Choose outlet -> set boundary condition Outlet
 \ttend
-
 
 For the execution 
 ElmerSolver needs the mesh files and the command file. We have now basically defined
@@ -171,7 +191,7 @@ Run
 Due to the number of the time steps the simulation will take a few minutes.
 You may inspect the results with Paraview as the time-steps are computed, or
 wait until all time steps have been computed.
-You need to reload the files if number of time steps are increased.
+You need to reload the files if the number of time steps are increased.
 
 In Figure \ref{fg:vonkarman_flow} the velocity field is presented for three different time steps.
 The maximum velocity in the system should be about 2.1724~m/s. Note that here
@@ -191,7 +211,7 @@ The Reynolds number in this case is around 100 resulting to unsteady flow.
 The critical Reynolds number is around 90 and 
 reducing the flow velocity so that Reynolds number becomes, say 20, makes the 
 system to possess a steady-state solution. On the other hand, increasing the velocity will make the von Karman vortices
-even more pronounced until they break into fully chaotic motion. This finite element mesh will allow only 
+even more pronounced until they break into fully chaotic motion. This specific finite element mesh will allow only 
 a minor increase in Reynolds number to be able to capture the phenomena. 
 
 \hfill
