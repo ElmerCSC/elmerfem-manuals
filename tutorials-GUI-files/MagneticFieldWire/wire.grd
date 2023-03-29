@@ -1,4 +1,10 @@
 ***** ElmerGrid input file for structured grid generation *****
+! wire surrounded by air
+! wire radius is 1 mm
+! air outer radius is 5 mm
+! wire/air length is 10 mm
+! axi-symmetric, x-y plane is rotated around the y-axis
+! convert from millimeters to meters, Coordinate Scaling = 0.001
 Version = 210903
 Coordinate System = Cartesian 2D
 Subcell Divisions in 2D = 3 1 
