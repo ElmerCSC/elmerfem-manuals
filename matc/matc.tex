@@ -10,6 +10,61 @@ package it can be used in defining expressions in the command file of ElmerSolve
 may be evaluated either while the command file is read in, or at the time of execution.
 MATC may also be used in the command window of ElmerPost.   
 
+\section{Basic Usage}
+The old Elmerfem Wiki had a nice description of how to use MATC with Elmer, and the contents
+are included in this section.
+
+\subsection{Embedding in sif files}
+
+There are two options for embedding MATC in Solver Input Files. Variables can be defined as
+
+\begin{verbatim}
+    gravity = Real $ 0 0 -1 * 9.81
+\end{verbatim}
+
+\noindent which would be evaluated once at program start. or by
+
+\begin{verbatim}
+    gravity = Real MATC 0 0 -1 * 9.81
+\end{verbatim}
+
+\noindent which is evaluated every time the gravity variable is used.
+
+\subsection{Operator Precedence}
+
+The mathematical operations are evaluated from high to low precedence and within each level from left to right (everything as usual).
+
+\noindent The most important operators ordered from high to low precedence:
+
+\begin{verbatim}
+    () (parentheses)
+    ' ' (SPACE as a separator for vector components)
+    ^ (power)
+    */
+    +-
+\end{verbatim}
+
+\subsection{Scalars and Vectors}
+
+Vectors in MATC are written by separating their entries with spaces. Since the space forming vectors has a higher precedence than the algebraic operations
+
+\begin{verbatim}
+    min(3*4 2) = min(12 6) = 6
+\end{verbatim}
+
+\noindent while
+
+\begin{verbatim}
+    min((3*4) 2) = min(12 2) = 2
+\end{verbatim}
+
+\noindent this can lead to strange behaviour of boundary conditions if the parentheses are forgotten. 
+
+\subsection{Calling MATC from the command line}
+
+MATC can be called from the command line by entering \begin{verbatim}$ELMER_HOME/bin/matc\end{verbatim} Under Unix/Linux (and Windows) this should be part of your \$PATH and entering `matc' on the command line should suffice.\\
+
+\noindent To quit using command line MATC, type \texttt{quit}, or just close the command prompt window.
 
 \section{MATC Variables}
 
