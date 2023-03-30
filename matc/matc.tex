@@ -30,6 +30,16 @@ There are two options for embedding MATC in Solver Input Files. Variables can be
 
 \noindent which is evaluated every time the gravity variable is used.
 
+\subsection{Line terminations}
+
+There are two acceptable line terminators in MATC.  As shown above, simply entering a line break at
+the end of the line is the first method.  The second method is shown below, where a semi-colon
+is an alternative terminator, allowing both entries to appear on one line.
+
+\begin{verbatim}
+   Force 1 = Variable Coordinate 2; Real MATC "(1-tx/4)*200000"
+\end{verbatim}
+
 \subsection{Operator Precedence}
 
 The mathematical operations are evaluated from high to low precedence and within each level from left to right (everything as usual).
