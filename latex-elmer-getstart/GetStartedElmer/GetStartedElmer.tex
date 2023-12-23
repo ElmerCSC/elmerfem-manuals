@@ -448,7 +448,7 @@ There are many videos on Youtube about Elmer, here's a link:\\
 
 \chapter{Elmer and Parallel Solutions}
 
-Running Elmer solutions in parallel is not difficult, whether run from a command prompt or from within ElmerGUI.  As always, make sure you have a project that runs to completion in serial, with a single processor, then you can convert to a parallel run.
+Running Elmer solutions in parallel is not difficult, whether run from a command prompt or from within ElmerGUI.  As always, make sure you have a project that runs to completion in serial, with a single processor, then you can convert to a parallel run.  Tip: set up your test project using paths and directories using hyphens and underscores instead of spaces.  Refer to section  \ref{spaces-in-path} \texttt{Spaces in path to project} for more details.
 
 \section{Test serial operation}
 
@@ -560,13 +560,13 @@ Well, that was easy.  Now that ElmerGUI has stored the parallel settings in the 
 \caption{Sif and Vtu files}\label{fg:results-parallel}
 \end{figure}
 
-\section{Spaces in path to project}
+\section{Spaces in path to project} \label{spaces-in-path}
 
 With verified settings and example tutorial files for practice, what could possibly go wrong?  Let's check to see what happens if there are spaces in the path to your ElmerGUI folder.
 
 Start ElmerGUI and \texttt{Load Project} from the folder \texttt{FlowStepGUI - Copy} that we created before starting `Test serial operation'.  Note that there are two spaces in the directory name.  Once the project has loaded, click on Run, Parallel Settings, you should see the settings window as shown in Figure~\ref{fg:parallel-settings}.  Update the parallel settings, as needed.  Verify that the box \texttt{Use parallel solver} IS checked.  Click on the \texttt{Accept} button at the bottom of the window.
 
-Click on the right green arrow to `Generate and save sif, save project,  then run the solver'.  The solver log window  should pop up and the solver will stop early with errors, as shown in to Figure~\ref{fg:spaces}. 
+Click on the right green arrow to `Generate and save sif, save project,  then run the solver'.  The solver log window  should pop up and the solver will stop early with errors, as shown in Figure~\ref{fg:spaces}.
 
 \begin{figure}[H]
 \centering
@@ -574,7 +574,7 @@ Click on the right green arrow to `Generate and save sif, save project,  then ru
 \caption{Spaces in the directory name}\label{fg:spaces}
 \end{figure}
 
- The key error message is `WARNING:: LoadMesh: Requested mesh > ./. < in partition 4 does not exist!'.  Remove the spaces from the directory name, and the errors will go away.  The problem is that the call to ElmerGrid uses the path to the folder, up to the first space.  If you look at the example folders, you will see there are now four folders, and the fourth folder will contain the partitioned mesh files.
+ The key error message is `WARNING:: LoadMesh: Requested mesh > ./. < in partition 4 does not exist!'.  Remove the spaces from the directory name, and the errors will go away.  The problem is that the call to ElmerGrid uses the path to the folder, up to the first space.  If you look at the example folders, you will see there are now four folders, and the fourth folder will contain the partitioned mesh files.  The solution is to replace all spaces in your path and directory names with either hyphens or underscores.  ElmerGrid will then be able to find and partition the mesh.
 
 
 \section{Information about Parallel}
