@@ -1,0 +1,87 @@
+! A reference case where a cantilever is subject to a constant pressure load f.
+!
+! For parameters EI/(GAL^2) = eps we expect the deflection and the rotation at the 
+! free end to be w(L) = L^4 f (1 + 4 eps)/(8 EI) and theta(L) = L^3 f/(6 EI).
+! Here the SaveScalars module is set to output the variable values at the end. 
+
+! 
+Header
+  Mesh DB "." "cantilever"
+End
+
+!
+Simulation
+  Max Output Level = 5
+  Coordinate System = Cartesian 3D
+  Simulation Type = Steady
+  Output Intervals = 1
+  Steady State Max Iterations = 1
+  Post File = "cantilever.vtu"
+End
+
+Body 1
+  Equation = 1
+  Material = 1
+  Body Force = 1
+End
+
+Material 1
+ Youngs Modulus = Real 2.0e-1
+ Shear Modulus = Real 1.0
+
+ ! Specify moment of area I_k:
+ Second Moment of Area 2 = Real 1.0
+ Second Moment of Area 3 = Real 1.0
+ ! Specify area of the cross section A:
+ Cross Section Area = Real 1.0
+ ! Specify the shear correction factor J_T:
+ Torsional Constant = Real 1.0
+ ! The density is used only in transient cases:
+ Density = 2700.0
+End
+
+! specify the constant pressure load
+Body Force 1
+  Body Force 1 = 0.0
+  Body Force 2 = 1.0e-2
+  Body Force 3 = 0.0
+End
+
+Equation 1 :: Active Solvers(1) = 1
+
+! specify details of the solver. As this is a simple linear problem, direct is Ok.
+Solver 1
+  Equation = "Timoshenko Beam Equations"
+  Procedure = "BeamSolver3D" "TimoshenkoSolver"
+
+  Linear System Solver = "Direct"
+End
+
+! -------------------------------------------------------------------------
+! The following can be used to save the deflection and the rotation
+! at the end:
+! -------------------------------------------------------------------------
+Solver 2
+  Equation = "Save Scalars"
+  Exec Solver = After Timestep
+  Procedure = "SaveData" "SaveScalars"
+  Filename = cantilever.dat
+  Variable 1 = U 1
+  Variable 2 = U 2
+  Variable 3 = U 3
+  Variable 4 = Theta 1
+  Variable 5 = Theta 2
+  Variable 6 = Theta 3
+  Save Points(1) = 2
+End
+
+! fix the first node in place
+Boundary Condition 1
+  Target Nodes(1) = 1
+  U 1 = Real 0.0
+  U 2 = Real 0.0
+  U 3 = Real 0.0
+  Theta 1 = Real 0.0
+  Theta 2 = Real 0.0
+  Theta 3 = Real 0.0
+End
