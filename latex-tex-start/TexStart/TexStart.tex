@@ -339,7 +339,47 @@ Be sure to visit this website:\\
 
 And visit the starter page:\\
 
-\url{https://www.ctan.org/starter}
+\url{https://www.ctan.org/starter}\\
+
+What if you want to include an example file?
+
+\chapter{Includes}
+
+One method of showing an input file is to simply take a screenshot and include the graphic image as described in the chapter on Figures.  The downside to using a graphic image is that the user can't copy and paste the code contents.\\
+
+Another method of showing an input file is to include the file using the \texttt{verbatim} command, which is described in this section.  Including a file using the \texttt{verbatim} command allows the user to copy and paste the source code from the pdf document.  Note that the font size of the included file may need to be reduced in order to fit within the margins of the page.\\
+
+\section{Include Gmsh.geo Files}
+
+Gmsh software is very useful for building FEM meshes for use with Elmer.  Including an example gmsh input file helps illustrate  gmsh usage.\\
+
+Include a gmsh.geo file using the \texttt{verbatim} command.  Note that the input file is displayed without any word wrapping, and long lines will be lost due to truncation.  When creating the input file, if you limit the line length to about 70 to 80 characters, then the entire line will be displayed.
+
+\verbatiminput{TexStart/gmsh.geo}
+
+To include a gmsh.geo file with longer line lengths, up to qbout 80 to 90 characters, use the commands \texttt{begin{small}} and  \texttt{end{small}} around the \texttt{verbatim} command.
+
+\begin{small}
+\verbatiminput{TexStart/gmsh.geo}
+\end{small}
+
+To include a gmsh.geo file with even longer line lengths, up to qbout 90 to 100 characters, use the commands \texttt{begin{footnotesize}} and  \texttt{end{footnotesize}} around the \texttt{verbatim} command.
+
+\begin{footnotesize}
+\verbatiminput{TexStart/gmsh.geo}
+\end{footnotesize}
+
+\section{Include Fortran.F90 Files}
+
+Including Fortran source code follows the same pattern as including gmsh.geo files, by using the \texttt{verbatim} command.  Note that the input file is displayed without any word wrapping, and long lines will be lost due to truncation.  When creating the input file, if you limit the line length to about 70 to 80 characters, then the entire line will be displayed.
+
+\verbatiminput{TexStart/Fortran.F90}
+
+To include a Fortran.F90 file with even longer line lengths, up to qbout 90 to 100 characters, use the commands \texttt{begin{footnotesize}} and  \texttt{end{footnotesize}} around the \texttt{verbatim} command.
+
+\begin{footnotesize}
+\verbatiminput{TexStart/Fortran.F90}
+\end{footnotesize}
 
 \chapter{Notes}
 
