@@ -1,7 +1,7 @@
 \chapter{Operator Splitting Ability}
 
 \modinfo{Solvers}{\Idx{HeatSolve}} 
-\modinfo{Tools}{\Idx{ElmerFront}} 
+\modinfo{Tools}{\Idx{ElmerFront} (historical), editor}
 \modinfo{Dimensions}{2D, Steady-state}
 
 \subsection*{Problem description}
@@ -33,6 +33,11 @@ and $f$ is the heat source. It is assumed that density
 and heat conductivity are constants. 
 
 \subsection*{Solution procedure}
+
+The procedure below was written for ElmerFront, which has since been
+discontinued. The menu commands are retained as a historical description of
+the original workflow. The equivalent case definition for current Elmer is
+given in \texttt{os-example.sif} in the same tutorial directory.
 
 \begin{itemize}
 \item Start Elmer in the desired directory with the command
@@ -92,11 +97,9 @@ starts the solver.
 \ttbegin
 Run -> Solver 
 \ttend
-\item After the solution is done, view the results by selecting from the Run
-menu item Postprocessor. 
-\ttbegin
-Run -> Postprocessor 
-\ttend
+\item After the solution is done, view the results by opening the generated
+VTU file in ParaView (or another VTK-based viewer). ElmerPost has been
+discontinued.
 \item To save the created model, select from the File menu item Save 
 model file. 
 \ttbegin

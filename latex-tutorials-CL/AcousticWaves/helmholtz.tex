@@ -2,15 +2,16 @@
 
 \modinfo{Directory}{AcousticWaves}
 \modinfo{Solvers}{\Idx{HelmholtzSolve}} 
-\modinfo{Tools}{\Idx{ElmerFront}} 
+\modinfo{Tools}{\Idx{ElmerGrid}, editor}
 \modinfo{Dimensions}{2D, Harmonic}
 
 
 \subsection*{Introduction}
 
-Note: this case cannot be performed as of today since ElmerFront is
-since long obsolete. To mimic the ideas look at files domain.grd and
-helmholtz-new.sif to try to do the case without ElmerFront.
+Note: this case cannot be performed with ElmerFront, which has since been
+discontinued. The original ElmerFront workflow is described below only as
+historical documentation. The current command-line version uses the files
+domain.grd and helmholtz-new.sif:
 
 To run the updated case just say:
 \ttbegin
@@ -96,6 +97,10 @@ boundary.
 
 \subsection*{Solution procedure}
 
+The procedure below is the original ElmerFront workflow. It is retained as a
+historical description; use the command-line procedure given at the beginning
+of this chapter to run the case with current Elmer.
+
 \begin{itemize}
 
 \item Before starting Elmer copy the geometry file ({\tt domain.egf}) to the 
@@ -142,11 +147,9 @@ edges on each boundary and then create the mesh by pressing
 
 \item The problem may now be solved by selecting Solver in the Run menu.
 
-\item After the solution is done, view the results by selecting the
-Postprocessor from the Run menu.
-\ttbegin
-Run -> Postprocessor
-\ttend
+\item After the solution is done, view the results by opening the file
+{\tt helmholtz.vtu} in ParaView (or another VTK-based viewer). ElmerPost has
+been discontinued.
 \item To save the created model, select Save model file from the File menu.
 \ttbegin
 File -> Save model file
@@ -160,7 +163,10 @@ File -> Save model file
 
 Using a mesh consisting of 3900 (quadratic) elements with 7601 nodes
 the difference of the maximum and the minimum value of the pressure 
-is found to be $\Delta p \approx 0.205$
+was found in the original run to be $\Delta p \approx 0.205$. The pressure
+field is written to {\tt helmholtz.vtu} and can be inspected with ParaView;
+the pressure results included with the tutorial files were rendered with the
+discontinued ElmerPost program.
 
 
    

@@ -21,7 +21,7 @@ Simulation
   Binary Output = Logical True
 
   Output File = "diffusion1.res"
-  Post File = "diffusion1.ep"
+  Post File = "diffusion1.vtu"
 
   Output Version Numbers = Logical True
   Max Output Level = 32

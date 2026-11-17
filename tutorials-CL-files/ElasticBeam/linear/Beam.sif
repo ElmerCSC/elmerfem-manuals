@@ -18,7 +18,7 @@
 
 Header
   CHECK KEYWORDS Warn
-  Mesh DB "MESHDIR" "mesh1"
+  Mesh DB "." "beam"
   Include Path ""
   Results Directory ""
 End
@@ -37,10 +37,7 @@ Simulation
 
   Solver Input File = "Beam.sif"
   Output File = "Beam.dat"
-  Post File = "Beam.ep"
-  Mesh Input File
-    File "Beam.mif"
-
+  Post File = "Beam.vtu"
 End
 
 Constants

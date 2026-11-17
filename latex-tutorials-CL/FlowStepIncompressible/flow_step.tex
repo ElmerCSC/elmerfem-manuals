@@ -5,14 +5,14 @@
 
 \modinfo{Directory}{FlowStepIncompressible}
 \modinfo{Solvers}{\Idx{FlowSolve}}
-\modinfo{Tools}{\Idx{ElmerFront}}
+\modinfo{Tools}{\Idx{ElmerFront} (historical), editor}
 \modinfo{Dimensions}{2D, Steady-state}
 
 
 \subsection*{Case definition}
 
 A fluid, flowing past a step (see figure~\ref{fg:struct2}), has the density
-1~kg/m$³$ and viscosity 0.01~kg/ms. The velocity of the fluid on the 
+1~kg/m$ï¿½$ and viscosity 0.01~kg/ms. The velocity of the fluid on the
 incoming boundary $\Gamma_6$ in the x-direction is 1~m/s and in 
 the y-direction 0~m/s (see figure~\ref{fg:struct2}). On the outgoing boundary 
 $\Gamma_4$ the velocity is 0~m/s in the y-direction and the pressure
@@ -51,6 +51,13 @@ $p$ is the pressure. It is assumed that the density and viscosity are
 constants. 
 
 \subsection*{Solution procedure}
+
+The workflow below was written for ElmerFront, which has since been
+discontinued. The menu commands are retained as a historical description of
+the original procedure. The shipped file \texttt{StepFlow.sif} contains the
+corresponding case definition, but its mesh was produced from the ElmerFront
+geometry and cannot be regenerated with the current tools. The second part of
+this tutorial shows the command-line route using ElmerGrid.
 
 \begin{itemize}
 \item Start ElmerFront.
@@ -100,11 +107,9 @@ starts the solver.
 \ttbegin
 Run -> Solver 
 \ttend
-\item After the solution is done, view the results by selecting from the Run
-menu item Postprocessor. 
-\ttbegin
-Run -> Postprocessor 
-\ttend
+\item After the solution is done, view the results by opening the file
+{\tt StepFlow.vtu} in ParaView (or another VTK-based viewer). ElmerPost has
+been discontinued.
 \item To save the created model, select from the File menu item Save 
 model file. 
 \ttbegin
@@ -156,9 +161,8 @@ structure. ElmerGrid transforms this file into Elmer mesh files
 
 \subsection*{Solution procedure}
 
-The problem might be solved using ElmerFront by reading an external
-mesh into the program but here instructions for command line usage of
-Elmer are given.
+The problem can also be solved with ElmerGUI, but here instructions for
+command line usage of Elmer are given.
 \begin{itemize}
 \item First generate mesh with ElmerGrid with the following command.
 \ttbegin 
@@ -198,7 +202,8 @@ Boundary Condition 3
   Velocity 2 = 0
 End
 \ttend
-\item To solve the problem run the solver by typing {\tt Solver}. 
+\item To solve the problem run the solver by typing {\tt ElmerSolver}. The
+results are written to {\tt Step.vtu}, which can be opened in ParaView.
 \end{itemize}
 
 

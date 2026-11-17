@@ -14,7 +14,7 @@ Simulation
   Output Intervals(1) = 1 
   Steady State Max Iterations = 1
   Output File = File "4_holes.result"
-  Post File =   File "4_holes.ep"
+  Post File =   File "4_holes.vtu"
 End
 
 Solver 1

@@ -6,7 +6,7 @@
 
 
 \modinfo{Solvers}{\Idx{StressSolve}}
-\modinfo{Tools}{\Idx{ElmerFront}}
+\modinfo{Tools}{\Idx{ElmerGrid}, editor}
 \modinfo{Dimensions}{2D, Steady-state}
 
 \subsection*{Case definition}
@@ -45,8 +45,21 @@ surface traction and $n$ is the outward unit normal to the boundary.
 
 \subsection*{Solution procedure}
 
+The solution procedure described in this section was originally written for
+ElmerFront, which has since been discontinued. The menu commands are retained
+below as a description of the original workflow. The same case can be run with
+current Elmer from the command line: the shipped file \texttt{beam.grd} defines
+the beam as a structured mesh with the boundary numbering used by
+\texttt{Beam.sif}. Generate the mesh and solve the case with
+\ttbegin
+ElmerGrid 1 2 beam.grd
+ElmerSolver
+\ttend
+The material, equation and boundary condition definitions produced by the menu
+commands below are already contained in \texttt{Beam.sif}.
+
 \begin{itemize}
-\item Start ElmerFront.
+\item The original workflow started ElmerFront.
 \item Open the file that contains the geometry of the beam from 
 the File menu. Select also the working directory for the model.
 \ttbegin
@@ -127,11 +140,9 @@ the Run menu item Solver.
 \ttbegin
 Run -> Solver 
 \ttend
-\item Results may be viewed with the ElmerPost program
-\ttbegin
-Run -> Postprocessor
-\ttend
-or click the {\tt Results} button on the main window.
+\item Results may be viewed by opening the file {\tt Beam.vtu} in ParaView
+(or another VTK-based viewer). The ElmerPost program has been discontinued;
+the original {\tt Run -> Postprocessor} menu item no longer exists.
 \end{itemize}
 
 \subsection*{Results}
@@ -211,21 +222,25 @@ Lam\'{e} constants and $E$ is the Green-St Venant strain tensor.
 
 The problem is solved here without the graphical user interface.
 Open the solver input file of the linear case, Beam.sif, and edit the
-following changes. Define nonlinear elasticity as the only equation
+following changes. The current nonlinear elasticity solver is
+\texttt{ElasticSolve}, which uses large-deflection (finite-strain)
+kinematics by default. The old keyword {\tt Nonlinear Elasticity} no longer
+exists, so the Equation block of the linear case is kept as it is:
 \ttbegin
 Equation 1
   Name = "Equation1"
-  Nonlinear Elasticity = Logical True
+  Stress Analysis = Logical True
 End
 \ttend
 
-Change the name correspondingly in the Solver block and add
-information about the procedure needed. Leave all other keywords on
-the solver block unchanged.
+Change the name and procedure in the Solver block and state that large
+deflections are included. Leave all other keywords on the solver block
+unchanged.
 \ttbegin
 Solver 1
-  Equation = "Nonlinear Elasticity"
+  Equation = "Elasticity Solver"
   Procedure = "ElasticSolve" "ElasticSolver"
+  Large Deflection = Logical True
 ...
 End
 \ttend

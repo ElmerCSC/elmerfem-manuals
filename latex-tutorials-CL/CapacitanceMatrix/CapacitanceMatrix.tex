@@ -65,7 +65,7 @@ Simulation
   Output Intervals(1) = 1 
   Steady State Max Iterations = 1
   Output File = File "4_holes.result"
-  Post File =   File "4_holes.ep"
+  Post File =   File "4_holes.vtu"
 End
 \ttend
 
@@ -165,7 +165,13 @@ End
 
 Elmer writes the capacitance matrix to file cmatrix.dat.
 Note that if the capacitance has been calculated between two different bodies, the calculated value appears two times in the matrix.
-Elmer also outputs the calculated capacitances on the screen, where they can be examined:
+The field results are written to {\tt 4\_holes.vtu}, which can be opened with
+ParaView (or another VTK-based viewer); ElmerPost has been discontinued.
+In the original version of this tutorial the calculated capacitances were also
+listed on the screen. The listing below is kept as a historical reference from
+that version; current releases compute the matrix using the constraint modes
+machinery, so the exact screen output may differ while the matrix file contains
+the same data.
 
 \begin{center}
 \ttbegin
