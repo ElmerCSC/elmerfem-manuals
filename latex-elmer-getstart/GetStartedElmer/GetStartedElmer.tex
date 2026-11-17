@@ -14,7 +14,7 @@ The rest of the document will be useful for both Windows users and Linux users, 
 
 \chapter{Windows -- Download}
 
-This chapter will discuss installing Elmer in Windows.  Windows 10 is used for these instructions.  The steps should also work with earlier versions of Windows, as long as they are 64 bits.
+This chapter will discuss installing Elmer in Windows.  Windows 10 is used for these instructions.  The steps should also work with Windows 11 and earlier versions of Windows, as long as they are 64 bits.
 
 \section{Download Elmer}
 
@@ -36,17 +36,17 @@ Once on that page, there are several folders to notice, such as `bin', `doc', `s
 \caption{Elmer Installers}\label{fg:elmer-bin-win}
 \end{figure}
 
-There are four main categories to select from, such as `gui-mpi', `gui-nompi', `nogui-mpi', and `nogui-nompi'.  There also some labelled with `rel9.0', which are builds of the most recent official release and should be considered as the stable builds.  The other files not labelled with `rel9.0', are the nightly builds and are the most recent builds.  The nightly builds are actually quite stable, so feel free to start with the nightly build.\\
+There are four main categories to select from, such as `gui-mpi', `gui-nompi', `nogui-mpi', and `nogui-nompi'.  The files labelled with a release number, such as `rel26.1', are builds of an official release and should be considered as the stable builds.  These files are located in a sub folder named after the release.  The other files, such as those named with `devel' and a date, are development builds from the current source code.  The development builds are usually quite stable, so feel free to start with one of those.\\
 
-For the first time installing Elmer in Windows, it is recommended to select `gui-mpi', and `rel9.0'.  The files with .exe extension are an installer for Windows, which is what is recommended.  So out of the entire list, we want to download this file:
+For the first time installing Elmer in Windows, it is recommended to select `gui-mpi'.  The files with .exe extension are an installer for Windows, which is what is recommended.  For the 26.1 release, that file is:
 
-\texttt{ElmerFEM-gui-mpi-Windows-AMD64-rel9.0.exe}\\
+\texttt{ElmerFEM-gui-mpi-Windows-AMD64-rel26.1.exe}\\
 
-Conveniently, this is the first file in the directory listing.  If you decide to start with the nightly build, then download this file:
+The development builds use a name that also contains a git revision and a date, for example:
 
-\texttt{ElmerFEM-gui-mpi-Windows-AMD64.exe}\\
+\texttt{elmerfem-mpi-devel-26.2-\textit{revision}\_\textit{date}\_Windows-AMD64.exe}\\
 
-which is the third entry in the directory listing.  If you can't decide, download both files and you can try them out separately.
+There is a group of development builds in the main directory, so the exact file names will change over time.  If you can't decide, download both a stable and a development file and you can try them out separately.
 
 
 \section{Download Elmer Documentation}
@@ -61,7 +61,7 @@ Return to this page, this time select `doc' for the most recent documentation fo
 \caption{Elmer Doc}\label{fg:elmer-doc}
 \end{figure}
 
-Note the two files ending in *.zip and *.tar.gz contain compressed copies of eleven out of fourteen of the documentation files.  Downloading the *.zip file should be sufficient for most Windows users to get started with Elmer.  Feel free to download all documents and all *.zip files in this directory.\\
+Note the two files ending in *.zip and *.tar.gz contain compressed copies of all thirteen PDF manuals in this folder.  Downloading the *.zip file should be sufficient for most Windows users to get started with Elmer.  Feel free to download all documents and all *.zip files in this directory.\\
 
 Start with the `GetStarted' manual, which is this document.  Then look at these three documents, `ElmerTutorials' for the ElmerGUI tutorials, `ElmerGUI Manual' for instructions about ElmerGUI, and `ElmerSolverManual', which describes each solver in detail.  \\
 
@@ -75,9 +75,9 @@ Go to the Download section of the Paraview website:\\
 
  \url{https://www.paraview.org/download/}\\
 
-Select one of the top items, in particular a file ending in .exe, so you will download a Windows installer version.  You should now have a file like this:\\
+Select one of the top items, in particular a file ending in .msi, so you will download a Windows installer version.  You should now have a file like this:\\
 
-\texttt{ParaView-5.9.0-RC3-Windows-Python3.8-msvc2017-64bit.exe}\\
+\texttt{ParaView-6.2.1-Windows-Python3.12-msvc2017-AMD64.msi}\\
 
 On the Paraview download page, there are several other files, such as `getting started', `tutorial', that would be very useful to download.  This would be a good opportunity to download the instructions for Paraview.
 
@@ -120,7 +120,7 @@ From there just take the default actions up until you reach `Install Options', w
 \end{center}
 \end{figure}
 
-If this is the first time installation of Elmer, be sure to select all four components.  If upgrading or reinstalling, then you can uncheck the box for `MS MPI', no need to reinstall MPI.
+If this is the first time installation of Elmer, be sure to select all components.  If upgrading or reinstalling, then you can uncheck the box for `MS-MPI', no need to reinstall MPI.
 
 \begin{figure}[H]
 \begin{center}
@@ -174,7 +174,7 @@ If you see the below Figure \ref{fg:installer-12} during the installation proces
 
 After the installation process has finished, you should see an icon on the desktop for ElmerGUI.  Go ahead and double click on the icon to start ElmerGUI.  Please refer to the ElmerGUI manual for instructions on using ElmerGUI, and try out the first tutorial. 
 
-Since Paraview hasn't been installed yet, after loading the first tutorial  if you click on the `Run', then on `Start Paraview', nothing much will happen.  If you hover the cursor over the flag after clicking on it, you will see in the lower left of the window the message `Unable to start Paraview'.  In the meantime, to start ElmerVTK click on the top menu bar icon `Run', then click on `Start ElmerVTK'.
+Since Paraview hasn't been installed yet, after loading the first tutorial  if you click on the `Run', then on `Start Paraview', nothing much will happen.  If you hover the cursor over the flag after clicking on it, you will see in the lower left of the window the message `Unable to start ParaView'.  In the meantime, to start ElmerVTK click on the top menu bar icon `Run', then click on `Start ElmerVTK'.
 
 
 \section{Install Paraview}
@@ -203,7 +203,7 @@ To set the path after installing Paraview, click on `Start', then `Settings'.  A
 
 \newpage
 
-As part of the operation of the Elmer installer, the path to Elmer will be created.  Let's verify that the path to Elmer exists.  Open the window then select `path' and click `edit', as shown in figure~\ref{fg:path-2}.   Notice Elmer is at the bottom of the list, since it was the most recently installed program.  
+As part of the operation of the Elmer installer, the path to Elmer will be created.  The installer also defines two environment variables: \texttt{ELMER\_HOME}, which points to the Elmer installation folder, and \texttt{ELMERGUI\_HOME}, which points to the \texttt{share\textbackslash{}ElmerGUI} folder inside the installation.  Let's verify that the path to Elmer exists.  Open the window then select `path' and click `edit', as shown in figure~\ref{fg:path-2}.   Notice Elmer is at the bottom of the list, since it was the most recently installed program.  
 
 \begin{figure}[H]
 \begin{center}
@@ -248,7 +248,7 @@ Finally, move the entry for the path to Paraview up to just under the path to El
 
 \section{Start Paraview from within ElmerGUI}
 
-Open ElmerGUI, and click on 'Run', then `Start Paraview', you should see a pop up window that says `Paraview Starting', followed by Paraview actually starting.  If you see an output window containing a red statement like `critical: In unknown, line 0', don't worry, it just means there wasn't a valid .vtu file found.  Run a tutorial, or find a valid .vtu file, and try again, Paraview should load the .vtu file and display a blank grey screen.
+Open ElmerGUI, and click on 'Run', then `Start Paraview', you should see Paraview start and load the current .vtu file.  If you see an output window containing a red statement like `critical: In unknown, line 0', don't worry, it just means there wasn't a valid .vtu file found.  Run a tutorial, or find a valid .vtu file, and try again, Paraview should load the .vtu file and display a blank grey screen.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -424,7 +424,7 @@ The Elmer Documentation that was previously downloaded includes working examples
 
 \section{Elmerfem test files}
 
-The source code for Elmer is located on github, at \url{https://github.com/ElmerCSC/elmerfem}.  Open that webpage, click on the green button that says \texttt{Code}, and select \texttt{Download ZIP}.  The zip file will download, copy the file to a good folder, such as \texttt{C:/Elmer} and extract the contents.  A new folder named \texttt{elmerfem} will contain the source code for the Elmer suite.  Open the sub folder \texttt{elmerfem/fem/tests} and you will see about 700 folders, one for each test case.  Each test folder will have all the files needed to run each test.  Searching through the 700 folders for a particular solver will lead one to the desired tests.
+The source code for Elmer is located on github, at \url{https://github.com/ElmerCSC/elmerfem}.  Open that webpage, click on the green button that says \texttt{Code}, and select \texttt{Download ZIP}.  The zip file will download, copy the file to a good folder, such as \texttt{C:/Elmer} and extract the contents.  A new folder named \texttt{elmerfem} will contain the source code for the Elmer suite.  Open the sub folder \texttt{elmerfem/fem/tests} and you will see about 1100 folders, one for each test case.  Each test folder will have all the files needed to run each test.  Searching through the 1100 folders for a particular solver will lead one to the desired tests.
 
 \section{ElmerGrid sample files}
 
@@ -514,21 +514,23 @@ Take a look at the folder \texttt{FlowStepGUI-serial}, now there will be 9 or 10
 
 \section{Parallel settings in ElmerGUI}
 
-We are almost ready to run our example in parallel, but first we must verify the required settings.  The default settings for parallel operation may not work, so we may need to adjust the settings before beginning parallel solutions.  ElmerGUI will store the settings so we only need to go through this step once.  Of course, if a new version of ElmerGUI is installed, then we will need to verify the settings again.  Typical settings for ElmerGUI in Windows 10 are shown in Figure~\ref{fg:parallel-settings}.\\
+We are almost ready to run our example in parallel, but first we must verify the required settings.  The default settings for parallel operation may not work, so we may need to adjust the settings before beginning parallel solutions.  ElmerGUI will store the settings so we only need to go through this step once.  Of course, if a new version of ElmerGUI is installed, then we will need to verify the settings again.  Typical settings for ElmerGUI in Windows are shown in Figure~\ref{fg:parallel-settings}.\\
 
-To activate parallel solutions, check the check box for \texttt{Use parallel solver}.  To change back to serial solution, uncheck this box.  Second, adjust the \texttt{Number of processes} to match the number of physical processors in your system.
+To activate parallel solutions, check the check box for \texttt{Use parallel solver}.  To change back to serial solution, uncheck this box.  Second, adjust the \texttt{Number of processes} to match the number of physical processors in your system.  Note that the smallest value that can be selected is two, since parallel operation requires at least two processes.
 
-Third, enter the name of the executable for MPI.  For Windows, the Elmer Installer will install Microsoft MPI the first time the installer is run, and the name of the executable is \texttt{mpiexec}.  The Microsoft MPI installer will add  \texttt{C:\textbackslash{}Program Files\textbackslash{}Microsoft MPI\textbackslash{}Bin\textbackslash{}mpiexec.exe} to the system Path, so you should not need to add the directory path to the executable, so just enter \texttt{mpiexec}.
+Third, enter the name of the executable for MPI.  For Windows, the Elmer Installer will install Microsoft MPI the first time the installer is run.  Recent versions of ElmerGUI already default to the full path \texttt{C:\textbackslash{}Program Files\textbackslash{}Microsoft MPI\textbackslash{}Bin\textbackslash{}mpiexec.exe}, and you can keep that setting as it is.  If \texttt{mpiexec} happens to be in the system Path, you may also simply enter \texttt{mpiexec}.
 
-When using Linux (such as in the Elmer Virtual Machine), the MPI executable is named \texttt{mpirun}, so one would add \texttt{mpirun} into the Executable box.
+When using Linux (such as in the Elmer Virtual Machine), the MPI executable is named \texttt{mpirun}, so one would add \texttt{mpirun} into the Executable box and use \texttt{-np \%{}n ElmerSolver\_mpi} in the Arguments box.
 
 Fourth, enter the following into the Arguments box: \texttt{-n \%{}n ElmerSolver\_{}mpi.exe}.  
 \texttt{}
 The `-n' indicates that the number of processes will be next, followed by `\%{}n' which is a variable placeholder equal to the number of processes selected in the second step above.
 
-Fifth, enter the following into the Divide box: \texttt{ElmerGrid 2 2 \%msh -partdual -metiskway \%n}.  This command calls ElmerGrid with formats 2 and 2, meaning input an Elmer mesh.* and output an Elmer mesh.*.  The \%msh is a variable placeholder equal to the Mesh name.  The commands -partdual and -metiskway are commands used by ElmerGrid when calling Metis to perform the partitioning of the mesh.  Finally, the \%n is a variable placeholder equal to the number of processes selected in the second step above.
+Fifth, enter the following into the Divide box: \texttt{ElmerGrid 2 2 "\%msh" -partdual -metiskway \%n}.  This command calls ElmerGrid with formats 2 and 2, meaning input an Elmer mesh.* and output an Elmer mesh.*.  The \%msh is a variable placeholder equal to the Mesh name, and it is enclosed in quotation marks so that ElmerGrid also accepts a path that contains spaces.  The option -partdual tells ElmerGrid to use the dual, that is element-based, graph, and -metiskway selects the Metis k-way method for the partitioning of the mesh.  Finally, the \%n is a variable placeholder equal to the number of processes selected in the second step above.
 
-The Merge box is not needed because Paraview takes care of merging the resulting .vtu files when displaying the results.
+There is also a \texttt{Skip mesh partitioning} check box.  Check it only if the mesh has already been partitioned, so that ElmerGrid is not called again before the solver is started.
+
+The Merge box is not needed because Paraview takes care of merging the resulting .vtu files when displaying the results.  The default value of the Merge box is an echo command, \texttt{echo 'No need to merge VTU files!'}, which does nothing.
 
 Click on the \texttt{Accept} button at the bottom to save your settings and close the window.
 
@@ -562,7 +564,7 @@ Well, that was easy.  Now that ElmerGUI has stored the parallel settings in the 
 
 \section{Spaces in path to project} \label{spaces-in-path}
 
-With verified settings and example tutorial files for practice, what could possibly go wrong?  Let's check to see what happens if there are spaces in the path to your ElmerGUI folder.
+With verified settings and example tutorial files for practice, what could possibly go wrong?  Let's check to see what happens if there are spaces in the path to your ElmerGUI folder.  The screenshots in this section were made with an older version of ElmerGUI that did not protect the path; see the note at the end of the section.
 
 Start ElmerGUI and \texttt{Load Project} from the folder \texttt{FlowStepGUI - Copy} that we created before starting `Test serial operation'.  Note that there are two spaces in the directory name.  Once the project has loaded, click on Run, Parallel Settings, you should see the settings window as shown in Figure~\ref{fg:parallel-settings}.  Update the parallel settings, as needed.  Verify that the box \texttt{Use parallel solver} IS checked.  Click on the \texttt{Accept} button at the bottom of the window.
 
@@ -574,7 +576,9 @@ Click on the right green arrow to `Generate and save sif, save project,  then ru
 \caption{Spaces in the directory name}\label{fg:spaces}
 \end{figure}
 
- The key error message is `WARNING:: LoadMesh: Requested mesh > ./. < in partition 4 does not exist!'.  Remove the spaces from the directory name, and the errors will go away.  The problem is that the call to ElmerGrid uses the path to the folder, up to the first space.  If you look at the example folders, you will see there are now four folders, and the fourth folder will contain the partitioned mesh files.  The solution is to replace all spaces in your path and directory names with either hyphens or underscores.  ElmerGrid will then be able to find and partition the mesh.
+ The key error message is `WARNING:: LoadMesh: Requested mesh > ./. < in partition 4 does not exist!'.  Remove the spaces from the directory name, and the errors will go away.  The problem is that the call to ElmerGrid uses the path to the folder, up to the first space.  If you look at the example folders, you will see there are now four folders, and the fourth folder will contain the partitioned mesh files.  The solution is to replace all spaces in your path and directory names with either hyphens or underscores.  ElmerGrid will then be able to find and partition the mesh.\\
+
+Note that the exact behaviour depends on the version of ElmerGUI.  Since 2025 the default Divide command encloses the mesh name in quotation marks, \texttt{ElmerGrid 2 2 "\%msh" -partdual -metiskway \%n}, and with that command ElmerGrid partitions a mesh in a folder that contains spaces correctly.  Older versions did not quote the path, and failed as shown here.  It is still a good habit to avoid spaces in the path and directory names, because the MPI launch command and many other tools also split their arguments at spaces.
 
 
 \section{Information about Parallel}
@@ -920,7 +924,7 @@ The previous section showed how to create and export a UNV file from Salome, rea
 
 For non-GUI users of Elmer, use ElmerGrid in a command prompt or terminal window to convert the UNV file into Elmer mesh format with this command:\\
 
-\texttt{Elmergrid 8 2 mesh\_1 -autoclean}\\
+\texttt{ElmerGrid 8 2 mesh\_1 -autoclean}\\
 
 ElmerGUI can read the UNV file directly, and ElmerGUI will then call ElmerGrid in the background to perform the conversion to Elmer mesh format.  This section shows step by step how to read and use the UNV file in ElmerGUI.\\
 
@@ -1284,7 +1288,7 @@ Pick your desired filename and path, type `.msh' as a suffix to the filename, an
 
 \newpage
 
-A pop up window will ask you to choose a Format, select `Version 2 ASCII', as shown in Figure~\ref{fg:gmsh-31}.  Also be sure to check the box to `Save all elements'.  Later on, if desired, come back here and try the other format options.  For this particular example, both Version 2 ASCII and Version 4 ASCII load okay in ElmerGUI.  The other options won't load properly in ElmerGUI.  
+A pop up window will ask you to choose a Format, select `Version 2 ASCII', as shown in Figure~\ref{fg:gmsh-31}.  Also be sure to check the box to `Save all elements'.  Later on, if desired, come back here and try the other format options.  For this particular example, both Version 2 ASCII and Version 4 ASCII load okay in ElmerGUI.  ElmerGrid also reads the binary Gmsh 4 format, but Version 2 ASCII is the simplest and most portable choice.
 
 \begin{figure}[H]
 \centering
@@ -1366,7 +1370,7 @@ This finishes our tutorial on using Gmsh to generate an Elmer mesh.
 
 \chapter{Elmerfem Wiki}
 
-The Elmer Wiki used to exist at \url{http://www.elmerfem.org/elmerwiki}.  Some of the pages from the wiki have been copied from Wayback Machine into this chapter. Note that pages discussing Compilation are not included, they are a little out of date.  The original authors are not known.
+The Elmer Wiki used to exist at \url{http://www.elmerfem.org/elmerwiki}.  Some of the pages from the wiki have been copied from Wayback Machine into this chapter. Note that pages discussing Compilation are not included, they are a little out of date.  Some pages also describe ElmerPost, which has since been discontinued; for new work use Paraview or ElmerVTK instead.  The original authors are not known.
 
 \section{Main}
 
@@ -1422,7 +1426,7 @@ Elmer Wiki is intended to serve as a platform for the exchange of ideas and solu
 
 \noindent Articles and papers featuring Elmer at:
 
-\url{https://www.csc.fi/web/elmer/white-papers}\\
+\url{https://research.csc.fi/web/elmer/white-papers}\\
 
 \section{Frequently Asked Questions}
 
@@ -1440,13 +1444,13 @@ Below is a list of some of the most frequently asked questions. You can suggest 
 
     A: The state of ElmerGUI is defined by the project file which is used to generate the sif file. Therefore the modifications in the .sif file are not communicated to the ElmerGUI and a .sif file cannot be used as a starting point for ElmerGUI work.\\
 
-    Q: I try to set a "keyword" value in the .sif file but ElmerSolver gives an error "Unknown specifier" for property name:"keyword". What's wrong?
+    Q: I try to set a "keyword" value in the .sif file but ElmerSolver gives an error "Unknown specifier:[keyword]". What's wrong?
 
     A: The list of known keywords is defined in the SOLVER.KEYWORDS file. The list can never be complete since the code is all the time developing and the user may also invent new variable names. If the type of the keyword is not known, the user must provide it from one of the following: Logical, Integer, Real, String and File. Also Equals defines the type implicitly to be of type Real.\\
 
     Q: Where can I find examples on how to use a specific solver?
 
-    A: The are a few walk-through cases in Elmer Tutorials. In addition there are more than 700 minimalistic tests in the Elmer distribution in the `tests' folder.  Among the .sif files you can try to find the ones that include the the solver of interest. By increasing the "Max Output Level" and link building defining a "Post File" in the "Simulation" section it is easier to get acquainted to the solver.\\
+    A: The are a few walk-through cases in Elmer Tutorials. In addition there are more than 1100 minimalistic tests in the Elmer distribution in the `tests' folder.  Among the .sif files you can try to find the ones that include the the solver of interest. By increasing the "Max Output Level" and link building defining a "Post File" in the "Simulation" section it is easier to get acquainted to the solver.\\
 
     Q: What unit system should I use in Elmer?
 
@@ -1550,6 +1554,9 @@ Then open the file case*.vtu in ParaView and perform the visualization as explai
 
 \subsection{Running animation on the screen with ElmerPost}
 
+The following ElmerPost instructions are retained for historical reference only;
+ElmerPost is no longer distributed with Elmer.
+
 \begin{verbatim}
     start ElmerPost
     read the results in ReadModelFile menu selecting all the relevant timesteps
@@ -1633,7 +1640,7 @@ In this case its a good idea to a priori set the scaling and fix it since otherw
 
 \subsection{Introduction}
 
-Elmer uses MATC to evaluate mathematical expressions in the Solver Input Files. Also ElmerPost includes MATC.  MATC was written by Juha Ruokolainen.  You can find the official manual at:\\
+Elmer uses MATC to evaluate mathematical expressions in the Solver Input Files. ElmerPost also included MATC.  MATC was written by Juha Ruokolainen.  You can find the official manual at:\\
 
 \url{http://www.nic.funet.fi/pub/sci/physics/elmer/doc/MATCManual.pdf}
 
@@ -1792,23 +1799,22 @@ When Elmer is run in parallel, it generates one .vtu file per partition and time
 This python script will print out a .pvd file containing references to all .pvtu files in a directory. And sets the time to be the number of the file.
 
 \begin{verbatim}
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import glob
 
 files = glob.glob('*.pvtu')
 files.sort()
 
-print """<?xml version="1.0"?>
-<VTKFile type="Collection" version="0.1" byte_order="LittleEndian">
-<Collection>
-"""
+print('<?xml version="1.0"?>')
+print('<VTKFile type="Collection" version="0.1" byte_order="LittleEndian">')
+print('<Collection>')
 
 for (num,name) in enumerate(files):
-   print '<DataSet timestep="'+str(num+1)+'" group="" part="0" file="'+name+'"/>'
+   print('<DataSet timestep="'+str(num+1)+'" group="" part="0" file="'+name+'"/>')
 
-print """</Collection>
-</VTKFile>"""
+print('</Collection>')
+print('</VTKFile>')
 \end{verbatim}
 
 \subsection{Paraview node numbering}
@@ -2005,14 +2011,14 @@ Click on the link below to download the Elmer project files from this repository
 
 The Elmer website has instructions showing how to download a virtual machine.\\
 
- \url{http://www.nic.funet.fi/pub/sci/physics/elmer/bin/VirtualMachines}\\
+ \url{https://www.nic.funet.fi/pub/sci/physics/elmer/bin/VirtualMachines}\\
 
-Open that link, and there will be a directory with a few entries, as shown in Figure~\ref{fg:virt-1}.  Download two files, `Readme1st.txt' and  `CSC Ubuntu20 Elmer.ova'.  The .ova file is about 4 GB, so don't try this over dial-up!\\
+Open that link, and there will be a directory with a few entries, as shown in Figure~\ref{fg:virt-1}.  Download two files, `Readme1st.txt' and  `Elmer-Ubuntu22LTS.ova'.  The .ova file is about 6.6 GB, so don't try this over dial-up!\\
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.95\textwidth]{virt-1}
-\caption{www.csc.fi/web/elmer/bin/VirtualMachines}\label{fg:virt-1}
+\caption{www.nic.funet.fi/pub/sci/physics/elmer/bin/VirtualMachines}\label{fg:virt-1}
 \end{center}
 \end{figure}
 
@@ -2047,7 +2053,7 @@ Click `Next' at the bottom of the screen.  The `Appliance settings' screen, as s
 \end{center}
 \end{figure}
 
-Take the defaults for the settings.  The only (optional) exception to the defaults will be the `Machine Base Folder', which you may or may not want to change, so you can locate the VM right where you want it.  Also verify that you have enough installed RAM to match the default RAM setting of 3 GB.  When you are ready, click on `Import'.  Agree to the license agreement.  Importing the virtual disk image will take about five to ten minutes, depending on the speed of your hard drive, refer to Figure~\ref{fg:virt-5}.
+Take the defaults for the settings.  The only (optional) exception to the defaults will be the `Machine Base Folder', which you may or may not want to change, so you can locate the VM right where you want it.  Also verify that you have enough installed RAM to match the default RAM setting of 8 GB, and note that the default is two processor cores and 64 MB of video memory.  When you are ready, click on `Import'.  Agree to the license agreement.  Importing the virtual disk image will take about five to ten minutes, depending on the speed of your hard drive, refer to Figure~\ref{fg:virt-5}.
 
 \begin{figure}[H]
 \begin{center}
@@ -2146,16 +2152,16 @@ That's it, you are done and can close the settings window.
 
 \section{Install Elmer in Linux}
 
-The Elmer website has instructions showing how to download binaries, including Linux binaries from Launchpad.  Here is a quick summary of the steps needed to install Elmer in Linux.\\
+The Elmer source repository has instructions showing how to download binaries, including Linux binaries from Launchpad.  Here is a quick summary of the steps needed to install Elmer in Linux.\\
 
- \url{https://www.csc.fi/web/elmer/binaries}\\
+ \url{https://launchpad.net/~elmer-csc-ubuntu/+archive/ubuntu/elmer-csc-ppa}\\
 
 Notice the section about using Launchpad Ubuntu and Debian based systems, as shown in Figure~\ref{fg:binaries}:\\
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.95\textwidth]{binaries}
-\caption{www.csc.fi/web/elmer/binaries}\label{fg:binaries}
+\caption{Elmer Linux binaries}\label{fg:binaries}
 \end{center}
 \end{figure}
 
@@ -2172,13 +2178,13 @@ Installing elmerfem-csc will install Elmer, then installing elmerfem-csc-eg will
 
 To start ElmerGrid and ElmerSolver, enter this in a terminal window:\\
 
-\texttt{/bin/ElmerGrid}
+\texttt{ElmerGrid}
 
-\texttt{/bin/ElmerSolver}\\
+\texttt{ElmerSolver}\\
 
 To run ElmerGUI, enter this in a terminal window:\\
 
-\texttt{/bin/ElmerGUI}\\
+\texttt{ElmerGUI}\\
 
 Next, install Paraview:\\
 
@@ -2186,7 +2192,13 @@ Next, install Paraview:\\
 
 \texttt{sudo apt-get install paraview}\\
 
-Start ElmerGUI, run the first tutorial, and start Paraview from within ElmerGUI, by clicking on `Run', then `Start Paraview'.
+Start ElmerGUI, run the first tutorial, and start Paraview from within ElmerGUI, by clicking on `Run', then `Start Paraview'.\\
+
+Elmer is also distributed as a Flatpak on Flathub, which works on most Linux distributions without adding a package repository.  If Flatpak and Flathub are set up on your system, install it with: \\
+
+\texttt{flatpak install flathub fi.csc.Elmer}\\
+
+and start ElmerGUI with \texttt{flatpak run fi.csc.Elmer}.  Note that the Flathub package is community maintained and is not provided by CSC.
 
 
 
