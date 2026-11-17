@@ -1,6 +1,4 @@
-
-Starting program Elmergrid
-****************** Elmergrid ************************
+ 
 This program can create simple 2D structured meshes consisting of
 linear, quadratic or cubic rectangles or triangles. The meshes may
 also be extruded and revolved to create 3D forms. In addition many
@@ -48,6 +46,9 @@ taken into account only when applicable to the given format.
 -out str             : name of the output file
 -in str              : name of a secondary input file
 -decimals            : number of decimals in the saved mesh (eg. 8)
+-bin                 : save mesh for ElmerSolver in binary format
+-sbin                : save mesh for ElmerSolver in binary & single
+                       precision format
 -relh real           : give relative mesh density parameter for ElmerGrid
                        meshing
 -triangles           : rectangles will be divided to triangles
@@ -57,7 +58,7 @@ taken into account only when applicable to the given format.
 -scale real[3]       : scale the coordinates with vector real[3]
 -translate real[3]   : translate the nodes with vector real[3]
 -rotate real[3]      : rotate around the main axis with angles real[3]
--clone int[3]        : make ideantilcal copies of the mesh
+-clone int[3]        : make identical copies of the mesh
 -clonesize real[3]   : the size of the mesh to be cloned if larger to
                        the original
 -mirror int[3]       : copy the mesh around the origin in coordinate
@@ -138,8 +139,6 @@ Keywords are related to mesh partitioning for parallel ElmerSolver runs:
                        r-partitioning
 -halogreedy          : create halo being greedy over the partition
                        interfaces
--indirect            : create indirect connections (102 elements) in
-                       the partitioning
 -periodic int[3]     : periodic coordinate directions for parallel
                        & conforming meshes
 -partoptim           : apply aggressive optimization to node sharing
@@ -154,13 +153,6 @@ Keywords are related to mesh partitioning for parallel ElmerSolver runs:
 -metisbc             : partition connected BCs separately to partitions
                        by Metis
 -partlayers int      : extend boundary partitioning by element layers
-
-Keywords are related to (nearly obsolete) ElmerPost format:
--partjoin int        : number of ElmerPost partitions in the data to
-                       be joined
--saveinterval int[3] : the first, last and step for fusing parallel data
--nobound             : disable saving of boundary elements in ElmerPost
-                       format
 
 Thank you for using Elmergrid!
 Send bug reports and feature wishes to elmeradm@csc.fi

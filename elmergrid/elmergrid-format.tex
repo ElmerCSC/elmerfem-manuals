@@ -37,7 +37,7 @@ version of ElmerGrid may have been compiled without MATC.
 The choices are Cartesian 1D, Cartesian 2D, Cartesian 3D, Polar and 
 Axisymmetric. Axisymmetric and Cartesian 2D have currently
 no difference.
-A Cartesian 3D grid is the default.
+A Cartesian 2D grid is the default.
 %
 \sifitem{Subcell Divisions}{Integer[DIM]} 
 The mesh is composed of subcells that are 
@@ -127,7 +127,7 @@ The mapping may be performed in the $xy$-plane or out of the plane.
 The number of the mappings is calculated automatically and therefore 
 the field should be ended by \texttt{End}.
 
-If the mode of the mapping is more than 50 then 
+If the mode of the mapping is 50 or more then 
 the mapping is performed out of plane while mappings 
 in the plane is the default.
 Mapping out of the plane makes the 2D plates to become 3D shells.
@@ -353,13 +353,15 @@ attached with an appropriate suffix.
 %
 \sifitem{Input Mode}{String/Integer}
 The name of the Input mode or the corresponding integer. 
-The choices are ElmerGrid(1), ElmerSolver(2), ElmerPost(3), 
-Ansys(4), Ideas(5), Abaqus(6), Fidap(7), Easymesh(8), 
-FemLab(9), Fieldview(10) and Triangle(11).
+The choices are ElmerGrid, ElmerSolver, ElmerPost,
+Ansys, Ideas, Abaqus, Fidap, UNV, Comsol, Fieldview,
+Triangle, Medit, GID, Gmsh, Partitioned and FVCOM,
+corresponding to the integers 1--16.
 %
 \sifitem{Output Mode}{String/Integer}
-The name of the Input mode or the corresponding integer. 
-The choices are ElmerGrid(1), ElmerSolver(2), ElmerPost(3).
+The name of the Output mode or the corresponding integer. 
+The choices are ElmerGrid, ElmerSolver, ElmerPost,
+Gmsh and VTU, corresponding to the integers 1--5.
 %
 \sifitem{Decimals}{Integer}
 The number of decimals in output.
@@ -488,10 +490,12 @@ whole geometry.
 Several mappings may be applied at the same time. The 
 coordinates are then mapped as a linear combination of the 
 individual mappings. Mappings may also be performed 
-consecutively up to five levels. This is obtained by adding 
+consecutively up to ten levels. This is obtained by adding 
 the figure 10 to the mode. Mappings of the same 
 level are done at the same time while mappings of different levels
 are done at an increasing order of modulo 10s.
+Mappings of level five or higher are performed out of plane and
+thus make the mesh three-dimensional.
 
 In order to perform mappings out of plane a value
 of 50 may be added in the mapping mode.
@@ -541,6 +545,10 @@ Parameters are $(x_0,\phi_0)$, $(x_1,\phi_1)$, $(x_2,\phi_2)$,~$\ldots$
 This is used to create 3D shells only. 
 The angle of the shell is $\phi_i$ if $x \in [x_i,x_{i+1}]$. 
 May be used to create polygonal shells.
+\item[9: NACA airfoil] \mbox{} \\
+Parameters are $x_0$, $x_1$, $t$, where the mapping applies the
+thickness distribution of a NACA four-digit airfoil with relative
+thickness $t$ between $x_0$ and $x_1$.
 
 \end{description}
 
