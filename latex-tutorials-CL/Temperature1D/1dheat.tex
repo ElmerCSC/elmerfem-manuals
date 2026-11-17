@@ -39,9 +39,10 @@ the example. The solution may be attempted as follows:
 elmerf90 -o Poisson Poisson.f90
 ElmerGrid 1 2 1dheat
 ElmerSolver
-ElmerPost
 \ttend
 \end{itemize}
+The results are written as VTU files in the mesh directory. You may open
+{\tt 1dheat/1dheat\_t0001.vtu} in ParaView to inspect them.
 
 \subsection*{The solver code}
 
@@ -211,5 +212,5 @@ may be set by using the utility routine SetDirichletBoundaries.
 \end{figure}
 \subsection*{Results}
 
-In the elmerpost file there is a variable called Potential which contains the
+In the result file there is a variable called Potential which contains the
 solution of this simple example. See figure~\ref{fg:pot}

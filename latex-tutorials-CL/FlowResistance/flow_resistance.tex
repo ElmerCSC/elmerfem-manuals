@@ -177,9 +177,10 @@ Solver 1
    Variable DOFs = 3
    Linear System Solver = Iterative
    Linear System Iterative Method = BiCGStab
-   Linear System Preconditioning = ILU0
-   Linear System Max Iterations = 200
+   Linear System Preconditioning = ILU1
+   Linear System Max Iterations = 500
    Linear System Convergence Tolerance = 1.0e-08
+   Linear System Residual Output = 10
    Stabilize = True
    Nonlinear System Convergence Tolerance = 1.0e-05
    Nonlinear System Max Iterations = 1
@@ -197,7 +198,7 @@ included in the force or not. If this is set to false, only the
 pressure integral is calculated.
 \ttbegin
 Solver 2
-  Exec Solver = After All
+  Exec Solver = After Timestep
   Equation = Fluidic Force
   Procedure  ="FluidicForce" "ForceCompute"
   Calculate Viscous Force = True
@@ -335,7 +336,7 @@ Boundary Condition 1
    Flow Force BC = True
    Slip Coefficient 1 = 2e-4
    Slip Coefficient 2 = 2e-4
-   Velocity 3 = 2.0e3
+   Velocity 3 = 1.0e3
    Calculate Fluidic Force = True
 End
 
@@ -399,10 +400,10 @@ in MEMS projects).
 \begin{center}
 \begin{tabular}{cccc} \hline
 $v$ & \ \ slip model\ \  & $F_z$ & $z_h$ \\ \hline 
-$1.0\cdot 10^3$   & no-slip  & 36.13  &  $1.45\cdot10^{-3}$ \\
-$2.0\cdot 10^3$   & no-slip  & 72.25  &  $1.45\cdot10^{-3}$ \\ \hline
-$1.0\cdot 10^3$   & slip     & 29.30  &  $1.17\cdot10^{-3}$ \\
-$2.0\cdot 10^3$   & slip     & 58.60  &  $1.17\cdot10^{-3}$ \\ \hline
+$1.0\cdot 10^3$   & no-slip  & 37.60  &  $1.504\cdot10^{-3}$ \\
+$2.0\cdot 10^3$   & no-slip  & 75.20  &  $1.504\cdot10^{-3}$ \\ \hline
+$1.0\cdot 10^3$   & slip     & 30.57  &  $1.223\cdot10^{-3}$ \\
+$2.0\cdot 10^3$   & slip     & 61.13  &  $1.223\cdot10^{-3}$ \\ \hline
 \end{tabular}
 \end{center}
 \end{table}
@@ -426,10 +427,6 @@ Finally, a picture of the results obtained with no-slip conditions is
 presented. The Fig.~\ref{fig:flow_res} shows a lot of pressure
 isosurfaces which are coloured using the absolute value of the
 velocity.
-
-Note: it seems that the results with the current code are not
-exactly the same. However, we didn't invest where the small discrepancy
-might come from. 
 
 
 \vfill

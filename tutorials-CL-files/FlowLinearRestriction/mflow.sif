@@ -12,7 +12,7 @@ Simulation
   Timestep Intervals = 100
   Output Intervals = 1
   Output File = "mflow.result"
-  Post File = "mflow.ep"
+  Post File = "mflow.vtu"
 End
 
 Body 1

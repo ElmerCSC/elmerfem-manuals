@@ -39,7 +39,7 @@ files called \texttt{ExportMesh} by a certain Ansys macro and
 converted to Elmer format by the ElmerGrid program. The command to use
 is
 \ttbegin
-ElmerGrid 4 2 ExportMesh -order 1.0 0.1 0.001 -o thermal
+ElmerGrid 4 2 ExportMesh -order 1.0 0.1 0.001 -out thermal
 \ttend 
 The above command reads in the Ansys mesh files, arranges the mesh 
 nodes in a reasonable way and saves the mesh in Elmer format in a
@@ -89,7 +89,6 @@ used.
 \ttbegin
 Equation 1
   Active Solvers(3) = Integer 1 2 3
-  Calculate Joule Heating = True
 End
 \ttend
 
@@ -116,7 +115,7 @@ Solver 1
   Linear System Max Iterations = 300
   Linear System Convergence Tolerance = 1.0e-8
   Nonlinear System Max Iterations = 1
-  Nonlinear System Convergence Tolerance = 1.0-6
+  Nonlinear System Convergence Tolerance = 1.0e-6
   Nonlinear System Newton After Iterations = 3
   Nonlinear System Newton After Tolerance = 1.0e-12
   Nonlinear System Relaxation Factor = 1.0
@@ -206,7 +205,7 @@ Initial Condition 1
 End
 
 Body Force 1
-  Heat Source = Equals Joule Heating
+  Joule Heat = True
 End
 
 Boundary Condition 1

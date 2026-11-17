@@ -81,8 +81,8 @@ ElmerGrid 1 2 crucible
 \ttend
 
 The mesh consists of 5 different bodies which need 4
-different materials sets. Only on set of boundary conditions 
-are required for the external boundary. Thus the header 
+different materials sets. Only one set of boundary conditions
+is required for the external boundary. Thus the header
 information of the command file is as follows
 \ttbegin
 Header
@@ -95,7 +95,7 @@ End
 In the \texttt{Simulation} section the coordinate system and
 time dependency is set, among other things. Also we know that
 the equation is linear and therefore only one steady state
-iteration is requited. If the electric properties depend on 
+iteration is required. If the electric properties depend on
 the magnitude of the field several iterations are required.
 \ttbegin
 Simulation
@@ -116,13 +116,20 @@ End
 \ttend
 %
 In the differential equation for the magnetic vector potential the 
-source the is the current density. Thus, it is given in the
+source term is the current density. Thus, it is given in the
 \texttt{Body Force} section. 
 \ttbegin
 Body Force 1
   Current Density = 2.5e5
 End
+
+Body Force 2
+  Joule Heat = Logical True
+End
 \ttend
+%
+The second body force activates the Joule heating computed by the
+magnetic solver as a source term of the heat equation.
 %
 In the \texttt{Body} section the different bodies are assigned 
 with correct equation sets and material parameters, for example
@@ -131,19 +138,20 @@ Body 3
   Name = "Insulation"
   Equation = 1
   Material = 2
+  Body Force = 2
 End
 \ttend
 %
 In the \texttt{Equation} block all the relevant solvers are 
 set to active.
 \ttbegin
-Equation
+Equation 1
   Name = "Vector Potential Equation"
-  Active Solvers = 1
+  Active Solvers(2) = 1 2
 End
 \ttend
 %
-The only solver in this simple tutorial is the solver for the magnetic
+The main solver in this simple tutorial is the solver for the magnetic
 vector potential. Look for the relevant model manual for information
 about the options. Here the equation is solved iteratively and the
 local Joule heating and magnetic flux are computed as a postprocessing
@@ -163,7 +171,7 @@ Solver 1
   Angular Frequency = Real 50.0e3
   Calculate Joule Heating = Logical True
   Calculate Magnetic Flux = Logical True
-  Desired Heating = Real 3.0e3
+  Desired Heating Power = Real 3.0e3
 
   Procedure = "StatMagSolve" "StatMagSolver"
   Linear System Solver = Iterative
@@ -172,13 +180,17 @@ Solver 1
   Linear System Convergence Tolerance = 1.0e-10
   Linear System Preconditioning = ILU1
   Linear System ILUT Tolerance = 1.0e-03
-  Linear System Residual Output = 1
+  Linear System Residual Output = 10
   Nonlinear System Max Iterations = 1
   Nonlinear System Convergence Tolerance = 1.0e-6
   Nonlinear System Relaxation Factor = 1
   Steady State Convergence Tolerance = 1.0e-6
 End
 \ttend
+%
+In addition to the magnetic solver, the tutorial input file contains a
+heat equation solver that uses the computed Joule heating as a source
+term.
 %
 In the \texttt{Material} sections all the necessary 
 material parameters are given, for example
@@ -205,9 +217,8 @@ End
 \subsection*{Results}
 
 With the given computational mesh the problem is solved in 
-a few seconds. With the 20\,072 bilinear elements the heating
-efficiency is $16.9$ W. The corresponding results are shown
-in Fig.~\ref{fig:ind_heat1}.
+a few seconds. The mesh consists of 20\,072 bilinear elements.
+The corresponding results are shown in Fig.~\ref{fig:ind_heat1}.
 
 \begin{figure}
 \begin{center}
