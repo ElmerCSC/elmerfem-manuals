@@ -1,13 +1,20 @@
 
 \chapter{ElmerGUI initialization file}
 
-The initialization file for ElmerGUI is located in {\tt ELMERGUI\_HOME/edf}. It is called {\tt egini.xml}:
+The initialization file for ElmerGUI is located in {\tt ELMERGUI\_HOME/edf} (or, when
+{\tt ELMERGUI\_HOME} is not set, in {\tt <prefix>/share/ElmerGUI/edf}). It is called {\tt egini.xml}:
 
 \begin{footnotesize}
 \begin{verbatim}
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE egini>
 <egini version="1.0">
+
+  Default width for the main window at startup:
+  <width> 800 </width>
+
+  Default height for the main window at startup:
+  <height> 600 </height>
 
   Show splash screen at startup:
   <splashscreen> 1 </splashscreen>
@@ -21,6 +28,21 @@ The initialization file for ElmerGUI is located in {\tt ELMERGUI\_HOME/edf}. It 
   System tray message duration in milliseconds:
   <systraymsgduration> 3000 </systraymsgduration>
 
+  Default image quality (-1 [sys] or 1 ... 100):
+  <defaultimagequality> -1 </defaultimagequality>
+
+  Screen shot delay in milliseconds:
+  <screenshotdelay> 2000 </screenshotdelay>
+
+  Default directory for open/save dialogs (unix):
+  <unixdefaultdir> </unixdefaultdir>
+
+  Default directory for open/save dialogs (win32):
+  <win32defaultdir> C:\ </win32defaultdir>
+
+  Default directory for open/save dialogs (macx):
+  <macxdefaultdir> </macxdefaultdir>
+
   Check the presence of external components:
   <checkexternalcomponents> 0 </checkexternalcomponents>
 
@@ -31,7 +53,7 @@ The initialization file for ElmerGUI is located in {\tt ELMERGUI\_HOME/edf}. It 
   <showconvergence> 1 </showconvergence>
 
   Draw background image:
-  <bgimage> 1 </bgimage>
+  <bgimage> 0 </bgimage>
 
   Background image file:
   <bgimagefile> :/images/bgimage.png </bgimagefile>
@@ -42,35 +64,44 @@ The initialization file for ElmerGUI is located in {\tt ELMERGUI\_HOME/edf}. It 
   Stretch background image to fit the display area (overrides align):
   <bgimagestretch> 1 </bgimagestretch>
 
-  Maximum number of solvers / equation:
-  <max_solvers> 10 </max_solvers>
+  Deprecated: Maximum number of solvers / equation:
+  <max_solvers> 25 </max_solvers>
 
-  Maximum number of equations:
-  <max_equations> 10 </max_equations>
+  Deprecated: Maximum number of equations:
+  <max_equations> 25 </max_equations>
 
-  Maximum number of materials:
-  <max_materials> 10 </max_materials>
+  Deprecated: Maximum number of materials:
+  <max_materials> 25 </max_materials>
 
-  Maximum number of bodyforces:
-  <max_bodyforces> 10 </max_bodyforces>
+  Deprecated: Maximum number of bodyforces:
+  <max_bodyforces> 25 </max_bodyforces>
 
-  Maximum number of initial conditions:
-  <max_initialconditions> 10 </max_initialconditions>
+  Deprecated: Maximum number of initial conditions:
+  <max_initialconditions> 25 </max_initialconditions>
 
-  Maximum number of bodies:
-  <max_bodies> 100 </max_bodies>
-
-  Maximum number of bcs:
+  Deprecated: Maximum number of bcs:
   <max_bcs> 500 </max_bcs>
 
-  Maximum number of boundaries:
+  Deprecated: Maximum number of bodies:
+  <max_bodies> 100 </max_bodies>
+
+  Deprecated: Maximum number of boundaries:
   <max_boundaries> 500 </max_boundaries>
+
+  Autoshow geometry viewer after loading geometry input files:
+  <autoview> 1 </autoview>
+
+  Autostart meshing after having opened a geometry input file:
+  <automesh> 1 </automesh>
+
+  Allowable deflection for surface triangulation (occ):
+  <deflection> 0.00025 </deflection>
 
 </egini>
 \end{verbatim}
 \end{footnotesize}
 
-You may change the default behavior of ElmerGUI by editing this file. For example, to turn off the splash screen at start up, change the value of the tag {\tt <splashscreen>} from 1 to 0. To change the background image, enter a picture file name in the {\tt <bgimagefile>} tag. You might also want to increase the default values for solvers, equations, etc., in case of very complex models.
+You may change the default behavior of ElmerGUI by editing this file. For example, to turn off the splash screen at start up, change the value of the tag {\tt <splashscreen>} from 1 to 0. To change the background image, enter a picture file name in the {\tt <bgimagefile>} tag. The {\tt <autoview>} and {\tt <automesh>} tags control whether the geometry is shown and meshed automatically after opening an input file, and {\tt <deflection>} sets the deflection used in surface triangulation. The {\tt max\_*} tags are deprecated and no longer limit the number of model objects.
 
 \chapter{ElmerGUI material database}
 
@@ -91,6 +122,8 @@ format of this file is the following:
     <parameter name="Viscosity" >1.983e-5</parameter>
     <parameter name="Turbulent Prandtl number" >0.713</parameter>
     <parameter name="Sound speed" >343.0</parameter>
+    <parameter name="Relative Permittivity" >1.00059</parameter>
+    <parameter name="Relative Permeability" >1.00000037</parameter>
   </material>
 
   <material name="Water (room temperature)" >
@@ -101,6 +134,8 @@ format of this file is the following:
     <parameter name="Viscosity" >1.002e-3</parameter>
     <parameter name="Turbulent Prandtl number" >7.01</parameter>
     <parameter name="Sound speed" >1497.0</parameter>
+    <parameter name="Relative Permittivity" >80.1</parameter>
+    <parameter name="Relative Permeability" >0.999992</parameter>
   </material>
   ...
 </materiallibrary>
@@ -122,7 +157,7 @@ the interpolant may be arbitrary.
 
 \chapter{ElmerGUI definition files}
 
-The directory {\tt ELMERGUI\_HOME} contains a subdirectory called ``edf''. This is the place where all ElmerGUI definition files (ed-files) reside. The definition files are XML-formatted text files which define the contents and appearance of the Model menu.
+The directory {\tt ELMERGUI\_HOME} contains a subdirectory called ``edf''. This is the place where all ElmerGUI definition files (ed-files) reside. Additional definition files supplied with ElmerGUI are stored in the {\tt edf-extra} subdirectory and may be loaded from there. The definition files are XML-formatted text files which define the contents and appearance of the Model menu.
 
 The ed-files are loaded iteratively from the edf-directory once and for all when ElmerGUI starts. Later, it is possible to view and edit their contents by choosing
 \menu{File}{Definitions...}
@@ -153,13 +188,17 @@ The structure of a [PDE block] is the following:
       [Widget block]
    </Equation>
    ...
+   <Solver>
+      [Widget block]
+   </Solver>
+   ...
    <Material>
       [Widget block]
    </Material>
    ...
    <BodyForce>
       [Widget block]
-   <BodyForce>
+   </BodyForce>
    ...
    <InitialCondition>
       [Widget block]
@@ -203,12 +242,13 @@ The basic structure of a [Widget block] is the following:
 \end{verbatim}
 \end{footnotesize}
 
-There are four types of widgets available:
+There are five types of widgets available:
 \begin{itemize}
  \item Label (informative text)
  \item CheckBox (switches)
  \item ComboBox (selection from list)
  \item LineEdit (generic variables)
+ \item TextEdit (multi-line text)
 \end{itemize}
 Each widget must be given a name and a variable type: logical, integer, real, or  string. It is also a good practice to equip the widgets with tooltips explaining their purpose and meaning as clearly as possible.
 
@@ -266,7 +306,7 @@ More sophisticated examples with different tags and attributes can be found from
 \noindent {\bf mesh.header}
 \begin{verbatim}
 nodes elements boundary-elements
-types
+number-of-types
 type1 elements1
 type2 elements2
 ...
@@ -297,20 +337,20 @@ elementN bodyN typeN nN1 ... nNM
 
 \noindent {\bf mesh.boundary}
 \begin{verbatim}
-element1 boundary1 parent11 parent12 n11 ... n1M
-element2 boundary2 parent21 parent22 n21 ... n2M
+element1 boundary1 parent11 parent12 type1 n11 ... n1M
+element2 boundary2 parent21 parent22 type2 n21 ... n2M
 ...
-elementN boundaryN parentN1 parentN2 nN1 ... nNM
+elementN boundaryN parentN1 parentN2 typeN nN1 ... nNM
 \end{verbatim}
 
 \newpage
 
 \chapter{Adding menu entries to ElmerGUI}
 
-As ElmerGUI is based on Qt4, it should be relatively easy to customize the menus
+As ElmerGUI is based on Qt, it should be relatively easy to customize the menus
 and dialog windows. A new menu item, for example, is added as follows.
 
-First, we declare the menu action and a private slot in {\tt src/mainwindow.h}:
+First, we declare the menu action and a private slot in {\tt Application/src/mainwindow.h}:
 \begin{verbatim}
 private slots:
    ...
@@ -323,7 +363,7 @@ private:
    ...
 \end{verbatim}
 
-Then, in {\tt src/mainwindow.cpp}, we actually create the action, connect
+Then, in {\tt Application/src/mainwindow.cpp}, we actually create the action, connect
 an appropriate signal from the action to the slot, and add the action in
 a menu:
 \begin{verbatim}
@@ -362,7 +402,8 @@ void MainWindow::mySlot()
 The finite element mesh generated by ElmerGUI is of class {\tt mesh\_t}
 (declared in {\tt src/meshtype.h}). The mesh is private to the class {\tt GLWidget}
 (declared in {\tt src/glwidget.h}), which is responsible of drawing and
-rendering the model.
+rendering the model. Source file paths in this chapter are relative to the
+{\tt ElmerGUI/Application} directory.
 
 \section{GLWidget}
 
@@ -495,7 +536,7 @@ void mesh_t::newNodeArray(int n)
 \end{verbatim}
 Allocate memory for n nodes.
 \begin{verbatim}
-void mesh:t::deleteNodeArray()
+void mesh\_t::deleteNodeArray()
 \end{verbatim}
 Delete current node array.
 \begin{verbatim}
@@ -565,7 +606,7 @@ Delete current volume element array.
 
 \section{node\_t}
 
-The class {\tt node\_t} has been declared in {\tt src/meshtypes.h}. It provides the
+The class {\tt node\_t} has been declared in {\tt src/meshtype.h}. It provides the
 following public methods for accessing node data:
 \begin{verbatim}
 void node_t::setX(int n, double x)

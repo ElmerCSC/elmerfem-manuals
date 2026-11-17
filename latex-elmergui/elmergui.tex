@@ -14,8 +14,8 @@ various formats, generating finite element partitioning for various geometry
 input files, setting up PDE-systems to solve, and exporting model data and results
 for ElmerSolver.
 
-ElmerGUI can also automatically call Paraview. Previously also ElmerPost and internal
-VTK based postprocessors were once supported but these are gradually becoming obsolete.
+ElmerGUI can also automatically call Paraview. It also includes an internal VTK based
+postprocessor, which is gradually becoming obsolete.
 %and ElmerPost to visualize. ElmerGUI has also an internal postprocessor,
 %which can be used as an alternative to ElmerPost, to draw color surfaces, contours, 
 %vector fields, and visualize time dependent data.
@@ -28,7 +28,7 @@ VTK based postprocessors were once supported but these are gradually becoming ob
 \end{figure}
 
 The menus of ElmerGUI are programmable and it should be relatively easy to strip and customize the interface
-for proprietary applications. An example of customizing the menus is provided in appendix A.
+for proprietary applications. An example of customizing the menus is provided in appendix E.
 
 ElmerGUI is also the interface to the parallel solver,  {\tt ElmerSolver\_mpi}.
 The GUI hides from the user many operations that are normally performed from command line with
@@ -36,7 +36,7 @@ various external tools related to domain decomposition, launching the parallel p
 This makes it possible to use ElmerSolver with multi-core processors, even on interactive
 desktop environments.
 
-ElmerGUI relies on the Qt cross platform framework of Qt Company\cite{QtHome}, and it uses the Qwt
+ElmerGUI relies on the Qt cross platform framework of Qt Company\cite{QtHome} (Qt 5 or Qt 6), and it uses the Qwt
 library by Josef Wilgen and Uwe Rathman\cite{QwtHome} to plot scientific data.
 %ElmerGUI relies on the Qt4 cross platform framework of QtSoftware \cite{QtHome}, and it uses the Qwt5
 %library by Josef Wilgen and Uwe Rathman\cite{QwtHome} to plot scientific data.
@@ -45,8 +45,9 @@ The internal postprocessor
 of ElmerGUI is based on the Visualization Toolkit (VTK) of Ken Martin, Will Schroeder, and Bill Lorensen
 \cite{VTKHome}.
 \end{comment}
-The CAD import features are implemented by the OCE library from Open CASCADE Community Edition developers\cite{OCCHome} 
-and Netgen\cite{NetgenHome} as finite element mesh generators.
+The CAD import features are implemented with the Open CASCADE Technology (OCCT) library\cite{OCCHome};
+the older Open CASCADE Community Edition (OCE) is also supported. Netgen\cite{NetgenHome} is used
+as a finite element mesh generator.
 
 %The CAD import features are implemented by the OpenCASCADE (OCC) library from
 %OpenCASCADE S.A.S. \cite{OCCHome}. The program is also capable of using Tetgen \cite{TetgenHome}
@@ -56,21 +57,21 @@ and Netgen\cite{NetgenHome} as finite element mesh generators.
 The source code of ElmerGUI is available from the Git repository hosted at GitHub. The GPL
 licensed source code may be downloaded by executing the command 
 \begin{verbatim}
-  git clone git://www.github.com/ElmerCSC/elmerfem
+  git clone https://github.com/ElmerCSC/elmerfem
 \end{verbatim}
 or
 \begin{verbatim}
-  git clone https://www.github.com/ElmerCSC/elmerfem
+  git clone https://github.com/ElmerCSC/elmerfem.git
 \end{verbatim}
 \noindent This will retrieve the current development version of the whole Elmer-suite.
 
 \section{Linux}
 
 Before starting to compile, please make sure that you have the development package of Qt
-installed on your system (i.e., libraries, headers, and program development tools). Qt version 4.3
-or newer is recommended. You may also wish to install Qwt 6,
-VTK version 8.2,
-and OCE 0.18, for additional functionality. 
+installed on your system (i.e., libraries, headers, and program development tools). Qt version 5
+or 6 is required. You may also wish to install Qwt 6,
+VTK version 9,
+and Open CASCADE Technology (OCCT) or OCE, for additional functionality. 
 
 CMake can be used to generate the makefiles for compilation. The compilation of ElmerGUI is activated 
 in the first place by setting the corresponding CMake variable as {\tt -DWITH\_ELMERGUI:BOOL=TRUE}. 
@@ -78,7 +79,10 @@ Other logical variables that affect the compilation of the program and that can 
 %from the command line 
 with {\tt -D} are {\tt WITH\_QWT}, {\tt WITH\_VTK},
 {\tt WITH\_OCC}, {\tt WITH\_PYTHONQT},
-{\tt WITH\_MATC} and {\tt WITH\_PARAVIEW}. {\tt WITH\_QT5} is also required when compiling with Qt5 instead of Qt4.
+{\tt WITH\_MATC} and {\tt WITH\_PARAVIEW}. Qt5 is used automatically when it is found;
+to compile with Qt6, set {\tt -DWITH\_QT6:BOOL=TRUE}. A VTK build with {\tt VTK\_QT\_VERSION}
+matching the Qt major version should be used. Note that PythonQt-based scripting
+({\tt WITH\_PYTHONQT}) required Qt 4 and is therefore no longer available.
 
 %The program compiled and installed by executing the following sequence of commands in a terminal window:
 %\begin{verbatim}
@@ -93,11 +97,14 @@ with {\tt -D} are {\tt WITH\_QWT}, {\tt WITH\_VTK},
 %on how and where the external libraries have been installed. The lines that need attention can be found from
 %the beginning of the file.
 
-Once the build process has finished, it suffices to set up the environment variable {\tt ELMERGUI\_HOME}
-and add it to {\tt PATH}:
+Once the build process has finished, the program is installed in {\tt <prefix>/bin} and the
+definition files in {\tt <prefix>/share/ElmerGUI/edf}. ElmerGUI finds the definition files
+relative to the executable, but if needed their location can be given with the environment
+variable {\tt ELMERGUI\_HOME}, which should point to the directory containing {\tt edf}.
+Add the binary directory to {\tt PATH}:
 \begin{verbatim}
-$ export ELMERGUI_HOME=/usr/local/bin
-$ export PATH=$PATH:$ELMERGUI_HOME
+$ export ELMERGUI_HOME=/usr/local/share/ElmerGUI
+$ export PATH=$PATH:/usr/local/bin
 \end{verbatim}
 The program is launched by the command
 \begin{verbatim}
@@ -166,7 +173,7 @@ boundaries. It is possible to use one of the following mesh generators:
 \end{itemize}
 The default import filter and mesh generator is ElmerGrid. Tetgen is an optional
 module, which may or may not be available depending on the installation (installation and
-compilation instructions can be found from Elmer's source tree in {\tt trunk/misc})
+compilation instructions can be found from Elmer's source tree in {\tt misc/tetgen\_plugin})
 
 An import filter or a mesh generator is selected automatically by ElmerGUI when a geometry
 input file is opened:
@@ -194,19 +201,25 @@ has been discussed and explained in detail in Tetgen's user guide \cite{TetgenHo
 		\hline 
 		.FDNEUT & yes & no & no \\
 		.grd  & yes & no & no \\
+		.inp & yes & no & no \\
 		.msh & yes & no & no \\
 		.mphtxt & yes & no & no \\
+		.plt & yes & no & no \\
+		.unv & yes & no & no \\
 		.off & no & yes & no \\
 		.ply & no & yes & no \\
 		.poly & no & yes & no \\
+		.mesh & no & yes & no \\
 		.smesh & no & yes & no \\
 		.stl  & no & yes & yes \\
-		.unv & no & yes & no \\
 		.in2d & no & no & yes \\
 		\hline
 		\end{tabular}
 	\end{center}
 \end{table}
+
+CAD geometry files ({\tt .brep}, {\tt .step}, {\tt .stp}, {\tt .iges} and {\tt .igs}) are
+imported through Netgen when ElmerGUI has been compiled with Open CASCADE support.
 
 The mesh generator is reactivated from the Mesh menu by choosing
 
@@ -217,7 +230,7 @@ The mesh generator is reactivated from the Mesh menu by choosing
 \section{Elmer mesh files}
 
 An Elmer mesh consists of the following four text files (detailed description of the file
-format can be found from Appendix B):
+format can be found from Appendix D):
 
 \begin{footnotesize}
 \begin{verbatim}
@@ -289,7 +302,7 @@ been discussed in detail in the SolverManual of Elmer \cite{ElmerHome}.
 
 \section{Equation menu}
 
-The first ``dynamical menu'' constructed from the ElmerGUI definition files (see Appendix A) is
+The first ``dynamical menu'' constructed from the ElmerGUI definition files (see Appendix C) is
 \menu{Model}{Equation}
 \noindent This menu defines the PDE-system to be solved as well as the numerical
 methods and parameters used in the solution. It will be used to generate the ``Solver''
@@ -489,9 +502,9 @@ and boundary division from the Mesh menu by choosing
 Sometimes, the above process produces far too many distinct parts, which eventually
 need to be (re)unified. This can be done by selecting a group of surfaces by holding
 down the CTRL-key while double clicking the surfaces and choosing
-\menu{Mesh}{Unify surface...}
+\menu{Mesh}{Unify surface}
 \noindent The same operation in 2D is
-\menu{Mesh}{Unify edge...}
+\menu{Mesh}{Unify edge}
 The result will inherit the smallest index from the selected group.
 
 \noindent The sharp edges that do not belong to a closed loop may be removed by
@@ -590,22 +603,20 @@ These buttons are shown in Figure \ref{fig:quickbuttons}.
 \end{figure}
 \section{Post processing}
 
-If the path settings are set properly, ElmerGUI can call Paraview directly from
+If the path settings are set properly, and ElmerGUI has been compiled with
+{\tt WITH\_PARAVIEW}, it can call Paraview directly from
 \menu{Run}{Start ParaView}
 Note that you may always open Paraview also independently from ElmerGUI. 
 
-ElmerGUI still also includes calling possibility of the obsolete ElmerPost visualization tool.
-It will with time be eliminated also from the GUI. 
+ElmerGUI still has a menu entry for the discontinued ElmerPost visualization tool.
+This entry will be removed from the GUI in a future release; use ParaView or the VTK
+postprocessor instead.
 
 
 %includes callprovides two different post processors for drawing, displaying, and manipulating the results.
 
-The first alternative is activated from
-\menu{Run}{Start ElmerPost}
-\noindent This will launch ElmerPost, which will read in the result file and displays a contour plot representing the solution. If the results were produced by the parallel solver, the domain decomposition used in the calculations will be shown. Because ElmerPost can handle only ``.ep'' file, you should specify the Post file in Simulation section of Setup Window with extension of ``.ep'' such like ``case.ep'' while it is ``case.vtu'' by default.
-
-The second post processor is based on the Visualization Toolkit, VTK. It is activated from
-\menu{Run}{ElmerVTK}
+The post processor based on the Visualization Toolkit, VTK, is activated from
+\menu{Run}{Start ElmerVTK}
 \noindent A new window will then pop up, providing methods for drawing surfaces, contours,
 vectors, and stream lines.
 
