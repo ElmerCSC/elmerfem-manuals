@@ -37,7 +37,7 @@ depth [m] & T (C)    \\ \hline
 \end{table}
 
 The material parameters for the rock are assumed to be those of ideal granite. 
-We take $k=2.5$~W/mK, $C_p=1250$~J/kgK, and $\rho=2800$~kg/m$^3$. 
+We take $k=2.5$~W/mK, $C_p=1250$~J/kgK, and $\rho=2700$~kg/m$^3$.
 
 As boundary conditions we use the initial temperature at the upper and lower end. Hence the problem depends only on the depth direction.
 
@@ -76,12 +76,12 @@ For time stepping we will use 2nd order scheme.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady transient
-    Timestepping Method = BDF
-    BDF Order = 2 
-    Timestep Intervals = 10000
-    Timestep Sizes = $10*365*24*3600
-    Output Intervals = 2
+    Simulation type = Transient
+    Timestepping method = BDF
+    BDF order = 2
+    Timestep intervals = 1000
+    Timestep sizes = $10*365*24*3600
+    Output intervals = 2
 \ttend
 Choose \texttt{Apply} to accept the values and close the window.
 
@@ -129,7 +129,7 @@ Model
 We will need an initial condition for the case. 
 \ttbegin
 Model
-  Initial Condition
+  Initial condition
     Add 
       Name = Initial State
       Apply to bodies = 1
@@ -148,8 +148,8 @@ Variable coordinate 2
   Real
     -8000 320.0
     -6500 260.0
-    -6499 500.0
-    -5501 500.0
+    -6499 900.0
+    -5501 900.0
     -5500 220.0
     -4000 160.0
   End
@@ -159,7 +159,7 @@ In this case we only need boundary conditions for the upper and lower boundary.
 First we create the boundary conditions
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Add 
       Heat Equation
         Temperature = 320.0
@@ -199,7 +199,7 @@ Before we can execute the solver we should save the files in a directory. In sav
 necessary files for restarting the case will be saved to the destination directory.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver

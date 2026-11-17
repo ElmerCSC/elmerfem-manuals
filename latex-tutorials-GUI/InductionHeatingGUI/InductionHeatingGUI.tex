@@ -118,7 +118,7 @@ Model
     Solver -> MgDyn2DPost
       Active = on
       Edit Solver Settings
-        Solver Specific Options
+        Solver specific options
           Target Variable Complex = on
           Calculate Joule Heating = on
     Name = Induction
@@ -178,7 +178,7 @@ Model
 We need to provide a current source in order for the equation to have a non-trivial solution.
 \ttbegin
 Model
-  BodyForce
+  Body force
     Name = CurrentSource
     MgDyn2DHarmonic
       Current Density = 2.5e5
@@ -196,7 +196,7 @@ Model
 We have just one boundary condition i.e. the outer boundary for which we use the far field condition.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Farfield
     MgDyn2DHarmonic
       Infinity BC = True
@@ -227,7 +227,7 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver
@@ -238,7 +238,7 @@ Run
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 
 one just ensures that convergence of the non-linear level was really obtained. 
-The norm of the solution should be 0.3679.
+The norm of the solution should be 1.105e-5.
 
 
 

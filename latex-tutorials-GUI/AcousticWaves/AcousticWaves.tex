@@ -36,7 +36,7 @@ We will be using the \Idx{Helmholtz Solver}, which is one of the default, pre-lo
 
 and in Windows, located in:
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
+\texttt{C:/Program Files/Elmer 26.2-Release/share/ElmerGUI/edf}\\
 
 \subsection*{Solution procedure}
 
@@ -62,7 +62,7 @@ The simulation is carried out in 2-dimensional Cartesian coordinates.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
+    Simulation type = Steady state
     Steady state max. iter = 1
   Apply
 \ttend
@@ -111,7 +111,7 @@ The conditions may be assigned to boundaries in the Boundary condition menu, or 
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Constraint1
     Boundary 1 is checked
     Helmholtz Equation
@@ -151,7 +151,7 @@ Before we can execute the solver we should save the files in a directory.  The E
 
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver.

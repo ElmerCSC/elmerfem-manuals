@@ -44,7 +44,7 @@ selections are done within the window chosen at the higher level.
 Before we can start the set-up we should make sure that the menus for Smitc solver are present.
 If not, they may be found in file
 \ttbegin
-$ELMERHOME/bin/edf-extra/elasticplate.xml
+$ELMER_HOME/share/ElmerGUI/edf-extra/elasticplate.xml
 \ttend
 To load these definitions do the following
 \ttbegin
@@ -56,13 +56,13 @@ To see what kind of new menu structures were loaded you may play around with vie
 Note that if you want to load an existing project you should load the xml-definitions that were used 
 in creating the project. Therefore it may be best to place all actively used menu definitions in directory
 \ttbegin
-$ELMERHOME/bin/edf
+$ELMER_HOME/share/ElmerGUI/edf
 \ttend
 
 When the menu structures for plate solver are there then we are ready to continue.
 The first thing to do is create a mesh with ElmerGrid.
 The definition of mesh is in the file \texttt{simple\_plate.grd}.
-The mesh is about uniform and consist of 1000 linear square elements.
+The mesh is about uniform and consist of 1008 linear square elements.
 \ttbegin
 File 
   Open -> simple\_plate.grd
@@ -93,7 +93,7 @@ i.e. Steady State.  There are no coupled solvers so only one iteration is needed
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
+    Simulation type = Steady state
     Steady state max. iter = 1
     Apply
 \ttend
@@ -144,7 +144,7 @@ It is the uniform pressure from the weight of the sand and it is
 the same constant in every point.
 \ttbegin
 Model
-  BodyForce
+  Body force
     Name = Pressure
     Apply to Bodies = Body 1 
     Elastic Plates 
@@ -159,7 +159,7 @@ solution field to be zero. The 1st component is the displacement in the normal d
 while the 2nd and 3rd components  are actually the components of rotation vector
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Add 
       Elastic Plates
         Deflection 1 = 0.0
@@ -184,7 +184,7 @@ Before we can execute the solver we should save the files in a directory. In sav
 necessary files for restarting the case will be saved to the destination directory.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver
@@ -200,7 +200,7 @@ no curve appears.  The problem is solved in few seconds.
 To view the results start Paraview
 \ttbegin
 Run
-  Paraview
+  Start ParaView
 \ttend
 and select the 1st component of the \texttt{deflection} field (confusingly 
 named the x-component). 

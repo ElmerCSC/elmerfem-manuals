@@ -53,10 +53,10 @@ constant is predefined in the \texttt{Setup} menu.
 \ttbegin
 Model
   Setup 
-     Coordinate System = Axi Symmetric
-     Simulation Type = Steady State
+     Coordinate system = Axi Symmetric
+     Simulation type = Steady state
      Steady State Max Iterations = 1
-     Output Intervals = 1
+     Output intervals = 1
   Apply
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
@@ -64,8 +64,8 @@ In this case we'll have the Heat equation.
 
 When defining Equations and Materials it is possible to assign to the bodies 
 immediately, or to use mouse selection to assign them later. In this case we 
-have just two bodies and therefore its easier to assign the Equation and 
-Material to it directly.
+have just two bodies and therefore it is easiest to assign the Equation and
+Material to both directly.
 
 For the linear system solvers we are happy to use the defaults. One may however, try out different
 preconditioners (ILU1,\ldots) or direct Umfpack solver, for example.
@@ -77,9 +77,9 @@ Model
     Heat Equation
       Active = on
     Edit Solver Settings
-       Steady State
+       Steady state
          Convergence Tolerance = 1.0e-8
-       Non-linear system
+       Nonlinear system
         Convergence Tolerance = 1.0e-8
         Max Iterations = 50
         Relaxation Factor = 0.7
@@ -107,7 +107,7 @@ Model
     Apply to Bodies = 1 
     General 
       Density = 1.0
-      Heat capacity = 1.0
+      Heat Capacity = 1.0
     Heat Equation
       Heat Conductivity = 10.0
     Add
@@ -117,7 +117,7 @@ Model
     Apply to Bodies = 2 
     General 
       Density = 1.0
-      Heat capacity = 1.0
+      Heat Capacity = 1.0
     Heat Equation
       Heat Conductivity = 1.0
     Add
@@ -130,11 +130,11 @@ force is the heating power in units W/kg.
 
 \ttbegin
 Model
-  Body Force
+  Body force
     Name = Power
     Apply to Bodies = 1
     Heat Equation
-       Volume Heat Source = 10000
+       Heat Source = 10000
     Add 
     OK
 \ttend    
@@ -143,7 +143,7 @@ Initial conditions are needed in this case. We choose a
 constant Temperature field of 250C. 
 \ttbegin
 Model
-  Initial Condition 
+  Initial condition
     Name = Initial
     Apply to Bodies = 1 2
     Heat Equation
@@ -168,27 +168,27 @@ Dirichlet conditions boost up the convergence even though the heat equation
 is basically well defined also with external radiation conditions.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Inner
-    Apply to Bodies = 1
+    Apply to boundaries = 1
     Heat Equation
-      Radiation Settings = Diffuse Gray
+      Radiation = Diffuse Gray
       Emissivity = 0.6
       Radiation Target Body = -1
     Add
     New
 
     Name = Outer
-    Apply to Bodies = 2
+    Apply to boundaries = 2
     Heat Equation
-      Radiation Settings = Diffuse Gray
+      Radiation = Diffuse Gray
       Emissivity = 0.1
       Radiation Target Body = -1
     Add 
     New
 
     Name = Exterior
-    Apply to Bodies = 3
+    Apply to boundaries = 3
     Heat Equation
       Temperature = 100.0
     Add 
@@ -221,7 +221,7 @@ Before we can execute the solver we should save the files in a directory.
 The ElmerGUI project includes all the files needed to restart the case.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver

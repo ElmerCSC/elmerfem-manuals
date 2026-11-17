@@ -30,7 +30,7 @@ We will be using the \Idx{Heat Solver}, which is one of the default, pre-loaded 
 
 \noindent and in Windows, located in:
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
+\texttt{C:/Program Files/Elmer 26.2-Release/share/ElmerGUI/edf}\\
 
 
 \subsection*{Solution procedure}
@@ -61,10 +61,10 @@ The heat equation is solved with an iterative method. The system is linear, thus
 \ttbegin
 Model
   Setup 
-    Simulation Type = Transient
+    Simulation type = Transient
     Steady state max. iter = 1
-    Time Step Intervals = 15
-    Time Step Sizes = 1
+    Timestep intervals = 15
+    Timestep sizes = 1
   Apply
 \ttend
 
@@ -123,16 +123,15 @@ The section `Free text input' is used, because the option to define a passive el
 
 \ttbegin
 Model
-  Body Force
+  Body force
     Name = Heat Source
     Apply to Bodies = 3
     Heat Equation
-       Volume Sources
-         Heat source = 10
+       Heat Source = 10
     Add 
     OK
 
-  Body Force
+  Body force
     Name = Passive
     Apply to Bodies = 2
     Heat Equation
@@ -154,7 +153,7 @@ In this case we choose a constant Temperature for the passive element.  The init
  
 \ttbegin
 Model
-  Initial Condition 
+  Initial condition
     Name = Initial Guess
     Apply to Bodies = 2
     Heat Equation
@@ -205,7 +204,7 @@ Before we can execute the solver we should save the files in a directory.  The E
 
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver.

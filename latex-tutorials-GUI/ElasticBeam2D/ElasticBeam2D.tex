@@ -68,7 +68,7 @@ The simulation is carried in steady-state in 2-dimensional Cartesian coordinates
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
+    Simulation type = Steady state
     Steady state max. iter = 1
 \ttend
 
@@ -123,7 +123,7 @@ to line break. To fill in the second boundary condition press \texttt{Enter} in 
 \texttt{Force 2} checkbox.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Wall
     Linear elasticity
       Displacement 1 = 0.0
@@ -161,7 +161,7 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver
@@ -171,7 +171,7 @@ Run
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 Two iterations are performed, the second one only to ensure convergence at the nonlinear level.
-The norm of the finished computation should be around 0.01808.
+The norm of the finished computation should be around 0.0205.
 
 When there are some results to view we may start the postprocessor also
 \ttbegin
@@ -227,11 +227,11 @@ You may try with the following settings.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Transient
-    Time Stepping Method = bdf
-    BDF Order = 2
-    Time Step Intervals = 200
-    Time Step Sizes = 1.0e-4
+    Simulation type = Transient
+    Timestepping method = BDF
+    BDF order = 2
+    Timestep intervals = 200
+    Timestep sizes = 1.0e-4
 \ttend
 Having a too large time step will not accurately describe the transient behaviour while having a too 
 small time step consumes unnecessary resources. There is only numerical damping in the system and 

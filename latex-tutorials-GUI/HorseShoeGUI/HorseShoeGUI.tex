@@ -1,6 +1,6 @@
 \chapter{Magnetostatics -- Magnetic field resulting from a permanent magnet}
 
-\modinfo{Directory}{HorseshoeGUI}
+\modinfo{Directory}{HorseShoeGUI}
 \modinfo{Solvers}{\Idx{MagnetoDynamics2D}}
 \modinfo{Tools}{\Idx{Gmsh}, \Idx{ElmerGUI}}
 \modinfo{Dimensions}{2D, Steady-state}
@@ -138,7 +138,7 @@ Model
 We have just one boundary condition i.e. the outer boundary for which we use the far field condition.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Farfield
     MgDyn2D
       Infinity BC = True
@@ -169,7 +169,7 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver

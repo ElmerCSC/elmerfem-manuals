@@ -54,7 +54,7 @@ Solver 1
   Linear System Max Iterations = 500
   Linear System Convergence Tolerance = 1.0e-8
   BiCGstabl polynomial degree = 2
-  Linear System Preconditioning = ILU0
+  Linear System Preconditioning = ILU1
   Linear System ILUT Tolerance = 1.0e-3
   Linear System Abort Not Converged = False
   Linear System Residual Output = 1

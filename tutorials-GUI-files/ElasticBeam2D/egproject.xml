@@ -1485,7 +1485,7 @@
          </widget>
          <widget type="Edit">
             <key>/Linear elasticity/BoundaryCondition/Force 2/1</key>
-            <value>Variable Coordinate 1; Real; 0 0; 1 -1.0e8; End</value>
+            <value>Variable Coordinate 1; Real; 0 0; 1 -1.0e7; End</value>
          </widget>
          <widget type="TextEdit">
             <key>/Helmholtz Equation/BoundaryCondition/Free text/1</key>

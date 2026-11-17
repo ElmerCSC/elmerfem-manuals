@@ -82,10 +82,10 @@ Only one steady-state iteration is needed as the case is linear.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
+    Simulation type = Steady state
     Steady state max. iter = 1
 \ttend
-Choose \texttt{Apply} to close the window.
+Choose \texttt{Apply} to accept the values, then close the window.
 
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have one set only one equation -- the heat equation.
@@ -119,7 +119,7 @@ Model
   Material
     Add 
       Material library
-        Water (frozen)
+        Water (frozen in Celsius)
       Apply to bodies = Body 1 
       Add 
       OK
@@ -146,7 +146,7 @@ A screenshot of the case when setting the BCs is shown in figure~\ref{glac:bc}.
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Add 
       Name = Tsurface
       Heat Equation
@@ -189,7 +189,7 @@ Before we can execute the solver we should save the files in a directory. In sav
 necessary files for restarting the case will be saved to the destination directory.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver
@@ -217,7 +217,7 @@ the project before execution.
 To view the results we use Paraview,
 \ttbegin
 Run
-  Start Paraview
+  Start ParaView
 \ttend
 Picture~\ref{glac:figtemp} shows
 the surface mesh coloured with temperature.
@@ -258,11 +258,11 @@ Here it is used to transform the time in years to those in one second.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Transient
-    Time Stepping Method = bdf
-    BDF Order = 2
-    Time Step Intervals = 100
-    Time Step Sizes = \$ 3600 * 24 * 365.25 * 100
+    Simulation type = Transient
+    Timestepping method = BDF
+    BDF order = 2
+    Timestep intervals = 100
+    Timestep sizes = \$ 3600 * 24 * 365.25 * 100
     Gravity = ...
 \ttend
 
@@ -270,7 +270,7 @@ Initial conditions should be given to transient cases. In this case we choose a 
 of -10~C. This is consistent with the boundary condition at the top wall.
 \ttbegin
 Model
-  Initial Condition 
+  Initial condition
     Name = Initial Guess
     Heat Equation
       Temperature = -10.0

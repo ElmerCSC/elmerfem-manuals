@@ -104,15 +104,15 @@ for.
 
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the \texttt{Setup} we choose things related to the whole simulation such as file names, 
-time stepping, constants etc.  The simulation is carried out in 2-dimensional Cartesian
+time stepping, constants etc.  The simulation is carried out in 3-dimensional Cartesian
 coordinates and in steady-state. Only one steady-state iteration is needed as the case is linear. 
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
+    Simulation type = Steady state
     Steady state max. iter = 1
 \ttend
-Choose \texttt{Apply} to close the window.
+Choose \texttt{Apply} to accept the values, then close the window.
 
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have one set only one equation -- the Model PDE.
@@ -153,7 +153,7 @@ Model
 A Body Force represents the right-hand-side of a equation,  
 \ttbegin
 Model
-  Body Force
+  Body force
       Name = Source
       Apply to bodies = 1
       Model PDE
@@ -168,7 +168,7 @@ Finally, for the BCs first define them and then use the mouse to apply them to t
 boundary patches.  Refer to figure~\ref{fg:modelpde1} and select the two surfaces as shown.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
       Name = Zero
       Model PDE
         Field = 0.0
@@ -191,7 +191,7 @@ necessary files for restarting the case will be saved to the
 destination directory.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver

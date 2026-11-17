@@ -85,7 +85,7 @@ For simplicity the project directory is presented under ElmerGUI$\_$TEAM7. The m
 
 \begin{verbatim}
 File
-  New project ...
+  New project...
       Project directory 
           Select project dir -> ElmerGUI_TEAM7
       Geometry input
@@ -104,20 +104,20 @@ File
 \end{figure}  
 
 
-Adding additional menus can be avoided by permanently moving the .xml files from \texttt{\$ELMER\_HOME/install/share/ElmerGUI/edf-extra} to \texttt{\$ELMER\_HOME/install/share/ElmerGUI/edf}\\
+Adding additional menus can be avoided by permanently moving the .xml files from \texttt{\$ELMER\_HOME/share/ElmerGUI/edf-extra} to \texttt{\$ELMER\_HOME/share/ElmerGUI/edf}\\
 
 
 \subsection*{Model Preferences}
 
-The TEAM Problem 7 is solved by imposing a transient sinusoidal current that generates a magnetic field.  Due to the time-dependency nature of the problem let us setup the model time preferences by clicking on ElmerGUI on the top ribbon
+The TEAM Problem 7 is solved by imposing a transient sinusoidal current that generates a magnetic field.  Due to the time-dependency nature of the problem let us setup the model time preferences by clicking on Model on the top ribbon
 
 \ttbegin
-ElmerGUI
-  Preferences 
-    Simulation Type = Transient
-    Timestep interval = 16
+Model
+  Setup...
+    Simulation type = Transient
+    Timestep intervals = 16
     Timestep sizes = 0.0025
-  Close
+  Apply
 \ttend
 
 The timestep interval and size used are meant to accommodate two periods at a frequency of 50Hz.  
@@ -193,7 +193,7 @@ The configuration of the menus will appear also in any new equation added.  For 
 Model
   Equation -> Add
      Name = Equation Plate and Air
-     Apply to Bodies = 1 2
+     Apply to Bodies = 2 3
      
      MgDyn
          Active = on
@@ -238,7 +238,7 @@ A Body Force represents the right-hand-side of a equation.  In this case we want
 
 \ttbegin
 Model
-  Body Force
+  Body force
     Name = External CoilCurrent Source
     Apply to Bodies = 1
     Current Density Multiplier= Variable "time"; Real LUA "cos(2*math.pi*50*tx[0])"
@@ -253,7 +253,7 @@ Note that the frequency is 50Hz.  Hence  cos(2 $\pi$ f t), where f is the excita
 
 \ttbegin
 Model
-  BoundaryCondition -> Add
+  Boundary condition -> Add
       Name = Infinity
       Apply to Boundaries = 6
       MgDyn
@@ -276,7 +276,7 @@ Before we can execute the solver save the the project.
 
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver.

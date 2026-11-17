@@ -26,7 +26,7 @@ selections are done within the window chosen at the higher level.
 Before we can start the set-up we should make sure that the menus for Smitc solver are present.
 If not, they may be found in file
 \ttbegin
-$ELMERHOME/bin/edf-extra/elasticplate.xml
+$ELMER_HOME/share/ElmerGUI/edf-extra/elasticplate.xml
 \ttend
 To load these definitions do the following
 \ttbegin
@@ -39,11 +39,11 @@ Note that if you want to load an existing project you should load the xml-defini
 in creating the project. Therefore it may be best to place all actively used menu definitions in
 directory
 \ttbegin
-$ELMERHOME/bin/edf
+$ELMER_HOME/share/ElmerGUI/edf
 \ttend
 
 When the menu structures for plate solver are there then we are ready to continue.
-The mesh is given in 2d netgen format in file \texttt{pentagon.grd} in the samples directory of ElmerGUI, 
+The mesh is given in 2d netgen format in file \texttt{pentagon.in2d} in the samples directory of ElmerGUI,
 load this file.
 \ttbegin
 File 
@@ -76,7 +76,7 @@ Only one steady-state iteration is needed as the case is linear.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
+    Simulation type = Steady state
     Steady state max. iter = 1
     Apply
 \ttend
@@ -97,10 +97,10 @@ Model
       Elastic Plates
         Active = on
         Edit Solver Settings 
-          Solver Specific Options
+          Solver specific options
             Eigen Analysis = on
             Eigen System Values = 10
-          Linear System
+          Linear system
             Direct = on
               Umfpack              
     Add  
@@ -137,7 +137,7 @@ solution field to be zero. The 1st component is the displacement in the normal d
 while the 2nd and 3rd components are its derivatives in $x$ and $y$ directions.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Add 
       Elastic Plates
         Deflection 1 = 0.0
@@ -164,7 +164,7 @@ necessary files for restarting the case will be saved to the
 destination directory.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver
@@ -202,7 +202,7 @@ the project before execution.
 To view the results we here start Paraview
 \ttbegin
 Run
-  Paraview
+  Start ParaView
 \ttend
 and select the 1st component of the \texttt{deflection} field
 (confusingly named the x-component). 

@@ -33,11 +33,11 @@
       </widget>
       <widget type="LineEdit">
          <objectName>timeStepIntervalsEdit</objectName>
-         <text>10000</text>
+         <text>1000</text>
       </widget>
       <widget type="LineEdit">
          <objectName>outputIntervalsEdit</objectName>
-         <text>100</text>
+         <text>2</text>
       </widget>
       <widget type="LineEdit">
          <objectName>timestepSizesEdit</objectName>
@@ -740,8 +740,8 @@
  Real
     -8000 320.0
     -6500 260.0
-    -6499 500.0
-    -5501 500.0
+    -6499 900.0
+    -5501 900.0
     -5500 220.0
     -4000 160.0
   End</value>

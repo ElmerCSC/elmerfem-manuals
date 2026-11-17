@@ -53,7 +53,7 @@ Hence, the user must load these before starting the simulations.
 \ttbegin
 File 
   Definitions
-    Append -> nonlinearelastity.xml
+    Append -> nonlinearelasticity.xml
 \ttend
 The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.
 Moving the desired \texttt{xml} files to the \texttt{edf}-directory enables automatic loading of the 
@@ -99,7 +99,7 @@ Model
     Coordinate system = Cartesian
     Simulation type = Steady state
     Steady state max. iter = 100
-    Output Intervals = 0
+    Output intervals = 0
     ...
 \ttend
 
@@ -128,10 +128,10 @@ Model
     Navier-Stokes
       Active = on
       Priority = 2 
-      Edit Solver Setting
-        Nonlinear System
-          Max.iterations = 1
-          Nonlinear System Relaxation Factor = 0.5
+      Edit Solver Settings
+        Nonlinear system
+          Max. iterations = 1
+          Relaxation factor = 0.5
     Mesh Update
       Active = on
       Priority = 0 
@@ -147,10 +147,10 @@ Model
     Nonlinear Elasticity
       Active = on
       Priority = 1
-      Edit Solver Setting
-        Nonlinear System
-          Max.iterations = 1
-          Nonlinear System Relaxation Factor = 0.5
+      Edit Solver Settings
+        Nonlinear system
+          Max. iterations = 1
+          Relaxation factor = 0.5
     OK
 \ttend    
 
@@ -200,7 +200,7 @@ with the mouse.
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Inflow
     Navier-Stokes 
       Velocity 1 = Variable Coordinate 2 
@@ -223,7 +223,7 @@ edit box which will open a larger window for editing.
 
     Name = Walls
     Navier-Stokes 
-      NoSlip Wall BC = on
+      Noslip wall BC = on
     Mesh Update
       Mesh Update 1 = 0.0
       Mesh Update 2 = 0.0
@@ -246,7 +246,7 @@ by the conditions for the \texttt{MeshSolver}.
     Nonlinear Elasticity 
       FSI BC = on
     Navier-Stokes 
-      NoSlip Wall BC = on
+      Noslip wall BC = on
     Mesh Update 1 = Equals Displacement 1
     Mesh Update 2 = Equals Displacement 2
 \ttend   
@@ -277,7 +277,7 @@ all the files needed to restart the case. It's a good idea to give the project a
 Avoid paths which includes empty spaces since they may cause problems later on. 
 \ttbegin
 File 
-  Save Project
+  Save project
     Make New Folder -> fsi_obstacle
     OK
 \ttend

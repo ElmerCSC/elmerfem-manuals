@@ -53,9 +53,9 @@ system down to work in SI units of meters.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Transient
-    Timestep Sizes = 0.05
-    Timestep Intervals = 20
+    Simulation type = Transient
+    Timestep sizes = 0.05
+    Timestep intervals = 20
     Coordinate Scaling = 0.01
 \ttend
 
@@ -104,7 +104,7 @@ Note that the semicolon is an alternative separator
 to line break. 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = MovingRight
     Nonlinear elasticity
       Displacement 1 = Variable "time"
@@ -147,7 +147,7 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver

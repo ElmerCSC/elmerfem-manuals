@@ -50,7 +50,7 @@ We will be using the \Idx{FlowSolver} and the \Idx{HeatSolver}, which are the de
 
 and in Windows, located in:
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
+\texttt{C:/Program Files/Elmer 26.2-Release/share/ElmerGUI/edf}\\
 
 \subsection*{Solution procedure}
 
@@ -74,7 +74,7 @@ time stepping, constants etc. The simulation uses 2D Cartesian geometry and the 
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady State
+    Simulation type = Steady state
     Steady state max. iter = 20
   Apply
 \ttend
@@ -130,7 +130,7 @@ Model
       Heat Conductivity = 0.026
     Navier-Stokes
        Viscosity = 16.7e-6
-       Compressibility models = Perfect Gas
+       Compressibility Model = Perfect Gas
     Add
     OK
 \ttend
@@ -141,7 +141,7 @@ Initial conditions should be given to transient cases, and probably are not need
 
 \ttbegin
 Model
-  Initial Condition 
+  Initial condition
     Name = Initial Guess
     Apply to Bodies = 1 
     Heat Equation
@@ -167,7 +167,7 @@ To enter the three pairs of numbers in the Heat Equation menu tab, click into th
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Inlet
     Heat Equation
       Temperature = Variable Coordinate 2
@@ -230,7 +230,7 @@ Before we can execute the solver we should save the files in a directory. The El
 
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver

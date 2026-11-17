@@ -45,9 +45,9 @@ If you wish to just run the existing project tutorial and examine the resulting 
 
 \begin{verbatim}
 File
-  Load Project...
+  Load project...
 Run
-  Start Solver
+  Start solver
 \end{verbatim}
 
 You should see the Convergence Monitor and the Solver log windows pop up, and the solution finish in a few moments in most cases.  The results can then be examined using ElmerVTK or Paraview, as follow:
@@ -59,7 +59,7 @@ Run
 or
 \begin{verbatim}
 Run
-  Start Paraview
+  Start ParaView
 \end{verbatim}
 
 \subsection*{New Project}
@@ -67,8 +67,8 @@ Run
 If you are more interested in learning how to use ElmerGUI by constructing an ElmerGUI project from the beginning, then the next few sections will describe in detail the step by step actions needed to build an ElmerGUI project.  The first step will be to create your own project folder, and copy in the geometry input file from the tutorial of interest.  Then start ElmerGUI and create a new project, as follows:
 
 \begin{verbatim}
-Run
-  New Project...
+File
+  New project...
 \end{verbatim}
 
 Start at the top and select the project directory as shown in Figure \ref{fg:new_project}.  Then select the Geometry input file, that was copied into your project folder.  This could either be an elmer mesh or a geometry input file, such as an elmergrid input file.  Lastly, if additional Equation Definition Files are needed for the tutorial, select as many as needed in the right hand box and add them to the left hand box.  Finish by clicking on OK.
@@ -137,7 +137,7 @@ Note that the remeshing operation will change the Elmer mesh.* files, but will n
 
 We want to set the temperature at the inside of the three bores, each of which have two interior surfaces.  We could set the boundary conditions by selecting all six surfaces, one at a time, as shown in Figure~\ref{fg:select}.
 
-ElmerGUI has the capability to join boundary surfaces, so that we can unite all six boundaries into a single boundary, which will make it easier to apply our boundary conditions for the simulation.  We demonstrate this optional step of 'Unify Surface' next.  Note that the Elmer mesh.* files will be updated with the changed boundary surfaces, and the original geometry input file will be unchanged.\\ 
+ElmerGUI has the capability to join boundary surfaces, so that we can unite all six boundaries into a single boundary, which will make it easier to apply our boundary conditions for the simulation.  We demonstrate this optional step of 'Unify surface' next.  Note that the Elmer mesh.* files will be updated with the changed boundary surfaces, and the original geometry input file will be unchanged.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -150,7 +150,7 @@ In order for ElmerGUI to unite surface boundaries, we must select the six pieces
 
 \ttbegin
 Mesh 
-  Unify Surface
+  Unify surface
 \ttend
 
 \begin{figure}[H]
@@ -169,10 +169,10 @@ For this particular case, we can accept all of the default settings under Setup.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
+    Simulation type = Steady state
     Steady state max. iter = 1
 \ttend
-Choose \texttt{Apply} to close the window.
+Choose \texttt{Apply} to accept the values, then close the window.
 
 \begin{figure}[H]
 \begin{center}
@@ -231,7 +231,7 @@ Click on the tabs near the top of the window, such as 'General' or 'Heat Equatio
 A Body Force represents the right-hand-side of a equation that in this case represents the heat source. 
 \ttbegin
 Model
-  Body Force
+  Body force
     Add 
       Heat Equation
         Heat Source = 0.01
@@ -265,7 +265,7 @@ First we create the boundary condition, as shown in Figure~\ref{fg:step-06}.  No
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Add 
       Heat Equation
         Temperature = 293.0
@@ -321,7 +321,7 @@ After writing the sif file, we may also visually inspect, and optionally edit, t
 Before we can execute the solver we should save the files in a directory. In saving the project all the necessary files for restarting the case will be saved to the destination directory.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver
@@ -353,7 +353,7 @@ To view the results we will run ElmerVTK for the visualization.
 
 \ttbegin
 Run
-  ElmerVTK
+  Start ElmerVTK
 \ttend
 
 \newpage
@@ -447,7 +447,7 @@ Next we will cover the basics of using \Idx{Paraview} to visualize the simulatio
 
 \ttbegin
 Run
-  Paraview
+  Start ParaView
 \ttend
 
 After a short wait, Paraview will open and it should show our case\_t0001.vtu file in the upper left window, as shown in Figure~\ref{fg:paraview-1}.  First step is to click on the light green Apply button.

@@ -73,7 +73,7 @@ coordinates, which are also the defaults.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
+    Simulation type = Steady state
     Coordinate system = Cartesian
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
@@ -92,8 +92,8 @@ Model
     Apply to Bodies = Body 1
     Navier-Stokes 
       Active = on
-      Edit Solver Setting
-        Nonlinear System
+      Edit Solver Settings
+        Nonlinear system
           Max. iterations = 20
           Newton after iterations = 3
     Add 
@@ -132,7 +132,7 @@ interpreted at run-time so that $v_x=6(y-1)(2-y)$. As $y\in[1,2]$ thereby
 creating a parabolic velocity profile with a mean velocity of unity. 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Inlet
     Navier-Stokes 
       Velocity 1 = Variable Coordinate 2; Real MATC "6*(tx-1)*(2-tx)"
@@ -178,7 +178,7 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case. Create a suitable directory for the case if needed. 
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver
@@ -241,7 +241,7 @@ Remember to re-perform the following phases in order to get the updated results
 Sif 
   Generate
 File 
-  Save Project
+  Save project
 Run
   Start solver
 \ttend

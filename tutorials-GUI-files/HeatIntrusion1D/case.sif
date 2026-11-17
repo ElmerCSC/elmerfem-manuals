@@ -11,10 +11,10 @@ Simulation
   Coordinate Mapping(3) = 1 2 3
   Simulation Type = Transient
   Steady State Max Iterations = 1
-  Output Intervals = 100
+  Output Intervals = 2
   Timestepping Method = BDF
   BDF Order = 2
-  Timestep intervals = 10000
+  Timestep intervals = 1000
   Timestep Sizes = $10*365*24*3600
   Solver Input File = case.sif
   Post File = case.vtu
@@ -81,8 +81,8 @@ Initial Condition 1
  Real
     -8000 320.0
     -6500 260.0
-    -6499 500.0
-    -5501 500.0
+    -6499 900.0
+    -5501 900.0
     -5500 220.0
     -4000 160.0
   End

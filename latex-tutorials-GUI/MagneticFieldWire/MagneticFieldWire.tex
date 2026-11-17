@@ -92,7 +92,7 @@ coordinates. The initial size of the mesh is in millimeters, which is 1000 times
 
 Also we want to use a harmonic equation that requires the frequency to be set somewhere, in this case we will define the frequency in the Simulation section. 
 \ttbegin
-SetUp
+Setup
   Coordinate Scaling 
     1.0e-3
   Angular Frequency
@@ -125,14 +125,14 @@ Model
       Active = on
       Apply to Bodies = 1 2  
       Edit Solver Settings
-        Linear System
-          Iterative = BiCGStabL
+        Linear system
+          Iterative = BiCGStabl
         Preconditioning = none
         BiCGStabl order = 4    
     Name = MgDynPost
       Active = on
       Edit Solver Settings
-        Solver Specific Options
+        Solver specific options
           Calculate Magnetic Field Strength = on
           Calculate Joule Heating = on
           Skip Nodal Field = on
@@ -149,7 +149,7 @@ We use the definitions from the small material database that comes with the code
 Model
   Material
     Material Library
-      Copper
+      Copper (generic)
     Apply to Bodies = 1
     Add
     New
@@ -168,7 +168,7 @@ Both of these have both real and imaginary components.
 We set the scalar potential only for the conductors and the vector potential for all external boundaries.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Ground 
     MgHarm
       AV re = 0
@@ -184,7 +184,7 @@ For the other of the wire we have exactly the same BCs except that the scalar po
 electric field of 1~V/m, since the length of the wire is 0.01~m. 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Voltage
     MgHarm
       AV re = 0.01
@@ -199,7 +199,7 @@ Model
 and finally for all other external BCs we set the boundary non-axial components of the vector potential to zero.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = AxialField
     MgHarm
       AV re {e} 1 = 0
@@ -236,7 +236,7 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver

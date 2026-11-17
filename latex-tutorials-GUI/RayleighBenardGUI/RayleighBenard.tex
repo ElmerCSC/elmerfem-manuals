@@ -86,12 +86,12 @@ The first three components define a unit vector and the fourth its magnitude.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Transient
+    Simulation type = Transient
     Steady state max. iter = 20
-    Time Stepping Method = bdf
-    BDF Order = 2
-    Time Step Intervals = 200
-    Time Step Sizes = 2.0
+    Timestepping method = BDF
+    BDF order = 2
+    Timestep intervals = 200
+    Timestep sizes = 2.0
     Gravity = 0 -1 0 9.82
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
@@ -119,13 +119,13 @@ Model
     Heat Equation
       Active = on
       Convection = Computed
-      Edit Solver Setting
-        Nonlinear System
+      Edit Solver Settings
+        Nonlinear system
           Max. iterations = 1
     Navier-Stokes 
       Active = on
-      Edit Solver Setting
-        Nonlinear System
+      Edit Solver Settings
+        Nonlinear system
           Max. iterations = 1
     Add 
     OK
@@ -160,7 +160,7 @@ not a required field for a body. In this case, however, we apply the buoyancy re
 heat expansion as a body force to the Navier-Stokes equation.
 \ttbegin
 Model
-  Body Force
+  Body force
     Name = Buoyancy
     Apply to Bodies = 1
     Navier-Stokes
@@ -173,7 +173,7 @@ Initial conditions should be given to transient cases. In this case we choose a
 constant Temperature field and an small initial velocity that initializes the symmetry break. 
 \ttbegin
 Model
-  Initial Condition 
+  Initial condition
     Name = Initial Guess
     Heat Equation
       Temperature = 293
@@ -187,7 +187,7 @@ different physical BCs for a boundary should be grouped together. In this case t
 Temperature and Velocity. The side walls are assumed to be adiabatic.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Bottom
     Heat Equation
       Temperature = 293.5
@@ -237,7 +237,7 @@ Before we can execute the solver we should save the files in a directory.
 The ElmerGUI project includes all the files needed to restart the case.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver

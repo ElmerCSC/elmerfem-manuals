@@ -41,7 +41,7 @@ File
 
 \noindent and in Windows, located in:
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf-extra}\\
+\texttt{C:/Program Files/Elmer 26.2-Release/share/ElmerGUI/edf-extra}\\
 
 We will also be using the \Idx{Stat Elec Solver}, and the \Idx{Flow Solver}  which are two of the default, pre-loaded GUI definitions, so they do not need to be manually activated.  For reference, the  \texttt{\Idx{electrostatics.xml}}  and the  \texttt{\Idx{navier-stokes.xml}} definition files are, by default, located in Linux in:
 
@@ -49,7 +49,7 @@ We will also be using the \Idx{Stat Elec Solver}, and the \Idx{Flow Solver}  whi
 
 \noindent and in Windows, located in:
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
+\texttt{C:/Program Files/Elmer 26.2-Release/share/ElmerGUI/edf}\\
 
 The \Idx{Electrokinetics solver} is used for a boundary condition and will be called when needed.  The Electrokinetics solver is located in the \texttt{\$ELMER\_HOME/bin} folder.
 
@@ -78,12 +78,12 @@ The simulation is carried out in 2-dimensional Cartesian coordinates.  2nd order
 \ttbegin
 Model
   Setup 
-    Simulation Type = Transient
+    Simulation type = Transient
     Steady state max. iter = 20
     Timestepping method = BDF
     BDF order = 2
-    Time Step Intervals = 120
-    Timestep sized = 1e-5
+    Timestep intervals = 120
+    Timestep sizes = 1e-5
     Output intervals = 2
     Coordinate Scaling = 1e-5 1e-5 1e-5
   Apply
@@ -181,7 +181,7 @@ Finally the boundary conditions are defined. The first BC is given for the chann
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = channel-walls
     General
       Free text input
@@ -199,7 +199,7 @@ The next BC is the inlet condition. We give a potential of 100 Volts and define 
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = inlet-el-A
     Electrostatics
      Potential = 100
@@ -223,7 +223,7 @@ The final two boundary conditions are for the outlets. Different potentials for 
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = outlet-el-B
     Electrostatics
      Potential = 30
@@ -235,7 +235,7 @@ Model
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = outlet-el-C
     Electrostatics
      Potential = 0
@@ -268,7 +268,7 @@ Before we can execute the solver we should save the files in a directory.  The E
 
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver.

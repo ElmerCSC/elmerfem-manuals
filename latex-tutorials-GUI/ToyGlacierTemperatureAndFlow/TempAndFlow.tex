@@ -118,7 +118,7 @@ Model
   Material
     Add 
       Material library
-        Water (frozen)
+        Water (frozen in Celsius)
       Apply to bodies = Body 1 
       Add 
       OK
@@ -139,7 +139,7 @@ no source terms. For the Stokes equation we apply gravity which
 points to the negative $y$ direction.
 \ttbegin
 Model
-  BodyForce
+  Body force
     Name = Gravity
     Navier-Stokes
       Force 2 = -9.81
@@ -159,7 +159,7 @@ we first define the different boundary types, and thereafter assign them using t
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Add 
       Heat Equation
         Temperature = -10.0
@@ -172,7 +172,7 @@ Model
       OK
     Add 
       Navier-Stokes
-        No-slip Wall BC = on
+        Noslip wall BC = on
       Name = NoSlip
       OK
     Add 
@@ -214,7 +214,7 @@ necessary files for restarting the case will be saved to the
 destination directory.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver
@@ -242,7 +242,7 @@ the project before execution.
 To view the results we use Paraview,
 \ttbegin
 Run
-  Start Paraview
+  Start ParaView
 \ttend
 The resulting temperature and velocity distributions are shown in figure~\ref{glacrock:figtemp} (these are generated with the obsolete VTKPost tool within ElmerGUI).
 

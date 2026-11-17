@@ -37,7 +37,7 @@ The mesh is defined in ElmerGrid format in file \texttt{curved\_pipe.grd}, load 
 File 
   Open -> curved\_pipe.grd
 \ttend
-You should obtain your mesh and may check that it consists of 23670 trilinear 
+You should obtain your mesh and may check that it consists of 23760 trilinear
 bricks and 25245 nodes. The density of the mesh may be varied by altering
 the \texttt{Reference Density} in the file. For further information on
 the mesh definition look at the \texttt{ElmerGrid} manual. Often it is 
@@ -98,8 +98,8 @@ Model
     Navier-Stokes 
       Active = on
       Priority = 1
-      Edit Solver Setting
-        Linear System
+      Edit Solver Settings
+        Linear system
           Preconditioning = ILU1
     OK
 \ttend        
@@ -157,7 +157,7 @@ with the mouse.
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = HotInflow
     Heat Equation
       Temperature = 350.0
@@ -182,7 +182,7 @@ edit box which will open a larger window for editing.
 
     Name = NoSlip
     Navier-Stokes 
-      NoSlip Wall BC = on
+      Noslip wall BC = on
     Add 
     New
  
@@ -237,7 +237,7 @@ all the files needed to restart the case. It's a good idea to give the project a
 Avoid paths which includes empty spaces since they may cause problems later on. 
 \ttbegin
 File 
-  Save Project
+  Save project
     Make New Folder -> curved_pipe
     OK
 \ttend

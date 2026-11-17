@@ -59,25 +59,17 @@ may, however, be sufficient for visualization purposes.
 
 \subsection*{Solution procedure}
 
-The definitions for the electrostatic equation are not loaded into ElmerGUI by default. Hence, 
-one needs to load these before starting the simulations.
-\ttbegin
-File 
-  Definitions
-    Append -> electrostatics.xml
-\ttend
-The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.
-Moving the desired \texttt{xml} files to the \texttt{edf}-directory enables automatic loading of the 
-definitions at start-up. By inspecting the definitions in the \texttt{Elmer Definitions File editor} one
-may inspect that the new definitions were really appended. 
+The electrostatic equation is among the default, pre-loaded GUI definitions, so it
+does not need to be activated manually. For reference, the \texttt{\Idx{electrostatics.xml}}
+definition file is located in the \texttt{edf} directory of your installation.
 
 
-The mesh is given in ElmerGrid format in file \texttt{disc.grd}, load this file.
+The mesh is given in ElmerGrid format in file \texttt{disk.grd}, load this file.
 \ttbegin
 File 
-  Open -> disc.grd
+  Open -> disk.grd
 \ttend
-You should obtain your mesh and may check that it consists of 30484 nodes and of 30348 bilinear elements.
+You should obtain your mesh and may check that it consists of 30484 nodes and of 30048 bilinear elements.
 \ttbegin
 Model 
   Summary...
@@ -91,7 +83,7 @@ coordinates. For convenience we also set $\varepsilon$ equal to one.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
+    Simulation type = Steady state
     Vacuum Permittivity = 1.0
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
@@ -136,7 +128,7 @@ We have two boundary conditions for the potential at the ground and at the capac
 the do-nothing boundary results to zero flux over the boundary.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary condition
     Name = Ground
     Electrostatics
       Potential = 0.0
@@ -174,7 +166,7 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save Project
+  Save project
 \ttend
 
 After we have successfully saved the files we may start the solver
