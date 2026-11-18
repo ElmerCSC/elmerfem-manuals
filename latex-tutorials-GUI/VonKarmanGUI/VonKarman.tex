@@ -65,11 +65,11 @@ ElmerGUI project the statement should be entered without internal spaces.
 Model
   Setup 
     Simulation Type = Transient
-    Steady state max. iter = 1
-    Time Stepping Method = bdf
+    Steady State max. iter = 1
+    Timestepping Method = BDF
     BDF Order = 2
-    Time Step Intervals = 200
-    Time Step Sizes = $8/200
+    Timestep Intervals = 200
+    Timestep Sizes = $8/200
 \ttend
 For the solver specific settings we are quite happy to use the defaults. However, we relax a little bit the 
 convergence tolerances to get speedier simulation.
@@ -81,9 +81,9 @@ Model
     Navier-Stokes 
       Active = on
     Edit Solver Settings
-      Nonlinear system 
+      Nonlinear System
         Convergence tol. = 1.0e-4
-      Linear System 
+      Linear System
         Convergence tol. = 1.0e-6
     Add 
     OK
@@ -120,7 +120,7 @@ the old Elmerfem wiki explanation.
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = Inlet
     Navier-Stokes 
       Velocity 1 = Variable Coordinate 2; Real MATC "4*1.5*tx*(0.41-tx)/0.41^2"
@@ -142,7 +142,7 @@ Model
     Ok
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 
@@ -174,7 +174,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The norm after the first time step should be around 0.695, and after last 0.749, respectively.
@@ -194,7 +194,7 @@ wait until all time steps have been computed.
 You need to reload the files if the number of time steps are increased.
 
 In Figure \ref{fg:vonkarman_flow} the velocity field is presented for three different time steps.
-The maximum velocity in the system should be about 2.1724~m/s. Note that here
+The maximum velocity in the system should be about 2.118~m/s. Note that here
 visualization was not performed with Paraview and may therefore look quite different.
 
 \begin{figure}[h]

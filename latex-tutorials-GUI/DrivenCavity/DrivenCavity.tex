@@ -81,7 +81,7 @@ Surface Elements = 16384
 Then start ElmerGUI and create a new project, as follows:
 
 \begin{verbatim}
-Run
+File
   New Project...
 \end{verbatim}
 
@@ -146,7 +146,7 @@ The equation tabs should look like Figure \ref{fg:DC_equation}.
 \end{figure}
 
 While the SaveLine tab is active, click on the `Edit Solver Settings' tab, followed by the
-`Solver specific options' tab, and enter the information below as shown.  Saveline needs to
+`Solver Specific Options' tab, and enter the information below as shown.  Saveline needs to
 know what name to use when it creates the results file, in this case, we will enter
 `save-400.dat'.  For \Idx{Polyline Coordinates} and for \Idx{Polyline Divisions}, enter
 
@@ -180,7 +180,7 @@ materials from the `Material Library' button.  In our case, we will enter the ma
 under `Case Definition' above.
 
 In the dialog box that appears, we first click on the General tab and we set the density equal to 1 and apply it to "Body 1" as shown in left panel of Figure \ref{fg:DC_material}.
-Subsequently, we select the "Navier-Stokes" tab where we set the viscosity to 0.01, the "Compressibility model" to "Incompressible", apply it to "Body 1" and click ok as shown in the right panel of Figure \ref{fg:DC_material}.
+Subsequently, we select the "Navier-Stokes" tab where we set the viscosity to 0.01, the "Compressibility Model" to "Incompressible", apply it to "Body 1" and click ok as shown in the right panel of Figure \ref{fg:DC_material}.
 
 \begin{figure}[H]
 \centering
@@ -194,7 +194,7 @@ The appropriate boundary conditions can be set via
 
 \ttbegin
 Model
-  Boundary condition -> Add ..
+  Boundary Condition -> Add ..
 \ttend
 
 In the dialog box that appears, we select the "Navier-Stokes" tab. 
@@ -228,7 +228,7 @@ After we have successfully saved the files we may start the solver.
 
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 
 A convergence view automatically pops up showing relative changes of each iteration. The problem should converge in less than ten iterations.
@@ -381,10 +381,10 @@ Model
     Equation 1
       select the Navier-Stokes tab
       Edit Solver Settings
-      select the Linear system tab
+      select the Linear System tab
         click on the direct button under Method
         select Umfpack as the direct solver
-      select the Nonlinear system tab
+      select the Nonlinear System tab
       Newton After iterations
         change from 3 to 20
       Apply

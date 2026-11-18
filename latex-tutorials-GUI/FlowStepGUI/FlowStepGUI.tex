@@ -73,8 +73,8 @@ coordinates, which are also the defaults.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
-    Coordinate system = Cartesian
+    Simulation Type = Steady State
+    Coordinate System = Cartesian
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case the only the Navier-Stokes equation is needed.
@@ -92,7 +92,7 @@ Model
     Apply to Bodies = Body 1
     Navier-Stokes 
       Active = on
-      Edit Solver Setting
+      Edit Solver Settings
         Nonlinear System
           Max. iterations = 20
           Newton after iterations = 3
@@ -132,7 +132,7 @@ interpreted at run-time so that $v_x=6(y-1)(2-y)$. As $y\in[1,2]$ thereby
 creating a parabolic velocity profile with a mean velocity of unity. 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = Inlet
     Navier-Stokes 
       Velocity 1 = Variable Coordinate 2; Real MATC "6*(tx-1)*(2-tx)"
@@ -148,12 +148,12 @@ Model
  
     Name = Walls
     Navier-Stokes 
-      Noslip wall BC = on
+      NoSlip Wall BC = on
     Add
     OK
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -184,7 +184,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The problem should converge in about ten iterations to a norm of 0.4347 visible on the output.
@@ -243,7 +243,7 @@ Sif
 File 
   Save Project
 Run
-  Start solver
+  Start Solver
 \ttend
 You may just reload the results in the postprocessor rather than closing and opening the program.
 

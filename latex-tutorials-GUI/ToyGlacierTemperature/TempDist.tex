@@ -82,10 +82,10 @@ Only one steady-state iteration is needed as the case is linear.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
-    Steady state max. iter = 1
+    Simulation Type = Steady State
+    Steady State max. iter = 1
 \ttend
-Choose \texttt{Apply} to close the window.
+Choose \texttt{Apply} to accept the values, then close the window.
 
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have one set only one equation -- the heat equation.
@@ -119,7 +119,7 @@ Model
   Material
     Add 
       Material library
-        Water (frozen)
+        Water (frozen in Celsius)
       Apply to bodies = Body 1 
       Add 
       OK
@@ -146,7 +146,7 @@ A screenshot of the case when setting the BCs is shown in figure~\ref{glac:bc}.
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Add 
       Name = Tsurface
       Heat Equation
@@ -168,7 +168,7 @@ Model
 \ttend
 Choose the correct boundary by clicking with the mouse and apply the condition for this boundary.
 \ttbegin
-Boundary condition
+Boundary Condition
   Click top boundary -> choose Tsurface
   Click bottom boundary -> choose Tflux
   Click r.h.s. boundary -> choose Tnatural
@@ -195,7 +195,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The heat conductivity of ice is set to be dependent on temperature and this results to a 
@@ -217,7 +217,7 @@ the project before execution.
 To view the results we use Paraview,
 \ttbegin
 Run
-  Start Paraview
+  Start ParaView
 \ttend
 Picture~\ref{glac:figtemp} shows
 the surface mesh coloured with temperature.
@@ -259,18 +259,18 @@ Here it is used to transform the time in years to those in one second.
 Model
   Setup 
     Simulation Type = Transient
-    Time Stepping Method = bdf
+    Timestepping Method = BDF
     BDF Order = 2
-    Time Step Intervals = 100
-    Time Step Sizes = \$ 3600 * 24 * 365.25 * 100
+    Timestep Intervals = 100
+    Timestep Sizes = \$ 3600 * 24 * 365.25 * 100
     Gravity = ...
 \ttend
 
-Initial conditions should be given to transient cases. In this case we choose a constant Temperature 
+Initial conditions should be given to transient cases. In this case we choose a constant Temperature
 of -10~C. This is consistent with the boundary condition at the top wall.
 \ttbegin
 Model
-  Initial Condition 
+  Initial Condition
     Name = Initial Guess
     Heat Equation
       Temperature = -10.0

@@ -87,17 +87,10 @@ This will maintain the number of elements but the number of nodes will, in this 
 
 \subsection*{Solution procedure}
 
-The definitions for the electrostatic equation may not have been loaded into ElmerGUI by default. If this is the case 
-one needs to load these before starting the simulations.
-\ttbegin
-File 
-  Definitions
-    Append -> electrostatics.xml
-\ttend
-The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.
-Moving the desired \texttt{xml} files to the \texttt{edf}-directory enables automatic loading of the 
-definitions at start-up. By inspecting the definitions in the \texttt{Elmer Definitions File editor} one
-may inspect that the new definitions were really appended. 
+The definitions for the electrostatic equation are among the default, pre-loaded
+GUI definitions, so they do not need to be activated manually. For reference, the
+\texttt{electrostatics.xml} definition file is located in the \texttt{edf} directory
+of your installation.
 
 
 The mesh is already created, load it from the directory that was created above.
@@ -131,15 +124,15 @@ This makes it easier to compare the results to the analytical expressions.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
+    Simulation Type = Steady State
     Vacuum Permittivity = 1.0
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have only the electrostatics solver. 
 
 When defining Equations and Materials it is possible to assign to the bodies immediately, or to use mouse
-selection to assign them later. In this case we have just one body and therefore its easier to assign 
-the Equation and Material to it directly.
+selection to assign them later. In this case we have two bodies (the balls and the surrounding air) and
+therefore it is easiest to assign the Equation and Material to both directly.
 
 In the solver specific options we want to activate some flags that are needed to invoke the 
 computation of derived fields. 
@@ -149,11 +142,11 @@ preconditioners (ILU1,\ldots) or direct Umfpack solver, for example.
 Model
   Equation
     Name = Electrostatics
-    Apply to Bodies = 1
+    Apply to Bodies = 1 2
     Electrostatics
       Active = on
       Edit Solver Settings
-        Solver specific options
+        Solver Specific Options
           Calculate Capacitance Matrix = True
           Calculate Electric Field = True
           Calculate Electric Energy = True
@@ -177,7 +170,7 @@ We have two boundary conditions for the potential at the ground and at the capac
 the do-nothing boundary results to zero flux over the boundary.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = Farfield
     Electrostatics
       Electric Infinity BC = True
@@ -196,7 +189,7 @@ Model
     Add
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -227,7 +220,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 

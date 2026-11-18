@@ -83,8 +83,8 @@ The mesh is given in ElmerGrid format in file \texttt{steplong.grd}, load this f
 File 
   Open -> steplong.grd
 \ttend
-You should obtain your mesh and may check that it consists of 14584 nodes and of 
-14175 bilinear elements.
+You should obtain your mesh and may check that it consists of 15296 nodes and of
+14882 bilinear elements.
 \ttbegin
 Model 
   Summary...
@@ -98,9 +98,9 @@ The coupled system converges unfortunately quite slowly and hence we need to inc
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
-    Coordinate system = Cartesian
-    Steady state max. iter = 100
+    Simulation Type = Steady State
+    Coordinate System = Cartesian
+    Steady State max. iter = 100
 \ttend
 
 In the equation section we choose the relevant equations and 
@@ -120,20 +120,20 @@ Model
     Apply to Bodies = Body 1
     Navier-Stokes 
       Active = on
-      Edit Solver Setting
+      Edit Solver Settings
         Nonlinear System
           Max. iterations = 1
           Relaxation factor = 0.5
           Newton after tolerance = 0.0
-        Steady state
+        Steady State
           Convergence tol. = 1.0e-4
     K-Epsilon 
       Active = on
-      Edit Solver Setting
+      Edit Solver Settings
         Nonlinear System
           Max. iterations = 1
           Relaxation factor = 0.5
-        Steady state
+        Steady State
           Convergence tol. = 1.0e-4
     Add 
     OK
@@ -162,7 +162,7 @@ The current case does not have any body forces. To help in the convergence we ma
 a rude initial guess.
 \ttbegin
 Model
-  Initial Condition 
+  Initial Condition
     Name = Initial Guess
     Navier-Stokes
       Velocity 1 = 0.0
@@ -185,7 +185,7 @@ For the inlet click \texttt{Enter} to open an edit box for the \texttt{Velocity 
 which will be evaluated at run-time so that $v_x=6(y-1)(2-y)$. 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Add 
     Name = Inlet
     Navier-Stokes 
@@ -193,7 +193,7 @@ Model
       Velocity 2 = 0.0
     K-Epsilon
       Kinetic Energy = 0.00457
-      Kinetic Dissipation = 1.0e-4
+      Kinetic Dissipation Rate = 1.0e-4
     Add
     New
 
@@ -205,11 +205,11 @@ Model
  
     Name = Walls
     Navier-Stokes 
-      Noslip Wall BC = on
+      NoSlip Wall BC = on
     Add
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -240,7 +240,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The convergence if far from monotonic but computation should terminate 
@@ -252,7 +252,7 @@ when sufficient convergence is reached after 30 iterations.
 When there are some results to view we may start Paraview for the postprocessing.
 \ttbegin
 Run
-  Paraview
+  Start ParaView
 \ttend
 
 The results may be viewed using the postprocessor as shown in 

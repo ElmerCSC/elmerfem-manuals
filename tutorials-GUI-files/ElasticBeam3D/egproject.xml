@@ -436,11 +436,11 @@
          </widget>
          <widget type="ComboBox">
             <objectName>linearSystemIterativeMethod</objectName>
-            <currentIndex>3</currentIndex>
+            <currentIndex>4</currentIndex>
          </widget>
          <widget type="ComboBox">
             <objectName>linearSystemPreconditioning</objectName>
-            <currentIndex>3</currentIndex>
+            <currentIndex>4</currentIndex>
          </widget>
       </item>
    </solverparameters>

@@ -36,7 +36,7 @@ We will be using the \Idx{Helmholtz Solver}, which is one of the default, pre-lo
 
 and in Windows, located in:
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
+\texttt{C:/Program Files/Elmer \elmerversion{}-Release/share/ElmerGUI/edf}\\
 
 \subsection*{Solution procedure}
 
@@ -62,8 +62,8 @@ The simulation is carried out in 2-dimensional Cartesian coordinates.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
-    Steady state max. iter = 1
+    Simulation Type = Steady State
+    Steady State max. iter = 1
   Apply
 \ttend
 
@@ -107,11 +107,11 @@ Initial conditions should be given to transient cases, and probably are not need
 
 Only one boundary condition may be applied to each boundary and therefore all the different physical BCs for a boundary should be grouped together. 
 
-The conditions may be assigned to boundaries in the Boundary condition menu, or by clicking on each boundary with the mouse. Here we use the first approach since there are only three boundaries.
+The conditions may be assigned to boundaries in the Boundary Condition menu, or by clicking on each boundary with the mouse. Here we use the first approach since there are only three boundaries.
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = Constraint1
     Boundary 1 is checked
     Helmholtz Equation
@@ -158,7 +158,7 @@ After we have successfully saved the files we may start the solver.
 
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 
 A convergence view automatically pops up showing relative changes of each iteration.
@@ -200,12 +200,12 @@ and the imaginary component is \texttt{pressure wave Y}.
 If you have time you may try to solve the case with different parameters.
 
 Try turning on calculation of `pressure loads'.  Click on Equation, Helmholtz,
-Helmholtz Equation, Edit Solver Settings, Solver specific options, and then
+Helmholtz Equation, Edit Solver Settings, Solver Specific Options, and then
 click on the box for `Calculate Loads'.
 
 The default solution method is iterative.  Try changing to a direct method
 and compare results and speed of execution.  Click on Equation, Helmholtz,
-Helmholtz Equation, Edit Solver Settings, Solver specific options, Linear system,
+Helmholtz Equation, Edit Solver Settings, Solver Specific Options, Linear System,
 under Method click on the button for Direct.
 
 

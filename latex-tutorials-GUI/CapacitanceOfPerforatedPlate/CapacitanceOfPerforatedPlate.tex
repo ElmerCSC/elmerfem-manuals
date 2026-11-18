@@ -37,19 +37,10 @@ For the case under study we get an approximation $C=221.36~fF$.
 
 \subsection*{Preliminaries}
 
-The definitions for the electrostatic equation might not have been loaded into ElmerGUI by default. Check the 
-\texttt{Model/Equation} menu
-to verify the situation. If electrostatics is not present  
-one needs to load definitions for it before starting the simulations.
-\ttbegin
-File 
-  Definitions
-    Append -> electrostatics.xml
-\ttend
-The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.
-Moving the desired \texttt{xml} files to the \texttt{edf}-directory enables automatic loading of the 
-definitions at start-up. By inspecting the definitions in the \texttt{Elmer Definitions File editor} one
-may inspect that the new definitions were really appended. 
+The definitions for the electrostatic equation are among the default, pre-loaded
+GUI definitions, so they do not need to be activated manually. For reference, the
+\texttt{electrostatics.xml} definition file is located in the \texttt{edf} directory
+of your installation.
 
 
 \subsection*{Meshing}
@@ -57,8 +48,9 @@ may inspect that the new definitions were really appended.
 In this case meshing is performed using ElmerGrid format in file \texttt{hexhole.grd} and the ElmerGrid plugin within ElmerGUI. 
 The default mesh is OK and therefore no modifications are needed by the user. 
 
-Elmer does not operate an any particular units but usually SI-units 
-are preferred. We therefore choose to scale the problem with 0.001 so that these measurements will be in mm.  
+Elmer does not operate in any particular units but usually SI-units
+are preferred. The mesh coordinates are given in millimetres, so we scale the
+problem with 0.001 and work in meters.
 
 Load the mesh file.
 \ttbegin
@@ -82,11 +74,12 @@ After we have the mesh we start to go through the Model menu from the top to bot
 In the Setup we choose things related to the whole simulation such as file names, 
 time stepping, constants etc.
 The steady-state simulation is carried out in 3-dimensional Cartesian
-coordinates. We want to work in mm so we need to scale the mesh with a factor 0.001. 
+coordinates. We want to work in meters, so we scale the mesh with a factor 0.001
+(millimetres to meters).
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
+    Simulation Type = Steady State
     Coordinate Scaling = 0.001
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
@@ -108,7 +101,7 @@ Model
     Electrostatics
       Active: on
       Edit Solver Settings
-        Solver specific options
+        Solver Specific Options
           Calculate Electric Field:     True
           Calculate Electric Energy:    True
     Add 
@@ -133,7 +126,7 @@ Model
 We have two boundary conditions for the potential at the ground and at the capacitor. For other boundaries the do-nothing boundary results to zero flux over the boundary.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name: Ground
     Electrostatics
       Potential: 0.0
@@ -146,7 +139,7 @@ Model
     Add
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -176,7 +169,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 
@@ -213,7 +206,7 @@ When the solution has finished we may start the postprocessor to view some resul
 Here we assume that we chose the .vtu format for Paraview as output. The opening of Paraview can be done automatically from the \texttt{ElmerGUI} menu, or alternatively manually from Paraview.
 \ttbegin
 File 
-  Open: case0001.vtu
+  Open: case_t0001.vtu
   Apply 
 \ttend
 

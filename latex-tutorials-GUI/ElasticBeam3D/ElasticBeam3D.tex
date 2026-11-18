@@ -48,8 +48,8 @@ coordinates.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
-    Steady state max. iter = 1
+    Simulation Type = Steady State
+    Steady State max. iter = 1
 \ttend
 
 In the Equation section we choose the relevant equations which in this case only includes 
@@ -67,11 +67,11 @@ Model
     Linear elasticity
       Active = on
       Calculate Stresses = on
-    Edit Solver Setting
+    Edit Solver Settings
       Linear System
         Method = Iterative / GCR
         Preconditioning = ILU1
-      Nonlinear system 
+      Nonlinear System
         Max. iterations = 1
       Apply
     Add 
@@ -100,7 +100,7 @@ In this case there is a body force i.e. the gravity acting on the beam.
 We assume that the gravity points to the negative $y$ direction.
 \ttbegin
 Model
-  BodyForce
+  Body Force
     Name = Gravity
     Linear Elasticity 
       Force 2 = $ -9.81 * 550
@@ -119,7 +119,7 @@ The second boundary condition distributes the load of 2000~N uniformly on the
 area of 5.0e-3~m$^2$.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = Wall
     Linear elasticity
       Displacement 1 = 0.0
@@ -134,7 +134,7 @@ Model
     Add 
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary. 
 \ttbegin
@@ -164,7 +164,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 The simulation may take a minute or so depending on the 
 speed of the processor.
@@ -178,7 +178,7 @@ ones to the computation of stresses with the Galerkin method.
 When there are some results to view we may start the postprocessor, this time we use Paraview.
 \ttbegin
 Run
-  Start Paraview
+  Start ParaView
 \ttend
 Choose the \texttt{displacement} as the color field to plot.
 The maximum displacement is $6.36$~cm 
@@ -206,7 +206,7 @@ For that aim, change the direction of gravity to orient in the negative $x$.
 Change the body force
 \ttbegin
 Model
-  BodyForce
+  Body Force
     Linear Elasticity 
       Force 1 = $ -9.81*550
     Update
@@ -215,7 +215,7 @@ Model
 and the boundary condition
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Linear elasticity 
       Force 1 = -4.0e5
     Update

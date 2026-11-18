@@ -59,7 +59,7 @@ Run
 or
 \begin{verbatim}
 Run
-  Start Paraview
+  Start ParaView
 \end{verbatim}
 
 \subsection*{New Project}
@@ -67,7 +67,7 @@ Run
 If you are more interested in learning how to use ElmerGUI by constructing an ElmerGUI project from the beginning, then the next few sections will describe in detail the step by step actions needed to build an ElmerGUI project.  The first step will be to create your own project folder, and copy in the geometry input file from the tutorial of interest.  Then start ElmerGUI and create a new project, as follows:
 
 \begin{verbatim}
-Run
+File
   New Project...
 \end{verbatim}
 
@@ -137,7 +137,7 @@ Note that the remeshing operation will change the Elmer mesh.* files, but will n
 
 We want to set the temperature at the inside of the three bores, each of which have two interior surfaces.  We could set the boundary conditions by selecting all six surfaces, one at a time, as shown in Figure~\ref{fg:select}.
 
-ElmerGUI has the capability to join boundary surfaces, so that we can unite all six boundaries into a single boundary, which will make it easier to apply our boundary conditions for the simulation.  We demonstrate this optional step of 'Unify Surface' next.  Note that the Elmer mesh.* files will be updated with the changed boundary surfaces, and the original geometry input file will be unchanged.\\ 
+ElmerGUI has the capability to join boundary surfaces, so that we can unite all six boundaries into a single boundary, which will make it easier to apply our boundary conditions for the simulation.  We demonstrate this optional step of 'Unify Surface' next.  Note that the Elmer mesh.* files will be updated with the changed boundary surfaces, and the original geometry input file will be unchanged.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -169,10 +169,10 @@ For this particular case, we can accept all of the default settings under Setup.
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
-    Steady state max. iter = 1
+    Simulation Type = Steady State
+    Steady State max. iter = 1
 \ttend
-Choose \texttt{Apply} to close the window.
+Choose \texttt{Apply} to accept the values, then close the window.
 
 \begin{figure}[H]
 \begin{center}
@@ -265,7 +265,7 @@ First we create the boundary condition, as shown in Figure~\ref{fg:step-06}.  No
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Add 
       Heat Equation
         Temperature = 293.0
@@ -277,7 +277,7 @@ Model
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{step-06}
-\caption{The Boundary condition window}\label{fg:step-06}
+\caption{The Boundary Condition window}\label{fg:step-06}
 \end{center}
 \end{figure}
 
@@ -297,7 +297,7 @@ Model
 
 For our case, we will select the united group of three interior bores by double clicking with the mouse and then apply the condition for this boundary.
 \ttbegin
-Boundary condition
+Boundary Condition
   RoomTemp
 \ttend
 
@@ -327,7 +327,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 The solver log and a convergence view automatically pops up showing relative changes of each iteration, as shown in Figure~\ref{fg:step-09}.  
 
@@ -353,7 +353,7 @@ To view the results we will run ElmerVTK for the visualization.
 
 \ttbegin
 Run
-  ElmerVTK
+  Start ElmerVTK
 \ttend
 
 \newpage
@@ -447,7 +447,7 @@ Next we will cover the basics of using \Idx{Paraview} to visualize the simulatio
 
 \ttbegin
 Run
-  Paraview
+  Start ParaView
 \ttend
 
 After a short wait, Paraview will open and it should show our case\_t0001.vtu file in the upper left window, as shown in Figure~\ref{fg:paraview-1}.  First step is to click on the light green Apply button.

@@ -92,7 +92,7 @@ coordinates. The initial size of the mesh is in millimeters, which is 1000 times
 
 Also we want to use a harmonic equation that requires the frequency to be set somewhere, in this case we will define the frequency in the Simulation section. 
 \ttbegin
-SetUp
+Setup
   Coordinate Scaling 
     1.0e-3
   Angular Frequency
@@ -126,7 +126,7 @@ Model
       Apply to Bodies = 1 2  
       Edit Solver Settings
         Linear System
-          Iterative = BiCGStabL
+          Iterative = BiCGStabl
         Preconditioning = none
         BiCGStabl order = 4    
     Name = MgDynPost
@@ -149,7 +149,7 @@ We use the definitions from the small material database that comes with the code
 Model
   Material
     Material Library
-      Copper
+      Copper (generic)
     Apply to Bodies = 1
     Add
     New
@@ -168,7 +168,7 @@ Both of these have both real and imaginary components.
 We set the scalar potential only for the conductors and the vector potential for all external boundaries.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = Ground 
     MgHarm
       AV re = 0
@@ -184,7 +184,7 @@ For the other of the wire we have exactly the same BCs except that the scalar po
 electric field of 1~V/m, since the length of the wire is 0.01~m. 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = Voltage
     MgHarm
       AV re = 0.01
@@ -199,7 +199,7 @@ Model
 and finally for all other external BCs we set the boundary non-axial components of the vector potential to zero.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = AxialField
     MgHarm
       AV re {e} 1 = 0
@@ -211,7 +211,7 @@ Model
 \ttend 
 
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -242,7 +242,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 

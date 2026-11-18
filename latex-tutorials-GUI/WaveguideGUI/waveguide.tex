@@ -48,7 +48,7 @@ The \texttt{\Idx{vectorhelmholtz.xml}} definition file is, by default, located i
 
 and in Windows, located in:
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf-extra}\\
+\texttt{C:/Program Files/Elmer \elmerversion{}-Release/share/ElmerGUI/edf-extra}\\
 
 We will also be using the \Idx{Result Output Solver}, which is one of the default, pre-loaded GUI definitions, so it does not need to be manually activated.  For reference, the  \texttt{\Idx{resultoutput.xml}} definition file is, by default, located in Linux in:
 
@@ -56,7 +56,7 @@ We will also be using the \Idx{Result Output Solver}, which is one of the defaul
 
 and in Windows, located in:
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
+\texttt{C:/Program Files/Elmer \elmerversion{}-Release/share/ElmerGUI/edf}\\
 
 After reading over several of the preceding tutorials that wrote results to the \texttt{case.vtu} file, and none of those tutorial used Result Output Solver, you may be wondering why we now all of a sudden need to load a special solver to output results?\\
 
@@ -80,7 +80,7 @@ One last point, either enter a `case.vtu' name into the Post file field of Setup
 Load geometry:
 \begin{verbatim}
 File
-  Open -> waveguide_bend.step
+  Open -> bent_waveguide.step
 \end{verbatim}
 
 As we are modelling a wave phenomenon at $2.5 \mathrm{GHz}$ the maximum H (maximum element size) in the mesh must be around $\frac 1 {10\lambda}$, where $\lambda\approx8.3$, so set Max H = 0.012.  We mentioned the waveguide cross section is 10 cm by 5 cm, which equals 0.100 meters by 0.050 meters.  Taking the smaller dimension and dividing by Max H, gives 0.050/0.012 = approximately four elements across the smaller dimension.\\
@@ -108,8 +108,8 @@ Model
     Result Output
       Active = on
       Priority 2
-        Edit solver settings
-          Solver specific options
+        Edit Solver Settings
+          Solver Specific Options
             Uncheck the box `Binary Output'
          Apply
     Vector Helmholtz Equation
@@ -126,7 +126,7 @@ Model
         $ kc = pi/a
         $ beta0 = sqrt(k0^2-kc^2)
       Edit Solver Settings
-        Linear system
+        Linear System
           Iterative = BiCGStabl
           Preconditioning = vanka
           BiCGStabl order = 6
@@ -195,7 +195,7 @@ Model
   Equation -> Equation 1
   Vector Helmholtz Post Process
     Edit Solver Settings
-      Solver specific options
+      Solver Specific Options
         Calculate Electric Field = on
         Calculate Magnetic Field Strength = on
         Calculate Poynting Vector = on
@@ -208,7 +208,7 @@ Model
 Save the project
 \begin{verbatim}
 File
-  Save project -> [choose location]
+  Save Project -> [choose location]
 \end{verbatim}
 
 And solve:
@@ -217,7 +217,7 @@ Run
   Start Solver
 \end{verbatim}
 
-The resulting fields should now appear in \texttt{case0001.vtu} file ready for further post processing.
+The resulting fields should now appear in \texttt{case\_t0001.vtu} file ready for further post processing.
 
 \subsection*{Results}
 We are interested in the \texttt{Energy Functional Value} in the solver log. It should read (prepended with ``\texttt{VectorHelmholtzSolver:}'')

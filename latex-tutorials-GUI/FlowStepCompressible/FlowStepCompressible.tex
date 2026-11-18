@@ -50,7 +50,7 @@ We will be using the \Idx{FlowSolver} and the \Idx{HeatSolver}, which are the de
 
 and in Windows, located in:
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
+\texttt{C:/Program Files/Elmer \elmerversion{}-Release/share/ElmerGUI/edf}\\
 
 \subsection*{Solution procedure}
 
@@ -75,7 +75,7 @@ time stepping, constants etc. The simulation uses 2D Cartesian geometry and the 
 Model
   Setup 
     Simulation Type = Steady State
-    Steady state max. iter = 20
+    Steady State max. iter = 20
   Apply
 \ttend
 
@@ -130,7 +130,7 @@ Model
       Heat Conductivity = 0.026
     Navier-Stokes
        Viscosity = 16.7e-6
-       Compressibility models = Perfect Gas
+       Compressibility Model = Perfect Gas
     Add
     OK
 \ttend
@@ -141,7 +141,7 @@ Initial conditions should be given to transient cases, and probably are not need
 
 \ttbegin
 Model
-  Initial Condition 
+  Initial Condition
     Name = Initial Guess
     Apply to Bodies = 1 
     Heat Equation
@@ -167,7 +167,7 @@ To enter the three pairs of numbers in the Heat Equation menu tab, click into th
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = Inlet
     Heat Equation
       Temperature = Variable Coordinate 2
@@ -201,12 +201,12 @@ After the rest of the boundary conditions have been defined the problem is ready
     Heat Equation
        Temperature = 300
     Navier-Stokes 
-      Noslip wall BC = on
+      NoSlip Wall BC = on
     Add
     OK
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or by clicking on each boundary with the mouse. Here we use the latter approach as that spares us of the need to know the indexes of each boundary.
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or by clicking on each boundary with the mouse. Here we use the latter approach as that spares us of the need to know the indexes of each boundary.
 
 \ttbegin
 Model
@@ -237,7 +237,7 @@ After we have successfully saved the files we may start the solver
 
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 

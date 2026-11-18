@@ -104,15 +104,15 @@ for.
 
 After we have the mesh we start to go through the Model menu from the top to bottom. 
 In the \texttt{Setup} we choose things related to the whole simulation such as file names, 
-time stepping, constants etc.  The simulation is carried out in 2-dimensional Cartesian
+time stepping, constants etc.  The simulation is carried out in 3-dimensional Cartesian
 coordinates and in steady-state. Only one steady-state iteration is needed as the case is linear. 
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
-    Steady state max. iter = 1
+    Simulation Type = Steady State
+    Steady State max. iter = 1
 \ttend
-Choose \texttt{Apply} to close the window.
+Choose \texttt{Apply} to accept the values, then close the window.
 
 In the equation section we choose the relevant equations and parameters related to their solution. 
 In this case we'll have one set only one equation -- the Model PDE.
@@ -168,7 +168,7 @@ Finally, for the BCs first define them and then use the mouse to apply them to t
 boundary patches.  Refer to figure~\ref{fg:modelpde1} and select the two surfaces as shown.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
       Name = Zero
       Model PDE
         Field = 0.0
@@ -197,7 +197,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 As the case is linear only one iteration was required for the solution and the second one

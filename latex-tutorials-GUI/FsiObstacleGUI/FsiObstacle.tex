@@ -53,7 +53,7 @@ Hence, the user must load these before starting the simulations.
 \ttbegin
 File 
   Definitions
-    Append -> nonlinearelastity.xml
+    Append -> nonlinearelasticity.xml
 \ttend
 The additional definitions should reside in the directory \texttt{edf-extra} within the distribution.
 Moving the desired \texttt{xml} files to the \texttt{edf}-directory enables automatic loading of the 
@@ -96,9 +96,9 @@ written only at the end of the case.
 \ttbegin
 Model
   Setup 
-    Coordinate system = Cartesian
-    Simulation type = Steady state
-    Steady state max. iter = 100
+    Coordinate System = Cartesian
+    Simulation Type = Steady State
+    Steady State max. iter = 100
     Output Intervals = 0
     ...
 \ttend
@@ -128,10 +128,10 @@ Model
     Navier-Stokes
       Active = on
       Priority = 2 
-      Edit Solver Setting
+      Edit Solver Settings
         Nonlinear System
-          Max.iterations = 1
-          Nonlinear System Relaxation Factor = 0.5
+          Max. iterations = 1
+          Relaxation factor = 0.5
     Mesh Update
       Active = on
       Priority = 0 
@@ -147,10 +147,10 @@ Model
     Nonlinear Elasticity
       Active = on
       Priority = 1
-      Edit Solver Setting
+      Edit Solver Settings
         Nonlinear System
-          Max.iterations = 1
-          Nonlinear System Relaxation Factor = 0.5
+          Max. iterations = 1
+          Relaxation factor = 0.5
     OK
 \ttend    
 
@@ -186,10 +186,10 @@ Model
     OK
 \ttend
 
-The \texttt{Body force} section usually represents the right-hand-side of an equation. 
+The \texttt{Body Force} section usually represents the right-hand-side of an equation.
 In this case we do not need any body forces.
 
-Also an \texttt{Initial condition} could be given in steady-state case to enhance convergence. However, 
+Also an \texttt{Initial Condition} could be given in steady-state case to enhance convergence. However,
 in this case convergence is pretty robust with the default guess of zero.
 
 We have five different boundary conditions: inflow, outflow, lateral walls with no-slip conditions, 
@@ -200,7 +200,7 @@ with the mouse.
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = Inflow
     Navier-Stokes 
       Velocity 1 = Variable Coordinate 2 
@@ -285,7 +285,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The simulation may take around ~10 seconds depending on your platform. 

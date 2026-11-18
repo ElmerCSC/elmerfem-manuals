@@ -2402,7 +2402,7 @@
          </widget>
          <widget type="Edit">
             <key>/MgDyn2DHarmonic/BodyForce/Current Density/0</key>
-            <value>2.5e5</value>
+            <value>1.0e6</value>
          </widget>
          <widget type="Edit">
             <key>/Linear elasticity/BodyForce/Displacement 2/0</key>

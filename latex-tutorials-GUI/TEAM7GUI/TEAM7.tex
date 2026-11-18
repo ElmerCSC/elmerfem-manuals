@@ -85,7 +85,7 @@ For simplicity the project directory is presented under ElmerGUI$\_$TEAM7. The m
 
 \begin{verbatim}
 File
-  New project ...
+  New Project...
       Project directory 
           Select project dir -> ElmerGUI_TEAM7
       Geometry input
@@ -104,20 +104,20 @@ File
 \end{figure}  
 
 
-Adding additional menus can be avoided by permanently moving the .xml files from \texttt{\$ELMER\_HOME/install/share/ElmerGUI/edf-extra} to \texttt{\$ELMER\_HOME/install/share/ElmerGUI/edf}\\
+Adding additional menus can be avoided by permanently moving the .xml files from \texttt{\$ELMER\_HOME/share/ElmerGUI/edf-extra} to \texttt{\$ELMER\_HOME/share/ElmerGUI/edf}\\
 
 
 \subsection*{Model Preferences}
 
-The TEAM Problem 7 is solved by imposing a transient sinusoidal current that generates a magnetic field.  Due to the time-dependency nature of the problem let us setup the model time preferences by clicking on ElmerGUI on the top ribbon
+The TEAM Problem 7 is solved by imposing a transient sinusoidal current that generates a magnetic field.  Due to the time-dependency nature of the problem let us setup the model time preferences by clicking on Model on the top ribbon
 
 \ttbegin
-ElmerGUI
-  Preferences 
+Model
+  Setup...
     Simulation Type = Transient
-    Timestep interval = 16
-    Timestep sizes = 0.0025
-  Close
+    Timestep Intervals = 16
+    Timestep Sizes = 0.0025
+  Apply
 \ttend
 
 The timestep interval and size used are meant to accommodate two periods at a frequency of 50Hz.  
@@ -152,7 +152,7 @@ Model
      CoilSolver
          Active = on 
          Edit Solver Settings
-             Solver specific options
+             Solver Specific Options
                  Coil Closed=on
                  Desired Coil Current =  -2742
                  Normalize Coil Current=on
@@ -166,14 +166,14 @@ Model
      MgDyn
          Active = on
          Edit Solver Settings
-             Solver specific options
+             Solver Specific Options
                  Use Elemental CoilCurrent=on
              Apply
          
      MgDynPost
          Active=on
          Edit Solver Settings
-             Solver specific options
+             Solver Specific Options
                  Specify fields to compute
                      Calculate Current Density=on
                  What kind of fields to compute
@@ -193,7 +193,7 @@ The configuration of the menus will appear also in any new equation added.  For 
 Model
   Equation -> Add
      Name = Equation Plate and Air
-     Apply to Bodies = 1 2
+     Apply to Bodies = 2 3
      
      MgDyn
          Active = on
@@ -253,7 +253,7 @@ Note that the frequency is 50Hz.  Hence  cos(2 $\pi$ f t), where f is the excita
 
 \ttbegin
 Model
-  BoundaryCondition -> Add
+  Boundary Condition -> Add
       Name = Infinity
       Apply to Boundaries = 6
       MgDyn
@@ -283,7 +283,7 @@ After we have successfully saved the files we may start the solver.
 
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 
 A convergence view automatically pops up showing relative changes of each iteration.

@@ -68,8 +68,8 @@ The simulation is carried in steady-state in 2-dimensional Cartesian coordinates
 \ttbegin
 Model
   Setup 
-    Simulation Type = Steady state
-    Steady state max. iter = 1
+    Simulation Type = Steady State
+    Steady State max. iter = 1
 \ttend
 
 In the Equation section we choose the relevant equations which in this case only includes 
@@ -123,7 +123,7 @@ to line break. To fill in the second boundary condition press \texttt{Enter} in 
 \texttt{Force 2} checkbox.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = Wall
     Linear elasticity
       Displacement 1 = 0.0
@@ -137,7 +137,7 @@ Model
     Add 
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -167,11 +167,11 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 Two iterations are performed, the second one only to ensure convergence at the nonlinear level.
-The norm of the finished computation should be around 0.01808.
+The norm of the finished computation should be around 0.0205.
 
 When there are some results to view we may start the postprocessor also
 \ttbegin
@@ -228,10 +228,10 @@ You may try with the following settings.
 Model
   Setup 
     Simulation Type = Transient
-    Time Stepping Method = bdf
+    Timestepping Method = BDF
     BDF Order = 2
-    Time Step Intervals = 200
-    Time Step Sizes = 1.0e-4
+    Timestep Intervals = 200
+    Timestep Sizes = 1.0e-4
 \ttend
 Having a too large time step will not accurately describe the transient behaviour while having a too 
 small time step consumes unnecessary resources. There is only numerical damping in the system and 

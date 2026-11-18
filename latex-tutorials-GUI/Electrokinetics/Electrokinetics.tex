@@ -41,7 +41,7 @@ File
 
 \noindent and in Windows, located in:
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf-extra}\\
+\texttt{C:/Program Files/Elmer \elmerversion{}-Release/share/ElmerGUI/edf-extra}\\
 
 We will also be using the \Idx{Stat Elec Solver}, and the \Idx{Flow Solver}  which are two of the default, pre-loaded GUI definitions, so they do not need to be manually activated.  For reference, the  \texttt{\Idx{electrostatics.xml}}  and the  \texttt{\Idx{navier-stokes.xml}} definition files are, by default, located in Linux in:
 
@@ -49,7 +49,7 @@ We will also be using the \Idx{Stat Elec Solver}, and the \Idx{Flow Solver}  whi
 
 \noindent and in Windows, located in:
 
-\texttt{C:/Program Files/Elmer 9.0-Release/share/ElmerGUI/edf}\\
+\texttt{C:/Program Files/Elmer \elmerversion{}-Release/share/ElmerGUI/edf}\\
 
 The \Idx{Electrokinetics solver} is used for a boundary condition and will be called when needed.  The Electrokinetics solver is located in the \texttt{\$ELMER\_HOME/bin} folder.
 
@@ -79,12 +79,12 @@ The simulation is carried out in 2-dimensional Cartesian coordinates.  2nd order
 Model
   Setup 
     Simulation Type = Transient
-    Steady state max. iter = 20
-    Timestepping method = BDF
-    BDF order = 2
-    Time Step Intervals = 120
-    Timestep sized = 1e-5
-    Output intervals = 2
+    Steady State max. iter = 20
+    Timestepping Method = BDF
+    BDF Order = 2
+    Timestep Intervals = 120
+    Timestep Sizes = 1e-5
+    Output Intervals = 2
     Coordinate Scaling = 1e-5 1e-5 1e-5
   Apply
 \ttend
@@ -114,9 +114,9 @@ Model
       Edit Solver Settings
       General
         Before timestep
-      Solver specific options
+      Solver Specific Options
         Calculate Electric Field = True
-      Linear system
+      Linear System
         Method
           Direct = Umfpack
         Preconditioning = ILU1
@@ -126,9 +126,9 @@ Model
        Options
          Convect = unchecked, False
       Edit Solver Settings
-       Linear system
+       Linear System
          Preconditioning = ILU1
-       Nonlinear system
+       Nonlinear System
          Max. iterations = 30
          Newton
            After iterations = 10
@@ -142,9 +142,9 @@ Model
          After timestep = True
          Stabilize = False
          Bubbles = True
-       Linear system
+       Linear System
          Preconditioning = ILU2
-       Nonlinear system
+       Nonlinear System
          Max. iterations = 1
      Apply
     Add
@@ -181,7 +181,7 @@ Finally the boundary conditions are defined. The first BC is given for the chann
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = channel-walls
     General
       Free text input
@@ -199,7 +199,7 @@ The next BC is the inlet condition. We give a potential of 100 Volts and define 
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = inlet-el-A
     Electrostatics
      Potential = 100
@@ -223,7 +223,7 @@ The final two boundary conditions are for the outlets. Different potentials for 
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = outlet-el-B
     Electrostatics
      Potential = 30
@@ -235,7 +235,7 @@ Model
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = outlet-el-C
     Electrostatics
      Potential = 0
@@ -245,7 +245,7 @@ Model
    OK 
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or by clicking on each boundary with the mouse. Here we use the latter approach as that spares us of the need to know the indexes of each boundary.
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or by clicking on each boundary with the mouse. Here we use the latter approach as that spares us of the need to know the indexes of each boundary.
 
 \ttbegin
 Model
@@ -275,7 +275,7 @@ After we have successfully saved the files we may start the solver.
 
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 
 A convergence view automatically pops up showing relative changes of each iteration.\\

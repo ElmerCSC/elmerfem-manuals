@@ -37,7 +37,7 @@ The mesh is defined in ElmerGrid format in file \texttt{curved\_pipe.grd}, load 
 File 
   Open -> curved\_pipe.grd
 \ttend
-You should obtain your mesh and may check that it consists of 23670 trilinear 
+You should obtain your mesh and may check that it consists of 23760 trilinear
 bricks and 25245 nodes. The density of the mesh may be varied by altering
 the \texttt{Reference Density} in the file. For further information on
 the mesh definition look at the \texttt{ElmerGrid} manual. Often it is 
@@ -61,9 +61,9 @@ the defaults are correct.
 \ttbegin
 Model
   Setup 
-    Coordinate system = Cartesian
-    Simulation type = Steady state
-    Steady state max. iter = 1
+    Coordinate System = Cartesian
+    Simulation Type = Steady State
+    Steady State max. iter = 1
     ...
 \ttend
 
@@ -98,7 +98,7 @@ Model
     Navier-Stokes 
       Active = on
       Priority = 1
-      Edit Solver Setting
+      Edit Solver Settings
         Linear System
           Preconditioning = ILU1
     OK
@@ -143,10 +143,10 @@ Model
     OK
 \ttend
 
-The \texttt{Body force} section usually represents the right-hand-side of an equation. It could be used to account for the 
+The \texttt{Body Force} section usually represents the right-hand-side of an equation. It could be used to account for the
 natural convection, for example. In this case, however, we do not apply any body forces.
 
-Also an \texttt{Initial condition} could be given in steady-state case to enhance convergence. However, 
+Also an \texttt{Initial Condition} could be given in steady-state case to enhance convergence. However,
 in this case convergence is pretty robust with the default guess of zero.
 
 We have four different boundary conditions: thermal inflow, internal no-slip, 
@@ -157,7 +157,7 @@ with the mouse.
 
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = HotInflow
     Heat Equation
       Temperature = 350.0
@@ -245,7 +245,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The simulation may take a few minutes depending on your platform. 

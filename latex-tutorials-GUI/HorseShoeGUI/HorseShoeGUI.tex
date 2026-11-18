@@ -1,6 +1,6 @@
 \chapter{Magnetostatics -- Magnetic field resulting from a permanent magnet}
 
-\modinfo{Directory}{HorseshoeGUI}
+\modinfo{Directory}{HorseShoeGUI}
 \modinfo{Solvers}{\Idx{MagnetoDynamics2D}}
 \modinfo{Tools}{\Idx{Gmsh}, \Idx{ElmerGUI}}
 \modinfo{Dimensions}{2D, Steady-state}
@@ -138,7 +138,7 @@ Model
 We have just one boundary condition i.e. the outer boundary for which we use the far field condition.
 \ttbegin
 Model
-  BoundaryCondition
+  Boundary Condition
     Name = Farfield
     MgDyn2D
       Infinity BC = True
@@ -146,7 +146,7 @@ Model
     OK
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -175,7 +175,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 
