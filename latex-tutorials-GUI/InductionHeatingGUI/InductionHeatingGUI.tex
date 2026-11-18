@@ -96,7 +96,7 @@ coordinates which must be changed.
 \ttbegin
 Model
   Setup  
-    Coordinate system -> Axi symmetric
+    Coordinate System -> Axi symmetric
 \ttend
  
 In the equation section we choose the relevant equations and parameters related to their solution. 
@@ -118,7 +118,7 @@ Model
     Solver -> MgDyn2DPost
       Active = on
       Edit Solver Settings
-        Solver specific options
+        Solver Specific Options
           Target Variable Complex = on
           Calculate Joule Heating = on
     Name = Induction
@@ -178,7 +178,7 @@ Model
 We need to provide a current source in order for the equation to have a non-trivial solution.
 \ttbegin
 Model
-  Body force
+  Body Force
     Name = CurrentSource
     MgDyn2DHarmonic
       Current Density = 2.5e5
@@ -189,14 +189,14 @@ This must be also joined with the coil
 \ttbegin
 Model
   Set body properties
-    Choose coil -> set Body force to CurrentSource
+    Choose coil -> set Body Force to CurrentSource
 \ttend
 
 
 We have just one boundary condition i.e. the outer boundary for which we use the far field condition.
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = Farfield
     MgDyn2DHarmonic
       Infinity BC = True
@@ -204,7 +204,7 @@ Model
     OK
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -227,13 +227,13 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 

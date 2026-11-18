@@ -48,8 +48,8 @@ coordinates.
 \ttbegin
 Model
   Setup 
-    Simulation type = Steady state
-    Steady state max. iter = 1
+    Simulation Type = Steady State
+    Steady State max. iter = 1
 \ttend
 
 In the Equation section we choose the relevant equations which in this case only includes 
@@ -68,10 +68,10 @@ Model
       Active = on
       Calculate Stresses = on
     Edit Solver Settings
-      Linear system
+      Linear System
         Method = Iterative / GCR
         Preconditioning = ILU1
-      Nonlinear system 
+      Nonlinear System
         Max. iterations = 1
       Apply
     Add 
@@ -100,7 +100,7 @@ In this case there is a body force i.e. the gravity acting on the beam.
 We assume that the gravity points to the negative $y$ direction.
 \ttbegin
 Model
-  Body force
+  Body Force
     Name = Gravity
     Linear Elasticity 
       Force 2 = $ -9.81 * 550
@@ -119,7 +119,7 @@ The second boundary condition distributes the load of 2000~N uniformly on the
 area of 5.0e-3~m$^2$.
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = Wall
     Linear elasticity
       Displacement 1 = 0.0
@@ -134,7 +134,7 @@ Model
     Add 
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary. 
 \ttbegin
@@ -158,13 +158,13 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 The simulation may take a minute or so depending on the 
 speed of the processor.
@@ -206,7 +206,7 @@ For that aim, change the direction of gravity to orient in the negative $x$.
 Change the body force
 \ttbegin
 Model
-  Body force
+  Body Force
     Linear Elasticity 
       Force 1 = $ -9.81*550
     Update
@@ -215,7 +215,7 @@ Model
 and the boundary condition
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Linear elasticity 
       Force 1 = -4.0e5
     Update

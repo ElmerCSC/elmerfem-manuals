@@ -96,10 +96,10 @@ written only at the end of the case.
 \ttbegin
 Model
   Setup 
-    Coordinate system = Cartesian
-    Simulation type = Steady state
-    Steady state max. iter = 100
-    Output intervals = 0
+    Coordinate System = Cartesian
+    Simulation Type = Steady State
+    Steady State max. iter = 100
+    Output Intervals = 0
     ...
 \ttend
 
@@ -129,7 +129,7 @@ Model
       Active = on
       Priority = 2 
       Edit Solver Settings
-        Nonlinear system
+        Nonlinear System
           Max. iterations = 1
           Relaxation factor = 0.5
     Mesh Update
@@ -148,7 +148,7 @@ Model
       Active = on
       Priority = 1
       Edit Solver Settings
-        Nonlinear system
+        Nonlinear System
           Max. iterations = 1
           Relaxation factor = 0.5
     OK
@@ -186,10 +186,10 @@ Model
     OK
 \ttend
 
-The \texttt{Body force} section usually represents the right-hand-side of an equation. 
+The \texttt{Body Force} section usually represents the right-hand-side of an equation.
 In this case we do not need any body forces.
 
-Also an \texttt{Initial condition} could be given in steady-state case to enhance convergence. However, 
+Also an \texttt{Initial Condition} could be given in steady-state case to enhance convergence. However,
 in this case convergence is pretty robust with the default guess of zero.
 
 We have five different boundary conditions: inflow, outflow, lateral walls with no-slip conditions, 
@@ -200,7 +200,7 @@ with the mouse.
 
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = Inflow
     Navier-Stokes 
       Velocity 1 = Variable Coordinate 2 
@@ -223,7 +223,7 @@ edit box which will open a larger window for editing.
 
     Name = Walls
     Navier-Stokes 
-      Noslip wall BC = on
+      NoSlip Wall BC = on
     Mesh Update
       Mesh Update 1 = 0.0
       Mesh Update 2 = 0.0
@@ -246,7 +246,7 @@ by the conditions for the \texttt{MeshSolver}.
     Nonlinear Elasticity 
       FSI BC = on
     Navier-Stokes 
-      Noslip wall BC = on
+      NoSlip Wall BC = on
     Mesh Update 1 = Equals Displacement 1
     Mesh Update 2 = Equals Displacement 2
 \ttend   
@@ -277,7 +277,7 @@ all the files needed to restart the case. It's a good idea to give the project a
 Avoid paths which includes empty spaces since they may cause problems later on. 
 \ttbegin
 File 
-  Save project
+  Save Project
     Make New Folder -> fsi_obstacle
     OK
 \ttend
@@ -285,7 +285,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The simulation may take around ~10 seconds depending on your platform. 

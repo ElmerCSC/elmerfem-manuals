@@ -53,10 +53,10 @@ constant is predefined in the \texttt{Setup} menu.
 \ttbegin
 Model
   Setup 
-     Coordinate system = Axi Symmetric
-     Simulation type = Steady state
+     Coordinate System = Axi Symmetric
+     Simulation Type = Steady State
      Steady State Max Iterations = 1
-     Output intervals = 1
+     Output Intervals = 1
   Apply
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
@@ -77,15 +77,15 @@ Model
     Heat Equation
       Active = on
     Edit Solver Settings
-       Steady state
+       Steady State
          Convergence Tolerance = 1.0e-8
-       Nonlinear system
+       Nonlinear System
         Convergence Tolerance = 1.0e-8
         Max Iterations = 50
         Relaxation Factor = 0.7
         Newton After Iterations = 1
         Newton After Tolerance = 1.0e-4
-      Linear system
+      Linear System
         Convergence Tolerance = 1.0e-12
         Preconditioning = ILU1
     Add 
@@ -130,7 +130,7 @@ force is the heating power in units W/kg.
 
 \ttbegin
 Model
-  Body force
+  Body Force
     Name = Power
     Apply to Bodies = 1
     Heat Equation
@@ -139,11 +139,11 @@ Model
     OK
 \ttend    
 
-Initial conditions are needed in this case. We choose a 
+Initial conditions are needed in this case. We choose a
 constant Temperature field of 250C. 
 \ttbegin
 Model
-  Initial condition
+  Initial Condition
     Name = Initial
     Apply to Bodies = 1 2
     Heat Equation
@@ -168,7 +168,7 @@ Dirichlet conditions boost up the convergence even though the heat equation
 is basically well defined also with external radiation conditions.
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = Inner
     Apply to boundaries = 1
     Heat Equation
@@ -195,7 +195,7 @@ Model
     OK
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -221,13 +221,13 @@ Before we can execute the solver we should save the files in a directory.
 The ElmerGUI project includes all the files needed to restart the case.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 

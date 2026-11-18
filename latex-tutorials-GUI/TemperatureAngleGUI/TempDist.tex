@@ -66,8 +66,8 @@ Only one steady-state iteration is needed as the case is linear.
 \ttbegin
 Model
   Setup 
-    Simulation type = Steady state
-    Steady state max. iter = 1
+    Simulation Type = Steady State
+    Steady State max. iter = 1
 \ttend
 Choose \texttt{Apply} to accept the values, then close the window.
 
@@ -115,7 +115,7 @@ A Body Force represents the right-hand-side of a equation that in this case repr
 the heat source. 
 \ttbegin
 Model
-  Body force
+  Body Force
     Add 
       Name = Heating
       Heat Source = 1.0
@@ -129,7 +129,7 @@ No initial conditions are required in steady state case.
 In this case we have only one boundary and set it to zero.
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Add 
       Heat Equation
         Temperature = 0.0
@@ -154,13 +154,13 @@ Before we can execute the solver we should save the files in a directory. In sav
 necessary files for restarting the case will be saved to the destination directory.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 As the case is linear only one iteration was required for the solution and the second one

@@ -61,10 +61,10 @@ The heat equation is solved with an iterative method. The system is linear, thus
 \ttbegin
 Model
   Setup 
-    Simulation type = Transient
-    Steady state max. iter = 1
-    Timestep intervals = 15
-    Timestep sizes = 1
+    Simulation Type = Transient
+    Steady State max. iter = 1
+    Timestep Intervals = 15
+    Timestep Sizes = 1
   Apply
 \ttend
 
@@ -123,7 +123,7 @@ The section `Free text input' is used, because the option to define a passive el
 
 \ttbegin
 Model
-  Body force
+  Body Force
     Name = Heat Source
     Apply to Bodies = 3
     Heat Equation
@@ -131,7 +131,7 @@ Model
     Add 
     OK
 
-  Body force
+  Body Force
     Name = Passive
     Apply to Bodies = 2
     Heat Equation
@@ -147,13 +147,13 @@ Model
     OK
 \ttend    
 
-Initial conditions should be given to transient cases, and probably are not needed for steady state solutions. 
+Initial conditions should be given to transient cases, and probably are not needed for steady state solutions.
 
 In this case we choose a constant Temperature for the passive element.  The initial condition for the initially passive elements is taken to be 5 degrees; a temperature halfway between the colder part and the hotter part of the system.
  
 \ttbegin
 Model
-  Initial condition
+  Initial Condition
     Name = Initial Guess
     Apply to Bodies = 2
     Heat Equation
@@ -183,7 +183,7 @@ Model
    OK 
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or by clicking on each boundary with the mouse. Here we use the latter approach as that spares us of the need to know the indexes of each boundary.
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or by clicking on each boundary with the mouse. Here we use the latter approach as that spares us of the need to know the indexes of each boundary.
 
 \ttbegin
 Model
@@ -204,14 +204,14 @@ Before we can execute the solver we should save the files in a directory.  The E
 
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver.
 
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 
 A convergence view automatically pops up showing relative changes of each iteration.

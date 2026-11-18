@@ -85,7 +85,7 @@ For simplicity the project directory is presented under ElmerGUI$\_$TEAM7. The m
 
 \begin{verbatim}
 File
-  New project...
+  New Project...
       Project directory 
           Select project dir -> ElmerGUI_TEAM7
       Geometry input
@@ -114,9 +114,9 @@ The TEAM Problem 7 is solved by imposing a transient sinusoidal current that gen
 \ttbegin
 Model
   Setup...
-    Simulation type = Transient
-    Timestep intervals = 16
-    Timestep sizes = 0.0025
+    Simulation Type = Transient
+    Timestep Intervals = 16
+    Timestep Sizes = 0.0025
   Apply
 \ttend
 
@@ -152,7 +152,7 @@ Model
      CoilSolver
          Active = on 
          Edit Solver Settings
-             Solver specific options
+             Solver Specific Options
                  Coil Closed=on
                  Desired Coil Current =  -2742
                  Normalize Coil Current=on
@@ -166,14 +166,14 @@ Model
      MgDyn
          Active = on
          Edit Solver Settings
-             Solver specific options
+             Solver Specific Options
                  Use Elemental CoilCurrent=on
              Apply
          
      MgDynPost
          Active=on
          Edit Solver Settings
-             Solver specific options
+             Solver Specific Options
                  Specify fields to compute
                      Calculate Current Density=on
                  What kind of fields to compute
@@ -238,7 +238,7 @@ A Body Force represents the right-hand-side of a equation.  In this case we want
 
 \ttbegin
 Model
-  Body force
+  Body Force
     Name = External CoilCurrent Source
     Apply to Bodies = 1
     Current Density Multiplier= Variable "time"; Real LUA "cos(2*math.pi*50*tx[0])"
@@ -253,7 +253,7 @@ Note that the frequency is 50Hz.  Hence  cos(2 $\pi$ f t), where f is the excita
 
 \ttbegin
 Model
-  Boundary condition -> Add
+  Boundary Condition -> Add
       Name = Infinity
       Apply to Boundaries = 6
       MgDyn
@@ -276,14 +276,14 @@ Before we can execute the solver save the the project.
 
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver.
 
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 
 A convergence view automatically pops up showing relative changes of each iteration.

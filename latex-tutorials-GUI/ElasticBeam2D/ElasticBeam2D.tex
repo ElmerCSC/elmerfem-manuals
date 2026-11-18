@@ -68,8 +68,8 @@ The simulation is carried in steady-state in 2-dimensional Cartesian coordinates
 \ttbegin
 Model
   Setup 
-    Simulation type = Steady state
-    Steady state max. iter = 1
+    Simulation Type = Steady State
+    Steady State max. iter = 1
 \ttend
 
 In the Equation section we choose the relevant equations which in this case only includes 
@@ -123,7 +123,7 @@ to line break. To fill in the second boundary condition press \texttt{Enter} in 
 \texttt{Force 2} checkbox.
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = Wall
     Linear elasticity
       Displacement 1 = 0.0
@@ -137,7 +137,7 @@ Model
     Add 
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -161,13 +161,13 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 Two iterations are performed, the second one only to ensure convergence at the nonlinear level.
@@ -227,11 +227,11 @@ You may try with the following settings.
 \ttbegin
 Model
   Setup 
-    Simulation type = Transient
-    Timestepping method = BDF
-    BDF order = 2
-    Timestep intervals = 200
-    Timestep sizes = 1.0e-4
+    Simulation Type = Transient
+    Timestepping Method = BDF
+    BDF Order = 2
+    Timestep Intervals = 200
+    Timestep Sizes = 1.0e-4
 \ttend
 Having a too large time step will not accurately describe the transient behaviour while having a too 
 small time step consumes unnecessary resources. There is only numerical damping in the system and 

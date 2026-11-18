@@ -109,7 +109,7 @@ Model
       Active = on
       Priority 2
         Edit Solver Settings
-          Solver specific options
+          Solver Specific Options
             Uncheck the box `Binary Output'
          Apply
     Vector Helmholtz Equation
@@ -126,7 +126,7 @@ Model
         $ kc = pi/a
         $ beta0 = sqrt(k0^2-kc^2)
       Edit Solver Settings
-        Linear system
+        Linear System
           Iterative = BiCGStabl
           Preconditioning = vanka
           BiCGStabl order = 6
@@ -195,7 +195,7 @@ Model
   Equation -> Equation 1
   Vector Helmholtz Post Process
     Edit Solver Settings
-      Solver specific options
+      Solver Specific Options
         Calculate Electric Field = on
         Calculate Magnetic Field Strength = on
         Calculate Poynting Vector = on
@@ -208,13 +208,13 @@ Model
 Save the project
 \begin{verbatim}
 File
-  Save project -> [choose location]
+  Save Project -> [choose location]
 \end{verbatim}
 
 And solve:
 \begin{verbatim}
 Run
-  Start solver
+  Start Solver
 \end{verbatim}
 
 The resulting fields should now appear in \texttt{case\_t0001.vtu} file ready for further post processing.

@@ -76,8 +76,8 @@ Only one steady-state iteration is needed as the case is linear.
 \ttbegin
 Model
   Setup 
-    Simulation type = Steady state
-    Steady state max. iter = 1
+    Simulation Type = Steady State
+    Steady State max. iter = 1
     Apply
 \ttend
 
@@ -97,10 +97,10 @@ Model
       Elastic Plates
         Active = on
         Edit Solver Settings 
-          Solver specific options
+          Solver Specific Options
             Eigen Analysis = on
             Eigen System Values = 10
-          Linear system
+          Linear System
             Direct = on
               Umfpack              
     Add  
@@ -130,14 +130,14 @@ Model
 \ttend
 
 A Body Force represents the right-hand-side of a equation i.e. external forces. In eigenmode analysis
-no body forces are used. Nor are any Initial conditions required.
+no body forces are used. Nor are any initial conditions required.
 
 In this case all the boundaries are rigidly fixed we set all the components of the 
 solution field to be zero. The 1st component is the displacement in the normal direction
 while the 2nd and 3rd components are its derivatives in $x$ and $y$ directions.
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Add 
       Elastic Plates
         Deflection 1 = 0.0
@@ -164,13 +164,13 @@ necessary files for restarting the case will be saved to the
 destination directory.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 In this case there is just one iteration and thus no curve appears.

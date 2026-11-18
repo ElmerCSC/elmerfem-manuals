@@ -76,12 +76,12 @@ For time stepping we will use 2nd order scheme.
 \ttbegin
 Model
   Setup 
-    Simulation type = Transient
-    Timestepping method = BDF
-    BDF order = 2
-    Timestep intervals = 1000
-    Timestep sizes = $10*365*24*3600
-    Output intervals = 2
+    Simulation Type = Transient
+    Timestepping Method = BDF
+    BDF Order = 2
+    Timestep Intervals = 1000
+    Timestep Sizes = $10*365*24*3600
+    Output Intervals = 2
 \ttend
 Choose \texttt{Apply} to accept the values and close the window.
 
@@ -129,7 +129,7 @@ Model
 We will need an initial condition for the case. 
 \ttbegin
 Model
-  Initial condition
+  Initial Condition
     Add 
       Name = Initial State
       Apply to bodies = 1
@@ -159,7 +159,7 @@ In this case we only need boundary conditions for the upper and lower boundary.
 First we create the boundary conditions
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Add 
       Heat Equation
         Temperature = 320.0
@@ -179,7 +179,7 @@ Model
 Choose the defined group of three boundaries by clicking with the mouse
 and apply the condition for the lower boundary.
 \ttbegin
-Boundary condition
+Boundary Condition
   Down
 \ttend
 and similarly for the upper boundary. 
@@ -199,13 +199,13 @@ Before we can execute the solver we should save the files in a directory. In sav
 necessary files for restarting the case will be saved to the destination directory.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 As the case is linear only one iteration was required for the solution and the second one

@@ -82,7 +82,7 @@ Then start ElmerGUI and create a new project, as follows:
 
 \begin{verbatim}
 File
-  New project...
+  New Project...
 \end{verbatim}
 
 Start at the top and select the project directory as shown in Figure \ref{fg:new_project}.  Then select the Geometry input file, DrivenCavity.grd.  Lastly, the SaveLine Equation Definition File is needed for the tutorial, so select SaveLine in the right hand box and add it to the left hand box.  Click on OK to accept the changes.
@@ -146,7 +146,7 @@ The equation tabs should look like Figure \ref{fg:DC_equation}.
 \end{figure}
 
 While the SaveLine tab is active, click on the `Edit Solver Settings' tab, followed by the
-`Solver specific options' tab, and enter the information below as shown.  Saveline needs to
+`Solver Specific Options' tab, and enter the information below as shown.  Saveline needs to
 know what name to use when it creates the results file, in this case, we will enter
 `save-400.dat'.  For \Idx{Polyline Coordinates} and for \Idx{Polyline Divisions}, enter
 
@@ -194,7 +194,7 @@ The appropriate boundary conditions can be set via
 
 \ttbegin
 Model
-  Boundary condition -> Add ..
+  Boundary Condition -> Add ..
 \ttend
 
 In the dialog box that appears, we select the "Navier-Stokes" tab. 
@@ -221,14 +221,14 @@ Before we can execute the solver we should save the files in a directory.  The E
 
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver.
 
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 
 A convergence view automatically pops up showing relative changes of each iteration. The problem should converge in less than ten iterations.
@@ -381,10 +381,10 @@ Model
     Equation 1
       select the Navier-Stokes tab
       Edit Solver Settings
-      select the Linear system tab
+      select the Linear System tab
         click on the direct button under Method
         select Umfpack as the direct solver
-      select the Nonlinear system tab
+      select the Nonlinear System tab
       Newton After iterations
         change from 3 to 20
       Apply

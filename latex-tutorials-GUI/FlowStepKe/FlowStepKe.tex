@@ -98,9 +98,9 @@ The coupled system converges unfortunately quite slowly and hence we need to inc
 \ttbegin
 Model
   Setup 
-    Simulation type = Steady state
-    Coordinate system = Cartesian
-    Steady state max. iter = 100
+    Simulation Type = Steady State
+    Coordinate System = Cartesian
+    Steady State max. iter = 100
 \ttend
 
 In the equation section we choose the relevant equations and 
@@ -121,19 +121,19 @@ Model
     Navier-Stokes 
       Active = on
       Edit Solver Settings
-        Nonlinear system
+        Nonlinear System
           Max. iterations = 1
           Relaxation factor = 0.5
           Newton after tolerance = 0.0
-        Steady state
+        Steady State
           Convergence tol. = 1.0e-4
     K-Epsilon 
       Active = on
       Edit Solver Settings
-        Nonlinear system
+        Nonlinear System
           Max. iterations = 1
           Relaxation factor = 0.5
-        Steady state
+        Steady State
           Convergence tol. = 1.0e-4
     Add 
     OK
@@ -162,7 +162,7 @@ The current case does not have any body forces. To help in the convergence we ma
 a rude initial guess.
 \ttbegin
 Model
-  Initial condition
+  Initial Condition
     Name = Initial Guess
     Navier-Stokes
       Velocity 1 = 0.0
@@ -185,7 +185,7 @@ For the inlet click \texttt{Enter} to open an edit box for the \texttt{Velocity 
 which will be evaluated at run-time so that $v_x=6(y-1)(2-y)$. 
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Add 
     Name = Inlet
     Navier-Stokes 
@@ -205,11 +205,11 @@ Model
  
     Name = Walls
     Navier-Stokes 
-      Noslip wall BC = on
+      NoSlip Wall BC = on
     Add
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -234,13 +234,13 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case. Create a suitable directory for the case if needed. 
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The convergence if far from monotonic but computation should terminate 

@@ -83,7 +83,7 @@ coordinates. For convenience we also set $\varepsilon$ equal to one.
 \ttbegin
 Model
   Setup 
-    Simulation type = Steady state
+    Simulation Type = Steady State
     Vacuum Permittivity = 1.0
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
@@ -105,7 +105,7 @@ Model
     Electrostatics
       Active = on
       Edit Solver Settings
-        Solver specific options
+        Solver Specific Options
           Calculate Electric Field = True
           Calculate Electric Energy = True
     Add 
@@ -128,7 +128,7 @@ We have two boundary conditions for the potential at the ground and at the capac
 the do-nothing boundary results to zero flux over the boundary.
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = Ground
     Electrostatics
       Potential = 0.0
@@ -141,7 +141,7 @@ Model
     Add
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -166,13 +166,13 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 

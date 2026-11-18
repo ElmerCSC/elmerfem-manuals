@@ -74,8 +74,8 @@ time stepping, constants etc. The simulation uses 2D Cartesian geometry and the 
 \ttbegin
 Model
   Setup 
-    Simulation type = Steady state
-    Steady state max. iter = 20
+    Simulation Type = Steady State
+    Steady State max. iter = 20
   Apply
 \ttend
 
@@ -141,7 +141,7 @@ Initial conditions should be given to transient cases, and probably are not need
 
 \ttbegin
 Model
-  Initial condition
+  Initial Condition
     Name = Initial Guess
     Apply to Bodies = 1 
     Heat Equation
@@ -167,7 +167,7 @@ To enter the three pairs of numbers in the Heat Equation menu tab, click into th
 
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = Inlet
     Heat Equation
       Temperature = Variable Coordinate 2
@@ -201,12 +201,12 @@ After the rest of the boundary conditions have been defined the problem is ready
     Heat Equation
        Temperature = 300
     Navier-Stokes 
-      Noslip wall BC = on
+      NoSlip Wall BC = on
     Add
     OK
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or by clicking on each boundary with the mouse. Here we use the latter approach as that spares us of the need to know the indexes of each boundary.
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or by clicking on each boundary with the mouse. Here we use the latter approach as that spares us of the need to know the indexes of each boundary.
 
 \ttbegin
 Model
@@ -230,14 +230,14 @@ Before we can execute the solver we should save the files in a directory. The El
 
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 

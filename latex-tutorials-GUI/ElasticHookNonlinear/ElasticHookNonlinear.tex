@@ -53,9 +53,9 @@ system down to work in SI units of meters.
 \ttbegin
 Model
   Setup 
-    Simulation type = Transient
-    Timestep sizes = 0.05
-    Timestep intervals = 20
+    Simulation Type = Transient
+    Timestep Sizes = 0.05
+    Timestep Intervals = 20
     Coordinate Scaling = 0.01
 \ttend
 
@@ -104,7 +104,7 @@ Note that the semicolon is an alternative separator
 to line break. 
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = MovingRight
     Nonlinear elasticity
       Displacement 1 = Variable "time"
@@ -123,7 +123,7 @@ Model
     Add 
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -147,13 +147,13 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 As there are 20 time steps the convergence will be shown for each time step.

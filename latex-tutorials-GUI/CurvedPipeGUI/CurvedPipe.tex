@@ -61,9 +61,9 @@ the defaults are correct.
 \ttbegin
 Model
   Setup 
-    Coordinate system = Cartesian
-    Simulation type = Steady state
-    Steady state max. iter = 1
+    Coordinate System = Cartesian
+    Simulation Type = Steady State
+    Steady State max. iter = 1
     ...
 \ttend
 
@@ -99,7 +99,7 @@ Model
       Active = on
       Priority = 1
       Edit Solver Settings
-        Linear system
+        Linear System
           Preconditioning = ILU1
     OK
 \ttend        
@@ -143,10 +143,10 @@ Model
     OK
 \ttend
 
-The \texttt{Body force} section usually represents the right-hand-side of an equation. It could be used to account for the 
+The \texttt{Body Force} section usually represents the right-hand-side of an equation. It could be used to account for the
 natural convection, for example. In this case, however, we do not apply any body forces.
 
-Also an \texttt{Initial condition} could be given in steady-state case to enhance convergence. However, 
+Also an \texttt{Initial Condition} could be given in steady-state case to enhance convergence. However,
 in this case convergence is pretty robust with the default guess of zero.
 
 We have four different boundary conditions: thermal inflow, internal no-slip, 
@@ -157,7 +157,7 @@ with the mouse.
 
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = HotInflow
     Heat Equation
       Temperature = 350.0
@@ -182,7 +182,7 @@ edit box which will open a larger window for editing.
 
     Name = NoSlip
     Navier-Stokes 
-      Noslip wall BC = on
+      NoSlip Wall BC = on
     Add 
     New
  
@@ -237,7 +237,7 @@ all the files needed to restart the case. It's a good idea to give the project a
 Avoid paths which includes empty spaces since they may cause problems later on. 
 \ttbegin
 File 
-  Save project
+  Save Project
     Make New Folder -> curved_pipe
     OK
 \ttend
@@ -245,7 +245,7 @@ File
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The simulation may take a few minutes depending on your platform. 

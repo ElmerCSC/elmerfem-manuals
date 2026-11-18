@@ -86,12 +86,12 @@ The first three components define a unit vector and the fourth its magnitude.
 \ttbegin
 Model
   Setup 
-    Simulation type = Transient
-    Steady state max. iter = 20
-    Timestepping method = BDF
-    BDF order = 2
-    Timestep intervals = 200
-    Timestep sizes = 2.0
+    Simulation Type = Transient
+    Steady State max. iter = 20
+    Timestepping Method = BDF
+    BDF Order = 2
+    Timestep Intervals = 200
+    Timestep Sizes = 2.0
     Gravity = 0 -1 0 9.82
 \ttend
 In the equation section we choose the relevant equations and parameters related to their solution. 
@@ -120,12 +120,12 @@ Model
       Active = on
       Convection = Computed
       Edit Solver Settings
-        Nonlinear system
+        Nonlinear System
           Max. iterations = 1
     Navier-Stokes 
       Active = on
       Edit Solver Settings
-        Nonlinear system
+        Nonlinear System
           Max. iterations = 1
     Add 
     OK
@@ -160,7 +160,7 @@ not a required field for a body. In this case, however, we apply the buoyancy re
 heat expansion as a body force to the Navier-Stokes equation.
 \ttbegin
 Model
-  Body force
+  Body Force
     Name = Buoyancy
     Apply to Bodies = 1
     Navier-Stokes
@@ -169,11 +169,11 @@ Model
     OK
 \ttend    
 
-Initial conditions should be given to transient cases. In this case we choose a 
+Initial conditions should be given to transient cases. In this case we choose a
 constant Temperature field and an small initial velocity that initializes the symmetry break. 
 \ttbegin
 Model
-  Initial condition
+  Initial Condition
     Name = Initial Guess
     Heat Equation
       Temperature = 293
@@ -187,7 +187,7 @@ different physical BCs for a boundary should be grouped together. In this case t
 Temperature and Velocity. The side walls are assumed to be adiabatic.
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = Bottom
     Heat Equation
       Temperature = 293.5
@@ -213,7 +213,7 @@ Model
     Add
 \ttend   
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -237,13 +237,13 @@ Before we can execute the solver we should save the files in a directory.
 The ElmerGUI project includes all the files needed to restart the case.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 

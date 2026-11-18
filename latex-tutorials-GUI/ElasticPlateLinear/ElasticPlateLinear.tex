@@ -93,8 +93,8 @@ i.e. Steady State.  There are no coupled solvers so only one iteration is needed
 \ttbegin
 Model
   Setup 
-    Simulation type = Steady state
-    Steady state max. iter = 1
+    Simulation Type = Steady State
+    Steady State max. iter = 1
     Apply
 \ttend
 
@@ -144,7 +144,7 @@ It is the uniform pressure from the weight of the sand and it is
 the same constant in every point.
 \ttbegin
 Model
-  Body force
+  Body Force
     Name = Pressure
     Apply to Bodies = Body 1 
     Elastic Plates 
@@ -159,7 +159,7 @@ solution field to be zero. The 1st component is the displacement in the normal d
 while the 2nd and 3rd components  are actually the components of rotation vector
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Add 
       Elastic Plates
         Deflection 1 = 0.0
@@ -184,13 +184,13 @@ Before we can execute the solver we should save the files in a directory. In sav
 necessary files for restarting the case will be saved to the destination directory.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes 
 of each iteration.  In this case there is just one iteration and thus 

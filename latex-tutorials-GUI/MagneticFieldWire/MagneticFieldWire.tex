@@ -125,14 +125,14 @@ Model
       Active = on
       Apply to Bodies = 1 2  
       Edit Solver Settings
-        Linear system
+        Linear System
           Iterative = BiCGStabl
         Preconditioning = none
         BiCGStabl order = 4    
     Name = MgDynPost
       Active = on
       Edit Solver Settings
-        Solver specific options
+        Solver Specific Options
           Calculate Magnetic Field Strength = on
           Calculate Joule Heating = on
           Skip Nodal Field = on
@@ -168,7 +168,7 @@ Both of these have both real and imaginary components.
 We set the scalar potential only for the conductors and the vector potential for all external boundaries.
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = Ground 
     MgHarm
       AV re = 0
@@ -184,7 +184,7 @@ For the other of the wire we have exactly the same BCs except that the scalar po
 electric field of 1~V/m, since the length of the wire is 0.01~m. 
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = Voltage
     MgHarm
       AV re = 0.01
@@ -199,7 +199,7 @@ Model
 and finally for all other external BCs we set the boundary non-axial components of the vector potential to zero.
 \ttbegin
 Model
-  Boundary condition
+  Boundary Condition
     Name = AxialField
     MgHarm
       AV re {e} 1 = 0
@@ -211,7 +211,7 @@ Model
 \ttend 
 
 
-The conditions may also be assigned to boundaries in the Boundary condition menu, or 
+The conditions may also be assigned to boundaries in the Boundary Condition menu, or
 by clicking with the mouse. Here we use the latter approach as that spares us of the 
 need to know the indexes of each boundary.
 \ttbegin
@@ -236,13 +236,13 @@ Before we can execute the solver we should save the files in a directory. The pr
 all the files needed to restart the case.
 \ttbegin
 File 
-  Save project
+  Save Project
 \ttend
 
 After we have successfully saved the files we may start the solver
 \ttbegin
 Run
-  Start solver
+  Start Solver
 \ttend
 A convergence view automatically pops up showing relative changes of each iteration.
 The equation is fully linear and hence only two iterations are needed -- the second 
