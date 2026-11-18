@@ -75,7 +75,6 @@ def create_geo(lc=1e-2, gui=False):
          "14", # input file format: here the gmsh format .msh
          "2", # output format: here .mesh. You can directly use this to start an elmer calculation
          filename], # name output file, which is a big lie as here it is a directory
-        shell=True, 
         check=True) 
     return
 

@@ -66,7 +66,7 @@ Simulation
   Binary Output = Logical True
 
   Output File = "diffusion1.res"
-  Post File = "diffusion1.ep"
+  Post File = "diffusion1.vtu"
 
   Output Version Numbers = Logical True
   Max Output Level = 32
@@ -281,7 +281,9 @@ End
 %
 After writing the command file is finished, the problem can be solved
 by entering the command \texttt{ElmerSolver} on the command line. The
-results can be examined with \texttt{ElmerPost}.
+results are written as VTU files and can be examined with
+\texttt{ParaView} (or another VTK-based viewer); ElmerPost has been
+discontinued.
 
 
 \subsection*{Results}
@@ -306,19 +308,10 @@ The maximum value of the magnitude of the velocity in the results is
 0.105 m/s.
 
 The electric field is written into the output only component-wise. The
-magnitude of the field may be visualised after giving the following
-commands on the ElmerPost command line (assuming one has read in all
-61 time steps):
-%
-\ttbegin
-math E(0,time(0):time(61)-1) = Electric.field.1
-math E(1,time(0):time(61)-1) = Electric.field.2
-math E(2,time(0):time(61)-1) = 0
-math E_abs = sqrt(vdot(E,E))
-\ttend
-%
-Now visualising the variable \texttt{E\_abs} reveals that the electric
-field magnitude is between 2453 and $2.18\cdot10^6$.
+magnitude of the field may be visualised in ParaView by forming the square
+root of the sum of the squared electric field components with the
+Calculator filter. In the original run this gave an electric field
+magnitude between 2453 and $2.18\cdot10^6$.
 
 
 \subsection*{Notes}

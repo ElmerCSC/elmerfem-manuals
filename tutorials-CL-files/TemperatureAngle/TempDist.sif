@@ -18,7 +18,7 @@
 
 Header
   CHECK KEYWORDS Warn
-  Mesh DB "MESHDIR" "Mesh1"
+  Mesh DB "." "Mesh1"
   Include Path ""
   Results Directory ""
 End
@@ -37,10 +37,7 @@ Simulation
 
   Solver Input File = "TempDist.sif"
   Output File = "TempDist.dat"
-  Post File = "TempDist.ep"
-  Mesh Input File
-    File "TempDist.mif"
-
+  Post File = "TempDist.vtu"
 End
 
 Constants

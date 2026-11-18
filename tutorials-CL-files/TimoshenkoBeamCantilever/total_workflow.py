@@ -31,7 +31,6 @@ if __name__ == '__main__':
         # call elmer solver to solve the system of equations
         run([elmersolver, # path to Elmer solver
              "constant_pressure_load-{0}.sif".format(str(lc))], # name of sif file that runs the elmer simulation
-            shell=True, 
             check=True)
     #
     plot_displacements(lcs, True)

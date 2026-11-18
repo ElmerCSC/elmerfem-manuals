@@ -21,7 +21,7 @@ Simulation
 
   Output Version Numbers = Logical True
   Output File = heat.res
-  Post File = heat.ep
+  Post File = heat.vtu
 
 End
 

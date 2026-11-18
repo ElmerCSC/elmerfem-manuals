@@ -16,7 +16,7 @@ Simulation
 
   Output Intervals = 1
   Post File = "BEM_Temperature.vtu"
-!  Output File = "BEM_Temperature.result"
+  Output File = "BEM_Temperature.result"
 End
 
 Body 1

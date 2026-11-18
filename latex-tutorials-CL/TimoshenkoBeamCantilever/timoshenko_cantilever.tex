@@ -109,13 +109,13 @@ and close Gmsh
 \ttbegin
 gmsh.finalize()
 \ttend 
-The latter two steps must always be taken as otherwise the geometry is considered open and will linger in the background and may cause strange errors as tags of entities are still assigned and must not be reassigned as it will cause an error. We now need to convert the mesh in Gmsh format to an Elmer friendly one. We do this with ElmerGrid by calling the shell from python
+The latter two steps must always be taken as otherwise the geometry is considered open and will linger in the background and may cause strange errors as tags of entities are still assigned and must not be reassigned as it will cause an error. We now need to convert the mesh in Gmsh format to an Elmer friendly one. We do this with ElmerGrid by calling it from Python
 \ttbegin
-run([elmergrid, "14", "2", filename], shell=True, check=True)
+run([elmergrid, "14", "2", filename], check=True)
 \ttend
-The check flag causes an error if the statement returns an error in the shell. If not present, this program would fail without raising an error. If you encounter problems with the latter statement, you have probably not entered the ElmerGrid path correctly. If for some reason this line does not work despite your best efforts, just comment it out
+The check flag causes an error if the command fails. If not present, this program would fail without raising an error. If you encounter problems with the latter statement, you have probably not entered the ElmerGrid path correctly. If for some reason this line does not work despite your best efforts, just comment it out
 \ttbegin
-#run([elmergrid, "14", "2", filename], shell=True, check=True)
+#run([elmergrid, "14", "2", filename], check=True)
 \ttend
 and run ElmerGrid by yourself 
 \ttbegin
@@ -414,7 +414,6 @@ We call Elmer solver to solve the system of equations
 \ttbegin
         run([elmersolver,
              "constant_pressure_load-{0}.sif".format(str(lc))],
-            shell=True, 
             check=True)
 \ttend 
 and continue to the next iteration or stop the iteration process. In the end we plot our accumulated results

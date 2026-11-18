@@ -31,7 +31,7 @@ the left edge. We want to set a nicely scaled sinusoidal volume flow on the edge
 This equation we can (easily) force with Lagrange multiplier.
 
 \subsection*{Solution procedure}
-First we make a uniform mesh of 800 four-node quadrilaterals with command
+First we make a uniform mesh of 806 four-node quadrilaterals with command
 \ttbegin
 ElmerGrid 1 2 mflow
 \ttend
@@ -59,7 +59,7 @@ Simulation
   Output Intervals = 1
 
   Output File = "mflow.result"
-  Post File = "mflow.ep"
+  Post File = "mflow.vtu"
 End
 \ttend
 The body, material and equation blocks are as usual. The material parameters,

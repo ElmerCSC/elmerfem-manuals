@@ -1,6 +1,6 @@
 Header
   CHECK KEYWORDS Warn
-  Mesh DB "MESHDIR" "mesh1"
+  Mesh DB "." "beam"
   Include Path ""
   Results Directory ""
 End
@@ -17,12 +17,9 @@ Simulation
   Steady State Max Iterations = 20
   Output Intervals = 1
 
-  Solver Input File = "Beamq.sif"
+  Solver Input File = "Beam.sif"
   Output File = "Beamq.dat"
-  Post File = "Beamq.ep"
-  Mesh Input File
-    File "Beamq.mif"
-
+  Post File = "Beamq.vtu"
 End
 
 Constants
@@ -38,15 +35,16 @@ End
 
 Equation 1
   Name = "Equation1"
-  Nonlinear Elasticity = Logical True
+  Stress Analysis = Logical True
 End
 
 Solver 1
   Exec Solver = "Always"
-  Equation = "Nonlinear Elasticity"
+  Equation = "Elasticity Solver"
   Variable = "Displacement"
   Variable Dofs = 2
   Procedure = "ElasticSolve" "ElasticSolver"
+  Large Deflection = Logical True
   Linear System Solver = "Iterative"
   Linear System Iterative Method = "BiCGStab"
   Linear System Max Iterations = 300

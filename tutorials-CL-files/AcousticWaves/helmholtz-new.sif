@@ -20,7 +20,7 @@ Simulation
   Steady State Max Iterations = 1
   Output Intervals = 1
 
-  Solver Input File = "helmholtz.sif"
+  Solver Input File = "helmholtz-new.sif"
 !  Output File = "helmholtz.dat"
   Post File = "helmholtz.vtu"
 End

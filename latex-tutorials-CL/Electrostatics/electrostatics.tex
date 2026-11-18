@@ -71,11 +71,10 @@ Body 1
 End
 \ttend
 
-Electric energy density is added into the results in Equation
+Electric energy density is added into the results in the Solver~1
 section. This allows energy density to be visualised.
-Here the visualization is done with now obsolete ElmerPost
-but you would probably rather use Paraview (or some other software that
-can handle VTU files). 
+Here the visualization is done with ParaView (or some other software that
+can handle VTU files). The older ElmerPost program has been discontinued.
 Note also, that calculating electric flux (or the electric
 displacement field) is disabled in the Solver~1 block. Further, the
 potential difference used in calculating the capacitance of the system
@@ -85,7 +84,6 @@ sensible.
 \ttbegin
 Equation 1
   Active Solvers(2) = 1 2
-  Calculate Electric Energy = True  ! (default False)
 End
 
 Solver 1
@@ -94,6 +92,7 @@ Solver 1
   Variable DOFs = 1
   Procedure = "StatElecSolve" "StatElecSolver"
   Calculate Electric Field = True  ! (default True)
+  Calculate Electric Energy = True  ! (default False)
   Calculate Electric Flux = False  ! (default True)
   Potential Difference = 1.0e6
   Linear System Solver = Iterative

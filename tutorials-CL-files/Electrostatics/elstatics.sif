@@ -12,7 +12,7 @@ Simulation
   Simulation Type = Steady State
   Max Output Level = 5 
   Steady State Max Iterations = 1
-!  Output File = "elstatics.result"
+  Output File = "elstatics.result"
   Post File = "elstatics.vtu"
 End
 
@@ -27,7 +27,6 @@ End
 
 Equation 1
   Active Solvers(2) = 1 2
-  Calculate Electric Energy = True
 End
 
 Solver 1
@@ -36,6 +35,7 @@ Solver 1
   Variable DOFs = 1
   Procedure = "StatElecSolve" "StatElecSolver"
   Calculate Electric Field = True
+  Calculate Electric Energy = True
   Calculate Electric Flux = False
   Potential Difference = 1.0e6
   Linear System Solver = Iterative
@@ -80,7 +80,7 @@ Boundary Condition 2
   Potential = 1.0e6
 End
 
-Solver 1 :: Reference Norm = 5.90638626E+05
+Solver 1 :: Reference Norm = 5.90598951E+05
 
 !End Of File
 

@@ -10,7 +10,7 @@ Simulation
   Timestep Sizes(1) = Real 0.01 
   Output Intervals(1) = Integer 1
   Steady State Max Iterations(1) = Integer 1
-  Post File = File "os-example.ep"
+  Post File = File "os-example.vtu"
 End
 
 Constants

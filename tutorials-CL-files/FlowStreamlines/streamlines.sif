@@ -10,7 +10,7 @@ Simulation
   Steady State Max Iterations = 1
 
   Output Intervals = 1
-  Post File = "streamlines.ep"
+  Post File = "streamlines.vtu"
   Output File = "streamlines.result"
 End
 

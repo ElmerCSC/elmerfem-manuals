@@ -1,6 +1,6 @@
 \chapter{Axisymmetric coating process}
 
-\modinfo{Director}{CoatingProcess}
+\modinfo{Directory}{CoatingProcess}
 \modinfo{Solvers}{\Idx{FlowSolve}, \Idx{FreeSurfaceReduced}}
 \modinfo{Tools}{\Idx{ElmerGrid}, editor}
 \modinfo{Dimensions}{2D, Steady-state}
@@ -32,7 +32,7 @@ Header
 End
 \ttend
 %
-The geometry is axisymmetric and the problem is solved in steady state. Typically around 10
+The geometry is axisymmetric and the problem is solved in steady state. Typically around 20
 iterations is needed to solve the problem but to be on the safe side 30 is set as the maximum.
 \ttbegin
 Simulation
@@ -128,13 +128,16 @@ End
 %
 Additionally there are two solvers for saving the results in a form
 that is more useful than plain pictures. The \texttt{SaveScalars} saves
-the scalar values, such as the diameter and force values,
+the scalar values, such as the mean and maximum pressure,
 and the \texttt{SaveLine} saves the free surface.
 \ttbegin
 Solver 5
   Equation = SaveScalars
   Procedure = "SaveData" "SaveScalars"
   Filename = "scalars.dat"
+  Operator 1 = String mean
+  Variable 1 = String Pressure
+  Operator 2 = String max
 End 
 
 Solver 6
@@ -174,7 +177,7 @@ Boundary Condition 1
   Target Boundaries = 1
   Velocity 2 = -10.0     ! The draw velocity
   Velocity 1 = 0.0
-  Compute Fluidic Force = Logical True
+  Calculate Fluidic Force = Logical True
   Mesh Update 1 = 0.0
 End
 \ttend
@@ -242,7 +245,7 @@ End
 \end{center}
 \end{figure}
 
-In the given case solution is obtained after 13 iterations.
+In the given case solution is obtained after 17 iterations.
 The solution gives the final radius, the forces, and the profile of the 
 free surface. To visualize the true free surface you may visualize the
 last timestep using Paraview, or some other software capable of reading

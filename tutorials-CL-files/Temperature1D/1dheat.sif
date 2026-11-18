@@ -15,7 +15,7 @@ Simulation
 
   Steady State Max Iterations = 1
 
-  Post File   = "1dheat.ep"
+  Post File   = "1dheat.vtu"
   Output File = "1dheat.dat"
 End
 

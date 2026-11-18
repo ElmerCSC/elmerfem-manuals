@@ -20,7 +20,7 @@ Simulation
 
   Solver Input File = "helmholtz.sif"
   Output File = "helmholtz.dat"
-  Post File = "helmholtz.ep"
+  Post File = "helmholtz.vtu"
   Mesh Input File
     File "helmholtz.mif"
 

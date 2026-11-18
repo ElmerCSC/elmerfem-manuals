@@ -12,7 +12,7 @@ Simulation
   Simulation Type = Steady State
   Steady State Max Iterations = 1
   Max Output Level = 5
-!  Output File = "flow.result"
+  Output File = "flow.result"
   Post File = "flow.vtu"
 End
 

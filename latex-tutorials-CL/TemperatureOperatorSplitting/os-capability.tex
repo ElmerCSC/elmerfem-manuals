@@ -129,7 +129,7 @@ Simulation
   Timestep Sizes(1) = Real 0.01
   Output Intervals(1) = Integer 1
   Steady State Max Iterations = Integer 1
-  Post File = File "os-example.ep"
+  Post File = File "os-example.vtu"
 End
 \ttend
 
@@ -201,7 +201,7 @@ of this solver section is
 Solver 2
   Equation = String "Rate Of Change Equation"
   Procedure = File "RateOfChange" "RateOfChangeSolver"
-  Variable = String "Udot0"
+  Variable = String "Udot"
   Variable Dofs = Integer 1   
   Advection = String "Constant"
   Advection Variable = String "Temperature" 
@@ -218,7 +218,7 @@ End
 Here the keyword {\tt Advection Variable} is used to declare the quantity
 which is subject to the convection operator, while the keyword {\tt Advection}
 is used to define the type of the velocity vector.
-The name {\tt Udot0} is used for the solution of this problem.
+The name {\tt Udot} is used for the solution of this problem.
 
 Finally, the Solver section for the wave-like equation, which is equivalent to 
 the convective transport equation, has the following declarations:
@@ -232,7 +232,7 @@ Solver 3
   Variable Dofs = Integer 1  
   Advection = String "Constant"
   Advection Variable = String "Temperature" 
-  Rate Of Change Equation Variable = String "Udot0" 
+  Rate Of Change Equation Variable = String "Udot"
   Linear System Solver = String "Iterative"
   Linear System Iterative Method = String "BiCGStab"
   Linear System Max Iterations = Integer 350
@@ -289,14 +289,14 @@ the temperature is given:
 Boundary Condition 1
   Target Boundaries(3) = Integer 1 2 4 
   Temperature = Real 0
-  Udot0 1 = Real 0
+  Udot 1 = Real 0
   U 1 = Real 0
 End
 \ttend
 
 The rate of change of the temperature is zero on this part of the boundary 
 as the temperature is kept fixed. Thus the zero boundary 
-conditions for {\tt Udot0} are defined. The boundary value of the 
+conditions for {\tt Udot} are defined. The boundary value of the
 solution to the convective transport problem should equal to the
 temperature. Therefore zero boundary conditions for {\tt U} are also defined.
   

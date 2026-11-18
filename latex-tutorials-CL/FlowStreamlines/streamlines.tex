@@ -21,12 +21,8 @@ First we create a mesh with ElmerGrid. The mesh is defined in
 \ttbegin
 ElmerGrid 1 2 step
 \ttend
-You may need to compile the StreamSolver yourself. If the Elmer environment is 
-successfully setup the compilation command should look like
-the following lines, 
-\ttbegin
-elmerf90 -o StreamSolver StreamSolver.f90
-\ttend
+The StreamSolver is included in the standard Elmer installation and is
+loaded automatically, so no separate compilation is needed.
 The solver input file {\tt streamlines.sif} starts with 
 the definition of the mesh directory. 
 \ttbegin
@@ -37,7 +33,7 @@ End
 The simulation uses 2D Cartesian geometry and searches a Steady State.
 There is no coupled solvers so only one iteration is needed. 
 Numerical results are written to file {\tt streamlines.result}
-and ElmerPost file is {\tt streamlines.ep}.
+and the file for ParaView visualization is {\tt step/streamlines\_t0001.vtu}.
 \ttbegin
 Simulation
   Coordinate System =  Cartesian 2D
@@ -47,7 +43,7 @@ Simulation
   Steady State Max Iterations = 1
 
   Output Intervals = 1
-  Post File = "streamlines.ep"
+  Post File = "streamlines.vtu"
   Output File = "streamlines.result"
 End
 \ttend
@@ -102,8 +98,9 @@ End
 Then the solver for streamlines.
 \begin{itemize}
 \item Name of the equation. This may be what ever you like.
-\item Name of the binary file and the subroutine. If you compiled the StreamSolver yourself,
-then you may need to change this to \texttt{Procedure = "./StreamSolver" "StreamSolver"}.
+\item Name of the binary file and the subroutine. The standard Elmer
+installation provides the \texttt{StreamSolver} library, so the default
+procedure is used.
 \item Name of the variable. This may be what ever you like.
 \item Stream function is scalar, so the degree of freedom is 1.
 \end{itemize}
@@ -165,8 +162,8 @@ Boundary Condition 3
 End
 \ttend
 \subsection*{Results}
-Problem is solved with command {\tt Solver}. The results are then viewed with
-ElmerPost. In figure~\ref{f:streamlines} are some contour lines of the stream
+Problem is solved with command {\tt ElmerSolver}. The results are then viewed with
+ParaView. In figure~\ref{f:streamlines} are some contour lines of the stream
 function. These are also flows streamlines. The contour values are manually
 selected to get a nice picture. Note the swirl after the step.
 \begin{figure}[!hb]

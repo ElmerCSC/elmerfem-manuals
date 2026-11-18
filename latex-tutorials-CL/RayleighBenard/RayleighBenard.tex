@@ -70,7 +70,7 @@ Simulation
   Steady State Max Iterations = 10
   Solver Input File = "RayleighBenard.sif"
   Output File = "RayleighBenard.result" 
-  Post File = "RayleighBenard.ep" 
+  Post File = "RayleighBenard.vtu"
 End
 \ttend
 
@@ -199,10 +199,11 @@ End
 \subsection*{Results}
 
 Due to the number of the time-steps the simulation may easily take more than ten minutes.
-After the solver has finished, the results can be postprocessed with ElmerPost.
-When opening the result-file it is important to press the button $\bf{All}$ which selects all the calculated time steps.
-A video of the results can be viewed by selecting the option $\bf{Timestep}$ 
-$\bf{Control}$ and pressing the button $\bf{Loop}$ under the $\bf{Edit}$ menu.
+After the solver has finished, the results can be postprocessed with ParaView
+(or another VTK-based viewer); ElmerPost has been discontinued. Elmer writes
+one VTU file for each saved time step, so open the files
+{\tt RayleighBenard\_t0001.vtu}, {\tt RayleighBenard\_t0002.vtu}, \ldots\
+in ParaView and use its animation controls to play the time series.
 
 
 In Figures \ref{fg:rb_temp} and \ref{fg:rb_vel} the obtained temperature distribution and the velocity vectors are presented. We have also measured the maximum velocity of the flow (Table \ref{tb:maxvel}).

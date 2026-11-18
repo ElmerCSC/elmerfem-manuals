@@ -21,7 +21,7 @@ Simulation
   Steady State Max Iterations = 10
   Solver Input File = "RayleighBenard.sif"
   Output File = "RayleighBenard.result" 
-  Post File = "RayleighBenard.ep" 
+  Post File = "RayleighBenard.vtu"
 End
 
 

@@ -36,7 +36,7 @@ Solver 1
   Linear System Max Iterations = 300
   Linear System Convergence Tolerance = 1.0e-8
   Nonlinear System Max Iterations = 1
-  Nonlinear System Convergence Tolerance = 1.0-6
+  Nonlinear System Convergence Tolerance = 1.0e-6
   Nonlinear System Newton After Iterations = 3
   Nonlinear System Newton After Tolerance = 1.0e-12
   Nonlinear System Relaxation Factor = 1.0

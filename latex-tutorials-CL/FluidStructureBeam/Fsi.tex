@@ -1,6 +1,6 @@
 \chapter{Fluid flow around an elastic beam}
 
-\modinfo{Directory}{FluiStructureBeam}
+\modinfo{Directory}{FluidStructureBeam}
 \modinfo{Solvers}{\Idx{ElasticSolve}, \Idx{FlowSolve}, \Idx{MeshSolve}}
 \modinfo{Tools}{\Idx{ElmerGrid}, editor, \Idx{Fortran 90 compiler}}
 \modinfo{Dimensions}{2D, steady-state}
@@ -194,7 +194,7 @@ Simulation
   Steady State Min Iterations = 2
   Output Intervals = 1
   Output File = "fsi.result"
-  Post File = "fsi.ep"
+  Post File = "fsi.vtu"
 End
 \ttend
 %
@@ -347,9 +347,9 @@ End
 
 \subsection*{Results}
 
-After the solution is done, view the results with ElmerPost. 
-Read the result file fsi.ep in ElmerPost by choosing Read Model File. The 
-fsi.ep file is located in the same directory as the mesh files. 
+After the solution is done, view the results with ParaView (or another
+VTK-based viewer): open the file {\tt fsi.vtu} in the working directory.
+ElmerPost has been discontinued.
 
 \begin{table}[tbhp]
 \caption{Max. displacement and pressure difference}
