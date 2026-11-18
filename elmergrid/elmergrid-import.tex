@@ -4,7 +4,7 @@ ElmerGrid understands a number of different mesh formats which
 enables the import from meshes created by other mesh generators into
 the Elmer solution cycle. Supported formats includes those by Ansys (separate macro), 
 Abaqus, Gambit (FDNET), Comsol Multiphysics, Fieldview, Triangle, 
-Medit, Gsmh, and GiD.
+Medit, Gmsh, and GiD.
 
 \section{Ansys mesh to Elmer}
 
@@ -56,14 +56,14 @@ Elmer download page.
 %output formats are numbers. 
 %
 In ElmerGrid the Ansys input format is 4 and output
-format can be Elmer mesh format (3) or ElmerPost format (2). So,
+format can be Elmer mesh format (2) or ElmerPost format (3). So,
 creating Elmer meshes from Ansys input is done with the command:
-\texttt{ElmerGrid 4 3 ExportMesh}. There are also many command-line 
+\texttt{ElmerGrid 4 2 ExportMesh}. There are also many command-line 
 options available. The
 most important ones in this case are:
 %
 \begin{itemize}
-  \item \texttt{-o name} for saving output with the name specified.  
+  \item \texttt{-out name} for saving output with the name specified.  
   \item \texttt{-order $c_x$ $c_y$ $c_z$} for reordering nodes and elements using $c_1x+c_2y +c_3z$.  
   \item \texttt{-scale $c_x$ $c_y$ $c_z$} for scaling the mesh using the constant to multiply
 the coordinate values.

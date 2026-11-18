@@ -67,7 +67,7 @@ does not include all the possible commands.
 \item \texttt{1)  .grd      : ElmerGrid file format} \\
 The native ElmerGrid format is  described in a separate section.
 
-\item \texttt{2)  .mesh.*  : Elmer output format} \\
+\item \texttt{2)  .mesh.*  : ElmerSolver input format} \\
 Input format for ElmerSolver consisting of separate header,
 node, coordinate and topology files.
 
@@ -123,8 +123,9 @@ Partitioned Elmer results created by parallel computing.
 \end{description}
 
 \section{Output formats}
-The supported output formats are all different 
-formats of Elmer software. Additionally, there are some undocumented formats.
+The supported output formats include the different
+formats of Elmer software, as well as Gmsh and VTU.
+Additionally, there are some undocumented formats.
 Thus, if you need to export some data from Elmer format you may
 ask for the possibilities. 
 
@@ -142,18 +143,22 @@ the input is divided to four different files with
 suffixes, \texttt{mesh.boundary}, \texttt{mesh.elements},
 \texttt{mesh.header} and \texttt{mesh.nodes}.
 
-The command-line parameters \texttt{-part} and \texttt{-metis} 
+The command-line parameters \texttt{-partition} and \texttt{-metis} 
 activate the partitioned 
 input format for the ElmerSolver. 
-The ending is \texttt{.part.*} and the 
-files are saved to 
-subdirectory with suffix \texttt{.part.n}, where
-\texttt{n} is the running number of the partition.
+The mesh is then saved to a subdirectory
+\texttt{partitioning.n}, where
+\texttt{n} is the number of partitions. In that directory the files
+have the names \texttt{part.i.header}, \texttt{part.i.nodes},
+\texttt{part.i.elements}, \texttt{part.i.boundary} and
+\texttt{part.i.shared}, where \texttt{i} is the running number of the partition.
 
 \item \texttt{3)  .ep       : ElmerPost file format} \\
-Format for Elmer postprocessing. This is particularly handy for tuning the
-mesh before it is used in the solution. Then the only variable that is saved is 
-the node index referred to by field variable \texttt{Number}.
+Legacy format for Elmer postprocessing. The ElmerPost program itself has been
+discontinued, so this format is retained mainly for backward compatibility.
+It is still handy for tuning the mesh before it is used in the solution; then
+the only variable that is saved is the node index referred to by field
+variable \texttt{Number}.
 
 \item \texttt{4)  .msh      : Gmsh file format} \\
 Format for Gmsh mesh generator. This may be useful if one wants to use Gmsh to view entity numbers or mesh quality. 
@@ -197,12 +202,16 @@ Then the name of the secondary input file may be given
 after this keyword.
 %
 \sifitem{-decimals}{Integer}
-The number of decimals for Elmer mesh is by default set to 6.
-Sometimes more decimals may be needed and this command may then
-be used. This could be the case, for example, if the elements are 
+The number of significant digits for Elmer mesh is by default set to 12.
+Sometimes fewer digits may be preferable to reduce the size of the
+ascii files, and sometimes more digits may be needed if the elements are
 small compared to the absolute values of the coordinates.
-The size of the ascii file is affected by the number of 
-decimals and therefore the default is quite small.
+%
+\sifitem{-bin}{}
+Saves the ElmerSolver mesh in binary format.
+%
+\sifitem{-sbin}{}
+Saves the ElmerSolver mesh in binary single precision format.
 %
 \sifitem{-relh}{Real}
 Gives a relative density of the mesh. Value of one will have no effect
@@ -213,6 +222,10 @@ increase mesh density of ElmerGrid meshing without having to edit the .grd file.
 The meshes consisting of rectangles may be divided into 
 triangles. This operation may be performed on all 2D meshes, 
 not only to the ones created using ElmerGrid format.
+An optional real parameter gives a critical angle (in degrees).
+A rectangle is divided only if its largest angle exceeds this value,
+and the division is made so that the largest angle is split.
+The default value zero divides all rectangles.
 %
 \sifitem{-merge}{Real}
 Sometimes when creating the computational mesh the 
@@ -258,6 +271,11 @@ This option translates the mesh with a given vector by
 simply adding the given values to the original coordinates,
 i.e. $\vec{r} := \vec{r} + \vec{r}_0$.
 %
+\sifitem{-coordinatemap}{Integer[3]} 
+Permutes the coordinate components. For example,
+\texttt{-coordinatemap 3 1 2} gives the new coordinates
+$(x,y,z) := (z,x,y)$.
+%
 \sifitem{-rotate}{Real[3]} 
 The mesh may be rotated around the main axis. 
 The rotation is done consecutively in all three angles.
@@ -275,6 +293,11 @@ By default the copies of the mesh are performed so that the
 new meshes are set directly besides the old ones. This flag may be used to define
 a larger size for the mesh which enables empty space being left 
 between the meshes.
+%
+\sifitem{-cloneinds}{}
+When cloning, give the cloned entities new indexes. Otherwise the
+material and boundary indexes of the copies are the same as those of
+the original mesh.
 %
 \sifitem{-mirror}{Integer[DIM]} 
 The mesh may be mirrored over the main axis. The arguments 
@@ -331,6 +354,15 @@ be used in setting constraints in the finite element solution.
 Removes boundary elements that are two or more dimensions lower than the 
 highest dimensional bulk elements. 
 %
+\sifitem{-removeintbcs}{}
+Removes internal boundaries that are not needed, i.e. boundaries
+that reside between two bulk elements.
+%
+\sifitem{-multidim}{}
+Keeps lower dimensional entities even if they are not boundaries.
+This is used, for example, in the import of Gmsh meshes where
+lower dimensional blocks may be given as bulk elements.
+%
 \sifitem{-removeunused}{}
 Removes unused nodes from the mesh. In some mesh formats there are control nodes 
 that may cause problems to ElmerSolver if these are not treated.
@@ -346,7 +378,7 @@ particularly when importing meshes that have a very wild numbering of boundary e
 \sifitem{-autoclean}{}
 This flag activates several of the above procedures that simplifies the mesh
 for solution purposes. The lower dimensional boundary elements are removed, 
-and the body and boundary element types are renumbered.
+the body and boundary element types are renumbered, and unused nodes are removed.
 %
 \sifitem{-bulkbound}{Integer[3]}
 Sometimes the geometry does not include all the necessary boundary conditions. 
@@ -401,12 +433,17 @@ oddly displaced. This utility sets the intermediate nodes to lie on the connecti
 between the corner nodes. 
 %
 \sifitem{-nobound}{}
-Disable the saving of boundary elements.
-This may sometimes be useful if there are a lot of boundaries and one is just interested 
-in the bulk elements.
+Disable the saving of boundary elements in the ElmerPost, Gmsh and VTU
+output formats. This may sometimes be useful if there are a lot of
+boundaries and one is just interested in the bulk elements. The
+ElmerSolver output format always includes the boundary elements.
 %
 \sifitem{-nosave}{}
 Do not save anything, just do the preceding parts.
+%
+\sifitem{-vtuone}{}
+Add a dummy zero node so that the real node indices in the VTU output
+start from one instead of zero.
 %
 \sifitem{-nooverwrite}{}
 If the mesh already exists don't overwrite it. This may be handy for automated
@@ -427,22 +464,30 @@ There are a number of inline parameters that are related only to the parallel El
 There are two methods to partition geometry for parallel computing. This
 method takes each coordinate direction and divides the mesh in the number
 of slices given in the parameter list. For example option
-\texttt{-part 2 3 5} would split the mesh into $2\times 3 \times 5 = 30$ partitions. 
+\texttt{-partition 2 3 5} would split the mesh into $2\times 3 \times 5 = 30$ partitions. 
 Each split is done so that the number of elements in each partition
 is almost equal. The method is best suited for simple geometries 
 where more generic strategies usually do not work as well.
 
-%The last flag is an optional flag which defines additional strategies for doing the partitioning. 
-%For value 0 a recursive partitioning is applied so that the partition is first done for elements and
-%thereafter for nodes. For value 1 the same algorithm is applied but now first for the nodes and then for
-%elements. 
+The last flag is an optional flag which defines additional strategies for doing the partitioning. 
+For value 0 a recursive partitioning is applied so that the partition is first done for elements and
+thereafter for nodes. For value 1 the same algorithm is applied but now first for the nodes and then for
+elements. The default value is 0. 
 
-%For value 2 of the optional parameter the geometry is assumed to consist of evenly distributed cells and the elements 
-%are divided into each cell. Not all cells need to be active. This kind of partitioning could be ideal for evenly distributed meshes
-%that follow the cell boundaries. For example, the canonical L-shaped domain is ideally partitioning by this flag.
+For value 2 of the optional parameter the geometry is assumed to consist of evenly distributed cells and the elements 
+are divided into each cell. Not all cells need to be active. This kind of partitioning could be ideal for evenly distributed meshes
+that follow the cell boundaries. For example, the canonical L-shaped domain is ideally partitioning by this flag.
 
-%The value 3 for the optional parameter invokes tailored partitioning for cylindrically symmetric structures for which the division is performed 
-%in $(r,\phi,z)$ coordinates rather than $(x,y,z)$. 
+The value 3 for the optional parameter invokes tailored partitioning for cylindrically symmetric structures for which the division is performed 
+in $(r,\phi,z)$ coordinates rather than $(x,y,z)$. 
+%
+\sifitem{-partcell}{Integer[DIM]} 
+The same as \texttt{-partition} with the optional parameter 2, i.e. the
+mesh is partitioned in cells of fixed size.
+%
+\sifitem{-partcyl}{Integer[DIM]} 
+The same as \texttt{-partition} with the optional parameter 3, i.e. the
+mesh is partitioned in cylindrical main directions.
 %
 \sifitem{-partorder}{Real[DIM]} 
 The simple partitioning is done by dividing the elements
@@ -490,6 +535,15 @@ The Metis algorithms that need a graph to work with by default use the nodal con
 alternative choice the user may enforce the use of elemental connectivity graph, i.e. the dual graph. 
 This may be advantageous for the continuity of the partitions. 
 %
+\sifitem{-metisvol}{}
+Minimize the total communication volume in the Metis partitioning.
+%
+\sifitem{-metisminconn}{}
+Minimize the maximum connectivity count in the Metis partitioning.
+%
+\sifitem{-metisncuts}{Integer}
+Give the number of competing partitions to generate in the Metis partitioning.
+%
 \sifitem{-halo}{}
 This flag creates a halo for the partitioning. This must be provided, for example, in
 discontinuous Galerkin computations where at the boundaries the gradient information 
@@ -501,6 +555,10 @@ No new neighbourhood connections are added to the shared nodes list among the pu
 This could be useful if halo information is needed only around the boundaries such as is the case 
 for internal discontinuity creation in parallel. 
 
+\sifitem{-halodb}{}
+A combination of the two previous ones, i.e. creates a halo both for the
+bulk elements and for the boundary conditions.
+
 \sifitem{-haloz}{}
 This flag creates a halo for only in the z-direction such that the the next and previous partition in
 the z-direction is saved. The halo has been designed to work with rotating machines and to be used with 
@@ -511,12 +569,6 @@ As the previous one but creates a halo only in radial direction.
 
 \sifitem{-halogreedy}{}
 Create halo being greedy over the partition interfaces. 
-
-\sifitem{-indirect}{}
-Creates the indirect connections in the partitioning. These are connections in 
-a finite element matrix that exist between two nodes but would not be apparent if
-only the partition in question would be studied. These should be not needed any more
-since ElmerSolver should be able to detect them on its own. 
 
 \sifitem{-periodic}{Integer[3]} 
 If the solution of the mesh is known to be periodic ElmerSolver uses
