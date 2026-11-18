@@ -8,7 +8,7 @@ This document is licensed under the Creative Commons Attribution-No Derivative W
 MATC is a library for the numerical evaluation of mathematical expressions. In the Elmer 
 package it can be used in defining expressions in the command file of ElmerSolver. The expressions
 may be evaluated either while the command file is read in, or at the time of execution.
-MATC may also be used in the command window of ElmerPost.   
+MATC may also be used in the command window of the discontinued ElmerPost program.
 
 
 \section{MATC Variables}
@@ -105,8 +105,8 @@ Assume the following definitions:
 \sifbegin
 \ttitem{b=a' } is transpose of matrix a. 
 \ttitem{b=@a} evaluate content of a string variable a as a MATC statement. 
-\ttitem{t=$\sim$l} elementwise logical not of  if x is not zero. 
-\ttitem{b=a$\hat{ }$s} if a is a square matrix and s is integral, a matrix power is computed, otherwise an elementwise power. 
+\ttitem{t=$\sim$l} elementwise logical not of l. 
+\ttitem{b=a$\hat{ }$s} if a is a square matrix, a matrix power is computed with s truncated to an integer, otherwise an elementwise power. 
 \ttitem{c=a*b} if a and b are compatible for matrix product, that is computed, 
 otherwise if they are of the same size or at least one of them is scalar, an elementwise product is computed. 
 \ttitem{c=a\#b}elementwise multiplication of a and b.  
@@ -206,7 +206,7 @@ Execute commands from file given name.
 \ttitem{help or help(''symbol'')}
 First form of the command gives list of available commands. Second form gives help on specific routine. 
 
-\ttitem{str = fread(fp,n)}
+\ttitem{r = fread(fp,n)}
 Read n bytes from file given by fp. File pointer fp should have been obtained from a call to fopen or freopen, or be the standard input file stdin. Data is returned as function value.  \\
 SEE ALSO: fopen,freopen,fgets,fscanf,matcvt,cvtmat. 
 
@@ -218,21 +218,21 @@ SEE ALSO: fopen,freopen,fgets,fread,matcvt,cvtmat.
 Read next line from fp. File pointer fp should have been obtained from a call to fopen or freopen or be the standard input. \\ 
 SEE ALSO: fopen,freopen,fread,fscanf,matcvt,cvtmat. 
 
-\ttitem{n = fwrite(fp,buf,n)}
-Write n bytes from buf to file fp. File pointer fp should have been obtained from a call to fopen or freopen or be the standard output (stdout) or standard error (stderr). Return value is number of bytes actually written. 
+\ttitem{fwrite(fp,buf[,n])}
+Write n bytes from buf to file fp. If n is omitted the whole matrix is written. File pointer fp should have been obtained from a call to fopen or freopen or be the standard output (stdout) or standard error (stderr). The function has no return value. 
 Note that one matrix element reserves 8 bytes of space. \\
 SEE ALSO: fopen,freopen,fputs,fprintf,matcvt,cvtmat. 
 
-\ttitem{n = fprintf(fp,fmt[, vec])}
-Write formatted string to file fp. File pointer fp should have been obtained from a call to fopen or freopen or be the standard output (stdout) or standard error (stderr). The format fmt is equal to C-language format. \\
+\ttitem{fprintf(fp,fmt[, vec])}
+Write formatted string to file fp. File pointer fp should have been obtained from a call to fopen or freopen or be the standard output (stdout) or standard error (stderr). The format fmt is equal to C-language format. The function has no return value. \\
 SEE ALSO: fopen,freopen,fputs,fwrite,matcvt,cvtmat. 
 
 \ttitem{fputs(fp,str)}
-Write string str to file fp. File pointer fp should have been obtained from a call to fopen or freopen or be the standard input (stdin). \\SEE ALSO: fopen,freopen,fwrite,matcvt,cvtmat. 
+Write string str to file fp. File pointer fp should have been obtained from a call to fopen or freopen or be the standard output (stdout) or standard error (stderr). \\SEE ALSO: fopen,freopen,fwrite,matcvt,cvtmat. 
 
 \ttitem{fp = fopen(name,mode)}
-Reopen file given previous file pointer, name and access mode. The most usual modes are ''r'' for reading and ''w'' for writing. Return value fp is used in functions reading and writing the file. \\
-SEE ALSO: fopen. 
+Open file given name and access mode. The most usual modes are ''r'' for reading and ''w'' for writing. Return value fp is used in functions reading and writing the file. \\
+SEE ALSO: freopen. 
 
 \ttitem{fp = freopen(fp,name,mode)} 
 Reopen file given previous file pointer, name and access mode. The most usual modes are ''r'' for reading and ''w'' for writing. Return value fp is used in functions reading and writing the file. \\
@@ -243,8 +243,8 @@ Close file previously opened with fopen or freopen. \\
 SEE ALSO: fopen, freopen. 
 
 \ttitem{save(name, a[,ascii\_flag] )} 
-Close file previously opened with fopen or freopen. \\
-SEE ALSO: fopen, freopen. 
+Save matrix a in file given name. If ascii\_flag is given and is not zero the file is written in ascii format, otherwise in double precision binary format. In either case the first line of the file contains the format flag, type, number of rows and number of columns. \\
+SEE ALSO: load. 
 
 \ttitem{r = load(name)} 
 Load matrix from a file given name and in format used by save command. \\
@@ -267,12 +267,6 @@ Return value is determinant of given square matrix.
 \ttitem{r = inv(matrix)} 
 Invert given square matrix. Computed also by operator~$^{-1}$
 
-\ttitem{r = tril(x)} 
-Return the lower triangle of the matrix x. 
-
-\ttitem{r = triu(x)} 
-Return the upper triangle of the matrix x. 
-
 \ttitem{r = eig(matrix)} 
 Return eigenvalues of given square matrix. The expression r(n,0) is real part of the n:th eigenvalue, r(n,1) is the imaginary part respectively. 
 
@@ -288,20 +282,20 @@ Return the upper hessenberg form of given matrix.
 \ttitem{r = eye(n)} 
 Return n by n identity matrix. 
 
-\ttitem{r = zeros(n,m)}
-Return n by m matrix with elements initialized to zero. 
+\ttitem{r = zeros(n[,m])}
+Return n by m matrix with elements initialized to zero. If m is omitted a 1 by n matrix is returned. 
 
-\ttitem{r = ones(n,m)} 
-Return n by m matrix with elements initialized to one. 
+\ttitem{r = ones(n[,m])} 
+Return n by m matrix with elements initialized to one. If m is omitted a 1 by n matrix is returned. 
 
-\ttitem{r = rand(n,m)}
-Return n by m matrix with elements initialized with random numbers from zero to one. 
+\ttitem{r = rand(n[,m])}
+Return n by m matrix with elements initialized with random numbers from zero to one. If m is omitted a 1 by n matrix is returned. 
 
 \ttitem{r = diag(matrix) or r=diag(vector)}
 Given matrix return diagonal entries as a vector. Given vector return matrix with diagonal elements from vector. r = diag(diag(a)) gives matrix with diagonal elements from matrix a, otherwise elements are zero. 
 
-\ttitem{r = vector(start,end,inc)}
-Return vector of values going from start to end by inc. 
+\ttitem{r = vector(start,end[,inc])}
+Return vector of values going from start to end by inc. If inc is omitted, 1 is used when start is less than end, otherwise -1. 
 
 \ttitem{r = size(matrix) }
 Return size of given matrix. 
@@ -338,6 +332,8 @@ r = acos(x)
 
 r = atan(x)
 
+r = atan2(y,x) Two-argument arc tangent.
+
 r = sinh(x)
 
 r = cosh(x)
@@ -357,6 +353,8 @@ r = ceil(x) Smallest integer not less than x.
 r = floor(x) Largest integer not more than x.
 
 r = abs(x)
+
+r = mod(x,y) Integer remainder of x divided by y.
 
 r = pow(x,y) 
 \ttend
